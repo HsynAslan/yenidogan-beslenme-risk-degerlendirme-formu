@@ -22,7 +22,7 @@ uses
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint, dxSkinWXI,
   dxSkinXmas2008Blue, cxScrollBox, cxContainer, cxEdit, cxDBLabel, cxLabel,
-  Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox;
+  Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox, Data.DB, cxTextEdit, cxDBEdit;
 
 type
   TForm2 = class(TForm)
@@ -43,6 +43,32 @@ type
     grpOlcum: TcxGroupBox;
     cxlbl5: TcxLabel;
     grdpnl3: TGridPanel;
+    cxlbl6: TcxLabel;
+    cxlbl7: TcxLabel;
+    lblGun2Tarih: TcxLabel;
+    lblGun3Tarih: TcxLabel;
+    lblGun4Tarih: TcxLabel;
+    lblGun5Tarih: TcxLabel;
+    cxlbl8: TcxLabel;
+    edtKiloGun1: TcxDBTextEdit;
+    edtKiloGun2: TcxDBTextEdit;
+    edtKiloGun3: TcxDBTextEdit;
+    edtKiloGun4: TcxDBTextEdit;
+    edtKiloGun5: TcxDBTextEdit;
+    cxlbl9: TcxLabel;
+    edtBoyGun1: TcxDBTextEdit;
+    edtBoyGun2: TcxDBTextEdit;
+    edtBoyGun3: TcxDBTextEdit;
+    edtBoyGun4: TcxDBTextEdit;
+    edtBoyGun5: TcxDBTextEdit;
+    cxLabel1: TcxLabel;
+    edtBasGun1: TcxDBTextEdit;
+    edtBasGun2: TcxDBTextEdit;
+    edtBasGun3: TcxDBTextEdit;
+    edtBasGun4: TcxDBTextEdit;
+    edtBasGun5: TcxDBTextEdit;
+
+    procedure lblGunTarihClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -55,5 +81,11 @@ var
 implementation
 
 {$R *.dfm}
+
+
+procedure TForm2.lblGunTarihClick(Sender: TObject);
+begin
+///////
+end;
 
 end.

@@ -22,7 +22,7 @@ uses
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint, dxSkinWXI,
   dxSkinXmas2008Blue, cxScrollBox, cxContainer, cxEdit, cxDBLabel, cxLabel,
-  Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox;
+  Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox, Data.DB;
 
 type
   TForm2 = class(TForm)
@@ -43,6 +43,13 @@ type
     grpOlcum: TcxGroupBox;
     cxlbl5: TcxLabel;
     grdpnl3: TGridPanel;
+    cxlbl6: TcxLabel;
+    cxlbl7: TcxLabel;
+    dsGun1: TDataSource;
+    lblGun2Tarih: TcxLabel;
+    dsGun2: TDataSource;
+    procedure dsGun1DataChange(Sender: TObject; Field: TField);
+    procedure dsGun2DataChange(Sender: TObject; Field: TField);
   private
     { Private declarations }
   public
@@ -55,5 +62,6 @@ var
 implementation
 
 {$R *.dfm}
+
 
 end.

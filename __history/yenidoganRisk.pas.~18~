@@ -21,11 +21,33 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint, dxSkinWXI,
-  dxSkinXmas2008Blue, cxScrollBox;
+  dxSkinXmas2008Blue, cxScrollBox, cxContainer, cxEdit, cxDBLabel, cxLabel,
+  Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox, Data.DB;
 
 type
   TForm2 = class(TForm)
     scrMain: TcxScrollBox;
+    grpAna1: TcxGroupBox;
+    grpAna2: TcxGroupBox;
+    grdpnl1: TGridPanel;
+    grpAna3: TcxGroupBox;
+    grdpnl2: TGridPanel;
+    cxlbl1: TcxLabel;
+    cxdblbl1: TcxDBLabel;
+    cxlbl2: TcxLabel;
+    cxdblbl2: TcxDBLabel;
+    cxlbl3: TcxLabel;
+    cxdblbl3: TcxDBLabel;
+    cxlbl4: TcxLabel;
+    cxdblbl4: TcxDBLabel;
+    grpOlcum: TcxGroupBox;
+    cxlbl5: TcxLabel;
+    grdpnl3: TGridPanel;
+    cxlbl6: TcxLabel;
+    cxlbl7: TcxLabel;
+    lblGun2Tarih: TcxLabel;
+    procedure dsGun1DataChange(Sender: TObject; Field: TField);
+    procedure dsGun2DataChange(Sender: TObject; Field: TField);
   private
     { Private declarations }
   public
@@ -38,5 +60,6 @@ var
 implementation
 
 {$R *.dfm}
+
 
 end.

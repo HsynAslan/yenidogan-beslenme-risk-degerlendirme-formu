@@ -240,13 +240,13 @@ object Form2: TForm2
       Align = alTop
       Caption = 'grpOlcum'
       TabOrder = 2
-      Height = 362
+      Height = 394
       Width = 1090
       object grdpnl3: TGridPanel
         Left = 2
         Top = 20
         Width = 1086
-        Height = 340
+        Height = 372
         Align = alClient
         ColumnCollection = <
           item
@@ -267,30 +267,195 @@ object Form2: TForm2
           item
             Value = 10.000000000000000000
           end>
-        ControlCollection = <>
+        ControlCollection = <
+          item
+            Column = 0
+            Control = cxlbl6
+            Row = 0
+          end
+          item
+            Column = 1
+            Control = cxlbl7
+            Row = 0
+          end
+          item
+            Column = 2
+            Control = lblGun2Tarih
+            Row = 0
+          end
+          item
+            Column = 3
+            Control = lblGun3Tarih
+            Row = 0
+          end
+          item
+            Column = 4
+            Control = lblGun4Tarih
+            Row = 0
+          end
+          item
+            Column = 5
+            Control = lblGun5Tarih
+            Row = 0
+          end>
         RowCollection = <
           item
-            Value = 21.344170480158460000
+            Value = 7.000000000000000000
           end
           item
-            Value = 21.344170480158460000
+            Value = 5.000000000000000000
           end
           item
-            Value = 9.090909090909090000
+            Value = 5.000000000000000000
           end
           item
-            Value = 8.264462809917354000
+            Value = 5.000000000000000000
           end
           item
-            Value = 7.513148009015778000
+            Value = 60.000000000000000000
           end
           item
-            Value = 25.613004576190150000
+            Value = 7.000000000000000000
           end
           item
-            Value = 6.830134553650707000
+            Value = 11.000000000000000000
           end>
         TabOrder = 0
+        ExplicitHeight = 341
+        DesignSize = (
+          1086
+          372)
+        object cxlbl6: TcxLabel
+          Left = 1
+          Top = 1
+          Align = alClient
+          Caption = '1. B'#220'Y'#220'MEN'#304'N R'#304'SK DE'#286'ERLEND'#304'RMES'#304
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -13
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taLeftJustify
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 167
+          ExplicitTop = 4
+          ExplicitWidth = 213
+          ExplicitHeight = 19
+          AnchorY = 14
+        end
+        object cxlbl7: TcxLabel
+          Tag = 1
+          Left = 543
+          Top = 1
+          Cursor = crHandPoint
+          Align = alClient
+          Caption = '--.--.----'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -15
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          OnClick = lblGunTarihClick
+          ExplicitLeft = 593
+          ExplicitTop = 4
+          ExplicitWidth = 50
+          ExplicitHeight = 19
+          AnchorX = 597
+          AnchorY = 14
+        end
+        object lblGun2Tarih: TcxLabel
+          Tag = 2
+          Left = 675
+          Top = 2
+          Cursor = crHandPoint
+          Anchors = []
+          Caption = '--.--.----'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -15
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          OnClick = lblGunTarihClick
+          AnchorX = 705
+          AnchorY = 14
+        end
+        object lblGun3Tarih: TcxLabel
+          Tag = 3
+          Left = 760
+          Top = 1
+          Align = alClient
+          Caption = '--.--.----'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -15
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          OnClick = lblGunTarihClick
+          ExplicitLeft = 778
+          ExplicitTop = 4
+          ExplicitWidth = 50
+          ExplicitHeight = 19
+          AnchorX = 814
+          AnchorY = 14
+        end
+        object lblGun4Tarih: TcxLabel
+          Left = 868
+          Top = 1
+          Align = alClient
+          Caption = '--.--.----'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -15
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          OnClick = lblGunTarihClick
+          ExplicitLeft = 898
+          ExplicitTop = 4
+          ExplicitWidth = 71
+          ExplicitHeight = 19
+          AnchorX = 923
+          AnchorY = 14
+        end
+        object lblGun5Tarih: TcxLabel
+          Left = 977
+          Top = 1
+          Align = alClient
+          Caption = '--.--.----'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -15
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          OnClick = lblGunTarihClick
+          ExplicitLeft = 1006
+          ExplicitTop = 4
+          ExplicitWidth = 71
+          ExplicitHeight = 19
+          AnchorX = 1031
+          AnchorY = 14
+        end
       end
     end
   end

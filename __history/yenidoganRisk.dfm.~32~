@@ -327,66 +327,6 @@ object Form2: TForm2
             Column = 5
             Control = edtKiloGun5
             Row = 1
-          end
-          item
-            Column = 0
-            Control = cxlbl9
-            Row = 2
-          end
-          item
-            Column = 1
-            Control = edtBoyGun1
-            Row = 2
-          end
-          item
-            Column = 2
-            Control = edtBoyGun2
-            Row = 2
-          end
-          item
-            Column = 3
-            Control = edtBoyGun3
-            Row = 2
-          end
-          item
-            Column = 4
-            Control = edtBoyGun4
-            Row = 2
-          end
-          item
-            Column = 5
-            Control = edtBoyGun5
-            Row = 2
-          end
-          item
-            Column = 0
-            Control = cxLabel1
-            Row = 3
-          end
-          item
-            Column = 1
-            Control = edtBasGun1
-            Row = 3
-          end
-          item
-            Column = 2
-            Control = edtBasGun2
-            Row = 3
-          end
-          item
-            Column = 3
-            Control = edtBasGun3
-            Row = 3
-          end
-          item
-            Column = 4
-            Control = edtBasGun4
-            Row = 3
-          end
-          item
-            Column = 5
-            Control = edtBasGun5
-            Row = 3
           end>
         RowCollection = <
           item
@@ -591,7 +531,6 @@ object Form2: TForm2
           Left = 868
           Top = 27
           Align = alClient
-          Properties.Alignment.Horz = taCenter
           TabOrder = 10
           ExplicitWidth = 121
           ExplicitHeight = 23
@@ -603,128 +542,6 @@ object Form2: TForm2
           Align = alClient
           Properties.Alignment.Horz = taCenter
           TabOrder = 11
-          ExplicitWidth = 121
-          ExplicitHeight = 23
-          Width = 108
-        end
-        object cxlbl9: TcxLabel
-          Left = 1
-          Top = 45
-          Align = alClient
-          Caption = 'Boy / Persantil'
-          Properties.Alignment.Vert = taVCenter
-          ExplicitLeft = 247
-          ExplicitWidth = 34
-          AnchorY = 55
-        end
-        object edtBoyGun1: TcxDBTextEdit
-          Left = 543
-          Top = 45
-          Align = alClient
-          Properties.Alignment.Horz = taCenter
-          TabOrder = 13
-          ExplicitWidth = 121
-          ExplicitHeight = 23
-          Width = 108
-        end
-        object edtBoyGun2: TcxDBTextEdit
-          Left = 651
-          Top = 45
-          Align = alClient
-          Properties.Alignment.Horz = taCenter
-          TabOrder = 14
-          ExplicitWidth = 121
-          ExplicitHeight = 23
-          Width = 109
-        end
-        object edtBoyGun3: TcxDBTextEdit
-          Left = 760
-          Top = 45
-          Align = alClient
-          Properties.Alignment.Horz = taCenter
-          TabOrder = 15
-          ExplicitWidth = 121
-          ExplicitHeight = 23
-          Width = 108
-        end
-        object edtBoyGun4: TcxDBTextEdit
-          Left = 868
-          Top = 45
-          Align = alClient
-          Properties.Alignment.Horz = taCenter
-          TabOrder = 16
-          ExplicitWidth = 121
-          ExplicitHeight = 23
-          Width = 109
-        end
-        object edtBoyGun5: TcxDBTextEdit
-          Left = 977
-          Top = 45
-          Align = alClient
-          Properties.Alignment.Horz = taCenter
-          TabOrder = 17
-          ExplicitWidth = 121
-          ExplicitHeight = 23
-          Width = 108
-        end
-        object cxLabel1: TcxLabel
-          Left = 1
-          Top = 64
-          Align = alClient
-          Caption = 'Ba'#351' '#199'evresi / Persantil'
-          Properties.Alignment.Horz = taLeftJustify
-          Properties.Alignment.Vert = taVCenter
-          ExplicitLeft = 214
-          ExplicitWidth = 119
-          ExplicitHeight = 19
-          AnchorY = 73
-        end
-        object edtBasGun1: TcxDBTextEdit
-          Left = 543
-          Top = 64
-          Align = alClient
-          Properties.Alignment.Horz = taCenter
-          TabOrder = 19
-          ExplicitWidth = 121
-          ExplicitHeight = 23
-          Width = 108
-        end
-        object edtBasGun2: TcxDBTextEdit
-          Left = 651
-          Top = 64
-          Align = alClient
-          Properties.Alignment.Horz = taCenter
-          TabOrder = 20
-          ExplicitWidth = 121
-          ExplicitHeight = 23
-          Width = 109
-        end
-        object edtBasGun3: TcxDBTextEdit
-          Left = 760
-          Top = 64
-          Align = alClient
-          Properties.Alignment.Horz = taCenter
-          TabOrder = 21
-          ExplicitWidth = 121
-          ExplicitHeight = 23
-          Width = 108
-        end
-        object edtBasGun4: TcxDBTextEdit
-          Left = 868
-          Top = 64
-          Align = alClient
-          Properties.Alignment.Horz = taCenter
-          TabOrder = 22
-          ExplicitWidth = 121
-          ExplicitHeight = 23
-          Width = 109
-        end
-        object edtBasGun5: TcxDBTextEdit
-          Left = 977
-          Top = 64
-          Align = alClient
-          Properties.Alignment.Horz = taCenter
-          TabOrder = 23
           ExplicitWidth = 121
           ExplicitHeight = 23
           Width = 108

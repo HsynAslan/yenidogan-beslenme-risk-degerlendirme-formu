@@ -27,39 +27,32 @@ object Form2: TForm2
       Align = alTop
       Style.BorderStyle = ebsNone
       TabOrder = 0
-      Height = 41
+      Height = 35
       Width = 1090
-      object lbl1: TLabel
+      object cxlbl5: TcxLabel
         Left = 2
         Top = 20
-        Width = 1086
-        Height = 19
         Align = alClient
-        Alignment = taCenter
-        AutoSize = False
         Caption = 'Hastan'#305'n Servise Kabul'#252'nde ve Her Pazartesi Doldurulacak'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clMaroon
-        Font.Height = -12
-        Font.Name = 'Segoe UI'
-        Font.Style = [fsBold]
-        ParentFont = False
-        ExplicitHeight = 5
+        Properties.Alignment.Horz = taCenter
+        Properties.Alignment.Vert = taVCenter
+        AnchorX = 545
+        AnchorY = 27
       end
     end
     object grpAna2: TcxGroupBox
       Left = 0
-      Top = 41
+      Top = 35
       Align = alTop
       Style.BorderStyle = ebsNone
       TabOrder = 1
-      Height = 152
+      Height = 100
       Width = 1090
       object grdpnl1: TGridPanel
         Left = 2
         Top = 20
         Width = 1086
-        Height = 130
+        Height = 78
         Align = alClient
         ColumnCollection = <
           item
@@ -90,14 +83,14 @@ object Form2: TForm2
           Align = alClient
           Caption = 'grpAna3'
           TabOrder = 0
-          Height = 128
+          Height = 76
           Width = 325
         end
         object grdpnl2: TGridPanel
           Left = 326
           Top = 1
           Width = 759
-          Height = 128
+          Height = 76
           Align = alClient
           ColumnCollection = <
             item
@@ -175,7 +168,7 @@ object Form2: TForm2
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taLeftJustify
             Properties.Alignment.Vert = taVCenter
-            AnchorY = 17
+            AnchorY = 11
           end
           object cxdblbl1: TcxDBLabel
             Left = 304
@@ -183,105 +176,256 @@ object Form2: TForm2
             Align = alClient
             Properties.Alignment.Horz = taLeftJustify
             Properties.Alignment.Vert = taVCenter
-            Height = 32
+            Height = 19
             Width = 454
-            AnchorY = 17
+            AnchorY = 11
           end
           object cxlbl2: TcxLabel
             Left = 1
-            Top = 33
+            Top = 20
             Align = alClient
             Caption = 'Do'#287'um Tart'#305's'#305' (Persantil): '
             Properties.Alignment.Vert = taVCenter
-            AnchorY = 49
+            AnchorY = 29
           end
           object cxdblbl2: TcxDBLabel
             Left = 304
-            Top = 33
+            Top = 20
             Align = alClient
             Properties.Alignment.Vert = taVCenter
-            Height = 32
+            Height = 18
             Width = 454
-            AnchorY = 49
+            AnchorY = 29
           end
           object cxlbl3: TcxLabel
             Left = 1
-            Top = 65
+            Top = 38
             Align = alClient
             Caption = 'Do'#287'um Boyu (Persantil): '
             Properties.Alignment.Vert = taVCenter
-            AnchorY = 81
+            AnchorY = 48
           end
           object cxdblbl3: TcxDBLabel
             Left = 304
-            Top = 65
+            Top = 38
             Align = alClient
             Properties.Alignment.Vert = taVCenter
-            Height = 31
+            Height = 19
             Width = 454
-            AnchorY = 81
+            AnchorY = 48
           end
           object cxlbl4: TcxLabel
             Left = 1
-            Top = 96
+            Top = 57
             Align = alClient
             Caption = 'Do'#287'um Ba'#351' '#199'evresi (Persantil): '
             Properties.Alignment.Vert = taVCenter
-            AnchorY = 112
+            AnchorY = 66
           end
           object cxdblbl4: TcxDBLabel
             Left = 304
-            Top = 96
+            Top = 57
             Align = alClient
             Properties.Alignment.Vert = taVCenter
-            Height = 31
+            Height = 18
             Width = 454
-            AnchorY = 112
+            AnchorY = 66
           end
         end
       end
     end
     object grpOlcum: TcxGroupBox
       Left = 0
-      Top = 193
+      Top = 135
       Align = alTop
       Caption = 'grpOlcum'
       TabOrder = 2
-      Height = 272
+      Height = 394
       Width = 1090
       object grdpnl3: TGridPanel
-        Left = 296
-        Top = 6
-        Width = 473
-        Height = 205
+        Left = 2
+        Top = 20
+        Width = 1086
+        Height = 372
+        Align = alClient
         ColumnCollection = <
           item
-            Value = 40.000000000000000000
+            Value = 50.000000000000000000
           end
           item
-            Value = 9.447293756137716000
+            Value = 10.000000000000000000
           end
           item
-            Value = 9.447293756137716000
+            Value = 10.000000000000000000
           end
           item
-            Value = 9.447293756137716000
+            Value = 10.000000000000000000
           end
           item
-            Value = 22.397232987682410000
+            Value = 10.000000000000000000
           end
           item
-            Value = 9.260885743904444000
+            Value = 10.000000000000000000
           end>
-        ControlCollection = <>
+        ControlCollection = <
+          item
+            Column = 0
+            Control = cxlbl6
+            Row = 0
+          end
+          item
+            Column = 1
+            Control = cxlbl7
+            Row = 0
+          end
+          item
+            Column = 2
+            Control = lblGun2Tarih
+            Row = 0
+          end
+          item
+            Column = 3
+            Control = lblGun3Tarih
+            Row = 0
+          end
+          item
+            Column = 4
+            Control = lblGun4Tarih
+            Row = 0
+          end>
         RowCollection = <
           item
-            Value = 50.000000000000000000
+            Value = 7.000000000000000000
           end
           item
-            Value = 50.000000000000000000
+            Value = 5.000000000000000000
+          end
+          item
+            Value = 5.000000000000000000
+          end
+          item
+            Value = 5.000000000000000000
+          end
+          item
+            Value = 60.000000000000000000
+          end
+          item
+            Value = 7.000000000000000000
+          end
+          item
+            Value = 11.000000000000000000
           end>
         TabOrder = 0
+        ExplicitHeight = 341
+        DesignSize = (
+          1086
+          372)
+        object cxlbl6: TcxLabel
+          Left = 1
+          Top = 1
+          Align = alClient
+          Caption = '1. B'#220'Y'#220'MEN'#304'N R'#304'SK DE'#286'ERLEND'#304'RMES'#304
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -13
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taLeftJustify
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 167
+          ExplicitTop = 4
+          ExplicitWidth = 213
+          ExplicitHeight = 19
+          AnchorY = 14
+        end
+        object cxlbl7: TcxLabel
+          Tag = 1
+          Left = 543
+          Top = 1
+          Cursor = crHandPoint
+          Align = alClient
+          Caption = '--.--.----'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -15
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          OnClick = lblGunTarihClick
+          ExplicitLeft = 593
+          ExplicitTop = 4
+          ExplicitWidth = 50
+          ExplicitHeight = 19
+          AnchorX = 597
+          AnchorY = 14
+        end
+        object lblGun2Tarih: TcxLabel
+          Tag = 2
+          Left = 675
+          Top = 2
+          Cursor = crHandPoint
+          Anchors = []
+          Caption = '--.--.----'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -15
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          AnchorX = 705
+          AnchorY = 14
+        end
+        object lblGun3Tarih: TcxLabel
+          Tag = 3
+          Left = 760
+          Top = 1
+          Align = alClient
+          Caption = '--.--.----'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -15
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 778
+          ExplicitTop = 4
+          ExplicitWidth = 50
+          ExplicitHeight = 19
+          AnchorX = 814
+          AnchorY = 14
+        end
+        object lblGun4Tarih: TcxLabel
+          Left = 868
+          Top = 1
+          Align = alClient
+          Caption = '--.--.----'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -15
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 898
+          ExplicitTop = 4
+          ExplicitWidth = 71
+          ExplicitHeight = 19
+          AnchorX = 923
+          AnchorY = 14
+        end
       end
     end
   end

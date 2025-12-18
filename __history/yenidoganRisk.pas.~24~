@@ -22,14 +22,13 @@ uses
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint, dxSkinWXI,
   dxSkinXmas2008Blue, cxScrollBox, cxContainer, cxEdit, cxDBLabel, cxLabel,
-  Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox;
+  Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox, Data.DB, cxTextEdit, cxDBEdit;
 
 type
   TForm2 = class(TForm)
     scrMain: TcxScrollBox;
     grpAna1: TcxGroupBox;
     grpAna2: TcxGroupBox;
-    lbl1: TLabel;
     grdpnl1: TGridPanel;
     grpAna3: TcxGroupBox;
     grdpnl2: TGridPanel;
@@ -42,7 +41,18 @@ type
     cxlbl4: TcxLabel;
     cxdblbl4: TcxDBLabel;
     grpOlcum: TcxGroupBox;
+    cxlbl5: TcxLabel;
     grdpnl3: TGridPanel;
+    cxlbl6: TcxLabel;
+    cxlbl7: TcxLabel;
+    lblGun2Tarih: TcxLabel;
+    lblGun3Tarih: TcxLabel;
+    lblGun4Tarih: TcxLabel;
+    lblGun5Tarih: TcxLabel;
+    cxlbl8: TcxLabel;
+    edtKiloGun1: TcxDBTextEdit;
+
+    procedure lblGunTarihClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -55,5 +65,11 @@ var
 implementation
 
 {$R *.dfm}
+
+
+procedure TForm2.lblGunTarihClick(Sender: TObject);
+begin
+///////
+end;
 
 end.
