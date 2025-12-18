@@ -240,13 +240,13 @@ object Form2: TForm2
       Align = alTop
       Caption = 'grpOlcum'
       TabOrder = 2
-      Height = 394
+      Height = 362
       Width = 1090
       object grdpnl3: TGridPanel
         Left = 2
         Top = 20
         Width = 1086
-        Height = 372
+        Height = 340
         Align = alClient
         ColumnCollection = <
           item
@@ -270,28 +270,27 @@ object Form2: TForm2
         ControlCollection = <>
         RowCollection = <
           item
-            Value = 7.000000000000000000
+            Value = 21.344170480158460000
           end
           item
-            Value = 5.000000000000000000
+            Value = 21.344170480158460000
           end
           item
-            Value = 5.000000000000000000
+            Value = 9.090909090909090000
           end
           item
-            Value = 5.000000000000000000
+            Value = 8.264462809917354000
           end
           item
-            Value = 60.000000000000000000
+            Value = 7.513148009015778000
           end
           item
-            Value = 7.000000000000000000
+            Value = 25.613004576190150000
           end
           item
-            Value = 11.000000000000000000
+            Value = 6.830134553650707000
           end>
         TabOrder = 0
-        ExplicitHeight = 341
       end
     end
   end

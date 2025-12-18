@@ -29,6 +29,7 @@ type
     scrMain: TcxScrollBox;
     grpAna1: TcxGroupBox;
     grpAna2: TcxGroupBox;
+    lbl1: TLabel;
     grdpnl1: TGridPanel;
     grpAna3: TcxGroupBox;
     grdpnl2: TGridPanel;
@@ -41,7 +42,6 @@ type
     cxlbl4: TcxLabel;
     cxdblbl4: TcxDBLabel;
     grpOlcum: TcxGroupBox;
-    cxlbl5: TcxLabel;
     grdpnl3: TGridPanel;
   private
     { Private declarations }

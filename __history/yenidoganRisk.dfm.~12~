@@ -21,10 +21,6 @@ object Form2: TForm2
     Height = 694
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 8
-    ExplicitWidth = 809
-    ExplicitHeight = 489
     object grpAna1: TcxGroupBox
       Left = 0
       Top = 0
@@ -88,17 +84,12 @@ object Form2: TForm2
             Value = 100.000000000000000000
           end>
         TabOrder = 0
-        ExplicitHeight = 101
         object grpAna3: TcxGroupBox
           Left = 1
           Top = 1
           Align = alClient
           Caption = 'grpAna3'
           TabOrder = 0
-          ExplicitLeft = 128
-          ExplicitTop = 48
-          ExplicitWidth = 185
-          ExplicitHeight = 105
           Height = 128
           Width = 325
         end
@@ -125,6 +116,36 @@ object Form2: TForm2
               Column = 1
               Control = cxdblbl1
               Row = 0
+            end
+            item
+              Column = 0
+              Control = cxlbl2
+              Row = 1
+            end
+            item
+              Column = 1
+              Control = cxdblbl2
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = cxlbl3
+              Row = 2
+            end
+            item
+              Column = 1
+              Control = cxdblbl3
+              Row = 2
+            end
+            item
+              Column = 0
+              Control = cxlbl4
+              Row = 3
+            end
+            item
+              Column = 1
+              Control = cxdblbl4
+              Row = 3
             end>
           RowCollection = <
             item
@@ -140,10 +161,6 @@ object Form2: TForm2
               Value = 24.659364173467800000
             end>
           TabOrder = 1
-          ExplicitLeft = 552
-          ExplicitTop = 48
-          ExplicitWidth = 185
-          ExplicitHeight = 41
           object cxlbl1: TcxLabel
             Left = 1
             Top = 1
@@ -158,8 +175,6 @@ object Form2: TForm2
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taLeftJustify
             Properties.Alignment.Vert = taVCenter
-            ExplicitLeft = 17
-            ExplicitTop = 0
             AnchorY = 17
           end
           object cxdblbl1: TcxDBLabel
@@ -168,15 +183,105 @@ object Form2: TForm2
             Align = alClient
             Properties.Alignment.Horz = taLeftJustify
             Properties.Alignment.Vert = taVCenter
-            ExplicitLeft = 368
-            ExplicitTop = 16
-            ExplicitWidth = 121
-            ExplicitHeight = 21
             Height = 32
             Width = 454
             AnchorY = 17
           end
+          object cxlbl2: TcxLabel
+            Left = 1
+            Top = 33
+            Align = alClient
+            Caption = 'Do'#287'um Tart'#305's'#305' (Persantil): '
+            Properties.Alignment.Vert = taVCenter
+            AnchorY = 49
+          end
+          object cxdblbl2: TcxDBLabel
+            Left = 304
+            Top = 33
+            Align = alClient
+            Properties.Alignment.Vert = taVCenter
+            Height = 32
+            Width = 454
+            AnchorY = 49
+          end
+          object cxlbl3: TcxLabel
+            Left = 1
+            Top = 65
+            Align = alClient
+            Caption = 'Do'#287'um Boyu (Persantil): '
+            Properties.Alignment.Vert = taVCenter
+            AnchorY = 81
+          end
+          object cxdblbl3: TcxDBLabel
+            Left = 304
+            Top = 65
+            Align = alClient
+            Properties.Alignment.Vert = taVCenter
+            Height = 31
+            Width = 454
+            AnchorY = 81
+          end
+          object cxlbl4: TcxLabel
+            Left = 1
+            Top = 96
+            Align = alClient
+            Caption = 'Do'#287'um Ba'#351' '#199'evresi (Persantil): '
+            Properties.Alignment.Vert = taVCenter
+            AnchorY = 112
+          end
+          object cxdblbl4: TcxDBLabel
+            Left = 304
+            Top = 96
+            Align = alClient
+            Properties.Alignment.Vert = taVCenter
+            Height = 31
+            Width = 454
+            AnchorY = 112
+          end
         end
+      end
+    end
+    object grpOlcum: TcxGroupBox
+      Left = 0
+      Top = 193
+      Align = alTop
+      Caption = 'grpOlcum'
+      TabOrder = 2
+      Height = 272
+      Width = 1090
+      object grdpnl3: TGridPanel
+        Left = 296
+        Top = 6
+        Width = 473
+        Height = 205
+        ColumnCollection = <
+          item
+            Value = 40.000000000000000000
+          end
+          item
+            Value = 12.0
+          end
+          item
+            Value = 12.0
+          end
+          item
+            Value = 12.0
+          end
+          item
+            Value = 12.0
+          end
+          item
+            Value = 12.0
+          end>
+        ControlCollection = <>
+        RowCollection = <
+          item
+            Value = 50.000000000000000000
+          end
+          item
+            Value = 50.000000000000000000
+          end>
+        TabOrder = 0
       end
     end
   end

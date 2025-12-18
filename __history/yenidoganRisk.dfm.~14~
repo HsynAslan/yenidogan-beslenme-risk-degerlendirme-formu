@@ -36,6 +36,8 @@ object Form2: TForm2
         Caption = 'Hastan'#305'n Servise Kabul'#252'nde ve Her Pazartesi Doldurulacak'
         Properties.Alignment.Horz = taCenter
         Properties.Alignment.Vert = taVCenter
+        ExplicitTop = 56
+        ExplicitHeight = 26
         AnchorX = 545
         AnchorY = 27
       end
@@ -77,12 +79,16 @@ object Form2: TForm2
             Value = 100.000000000000000000
           end>
         TabOrder = 0
+        ExplicitHeight = 130
         object grpAna3: TcxGroupBox
           Left = 1
           Top = 1
           Align = alClient
           Caption = 'grpAna3'
           TabOrder = 0
+          ExplicitLeft = -4
+          ExplicitTop = -2
+          ExplicitHeight = 128
           Height = 76
           Width = 325
         end
@@ -154,6 +160,7 @@ object Form2: TForm2
               Value = 24.659364173467800000
             end>
           TabOrder = 1
+          ExplicitHeight = 128
           object cxlbl1: TcxLabel
             Left = 1
             Top = 1
@@ -168,6 +175,7 @@ object Form2: TForm2
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taLeftJustify
             Properties.Alignment.Vert = taVCenter
+            ExplicitHeight = 32
             AnchorY = 11
           end
           object cxdblbl1: TcxDBLabel
@@ -176,6 +184,7 @@ object Form2: TForm2
             Align = alClient
             Properties.Alignment.Horz = taLeftJustify
             Properties.Alignment.Vert = taVCenter
+            ExplicitHeight = 32
             Height = 19
             Width = 454
             AnchorY = 11
@@ -186,6 +195,8 @@ object Form2: TForm2
             Align = alClient
             Caption = 'Do'#287'um Tart'#305's'#305' (Persantil): '
             Properties.Alignment.Vert = taVCenter
+            ExplicitTop = 33
+            ExplicitHeight = 32
             AnchorY = 29
           end
           object cxdblbl2: TcxDBLabel
@@ -193,6 +204,8 @@ object Form2: TForm2
             Top = 20
             Align = alClient
             Properties.Alignment.Vert = taVCenter
+            ExplicitTop = 33
+            ExplicitHeight = 32
             Height = 18
             Width = 454
             AnchorY = 29
@@ -203,6 +216,8 @@ object Form2: TForm2
             Align = alClient
             Caption = 'Do'#287'um Boyu (Persantil): '
             Properties.Alignment.Vert = taVCenter
+            ExplicitTop = 65
+            ExplicitHeight = 31
             AnchorY = 48
           end
           object cxdblbl3: TcxDBLabel
@@ -210,6 +225,8 @@ object Form2: TForm2
             Top = 38
             Align = alClient
             Properties.Alignment.Vert = taVCenter
+            ExplicitTop = 65
+            ExplicitHeight = 31
             Height = 19
             Width = 454
             AnchorY = 48
@@ -220,6 +237,8 @@ object Form2: TForm2
             Align = alClient
             Caption = 'Do'#287'um Ba'#351' '#199'evresi (Persantil): '
             Properties.Alignment.Vert = taVCenter
+            ExplicitTop = 96
+            ExplicitHeight = 31
             AnchorY = 66
           end
           object cxdblbl4: TcxDBLabel
@@ -227,6 +246,8 @@ object Form2: TForm2
             Top = 57
             Align = alClient
             Properties.Alignment.Vert = taVCenter
+            ExplicitTop = 96
+            ExplicitHeight = 31
             Height = 18
             Width = 454
             AnchorY = 66
@@ -240,58 +261,42 @@ object Form2: TForm2
       Align = alTop
       Caption = 'grpOlcum'
       TabOrder = 2
-      Height = 394
+      Height = 362
       Width = 1090
       object grdpnl3: TGridPanel
-        Left = 2
-        Top = 20
-        Width = 1086
-        Height = 372
-        Align = alClient
+        Left = 568
+        Top = 128
+        Width = 185
+        Height = 41
+        Caption = 'grdpnl3'
         ColumnCollection = <
           item
-            Value = 50.000000000000000000
+            Value = 31.775903920241570000
           end
           item
-            Value = 10.000000000000000000
+            Value = 31.775903920241570000
           end
           item
-            Value = 10.000000000000000000
+            Value = 10.714285714285710000
           end
           item
-            Value = 10.000000000000000000
+            Value = 9.566326530612244000
           end
           item
-            Value = 10.000000000000000000
+            Value = 8.541362973760933000
           end
           item
-            Value = 10.000000000000000000
+            Value = 7.626216940857976000
           end>
         ControlCollection = <>
         RowCollection = <
           item
-            Value = 7.000000000000000000
+            Value = 50.000000000000000000
           end
           item
-            Value = 5.000000000000000000
-          end
-          item
-            Value = 5.000000000000000000
-          end
-          item
-            Value = 5.000000000000000000
-          end
-          item
-            Value = 60.000000000000000000
-          end
-          item
-            Value = 7.000000000000000000
-          end
-          item
-            Value = 11.000000000000000000
+            Value = 50.000000000000000000
           end>
         TabOrder = 0
-        ExplicitHeight = 341
       end
     end
   end

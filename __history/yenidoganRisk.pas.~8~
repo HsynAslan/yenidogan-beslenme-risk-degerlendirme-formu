@@ -41,8 +41,8 @@ type
     cxlbl4: TcxLabel;
     cxdblbl4: TcxDBLabel;
     grpOlcum: TcxGroupBox;
-    cxlbl5: TcxLabel;
     grdpnl3: TGridPanel;
+    cxlbl5: TcxLabel;
   private
     { Private declarations }
   public
