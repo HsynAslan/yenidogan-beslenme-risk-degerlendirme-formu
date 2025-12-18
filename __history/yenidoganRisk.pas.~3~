@@ -35,12 +35,6 @@ type
     grdpnl2: TGridPanel;
     cxlbl1: TcxLabel;
     cxdblbl1: TcxDBLabel;
-    cxlbl2: TcxLabel;
-    cxdblbl2: TcxDBLabel;
-    cxlbl3: TcxLabel;
-    cxdblbl3: TcxDBLabel;
-    cxlbl4: TcxLabel;
-    cxdblbl4: TcxDBLabel;
   private
     { Private declarations }
   public
