@@ -1,4 +1,4 @@
-unit yenidoganRisk;
+﻿unit yenidoganRisk;
 
 interface
 
@@ -55,8 +55,29 @@ type
     edtKiloGun3: TcxDBTextEdit;
     edtKiloGun4: TcxDBTextEdit;
     edtKiloGun5: TcxDBTextEdit;
+    cxlbl9: TcxLabel;
+    edtBoyGun1: TcxDBTextEdit;
+    edtBoyGun2: TcxDBTextEdit;
+    edtBoyGun3: TcxDBTextEdit;
+    edtBoyGun4: TcxDBTextEdit;
+    edtBoyGun5: TcxDBTextEdit;
+    cxLabel1: TcxLabel;
+    edtBasGun1: TcxDBTextEdit;
+    edtBasGun2: TcxDBTextEdit;
+    edtBasGun3: TcxDBTextEdit;
+    edtBasGun4: TcxDBTextEdit;
+    edtBasGun5: TcxDBTextEdit;
+    grdpnl4: TGridPanel;
+    PaintBoxYuksekRisk: TPaintBox;
+    grdpnl5: TGridPanel;
+    cxlbl10: TcxLabel;
+    cxLabel2: TcxLabel;
+    cxlbl11: TcxLabel;
+    cxlbl12: TcxLabel;
+    cxlbl13: TcxLabel;
 
     procedure lblGunTarihClick(Sender: TObject);
+    procedure PaintBoxYuksekRiskPaint(Sender: TObject);
   private
     { Private declarations }
   public
@@ -75,5 +96,41 @@ procedure TForm2.lblGunTarihClick(Sender: TObject);
 begin
 ///////
 end;
+
+procedure TForm2.PaintBoxYuksekRiskPaint(Sender: TObject);
+var
+  R: TRect;
+  LF: TLogFont;
+  Txt: string;
+  X, Y: Integer;
+begin
+  Txt := '2.RİSK BELİRLEME';
+
+  with PaintBoxYuksekRisk.Canvas do
+  begin
+    Brush.Color := clBtnFace;
+    FillRect(PaintBoxYuksekRisk.ClientRect);
+
+    Font.Name := 'Segoe UI';
+    Font.Size := 9;
+    Font.Style := [fsBold];
+
+    SetGraphicsMode(Handle, GM_ADVANCED);
+
+    GetObject(Font.Handle, SizeOf(LF), @LF);
+    LF.lfEscapement  := 900;  // 90 derece
+    LF.lfOrientation := 900;
+    Font.Handle := CreateFontIndirect(LF);
+
+    R := PaintBoxYuksekRisk.ClientRect;
+
+    // 🔥 DİKEY YAZI İÇİN GERÇEK MERKEZLEME
+    X := (R.Right - TextHeight(Txt)) div 2;
+    Y := (R.Bottom + TextWidth(Txt)) div 2;
+
+    TextOut(X, Y, Txt);
+  end;
+end;
+
 
 end.

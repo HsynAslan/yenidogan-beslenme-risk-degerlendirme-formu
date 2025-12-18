@@ -756,11 +756,6 @@ object Form2: TForm2
                 Column = 1
                 Control = grdpnl7
                 Row = 1
-              end
-              item
-                Column = 1
-                Control = grdpnl8
-                Row = 2
               end>
             RowCollection = <
               item
@@ -985,6 +980,9 @@ object Form2: TForm2
                 Align = alClient
                 Caption = 'Herhangi biri'
                 Properties.Alignment.Vert = taVCenter
+                ExplicitLeft = 182
+                ExplicitWidth = 73
+                ExplicitHeight = 19
                 AnchorY = 11
               end
               object cxlbl19: TcxLabel
@@ -994,6 +992,9 @@ object Form2: TForm2
                 Caption = '28 - 31 hafta genel olarak iyi bebek'
                 Properties.Alignment.Horz = taLeftJustify
                 Properties.Alignment.Vert = taVCenter
+                ExplicitLeft = 192
+                ExplicitWidth = 40
+                ExplicitHeight = 19
                 AnchorY = 31
               end
               object cxlbl20: TcxLabel
@@ -1004,6 +1005,10 @@ object Form2: TForm2
                   #304'UGR(kilo < 10 persantilpersantil) ve endend-diastolik ak'#305'm kayb' +
                   #305' < 35 hafta'
                 Properties.Alignment.Vert = taVCenter
+                ExplicitLeft = 192
+                ExplicitTop = 47
+                ExplicitWidth = 40
+                ExplicitHeight = 19
                 AnchorY = 57
               end
               object cxlbl21: TcxLabel
@@ -1012,6 +1017,9 @@ object Form2: TForm2
                 Align = alClient
                 Caption = '1000 - 1500 gr. / Do'#287'um'
                 Properties.Alignment.Vert = taVCenter
+                ExplicitLeft = 192
+                ExplicitWidth = 40
+                ExplicitHeight = 19
                 AnchorY = 82
               end
               object cxlbl22: TcxLabel
@@ -1020,79 +1028,10 @@ object Form2: TForm2
                 Align = alClient
                 Caption = 'Hastal'#305'k veya konjenital anomaliye ba'#287'l'#305' beslenememe'
                 Properties.Alignment.Vert = taVCenter
+                ExplicitLeft = 192
+                ExplicitWidth = 40
+                ExplicitHeight = 19
                 AnchorY = 102
-              end
-            end
-            object grdpnl8: TGridPanel
-              Left = 78
-              Top = 198
-              Width = 434
-              Height = 84
-              Align = alClient
-              ColumnCollection = <
-                item
-                  Value = 100.000000000000000000
-                end>
-              ControlCollection = <
-                item
-                  Column = 0
-                  Control = cxlbl23
-                  Row = 0
-                end
-                item
-                  Column = 0
-                  Control = cxlbl24
-                  Row = 1
-                end
-                item
-                  Column = 0
-                  Control = cxlbl25
-                  Row = 2
-                end>
-              RowCollection = <
-                item
-                  Value = 20.000000000000000000
-                end
-                item
-                  Value = 20.000000000000000000
-                end
-                item
-                  Value = 40.000000000000000000
-                end
-                item
-                  Value = 20.000000000000000000
-                end>
-              TabOrder = 5
-              DesignSize = (
-                434
-                84)
-              object cxlbl23: TcxLabel
-                Left = 1
-                Top = 1
-                Align = alClient
-                Caption = 'Herhangi biri'
-                Properties.Alignment.Vert = taVCenter
-                ExplicitLeft = 192
-                ExplicitWidth = 40
-                ExplicitHeight = 19
-                AnchorY = 9
-              end
-              object cxlbl24: TcxLabel
-                Left = 1
-                Top = 17
-                Align = alClient
-                Caption = '32 - 35. hafta, genel olarak iyi bebek'
-                Properties.Alignment.Vert = taVCenter
-                ExplicitLeft = 192
-                ExplicitWidth = 40
-                ExplicitHeight = 19
-                AnchorY = 26
-              end
-              object cxlbl25: TcxLabel
-                Left = 213
-                Top = 41
-                Anchors = []
-                ExplicitLeft = 197
               end
             end
           end

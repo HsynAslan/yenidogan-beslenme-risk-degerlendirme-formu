@@ -307,6 +307,91 @@ object Form2: TForm2
             Column = 1
             Control = edtKiloGun1
             Row = 1
+          end
+          item
+            Column = 2
+            Control = edtKiloGun2
+            Row = 1
+          end
+          item
+            Column = 3
+            Control = edtKiloGun3
+            Row = 1
+          end
+          item
+            Column = 4
+            Control = edtKiloGun4
+            Row = 1
+          end
+          item
+            Column = 5
+            Control = edtKiloGun5
+            Row = 1
+          end
+          item
+            Column = 0
+            Control = cxlbl9
+            Row = 2
+          end
+          item
+            Column = 1
+            Control = edtBoyGun1
+            Row = 2
+          end
+          item
+            Column = 2
+            Control = edtBoyGun2
+            Row = 2
+          end
+          item
+            Column = 3
+            Control = edtBoyGun3
+            Row = 2
+          end
+          item
+            Column = 4
+            Control = edtBoyGun4
+            Row = 2
+          end
+          item
+            Column = 5
+            Control = edtBoyGun5
+            Row = 2
+          end
+          item
+            Column = 0
+            Control = cxLabel1
+            Row = 3
+          end
+          item
+            Column = 1
+            Control = edtBasGun1
+            Row = 3
+          end
+          item
+            Column = 2
+            Control = edtBasGun2
+            Row = 3
+          end
+          item
+            Column = 3
+            Control = edtBasGun3
+            Row = 3
+          end
+          item
+            Column = 4
+            Control = edtBasGun4
+            Row = 3
+          end
+          item
+            Column = 5
+            Control = edtBasGun5
+            Row = 3
+          end
+          item
+            Column = 0
+            Control = grdpnl4
+            Row = 4
           end>
         RowCollection = <
           item
@@ -481,10 +566,376 @@ object Form2: TForm2
           Left = 543
           Top = 27
           Align = alClient
+          Properties.Alignment.Horz = taCenter
           TabOrder = 7
           ExplicitWidth = 121
           ExplicitHeight = 23
           Width = 108
+        end
+        object edtKiloGun2: TcxDBTextEdit
+          Left = 651
+          Top = 27
+          Align = alClient
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 8
+          ExplicitWidth = 121
+          ExplicitHeight = 23
+          Width = 109
+        end
+        object edtKiloGun3: TcxDBTextEdit
+          Left = 760
+          Top = 27
+          Align = alClient
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 9
+          ExplicitWidth = 121
+          ExplicitHeight = 23
+          Width = 108
+        end
+        object edtKiloGun4: TcxDBTextEdit
+          Left = 868
+          Top = 27
+          Align = alClient
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 10
+          ExplicitWidth = 121
+          ExplicitHeight = 23
+          Width = 109
+        end
+        object edtKiloGun5: TcxDBTextEdit
+          Left = 977
+          Top = 27
+          Align = alClient
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 11
+          ExplicitWidth = 121
+          ExplicitHeight = 23
+          Width = 108
+        end
+        object cxlbl9: TcxLabel
+          Left = 1
+          Top = 45
+          Align = alClient
+          Caption = 'Boy / Persantil'
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 247
+          ExplicitWidth = 34
+          AnchorY = 55
+        end
+        object edtBoyGun1: TcxDBTextEdit
+          Left = 543
+          Top = 45
+          Align = alClient
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 13
+          ExplicitWidth = 121
+          ExplicitHeight = 23
+          Width = 108
+        end
+        object edtBoyGun2: TcxDBTextEdit
+          Left = 651
+          Top = 45
+          Align = alClient
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 14
+          ExplicitWidth = 121
+          ExplicitHeight = 23
+          Width = 109
+        end
+        object edtBoyGun3: TcxDBTextEdit
+          Left = 760
+          Top = 45
+          Align = alClient
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 15
+          ExplicitWidth = 121
+          ExplicitHeight = 23
+          Width = 108
+        end
+        object edtBoyGun4: TcxDBTextEdit
+          Left = 868
+          Top = 45
+          Align = alClient
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 16
+          ExplicitWidth = 121
+          ExplicitHeight = 23
+          Width = 109
+        end
+        object edtBoyGun5: TcxDBTextEdit
+          Left = 977
+          Top = 45
+          Align = alClient
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 17
+          ExplicitWidth = 121
+          ExplicitHeight = 23
+          Width = 108
+        end
+        object cxLabel1: TcxLabel
+          Left = 1
+          Top = 64
+          Align = alClient
+          Caption = 'Ba'#351' '#199'evresi / Persantil'
+          ParentColor = False
+          Style.Color = clBtnFace
+          Properties.Alignment.Horz = taLeftJustify
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 214
+          ExplicitWidth = 119
+          ExplicitHeight = 19
+          AnchorY = 73
+        end
+        object edtBasGun1: TcxDBTextEdit
+          Left = 543
+          Top = 64
+          Align = alClient
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 19
+          ExplicitWidth = 121
+          ExplicitHeight = 23
+          Width = 108
+        end
+        object edtBasGun2: TcxDBTextEdit
+          Left = 651
+          Top = 64
+          Align = alClient
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 20
+          ExplicitWidth = 121
+          ExplicitHeight = 23
+          Width = 109
+        end
+        object edtBasGun3: TcxDBTextEdit
+          Left = 760
+          Top = 64
+          Align = alClient
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 21
+          ExplicitWidth = 121
+          ExplicitHeight = 23
+          Width = 108
+        end
+        object edtBasGun4: TcxDBTextEdit
+          Left = 868
+          Top = 64
+          Align = alClient
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 22
+          ExplicitWidth = 121
+          ExplicitHeight = 23
+          Width = 109
+        end
+        object edtBasGun5: TcxDBTextEdit
+          Left = 977
+          Top = 64
+          Align = alClient
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 23
+          ExplicitWidth = 121
+          ExplicitHeight = 23
+          Width = 108
+        end
+        object grdpnl4: TGridPanel
+          Left = 1
+          Top = 82
+          Width = 542
+          Height = 222
+          Align = alClient
+          ColumnCollection = <
+            item
+              Value = 5.000000000000000000
+            end
+            item
+              Value = 95.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = PaintBoxYuksekRisk
+              Row = 0
+            end
+            item
+              Column = 1
+              Control = grdpnl5
+              Row = 0
+            end>
+          RowCollection = <
+            item
+              Value = 100.000000000000000000
+            end>
+          TabOrder = 24
+          ExplicitLeft = 256
+          ExplicitTop = 120
+          ExplicitWidth = 185
+          ExplicitHeight = 41
+          object PaintBoxYuksekRisk: TPaintBox
+            Left = 1
+            Top = 1
+            Width = 27
+            Height = 220
+            Align = alClient
+            OnPaint = PaintBoxYuksekRiskPaint
+            ExplicitLeft = 0
+            ExplicitTop = 6
+            ExplicitWidth = 54
+          end
+          object grdpnl5: TGridPanel
+            Left = 28
+            Top = 1
+            Width = 513
+            Height = 220
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 15.000000000000000000
+              end
+              item
+                Value = 85.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = cxlbl10
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = cxlbl11
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = cxlbl13
+                Row = 2
+              end
+              item
+                Column = 1
+                Control = grdpnl6
+                Row = 0
+              end>
+            RowCollection = <
+              item
+                Value = 29.991858352573290000
+              end
+              item
+                Value = 40.000000000000000000
+              end
+              item
+                Value = 30.008141647426720000
+              end>
+            TabOrder = 0
+            ExplicitLeft = 264
+            ExplicitTop = 72
+            ExplicitWidth = 185
+            ExplicitHeight = 41
+            DesignSize = (
+              513
+              220)
+            object cxlbl10: TcxLabel
+              Left = 1
+              Top = 1
+              Align = alClient
+              Caption = 'Y'#220'KSEK R'#304'SK'
+              ParentColor = False
+              ParentFont = False
+              Style.Color = clRed
+              Style.Font.Charset = DEFAULT_CHARSET
+              Style.Font.Color = clWindowText
+              Style.Font.Height = -12
+              Style.Font.Name = 'Segoe UI'
+              Style.Font.Style = [fsBold]
+              Style.TextColor = clWindow
+              Style.IsFontAssigned = True
+              StyleDisabled.BorderColor = clBtnText
+              Properties.Alignment.Horz = taCenter
+              Properties.Alignment.Vert = taVCenter
+              ExplicitLeft = 15
+              ExplicitTop = 24
+              ExplicitWidth = 40
+              ExplicitHeight = 19
+              AnchorX = 40
+              AnchorY = 34
+            end
+            object cxlbl11: TcxLabel
+              Left = 1
+              Top = 66
+              Align = alClient
+              Caption = 'ORTA R'#304'SK'
+              ParentColor = False
+              ParentFont = False
+              Style.Color = clBtnShadow
+              Style.Font.Charset = DEFAULT_CHARSET
+              Style.Font.Color = clWhite
+              Style.Font.Height = -12
+              Style.Font.Name = 'Segoe UI'
+              Style.Font.Style = [fsBold]
+              Style.IsFontAssigned = True
+              Properties.Alignment.Horz = taCenter
+              Properties.Alignment.Vert = taVCenter
+              ExplicitLeft = 15
+              ExplicitTop = 100
+              ExplicitWidth = 40
+              ExplicitHeight = 19
+              AnchorX = 40
+              AnchorY = 110
+            end
+            object cxlbl13: TcxLabel
+              Left = 1
+              Top = 154
+              Align = alClient
+              Caption = 'D'#220#350#220'K R'#304'SK'
+              ParentColor = False
+              ParentFont = False
+              Style.Color = clGreen
+              Style.Font.Charset = DEFAULT_CHARSET
+              Style.Font.Color = clWhite
+              Style.Font.Height = -12
+              Style.Font.Name = 'Segoe UI'
+              Style.Font.Style = [fsBold]
+              Style.IsFontAssigned = True
+              Properties.Alignment.Horz = taCenter
+              Properties.Alignment.Vert = taVCenter
+              ExplicitLeft = 15
+              ExplicitTop = 177
+              ExplicitWidth = 40
+              ExplicitHeight = 19
+              AnchorX = 40
+              AnchorY = 187
+            end
+            object grdpnl6: TGridPanel
+              Left = 202
+              Top = 13
+              Width = 185
+              Height = 41
+              Anchors = []
+              Caption = 'grdpnl6'
+              ColumnCollection = <
+                item
+                  Value = 100.000000000000000000
+                end>
+              ControlCollection = <>
+              RowCollection = <
+                item
+                  Value = 23.541280721033980000
+                end
+                item
+                  Value = 23.541280721033980000
+                end
+                item
+                  Value = 18.305833533844990000
+                end
+                item
+                  Value = 14.666255555253330000
+                end
+                item
+                  Value = 19.945349468833710000
+                end>
+              TabOrder = 3
+              ExplicitLeft = 224
+              ExplicitTop = 16
+            end
+          end
         end
       end
     end
