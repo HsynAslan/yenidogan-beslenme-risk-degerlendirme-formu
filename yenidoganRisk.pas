@@ -22,7 +22,8 @@ uses
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint, dxSkinWXI,
   dxSkinXmas2008Blue, cxScrollBox, cxContainer, cxEdit, cxDBLabel, cxLabel,
-  Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox, Data.DB, cxTextEdit, cxDBEdit;
+  Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox, Data.DB, cxTextEdit, cxDBEdit,
+  cxMaskEdit, cxButtonEdit, MemDS, DBAccess, Ora, OraCall;
 
 type
   TForm2 = class(TForm)
@@ -92,9 +93,18 @@ type
     cxlbl26: TcxLabel;
     grdpnl9: TGridPanel;
     grdpnl10: TGridPanel;
+    herButGun1: TcxDBButtonEdit;
+    HButGun1: TcxDBButtonEdit;
+    grButGun1: TcxDBButtonEdit;
+    nekButGun1: TcxDBButtonEdit;
+    gisButGun1: TcxDBButtonEdit;
+    orsn1: TOraSession;
+    rastgeleHasta: TOraQuery;
+    btnKaydet: TButton;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -107,6 +117,49 @@ var
 implementation
 
 {$R *.dfm}
+
+
+procedure TForm2.FormShow(Sender: TObject);
+begin
+  // 1) Oracle bağlantısı açık değilse aç
+  if not Orsn1.Connected then
+    Orsn1.Connected := True;
+
+  // 2) Query açıksa kapat
+  if rastgeleHasta.Active then
+    rastgeleHasta.Close;
+
+  // 3) TEST HASTA sabit parametreler
+  rastgeleHasta.ParamByName('DOSYA_NO').AsInteger := 12;
+  rastgeleHasta.ParamByName('PROTOKOL_NO').AsInteger := 400;
+
+  // 4) Query aç
+  rastgeleHasta.Open;
+
+  // 5) Hiç kayıt yoksa → 1. haftayı otomatik oluştur
+  if rastgeleHasta.IsEmpty then
+  begin
+    rastgeleHasta.Append;
+
+    rastgeleHasta.FieldByName('DOSYA_NO').AsInteger := 12;
+    rastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := 400;
+    rastgeleHasta.FieldByName('HAFTA_NO').AsInteger := 1;
+    rastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
+
+    // risk alanları default 'F' ise DB zaten halleder
+    // gestasyon / doğum bilgileri ilk hafta girilecek
+
+    rastgeleHasta.Post;
+
+    // tekrar oku
+    rastgeleHasta.Close;
+    rastgeleHasta.Open;
+  end
+  else
+  begin
+    rastgeleHasta.First;
+  end;
+end;
 
 
 procedure TForm2.lblGunTarihClick(Sender: TObject);

@@ -13,6 +13,7 @@ object Form2: TForm2
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poScreenCenter
+  OnShow = FormShow
   TextHeight = 15
   object scrMain: TcxScrollBox
     Left = 0
@@ -1144,12 +1145,36 @@ object Form2: TForm2
             Width = 106
             Height = 85
             Align = alClient
-            Caption = 'grdpnl10'
             ColumnCollection = <
               item
                 Value = 100.000000000000000000
               end>
-            ControlCollection = <>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = herButGun1
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = HButGun1
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = grButGun1
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = nekButGun1
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = gisButGun1
+                Row = 4
+              end>
             RowCollection = <
               item
                 Value = 20.000000000000000000
@@ -1167,9 +1192,122 @@ object Form2: TForm2
                 Value = 20.000000000000000000
               end>
             TabOrder = 0
+            object herButGun1: TcxDBButtonEdit
+              Left = 1
+              Top = 1
+              Align = alClient
+              Properties.Alignment.Horz = taCenter
+              Properties.Buttons = <
+                item
+                  Default = True
+                  Kind = bkEllipsis
+                end>
+              TabOrder = 0
+              ExplicitWidth = 121
+              ExplicitHeight = 23
+              Width = 104
+            end
+            object HButGun1: TcxDBButtonEdit
+              Left = 1
+              Top = 18
+              Align = alClient
+              Properties.Alignment.Horz = taCenter
+              Properties.Buttons = <
+                item
+                  Default = True
+                  Kind = bkEllipsis
+                end>
+              TabOrder = 1
+              ExplicitWidth = 121
+              ExplicitHeight = 23
+              Width = 104
+            end
+            object grButGun1: TcxDBButtonEdit
+              Left = 1
+              Top = 34
+              Align = alClient
+              Properties.Alignment.Horz = taCenter
+              Properties.Buttons = <
+                item
+                  Default = True
+                  Kind = bkEllipsis
+                end>
+              TabOrder = 2
+              ExplicitWidth = 121
+              ExplicitHeight = 23
+              Width = 104
+            end
+            object nekButGun1: TcxDBButtonEdit
+              Left = 1
+              Top = 51
+              Align = alClient
+              Properties.Alignment.Horz = taCenter
+              Properties.Buttons = <
+                item
+                  Default = True
+                  Kind = bkEllipsis
+                end>
+              TabOrder = 3
+              ExplicitWidth = 121
+              ExplicitHeight = 23
+              Width = 104
+            end
+            object gisButGun1: TcxDBButtonEdit
+              Left = 1
+              Top = 67
+              Align = alClient
+              Properties.Alignment.Horz = taCenter
+              Properties.Buttons = <
+                item
+                  Default = True
+                  Kind = bkEllipsis
+                end>
+              TabOrder = 4
+              ExplicitWidth = 121
+              ExplicitHeight = 23
+              Width = 104
+            end
           end
         end
       end
     end
+    object btnKaydet: TButton
+      Left = 936
+      Top = 648
+      Width = 75
+      Height = 25
+      Caption = 'Kaydet'
+      TabOrder = 3
+    end
+  end
+  object orsn1: TOraSession
+    Username = 'HASTANE'
+    Server = 'ASYA'
+    Connected = True
+    Left = 1032
+    Top = 16
+    EncryptedPassword = '97FF'
+  end
+  object rastgeleHasta: TOraQuery
+    Session = orsn1
+    SQL.Strings = (
+      'SELECT *'
+      'FROM YD_RISK_IZLEM'
+      'WHERE DOSYA_NO = :DOSYA_NO'
+      '  AND PROTOKOL_NO = :PROTOKOL_NO'
+      'ORDER BY HAFTA_NO')
+    Left = 984
+    Top = 16
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DOSYA_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PROTOKOL_NO'
+        Value = nil
+      end>
   end
 end
