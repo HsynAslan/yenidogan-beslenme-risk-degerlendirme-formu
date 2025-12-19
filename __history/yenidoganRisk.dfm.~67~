@@ -13,6 +13,7 @@ object Form2: TForm2
   Font.Name = 'Segoe UI'
   Font.Style = []
   Position = poScreenCenter
+  OnShow = FormShow
   TextHeight = 15
   object scrMain: TcxScrollBox
     Left = 0
@@ -547,8 +548,12 @@ object Form2: TForm2
           Left = 543
           Top = 34
           Align = alClient
+          DataBinding.DataField = 'KILO_KG'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 7
+          ExplicitLeft = 537
+          ExplicitTop = 28
           Width = 108
         end
         object edtKiloGun2: TcxDBTextEdit
@@ -595,6 +600,8 @@ object Form2: TForm2
           Left = 543
           Top = 58
           Align = alClient
+          DataBinding.DataField = 'BOY_CM'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 13
           Width = 108
@@ -646,6 +653,8 @@ object Form2: TForm2
           Left = 543
           Top = 82
           Align = alClient
+          DataBinding.DataField = 'BAS_CEVRESI_CM'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 19
           Width = 108
@@ -1116,7 +1125,6 @@ object Form2: TForm2
           Width = 108
           Height = 285
           Align = alClient
-          Caption = 'grdpnl9'
           ColumnCollection = <
             item
               Value = 100.000000000000000000
@@ -1126,6 +1134,11 @@ object Form2: TForm2
               Column = 0
               Control = grdpnl10
               Row = 0
+            end
+            item
+              Column = 0
+              Control = grdpnl11
+              Row = 1
             end>
           RowCollection = <
             item
@@ -1138,6 +1151,8 @@ object Form2: TForm2
               Value = 30.010000000000000000
             end>
           TabOrder = 25
+          ExplicitLeft = 546
+          ExplicitTop = 111
           object grdpnl10: TGridPanel
             Left = 1
             Top = 1
@@ -1149,11 +1164,6 @@ object Form2: TForm2
                 Value = 100.000000000000000000
               end>
             ControlCollection = <
-              item
-                Column = 0
-                Control = herButGun1
-                Row = 0
-              end
               item
                 Column = 0
                 Control = HButGun1
@@ -1173,6 +1183,11 @@ object Form2: TForm2
                 Column = 0
                 Control = gisButGun1
                 Row = 4
+              end
+              item
+                Column = 0
+                Control = lbl1
+                Row = 0
               end>
             RowCollection = <
               item
@@ -1191,21 +1206,6 @@ object Form2: TForm2
                 Value = 20.000000000000000000
               end>
             TabOrder = 0
-            object herButGun1: TcxDBButtonEdit
-              Left = 1
-              Top = 1
-              Align = alClient
-              Properties.Alignment.Horz = taCenter
-              Properties.Buttons = <
-                item
-                  Default = True
-                  Kind = bkEllipsis
-                end>
-              TabOrder = 0
-              ExplicitWidth = 121
-              ExplicitHeight = 23
-              Width = 104
-            end
             object HButGun1: TcxDBButtonEdit
               Left = 1
               Top = 18
@@ -1216,9 +1216,7 @@ object Form2: TForm2
                   Default = True
                   Kind = bkEllipsis
                 end>
-              TabOrder = 1
-              ExplicitWidth = 121
-              ExplicitHeight = 23
+              TabOrder = 0
               Width = 104
             end
             object grButGun1: TcxDBButtonEdit
@@ -1231,9 +1229,7 @@ object Form2: TForm2
                   Default = True
                   Kind = bkEllipsis
                 end>
-              TabOrder = 2
-              ExplicitWidth = 121
-              ExplicitHeight = 23
+              TabOrder = 1
               Width = 104
             end
             object nekButGun1: TcxDBButtonEdit
@@ -1246,9 +1242,7 @@ object Form2: TForm2
                   Default = True
                   Kind = bkEllipsis
                 end>
-              TabOrder = 3
-              ExplicitWidth = 121
-              ExplicitHeight = 23
+              TabOrder = 2
               Width = 104
             end
             object gisButGun1: TcxDBButtonEdit
@@ -1261,14 +1255,215 @@ object Form2: TForm2
                   Default = True
                   Kind = bkEllipsis
                 end>
-              TabOrder = 4
-              ExplicitWidth = 121
-              ExplicitHeight = 23
+              TabOrder = 3
               Width = 104
             end
+            object lbl1: TLabel
+              Left = 1
+              Top = 1
+              Width = 104
+              Height = 17
+              Align = alClient
+              ExplicitLeft = 43
+              ExplicitTop = 2
+              ExplicitWidth = 3
+              ExplicitHeight = 15
+            end
+          end
+          object grdpnl11: TGridPanel
+            Left = 1
+            Top = 86
+            Width = 106
+            Height = 113
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 50.000000000000000000
+              end
+              item
+                Value = 50.000000000000000000
+              end>
+            ControlCollection = <>
+            RowCollection = <
+              item
+                Value = 18.0
+              end
+              item
+                Value = 18.0
+              end
+              item
+                Value = 28.0
+              end
+              item
+                Value = 18.0
+              end
+              item
+                Value = 18.0
+              end>
+            TabOrder = 1
+            ExplicitLeft = -23
+            ExplicitTop = 153
+            ExplicitWidth = 185
+            ExplicitHeight = 41
           end
         end
       end
     end
+    object btnKaydet: TButton
+      Left = 936
+      Top = 648
+      Width = 75
+      Height = 25
+      Caption = 'Kaydet'
+      TabOrder = 3
+      OnClick = btnKaydetClick
+    end
+  end
+  object orsn1: TOraSession
+    Username = 'HASTANE'
+    Server = 'ASYA'
+    Connected = True
+    Left = 1032
+    Top = 16
+    EncryptedPassword = '97FF'
+  end
+  object rastgeleHasta: TOraQuery
+    Session = orsn1
+    SQL.Strings = (
+      'SELECT *'
+      'FROM YD_RISK_IZLEM'
+      'WHERE DOSYA_NO = :DOSYA_NO'
+      '  AND PROTOKOL_NO = :PROTOKOL_NO'
+      'ORDER BY HAFTA_NO')
+    Left = 952
+    Top = 16
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DOSYA_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PROTOKOL_NO'
+        Value = nil
+      end>
+    object fltfldHastaHASTA_ID: TFloatField
+      FieldName = 'HASTA_ID'
+      Required = True
+    end
+    object fltfldHastaHAFTA_NO: TFloatField
+      FieldName = 'HAFTA_NO'
+      Required = True
+    end
+    object fltfldHastaDOSYA_NO: TFloatField
+      FieldName = 'DOSYA_NO'
+      Required = True
+    end
+    object fltfldHastaPROTOKOL_NO: TFloatField
+      FieldName = 'PROTOKOL_NO'
+      Required = True
+    end
+    object dtmfldHastaIZLEM_TARIHI: TDateTimeField
+      FieldName = 'IZLEM_TARIHI'
+      Required = True
+    end
+    object fltfldHastaGESTASYON_HAFTASI: TFloatField
+      FieldName = 'GESTASYON_HAFTASI'
+    end
+    object fltfldHastaDOGUM_KILOSU_GR: TFloatField
+      FieldName = 'DOGUM_KILOSU_GR'
+    end
+    object fltfldHastaDOGUM_BOYU_CM: TFloatField
+      FieldName = 'DOGUM_BOYU_CM'
+    end
+    object fltfldHastaDOGUM_BAS_CEVRESI: TFloatField
+      FieldName = 'DOGUM_BAS_CEVRESI'
+    end
+    object strngfldHastaYR_28_HAFTA: TStringField
+      FieldName = 'YR_28_HAFTA'
+      Size = 1
+    end
+    object strngfldHastaYR_1000_GR: TStringField
+      FieldName = 'YR_1000_GR'
+      Size = 1
+    end
+    object strngfldHastaYR_NEK_GIS: TStringField
+      FieldName = 'YR_NEK_GIS'
+      Size = 1
+    end
+    object strngfldHastaYR_KONJ_GIS: TStringField
+      FieldName = 'YR_KONJ_GIS'
+      Size = 1
+    end
+    object strngfldHastaOR_28_31_HAFTA: TStringField
+      FieldName = 'OR_28_31_HAFTA'
+      Size = 1
+    end
+    object strngfldHastaOR_IUGR: TStringField
+      FieldName = 'OR_IUGR'
+      Size = 1
+    end
+    object strngfldHastaOR_1000_1500_GR: TStringField
+      FieldName = 'OR_1000_1500_GR'
+      Size = 1
+    end
+    object strngfldHastaOR_KONJ_BESLENME: TStringField
+      FieldName = 'OR_KONJ_BESLENME'
+      Size = 1
+    end
+    object strngfldHastaDR_32_35_HAFTA: TStringField
+      FieldName = 'DR_32_35_HAFTA'
+      Size = 1
+    end
+    object strngfldHastaDR_IUGR_35: TStringField
+      FieldName = 'DR_IUGR_35'
+      Size = 1
+    end
+    object strngfldHastaDR_TERM: TStringField
+      FieldName = 'DR_TERM'
+      Size = 1
+    end
+    object strngfldHastaRISK_SEVIYE: TStringField
+      FieldName = 'RISK_SEVIYE'
+      Size = 10
+    end
+    object strngfldHastaIHT_2_HAFTA_KILO: TStringField
+      FieldName = 'IHT_2_HAFTA_KILO'
+      Size = 1
+    end
+    object strngfldHastaIHT_15_KAYIP: TStringField
+      FieldName = 'IHT_15_KAYIP'
+      Size = 1
+    end
+    object strngfldHastaIHT_10G_KAZANIM: TStringField
+      FieldName = 'IHT_10G_KAZANIM'
+      Size = 1
+    end
+    object strngfldHastaIHT_NEK_CERRAHI: TStringField
+      FieldName = 'IHT_NEK_CERRAHI'
+      Size = 1
+    end
+    object strngfldHastaDOKTOR_ADI: TStringField
+      FieldName = 'DOKTOR_ADI'
+      Size = 100
+    end
+    object dtmfldHastaKAYIT_TARIHI: TDateTimeField
+      FieldName = 'KAYIT_TARIHI'
+    end
+    object fltfldHastaKILO_KG: TFloatField
+      FieldName = 'KILO_KG'
+    end
+    object fltfldHastaBOY_CM: TFloatField
+      FieldName = 'BOY_CM'
+    end
+    object fltfldHastaBAS_CEVRESI_CM: TFloatField
+      FieldName = 'BAS_CEVRESI_CM'
+    end
+  end
+  object dsHasta: TDataSource
+    DataSet = rastgeleHasta
+    Left = 896
+    Top = 16
   end
 end

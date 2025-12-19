@@ -23,7 +23,7 @@ uses
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint, dxSkinWXI,
   dxSkinXmas2008Blue, cxScrollBox, cxContainer, cxEdit, cxDBLabel, cxLabel,
   Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox, Data.DB, cxTextEdit, cxDBEdit,
-  cxMaskEdit, cxButtonEdit;
+  cxMaskEdit, cxButtonEdit, MemDS, DBAccess, Ora, OraCall;
 
 type
   TForm2 = class(TForm)
@@ -98,10 +98,45 @@ type
     grButGun1: TcxDBButtonEdit;
     nekButGun1: TcxDBButtonEdit;
     gisButGun1: TcxDBButtonEdit;
+    orsn1: TOraSession;
+    rastgeleHasta: TOraQuery;
+    btnKaydet: TButton;
+    fltfldHastaHASTA_ID: TFloatField;
+    fltfldHastaHAFTA_NO: TFloatField;
+    fltfldHastaDOSYA_NO: TFloatField;
+    fltfldHastaPROTOKOL_NO: TFloatField;
+    dtmfldHastaIZLEM_TARIHI: TDateTimeField;
+    fltfldHastaGESTASYON_HAFTASI: TFloatField;
+    fltfldHastaDOGUM_KILOSU_GR: TFloatField;
+    fltfldHastaDOGUM_BOYU_CM: TFloatField;
+    fltfldHastaDOGUM_BAS_CEVRESI: TFloatField;
+    strngfldHastaYR_28_HAFTA: TStringField;
+    strngfldHastaYR_1000_GR: TStringField;
+    strngfldHastaYR_NEK_GIS: TStringField;
+    strngfldHastaYR_KONJ_GIS: TStringField;
+    strngfldHastaOR_28_31_HAFTA: TStringField;
+    strngfldHastaOR_IUGR: TStringField;
+    strngfldHastaOR_1000_1500_GR: TStringField;
+    strngfldHastaOR_KONJ_BESLENME: TStringField;
+    strngfldHastaDR_32_35_HAFTA: TStringField;
+    strngfldHastaDR_IUGR_35: TStringField;
+    strngfldHastaDR_TERM: TStringField;
+    strngfldHastaRISK_SEVIYE: TStringField;
+    strngfldHastaIHT_2_HAFTA_KILO: TStringField;
+    strngfldHastaIHT_15_KAYIP: TStringField;
+    strngfldHastaIHT_10G_KAZANIM: TStringField;
+    strngfldHastaIHT_NEK_CERRAHI: TStringField;
+    strngfldHastaDOKTOR_ADI: TStringField;
+    dtmfldHastaKAYIT_TARIHI: TDateTimeField;
+    fltfldHastaKILO_KG: TFloatField;
+    fltfldHastaBOY_CM: TFloatField;
+    fltfldHastaBAS_CEVRESI_CM: TFloatField;
+    dsHasta: TDataSource;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure btnKaydetClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -116,32 +151,96 @@ implementation
 {$R *.dfm}
 
 
+procedure TForm2.btnKaydetClick(Sender: TObject);
+var
+  AktifHafta, SonHafta, YeniHafta: Integer;
+  KiloVar, BoyVar, BasVar: Boolean;
+begin
+  if not rastgeleHasta.Active then Exit;
+
+  // 🔹 Aktif hafta
+  AktifHafta := Trunc(rastgeleHasta.FieldByName('HAFTA_NO').AsFloat);
+
+  // 🔹 En az bir ölçüm girilmiş mi?
+  KiloVar := not rastgeleHasta.FieldByName('KILO_KG').IsNull;
+  BoyVar  := not rastgeleHasta.FieldByName('BOY_CM').IsNull;
+  BasVar  := not rastgeleHasta.FieldByName('BAS_CEVRESI_CM').IsNull;
+
+  // 🔹 Hiçbir şey girilmediyse ilerleme YOK
+  if not (KiloVar or BoyVar or BasVar) then
+  begin
+    ShowMessage('Lütfen en az bir ölçüm giriniz.');
+    Exit;
+  end;
+
+  // 🔹 Mevcut haftayı kaydet
+  if not (rastgeleHasta.State in dsEditModes) then
+    rastgeleHasta.Edit;
+
+  rastgeleHasta.Post;
+
+  // 🔹 Son haftayı bul
+  rastgeleHasta.Last;
+  SonHafta := Trunc(rastgeleHasta.FieldByName('HAFTA_NO').AsFloat);
+
+  // 🔹 Sadece aktif hafta son haftaysa VE 5'ten küçükse yeni hafta aç
+  if (AktifHafta = SonHafta) and (SonHafta < 5) then
+  begin
+    YeniHafta := SonHafta + 1;
+
+    rastgeleHasta.Append;
+    rastgeleHasta.FieldByName('HASTA_ID').AsInteger := 1; // test
+    rastgeleHasta.FieldByName('HAFTA_NO').AsInteger := YeniHafta;
+    rastgeleHasta.FieldByName('DOSYA_NO').AsInteger := 12;
+    rastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := 400;
+    rastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
+    rastgeleHasta.Post;
+
+    // ⚠️ ÖNEMLİ: yeni haftaya GEÇMİYORUZ
+    rastgeleHasta.Locate('HAFTA_NO', AktifHafta, []);
+  end;
+
+  ShowMessage('Kayıt kaydedildi.');
+end;
+
+
+
 procedure TForm2.FormShow(Sender: TObject);
 begin
-    QryIzlem.Close;
-  QryIzlem.SQL.Text :=
-    'SELECT * ' +
-    'FROM YD_RISK_IZLEM ' +
-    'WHERE DOSYA_NO = :DOSYA_NO ' +
-    '  AND PROTOKOL_NO = :PROTOKOL_NO ' +
-    'ORDER BY HAFTA_NO';
+  // 1) Oracle bağlantısı
+  if not Orsn1.Connected then
+    Orsn1.Connected := True;
 
-  QryIzlem.ParamByName('DOSYA_NO').AsInteger := 12;
-  QryIzlem.ParamByName('PROTOKOL_NO').AsInteger := 400;
+  // 2) Query kapat/aç
+  if rastgeleHasta.Active then
+    rastgeleHasta.Close;
 
-  QryIzlem.Open;
+  // 3) Test hasta parametreleri
+  rastgeleHasta.ParamByName('DOSYA_NO').AsInteger := 12;
+  rastgeleHasta.ParamByName('PROTOKOL_NO').AsInteger := 400;
 
-  // Eğer hiç kayıt yoksa (ilk hafta)
-  if QryIzlem.IsEmpty then
+  rastgeleHasta.Open;
+
+  // 4) Hiç kayıt yoksa -> 1. hafta oluştur
+  if rastgeleHasta.IsEmpty then
   begin
-    QryIzlem.Append;
-    QryIzlem.FieldByName('DOSYA_NO').AsInteger := 12;
-    QryIzlem.FieldByName('PROTOKOL_NO').AsInteger := 400;
-    QryIzlem.FieldByName('HAFTA_NO').AsInteger := 1;
-    QryIzlem.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
-    QryIzlem.Post;
+    rastgeleHasta.Append;
+    rastgeleHasta.FieldByName('HASTA_ID').AsInteger := 1; // test sabit
+    rastgeleHasta.FieldByName('HAFTA_NO').AsInteger := 1;
+    rastgeleHasta.FieldByName('DOSYA_NO').AsInteger := 12;
+    rastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := 400;
+    rastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
+    rastgeleHasta.Post;
+
+    rastgeleHasta.Close;
+    rastgeleHasta.Open;
   end;
+
+  // 5) Her durumda hafta 1 kaydını göster
+  rastgeleHasta.Locate('HAFTA_NO', 1, []);
 end;
+
+
 
 procedure TForm2.lblGunTarihClick(Sender: TObject);
 begin

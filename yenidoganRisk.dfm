@@ -552,8 +552,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 7
-          ExplicitLeft = 537
-          ExplicitTop = 28
           Width = 108
         end
         object edtKiloGun2: TcxDBTextEdit
@@ -1125,7 +1123,6 @@ object Form2: TForm2
           Width = 108
           Height = 285
           Align = alClient
-          Caption = 'grdpnl9'
           ColumnCollection = <
             item
               Value = 100.000000000000000000
@@ -1135,6 +1132,11 @@ object Form2: TForm2
               Column = 0
               Control = grdpnl10
               Row = 0
+            end
+            item
+              Column = 0
+              Control = grdpnl11
+              Row = 1
             end>
           RowCollection = <
             item
@@ -1160,11 +1162,6 @@ object Form2: TForm2
             ControlCollection = <
               item
                 Column = 0
-                Control = herButGun1
-                Row = 0
-              end
-              item
-                Column = 0
                 Control = HButGun1
                 Row = 1
               end
@@ -1182,6 +1179,11 @@ object Form2: TForm2
                 Column = 0
                 Control = gisButGun1
                 Row = 4
+              end
+              item
+                Column = 0
+                Control = lbl1
+                Row = 0
               end>
             RowCollection = <
               item
@@ -1200,30 +1202,20 @@ object Form2: TForm2
                 Value = 20.000000000000000000
               end>
             TabOrder = 0
-            object herButGun1: TcxDBButtonEdit
-              Left = 1
-              Top = 1
-              Align = alClient
-              Properties.Alignment.Horz = taCenter
-              Properties.Buttons = <
-                item
-                  Default = True
-                  Kind = bkEllipsis
-                end>
-              TabOrder = 0
-              Width = 104
-            end
             object HButGun1: TcxDBButtonEdit
               Left = 1
               Top = 18
               Align = alClient
+              DataBinding.DataField = 'YR_28_HAFTA'
+              DataBinding.DataSource = dsHasta
               Properties.Alignment.Horz = taCenter
               Properties.Buttons = <
                 item
                   Default = True
                   Kind = bkEllipsis
                 end>
-              TabOrder = 1
+              Properties.ReadOnly = True
+              TabOrder = 0
               Width = 104
             end
             object grButGun1: TcxDBButtonEdit
@@ -1236,7 +1228,7 @@ object Form2: TForm2
                   Default = True
                   Kind = bkEllipsis
                 end>
-              TabOrder = 2
+              TabOrder = 1
               Width = 104
             end
             object nekButGun1: TcxDBButtonEdit
@@ -1249,7 +1241,7 @@ object Form2: TForm2
                   Default = True
                   Kind = bkEllipsis
                 end>
-              TabOrder = 3
+              TabOrder = 2
               Width = 104
             end
             object gisButGun1: TcxDBButtonEdit
@@ -1262,9 +1254,47 @@ object Form2: TForm2
                   Default = True
                   Kind = bkEllipsis
                 end>
-              TabOrder = 4
+              TabOrder = 3
               Width = 104
             end
+            object lbl1: TLabel
+              Left = 1
+              Top = 1
+              Width = 104
+              Height = 17
+              Align = alClient
+              ExplicitWidth = 3
+              ExplicitHeight = 15
+            end
+          end
+          object grdpnl11: TGridPanel
+            Left = 1
+            Top = 86
+            Width = 106
+            Height = 113
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <>
+            RowCollection = <
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 28.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end>
+            TabOrder = 1
           end
         end
       end
@@ -1276,6 +1306,7 @@ object Form2: TForm2
       Height = 25
       Caption = 'Kaydet'
       TabOrder = 3
+      OnClick = btnKaydetClick
     end
   end
   object orsn1: TOraSession
