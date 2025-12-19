@@ -1048,6 +1048,11 @@ object Form2: TForm2
                   Column = 0
                   Control = cxlbl25
                   Row = 2
+                end
+                item
+                  Column = 0
+                  Control = cxlbl26
+                  Row = 3
                 end>
               RowCollection = <
                 item
@@ -1063,18 +1068,12 @@ object Form2: TForm2
                   Value = 20.000000000000000000
                 end>
               TabOrder = 5
-              DesignSize = (
-                434
-                84)
               object cxlbl23: TcxLabel
                 Left = 1
                 Top = 1
                 Align = alClient
                 Caption = 'Herhangi biri'
                 Properties.Alignment.Vert = taVCenter
-                ExplicitLeft = 192
-                ExplicitWidth = 40
-                ExplicitHeight = 19
                 AnchorY = 9
               end
               object cxlbl24: TcxLabel
@@ -1083,16 +1082,32 @@ object Form2: TForm2
                 Align = alClient
                 Caption = '32 - 35. hafta, genel olarak iyi bebek'
                 Properties.Alignment.Vert = taVCenter
-                ExplicitLeft = 192
-                ExplicitWidth = 40
-                ExplicitHeight = 19
                 AnchorY = 26
               end
               object cxlbl25: TcxLabel
-                Left = 213
-                Top = 41
-                Anchors = []
-                ExplicitLeft = 197
+                Left = 1
+                Top = 34
+                Align = alClient
+                Caption = 
+                  #304'UGR (kilo < 10 persantil) ve endend-diastolik ak'#305'm kayb'#305' > 35 h' +
+                  'afta'
+                Properties.Alignment.Vert = taVCenter
+                ExplicitLeft = 41
+                ExplicitTop = 41
+                ExplicitWidth = 357
+                ExplicitHeight = 19
+                AnchorY = 51
+              end
+              object cxlbl26: TcxLabel
+                Left = 1
+                Top = 67
+                Align = alClient
+                Caption = #304'yi g'#246'r'#252'nen term bebek > 37 hafta'
+                Properties.Alignment.Vert = taVCenter
+                ExplicitLeft = 192
+                ExplicitWidth = 40
+                ExplicitHeight = 19
+                AnchorY = 75
               end
             end
           end
