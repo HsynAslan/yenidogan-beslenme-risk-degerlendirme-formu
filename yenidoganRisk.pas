@@ -90,6 +90,8 @@ type
     cxlbl24: TcxLabel;
     cxlbl25: TcxLabel;
     cxlbl26: TcxLabel;
+    grdpnl9: TGridPanel;
+    grdpnl10: TGridPanel;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);

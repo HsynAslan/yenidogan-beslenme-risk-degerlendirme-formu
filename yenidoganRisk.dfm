@@ -392,6 +392,11 @@ object Form2: TForm2
             Column = 0
             Control = grdpnl4
             Row = 4
+          end
+          item
+            Column = 1
+            Control = grdpnl9
+            Row = 4
           end>
         RowCollection = <
           item
@@ -1092,10 +1097,6 @@ object Form2: TForm2
                   #304'UGR (kilo < 10 persantil) ve endend-diastolik ak'#305'm kayb'#305' > 35 h' +
                   'afta'
                 Properties.Alignment.Vert = taVCenter
-                ExplicitLeft = 41
-                ExplicitTop = 41
-                ExplicitWidth = 357
-                ExplicitHeight = 19
                 AnchorY = 51
               end
               object cxlbl26: TcxLabel
@@ -1104,12 +1105,68 @@ object Form2: TForm2
                 Align = alClient
                 Caption = #304'yi g'#246'r'#252'nen term bebek > 37 hafta'
                 Properties.Alignment.Vert = taVCenter
-                ExplicitLeft = 192
-                ExplicitWidth = 40
-                ExplicitHeight = 19
                 AnchorY = 75
               end
             end
+          end
+        end
+        object grdpnl9: TGridPanel
+          Left = 543
+          Top = 105
+          Width = 108
+          Height = 285
+          Align = alClient
+          Caption = 'grdpnl9'
+          ColumnCollection = <
+            item
+              Value = 100.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = grdpnl10
+              Row = 0
+            end>
+          RowCollection = <
+            item
+              Value = 29.990000000000000000
+            end
+            item
+              Value = 40.000000000000000000
+            end
+            item
+              Value = 30.010000000000000000
+            end>
+          TabOrder = 25
+          object grdpnl10: TGridPanel
+            Left = 1
+            Top = 1
+            Width = 106
+            Height = 85
+            Align = alClient
+            Caption = 'grdpnl10'
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 0
           end
         end
       end
