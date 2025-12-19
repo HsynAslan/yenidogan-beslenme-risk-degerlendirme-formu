@@ -23,7 +23,7 @@ uses
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint, dxSkinWXI,
   dxSkinXmas2008Blue, cxScrollBox, cxContainer, cxEdit, cxDBLabel, cxLabel,
   Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox, Data.DB, cxTextEdit, cxDBEdit,
-  cxMaskEdit, cxButtonEdit, MemDS, DBAccess, Ora, OraCall;
+  cxMaskEdit, cxButtonEdit, MemDS, DBAccess, Ora, OraCall, cxCheckBox;
 
 type
   TForm2 = class(TForm)
@@ -93,10 +93,6 @@ type
     cxlbl26: TcxLabel;
     grdpnl9: TGridPanel;
     grdpnl10: TGridPanel;
-    HButGun1: TcxDBButtonEdit;
-    grButGun1: TcxDBButtonEdit;
-    nekButGun1: TcxDBButtonEdit;
-    gisButGun1: TcxDBButtonEdit;
     orsn1: TOraSession;
     rastgeleHasta: TOraQuery;
     btnKaydet: TButton;
@@ -133,11 +129,19 @@ type
     dsHasta: TDataSource;
     lbl1: TLabel;
     grdpnl11: TGridPanel;
+    chkYR28Gun1: TcxDBCheckBox;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnKaydetClick(Sender: TObject);
+
+
+    procedure RiskCheckBoxPropertiesChange(Sender: TObject);
+    procedure RefreshRiskCheckBox(ACheck: TcxDBCheckBox);
+
+
+
   private
     { Private declarations }
   public
@@ -150,6 +154,33 @@ var
 implementation
 
 {$R *.dfm}
+
+
+procedure TForm2.RefreshRiskCheckBox(ACheck: TcxDBCheckBox);
+begin
+  if not Assigned(ACheck) then Exit;
+
+  // DevExpress'te ParentColor yok; arkaplanı göstermek için bunu kapatmak gerekebilir
+  ACheck.ParentBackground := False;
+
+  if ACheck.Checked then
+  begin
+    ACheck.Style.Color := clRed;
+    ACheck.Style.Font.Style := [fsBold];
+  end
+  else
+  begin
+    ACheck.Style.Color := clWindow;
+    ACheck.Style.Font.Style := [];
+  end;
+end;
+
+ procedure TForm2.RiskCheckBoxPropertiesChange(Sender: TObject);
+begin
+  if Sender is TcxDBCheckBox then
+    RefreshRiskCheckBox(Sender as TcxDBCheckBox);
+end;
+
 
 
 procedure TForm2.btnKaydetClick(Sender: TObject);
@@ -239,6 +270,10 @@ begin
 
   // 5) Her durumda hafta 1 kaydını göster
   rastgeleHasta.Locate('HAFTA_NO', 1, []);
+  RefreshRiskCheckBox(chkYR28Gun1);
+
+
+
 end;
 
 
