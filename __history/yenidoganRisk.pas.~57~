@@ -22,7 +22,8 @@ uses
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint, dxSkinWXI,
   dxSkinXmas2008Blue, cxScrollBox, cxContainer, cxEdit, cxDBLabel, cxLabel,
-  Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox, Data.DB, cxTextEdit, cxDBEdit;
+  Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox, Data.DB, cxTextEdit, cxDBEdit,
+  cxMaskEdit, cxButtonEdit, MemDS, DBAccess, Ora, OraCall;
 
 type
   TForm2 = class(TForm)
@@ -90,9 +91,20 @@ type
     cxlbl24: TcxLabel;
     cxlbl25: TcxLabel;
     cxlbl26: TcxLabel;
+    grdpnl9: TGridPanel;
+    grdpnl10: TGridPanel;
+    herButGun1: TcxDBButtonEdit;
+    HButGun1: TcxDBButtonEdit;
+    grButGun1: TcxDBButtonEdit;
+    nekButGun1: TcxDBButtonEdit;
+    gisButGun1: TcxDBButtonEdit;
+    orsn1: TOraSession;
+    rastgeleHasta: TOraQuery;
+    btnKaydet: TButton;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -105,6 +117,43 @@ var
 implementation
 
 {$R *.dfm}
+
+
+procedure TForm2.FormShow(Sender: TObject);
+begin
+  // 1) Oracle bağlantısı
+  if not Orsn1.Connected then
+    Orsn1.Connected := True;
+
+  // 2) Query kapat/aç
+  if rastgeleHasta.Active then
+    rastgeleHasta.Close;
+
+  // 3) Test hasta parametreleri
+  rastgeleHasta.ParamByName('DOSYA_NO').AsInteger := 12;
+  rastgeleHasta.ParamByName('PROTOKOL_NO').AsInteger := 400;
+
+  rastgeleHasta.Open;
+
+  // 4) Hiç kayıt yoksa -> 1. hafta oluştur
+  if rastgeleHasta.IsEmpty then
+  begin
+    rastgeleHasta.Append;
+    rastgeleHasta.FieldByName('HASTA_ID').AsInteger := 1; // test sabit
+    rastgeleHasta.FieldByName('HAFTA_NO').AsInteger := 1;
+    rastgeleHasta.FieldByName('DOSYA_NO').AsInteger := 12;
+    rastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := 400;
+    rastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
+    rastgeleHasta.Post;
+
+    rastgeleHasta.Close;
+    rastgeleHasta.Open;
+  end;
+
+  // 5) Her durumda hafta 1 kaydını göster
+  rastgeleHasta.Locate('HAFTA_NO', 1, []);
+end;
+
 
 
 procedure TForm2.lblGunTarihClick(Sender: TObject);

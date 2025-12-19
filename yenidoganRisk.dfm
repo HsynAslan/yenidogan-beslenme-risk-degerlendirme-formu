@@ -548,8 +548,12 @@ object Form2: TForm2
           Left = 543
           Top = 34
           Align = alClient
+          DataBinding.DataField = 'KILO_KG'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 7
+          ExplicitLeft = 537
+          ExplicitTop = 28
           Width = 108
         end
         object edtKiloGun2: TcxDBTextEdit
@@ -596,6 +600,8 @@ object Form2: TForm2
           Left = 543
           Top = 58
           Align = alClient
+          DataBinding.DataField = 'BOY_CM'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 13
           Width = 108
@@ -647,6 +653,8 @@ object Form2: TForm2
           Left = 543
           Top = 82
           Align = alClient
+          DataBinding.DataField = 'BAS_CEVRESI_CM'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 19
           Width = 108
@@ -1203,8 +1211,6 @@ object Form2: TForm2
                   Kind = bkEllipsis
                 end>
               TabOrder = 0
-              ExplicitWidth = 121
-              ExplicitHeight = 23
               Width = 104
             end
             object HButGun1: TcxDBButtonEdit
@@ -1218,8 +1224,6 @@ object Form2: TForm2
                   Kind = bkEllipsis
                 end>
               TabOrder = 1
-              ExplicitWidth = 121
-              ExplicitHeight = 23
               Width = 104
             end
             object grButGun1: TcxDBButtonEdit
@@ -1233,8 +1237,6 @@ object Form2: TForm2
                   Kind = bkEllipsis
                 end>
               TabOrder = 2
-              ExplicitWidth = 121
-              ExplicitHeight = 23
               Width = 104
             end
             object nekButGun1: TcxDBButtonEdit
@@ -1248,8 +1250,6 @@ object Form2: TForm2
                   Kind = bkEllipsis
                 end>
               TabOrder = 3
-              ExplicitWidth = 121
-              ExplicitHeight = 23
               Width = 104
             end
             object gisButGun1: TcxDBButtonEdit
@@ -1263,8 +1263,6 @@ object Form2: TForm2
                   Kind = bkEllipsis
                 end>
               TabOrder = 4
-              ExplicitWidth = 121
-              ExplicitHeight = 23
               Width = 104
             end
           end
@@ -1296,7 +1294,7 @@ object Form2: TForm2
       'WHERE DOSYA_NO = :DOSYA_NO'
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
       'ORDER BY HAFTA_NO')
-    Left = 984
+    Left = 952
     Top = 16
     ParamData = <
       item
@@ -1309,5 +1307,122 @@ object Form2: TForm2
         Name = 'PROTOKOL_NO'
         Value = nil
       end>
+    object fltfldHastaHASTA_ID: TFloatField
+      FieldName = 'HASTA_ID'
+      Required = True
+    end
+    object fltfldHastaHAFTA_NO: TFloatField
+      FieldName = 'HAFTA_NO'
+      Required = True
+    end
+    object fltfldHastaDOSYA_NO: TFloatField
+      FieldName = 'DOSYA_NO'
+      Required = True
+    end
+    object fltfldHastaPROTOKOL_NO: TFloatField
+      FieldName = 'PROTOKOL_NO'
+      Required = True
+    end
+    object dtmfldHastaIZLEM_TARIHI: TDateTimeField
+      FieldName = 'IZLEM_TARIHI'
+      Required = True
+    end
+    object fltfldHastaGESTASYON_HAFTASI: TFloatField
+      FieldName = 'GESTASYON_HAFTASI'
+    end
+    object fltfldHastaDOGUM_KILOSU_GR: TFloatField
+      FieldName = 'DOGUM_KILOSU_GR'
+    end
+    object fltfldHastaDOGUM_BOYU_CM: TFloatField
+      FieldName = 'DOGUM_BOYU_CM'
+    end
+    object fltfldHastaDOGUM_BAS_CEVRESI: TFloatField
+      FieldName = 'DOGUM_BAS_CEVRESI'
+    end
+    object strngfldHastaYR_28_HAFTA: TStringField
+      FieldName = 'YR_28_HAFTA'
+      Size = 1
+    end
+    object strngfldHastaYR_1000_GR: TStringField
+      FieldName = 'YR_1000_GR'
+      Size = 1
+    end
+    object strngfldHastaYR_NEK_GIS: TStringField
+      FieldName = 'YR_NEK_GIS'
+      Size = 1
+    end
+    object strngfldHastaYR_KONJ_GIS: TStringField
+      FieldName = 'YR_KONJ_GIS'
+      Size = 1
+    end
+    object strngfldHastaOR_28_31_HAFTA: TStringField
+      FieldName = 'OR_28_31_HAFTA'
+      Size = 1
+    end
+    object strngfldHastaOR_IUGR: TStringField
+      FieldName = 'OR_IUGR'
+      Size = 1
+    end
+    object strngfldHastaOR_1000_1500_GR: TStringField
+      FieldName = 'OR_1000_1500_GR'
+      Size = 1
+    end
+    object strngfldHastaOR_KONJ_BESLENME: TStringField
+      FieldName = 'OR_KONJ_BESLENME'
+      Size = 1
+    end
+    object strngfldHastaDR_32_35_HAFTA: TStringField
+      FieldName = 'DR_32_35_HAFTA'
+      Size = 1
+    end
+    object strngfldHastaDR_IUGR_35: TStringField
+      FieldName = 'DR_IUGR_35'
+      Size = 1
+    end
+    object strngfldHastaDR_TERM: TStringField
+      FieldName = 'DR_TERM'
+      Size = 1
+    end
+    object strngfldHastaRISK_SEVIYE: TStringField
+      FieldName = 'RISK_SEVIYE'
+      Size = 10
+    end
+    object strngfldHastaIHT_2_HAFTA_KILO: TStringField
+      FieldName = 'IHT_2_HAFTA_KILO'
+      Size = 1
+    end
+    object strngfldHastaIHT_15_KAYIP: TStringField
+      FieldName = 'IHT_15_KAYIP'
+      Size = 1
+    end
+    object strngfldHastaIHT_10G_KAZANIM: TStringField
+      FieldName = 'IHT_10G_KAZANIM'
+      Size = 1
+    end
+    object strngfldHastaIHT_NEK_CERRAHI: TStringField
+      FieldName = 'IHT_NEK_CERRAHI'
+      Size = 1
+    end
+    object strngfldHastaDOKTOR_ADI: TStringField
+      FieldName = 'DOKTOR_ADI'
+      Size = 100
+    end
+    object dtmfldHastaKAYIT_TARIHI: TDateTimeField
+      FieldName = 'KAYIT_TARIHI'
+    end
+    object fltfldHastaKILO_KG: TFloatField
+      FieldName = 'KILO_KG'
+    end
+    object fltfldHastaBOY_CM: TFloatField
+      FieldName = 'BOY_CM'
+    end
+    object fltfldHastaBAS_CEVRESI_CM: TFloatField
+      FieldName = 'BAS_CEVRESI_CM'
+    end
+  end
+  object dsHasta: TDataSource
+    DataSet = rastgeleHasta
+    Left = 896
+    Top = 16
   end
 end

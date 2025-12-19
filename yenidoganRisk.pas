@@ -101,6 +101,37 @@ type
     orsn1: TOraSession;
     rastgeleHasta: TOraQuery;
     btnKaydet: TButton;
+    fltfldHastaHASTA_ID: TFloatField;
+    fltfldHastaHAFTA_NO: TFloatField;
+    fltfldHastaDOSYA_NO: TFloatField;
+    fltfldHastaPROTOKOL_NO: TFloatField;
+    dtmfldHastaIZLEM_TARIHI: TDateTimeField;
+    fltfldHastaGESTASYON_HAFTASI: TFloatField;
+    fltfldHastaDOGUM_KILOSU_GR: TFloatField;
+    fltfldHastaDOGUM_BOYU_CM: TFloatField;
+    fltfldHastaDOGUM_BAS_CEVRESI: TFloatField;
+    strngfldHastaYR_28_HAFTA: TStringField;
+    strngfldHastaYR_1000_GR: TStringField;
+    strngfldHastaYR_NEK_GIS: TStringField;
+    strngfldHastaYR_KONJ_GIS: TStringField;
+    strngfldHastaOR_28_31_HAFTA: TStringField;
+    strngfldHastaOR_IUGR: TStringField;
+    strngfldHastaOR_1000_1500_GR: TStringField;
+    strngfldHastaOR_KONJ_BESLENME: TStringField;
+    strngfldHastaDR_32_35_HAFTA: TStringField;
+    strngfldHastaDR_IUGR_35: TStringField;
+    strngfldHastaDR_TERM: TStringField;
+    strngfldHastaRISK_SEVIYE: TStringField;
+    strngfldHastaIHT_2_HAFTA_KILO: TStringField;
+    strngfldHastaIHT_15_KAYIP: TStringField;
+    strngfldHastaIHT_10G_KAZANIM: TStringField;
+    strngfldHastaIHT_NEK_CERRAHI: TStringField;
+    strngfldHastaDOKTOR_ADI: TStringField;
+    dtmfldHastaKAYIT_TARIHI: TDateTimeField;
+    fltfldHastaKILO_KG: TFloatField;
+    fltfldHastaBOY_CM: TFloatField;
+    fltfldHastaBAS_CEVRESI_CM: TFloatField;
+    dsHasta: TDataSource;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -121,45 +152,39 @@ implementation
 
 procedure TForm2.FormShow(Sender: TObject);
 begin
-  // 1) Oracle bağlantısı açık değilse aç
+  // 1) Oracle bağlantısı
   if not Orsn1.Connected then
     Orsn1.Connected := True;
 
-  // 2) Query açıksa kapat
+  // 2) Query kapat/aç
   if rastgeleHasta.Active then
     rastgeleHasta.Close;
 
-  // 3) TEST HASTA sabit parametreler
+  // 3) Test hasta parametreleri
   rastgeleHasta.ParamByName('DOSYA_NO').AsInteger := 12;
   rastgeleHasta.ParamByName('PROTOKOL_NO').AsInteger := 400;
 
-  // 4) Query aç
   rastgeleHasta.Open;
 
-  // 5) Hiç kayıt yoksa → 1. haftayı otomatik oluştur
+  // 4) Hiç kayıt yoksa -> 1. hafta oluştur
   if rastgeleHasta.IsEmpty then
   begin
     rastgeleHasta.Append;
-
+    rastgeleHasta.FieldByName('HASTA_ID').AsInteger := 1; // test sabit
+    rastgeleHasta.FieldByName('HAFTA_NO').AsInteger := 1;
     rastgeleHasta.FieldByName('DOSYA_NO').AsInteger := 12;
     rastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := 400;
-    rastgeleHasta.FieldByName('HAFTA_NO').AsInteger := 1;
     rastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
-
-    // risk alanları default 'F' ise DB zaten halleder
-    // gestasyon / doğum bilgileri ilk hafta girilecek
-
     rastgeleHasta.Post;
 
-    // tekrar oku
     rastgeleHasta.Close;
     rastgeleHasta.Open;
-  end
-  else
-  begin
-    rastgeleHasta.First;
   end;
+
+  // 5) Her durumda hafta 1 kaydını göster
+  rastgeleHasta.Locate('HAFTA_NO', 1, []);
 end;
+
 
 
 procedure TForm2.lblGunTarihClick(Sender: TObject);
