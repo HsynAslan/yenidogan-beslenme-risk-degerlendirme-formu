@@ -1162,28 +1162,13 @@ object Form2: TForm2
             ControlCollection = <
               item
                 Column = 0
-                Control = HButGun1
-                Row = 1
-              end
-              item
-                Column = 0
-                Control = grButGun1
-                Row = 2
-              end
-              item
-                Column = 0
-                Control = nekButGun1
-                Row = 3
-              end
-              item
-                Column = 0
-                Control = gisButGun1
-                Row = 4
-              end
-              item
-                Column = 0
                 Control = lbl1
                 Row = 0
+              end
+              item
+                Column = 0
+                Control = chkYR28Gun1
+                Row = 1
               end>
             RowCollection = <
               item
@@ -1200,63 +1185,11 @@ object Form2: TForm2
               end
               item
                 Value = 20.000000000000000000
+              end
+              item
+                SizeStyle = ssAuto
               end>
             TabOrder = 0
-            object HButGun1: TcxDBButtonEdit
-              Left = 1
-              Top = 18
-              Align = alClient
-              DataBinding.DataField = 'YR_28_HAFTA'
-              DataBinding.DataSource = dsHasta
-              Properties.Alignment.Horz = taCenter
-              Properties.Buttons = <
-                item
-                  Default = True
-                  Kind = bkEllipsis
-                end>
-              Properties.ReadOnly = True
-              TabOrder = 0
-              Width = 104
-            end
-            object grButGun1: TcxDBButtonEdit
-              Left = 1
-              Top = 34
-              Align = alClient
-              Properties.Alignment.Horz = taCenter
-              Properties.Buttons = <
-                item
-                  Default = True
-                  Kind = bkEllipsis
-                end>
-              TabOrder = 1
-              Width = 104
-            end
-            object nekButGun1: TcxDBButtonEdit
-              Left = 1
-              Top = 51
-              Align = alClient
-              Properties.Alignment.Horz = taCenter
-              Properties.Buttons = <
-                item
-                  Default = True
-                  Kind = bkEllipsis
-                end>
-              TabOrder = 2
-              Width = 104
-            end
-            object gisButGun1: TcxDBButtonEdit
-              Left = 1
-              Top = 67
-              Align = alClient
-              Properties.Alignment.Horz = taCenter
-              Properties.Buttons = <
-                item
-                  Default = True
-                  Kind = bkEllipsis
-                end>
-              TabOrder = 3
-              Width = 104
-            end
             object lbl1: TLabel
               Left = 1
               Top = 1
@@ -1265,6 +1198,23 @@ object Form2: TForm2
               Align = alClient
               ExplicitWidth = 3
               ExplicitHeight = 15
+            end
+            object chkYR28Gun1: TcxDBCheckBox
+              Left = 1
+              Top = 18
+              Align = alClient
+              DataBinding.DataField = 'YR_28_HAFTA'
+              DataBinding.DataSource = dsHasta
+              ParentColor = False
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitLeft = 16
+              ExplicitWidth = 13
+              ExplicitHeight = 17
+              Width = 104
             end
           end
           object grdpnl11: TGridPanel
