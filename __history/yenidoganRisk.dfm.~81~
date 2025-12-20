@@ -5,7 +5,7 @@ object Form2: TForm2
     'YEN'#304'DO'#286'AN BESLENME (NUTR'#304'SYON) R'#304'SK DE'#286'ERLEND'#304'RME (GOMEZ SKALASI' +
     ') FORMU'
   ClientHeight = 694
-  ClientWidth = 1092
+  ClientWidth = 950
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,7 +18,7 @@ object Form2: TForm2
   object scrMain: TcxScrollBox
     Left = 0
     Top = 0
-    Width = 1092
+    Width = 950
     Height = 694
     Align = alClient
     TabOrder = 0
@@ -29,7 +29,7 @@ object Form2: TForm2
       Style.BorderStyle = ebsNone
       TabOrder = 0
       Height = 35
-      Width = 1090
+      Width = 1011
       object cxlbl5: TcxLabel
         Left = 2
         Top = 20
@@ -37,7 +37,8 @@ object Form2: TForm2
         Caption = 'Hastan'#305'n Servise Kabul'#252'nde ve Her Pazartesi Doldurulacak'
         Properties.Alignment.Horz = taCenter
         Properties.Alignment.Vert = taVCenter
-        AnchorX = 545
+        ExplicitWidth = 1086
+        AnchorX = 506
         AnchorY = 27
       end
     end
@@ -48,11 +49,11 @@ object Form2: TForm2
       Style.BorderStyle = ebsNone
       TabOrder = 1
       Height = 100
-      Width = 1090
+      Width = 1011
       object grdpnl1: TGridPanel
         Left = 2
         Top = 20
-        Width = 1086
+        Width = 1007
         Height = 78
         Align = alClient
         ColumnCollection = <
@@ -78,19 +79,21 @@ object Form2: TForm2
             Value = 100.000000000000000000
           end>
         TabOrder = 0
+        ExplicitWidth = 1086
         object grpAna3: TcxGroupBox
           Left = 1
           Top = 1
           Align = alClient
           Caption = 'grpAna3'
           TabOrder = 0
+          ExplicitWidth = 325
           Height = 76
-          Width = 325
+          Width = 302
         end
         object grdpnl2: TGridPanel
-          Left = 326
+          Left = 303
           Top = 1
-          Width = 759
+          Width = 703
           Height = 76
           Align = alClient
           ColumnCollection = <
@@ -155,6 +158,8 @@ object Form2: TForm2
               Value = 24.659364173467800000
             end>
           TabOrder = 1
+          ExplicitLeft = 326
+          ExplicitWidth = 759
           object cxlbl1: TcxLabel
             Left = 1
             Top = 1
@@ -169,16 +174,19 @@ object Form2: TForm2
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taLeftJustify
             Properties.Alignment.Vert = taVCenter
+            ExplicitWidth = 303
             AnchorY = 11
           end
           object cxdblbl1: TcxDBLabel
-            Left = 304
+            Left = 281
             Top = 1
             Align = alClient
             Properties.Alignment.Horz = taLeftJustify
             Properties.Alignment.Vert = taVCenter
+            ExplicitLeft = 304
+            ExplicitWidth = 454
             Height = 19
-            Width = 454
+            Width = 421
             AnchorY = 11
           end
           object cxlbl2: TcxLabel
@@ -187,15 +195,18 @@ object Form2: TForm2
             Align = alClient
             Caption = 'Do'#287'um Tart'#305's'#305' (Persantil): '
             Properties.Alignment.Vert = taVCenter
+            ExplicitWidth = 303
             AnchorY = 29
           end
           object cxdblbl2: TcxDBLabel
-            Left = 304
+            Left = 281
             Top = 20
             Align = alClient
             Properties.Alignment.Vert = taVCenter
+            ExplicitLeft = 304
+            ExplicitWidth = 454
             Height = 18
-            Width = 454
+            Width = 421
             AnchorY = 29
           end
           object cxlbl3: TcxLabel
@@ -204,15 +215,18 @@ object Form2: TForm2
             Align = alClient
             Caption = 'Do'#287'um Boyu (Persantil): '
             Properties.Alignment.Vert = taVCenter
+            ExplicitWidth = 303
             AnchorY = 48
           end
           object cxdblbl3: TcxDBLabel
-            Left = 304
+            Left = 281
             Top = 38
             Align = alClient
             Properties.Alignment.Vert = taVCenter
+            ExplicitLeft = 304
+            ExplicitWidth = 454
             Height = 19
-            Width = 454
+            Width = 421
             AnchorY = 48
           end
           object cxlbl4: TcxLabel
@@ -221,15 +235,18 @@ object Form2: TForm2
             Align = alClient
             Caption = 'Do'#287'um Ba'#351' '#199'evresi (Persantil): '
             Properties.Alignment.Vert = taVCenter
+            ExplicitWidth = 303
             AnchorY = 66
           end
           object cxdblbl4: TcxDBLabel
-            Left = 304
+            Left = 281
             Top = 57
             Align = alClient
             Properties.Alignment.Vert = taVCenter
+            ExplicitLeft = 304
+            ExplicitWidth = 454
             Height = 18
-            Width = 454
+            Width = 421
             AnchorY = 66
           end
         end
@@ -242,11 +259,11 @@ object Form2: TForm2
       Caption = 'grpOlcum'
       TabOrder = 2
       Height = 498
-      Width = 1090
+      Width = 1011
       object grdpnl3: TGridPanel
         Left = 2
         Top = 20
-        Width = 1086
+        Width = 1007
         Height = 476
         Align = alClient
         ColumnCollection = <
@@ -422,14 +439,15 @@ object Form2: TForm2
             Value = 11.000000000000000000
           end>
         TabOrder = 0
+        ExplicitWidth = 1086
         DesignSize = (
-          1086
+          1007
           476)
         object cxlbl6: TcxLabel
           Left = 1
           Top = 1
           Align = alClient
-          Caption = '1. B'#220'Y'#220'MEN'#304'N R'#304'SK DE'#286'ERLEND'#304'RMES'#304
+          Caption = '1. BÜYÜMENİN RİSK DEĞERLENDİRMESİ'
           ParentFont = False
           Style.Font.Charset = DEFAULT_CHARSET
           Style.Font.Color = clWindowText
@@ -439,11 +457,12 @@ object Form2: TForm2
           Style.IsFontAssigned = True
           Properties.Alignment.Horz = taLeftJustify
           Properties.Alignment.Vert = taVCenter
+          ExplicitWidth = 542
           AnchorY = 18
         end
         object cxlbl7: TcxLabel
           Tag = 1
-          Left = 543
+          Left = 503
           Top = 1
           Cursor = crHandPoint
           Align = alClient
@@ -458,12 +477,14 @@ object Form2: TForm2
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taVCenter
           OnClick = lblGunTarihClick
-          AnchorX = 597
+          ExplicitLeft = 543
+          ExplicitWidth = 108
+          AnchorX = 554
           AnchorY = 18
         end
         object lblGun2Tarih: TcxLabel
           Tag = 2
-          Left = 675
+          Left = 624
           Top = 5
           Cursor = crHandPoint
           Anchors = []
@@ -478,12 +499,13 @@ object Form2: TForm2
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taVCenter
           OnClick = lblGunTarihClick
-          AnchorX = 705
+          ExplicitLeft = 675
+          AnchorX = 654
           AnchorY = 17
         end
         object lblGun3Tarih: TcxLabel
           Tag = 3
-          Left = 760
+          Left = 704
           Top = 1
           Align = alClient
           Caption = '--.--.----'
@@ -497,11 +519,13 @@ object Form2: TForm2
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taVCenter
           OnClick = lblGunTarihClick
-          AnchorX = 814
+          ExplicitLeft = 760
+          ExplicitWidth = 108
+          AnchorX = 755
           AnchorY = 18
         end
         object lblGun4Tarih: TcxLabel
-          Left = 868
+          Left = 805
           Top = 1
           Align = alClient
           Caption = '--.--.----'
@@ -515,11 +539,13 @@ object Form2: TForm2
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taVCenter
           OnClick = lblGunTarihClick
-          AnchorX = 923
+          ExplicitLeft = 868
+          ExplicitWidth = 109
+          AnchorX = 855
           AnchorY = 18
         end
         object lblGun5Tarih: TcxLabel
-          Left = 977
+          Left = 905
           Top = 1
           Align = alClient
           Caption = '--.--.----'
@@ -533,7 +559,9 @@ object Form2: TForm2
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taVCenter
           OnClick = lblGunTarihClick
-          AnchorX = 1031
+          ExplicitLeft = 977
+          ExplicitWidth = 108
+          AnchorX = 956
           AnchorY = 18
         end
         object cxlbl8: TcxLabel
@@ -542,49 +570,60 @@ object Form2: TForm2
           Align = alClient
           Caption = 'Kilo / Persantil'
           Properties.Alignment.Vert = taVCenter
+          ExplicitWidth = 542
           AnchorY = 46
         end
         object edtKiloGun1: TcxDBTextEdit
-          Left = 543
+          Left = 503
           Top = 34
           Align = alClient
           DataBinding.DataField = 'KILO_KG'
           DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 7
-          Width = 108
+          ExplicitLeft = 543
+          ExplicitWidth = 108
+          Width = 101
         end
         object edtKiloGun2: TcxDBTextEdit
-          Left = 651
+          Left = 604
           Top = 34
           Align = alClient
           Properties.Alignment.Horz = taCenter
           TabOrder = 8
-          Width = 109
+          ExplicitLeft = 651
+          ExplicitWidth = 109
+          Width = 100
         end
         object edtKiloGun3: TcxDBTextEdit
-          Left = 760
+          Left = 704
           Top = 34
           Align = alClient
           Properties.Alignment.Horz = taCenter
           TabOrder = 9
-          Width = 108
+          ExplicitLeft = 760
+          ExplicitWidth = 108
+          Width = 101
         end
         object edtKiloGun4: TcxDBTextEdit
-          Left = 868
+          Left = 805
           Top = 34
           Align = alClient
           Properties.Alignment.Horz = taCenter
           TabOrder = 10
-          Width = 109
+          ExplicitLeft = 868
+          ExplicitWidth = 109
+          Width = 100
         end
         object edtKiloGun5: TcxDBTextEdit
-          Left = 977
+          Left = 905
           Top = 34
           Align = alClient
           Properties.Alignment.Horz = taCenter
           TabOrder = 11
-          Width = 108
+          ExplicitLeft = 977
+          ExplicitWidth = 108
+          Width = 101
         end
         object cxlbl9: TcxLabel
           Left = 1
@@ -592,49 +631,60 @@ object Form2: TForm2
           Align = alClient
           Caption = 'Boy / Persantil'
           Properties.Alignment.Vert = taVCenter
+          ExplicitWidth = 542
           AnchorY = 70
         end
         object edtBoyGun1: TcxDBTextEdit
-          Left = 543
+          Left = 503
           Top = 58
           Align = alClient
           DataBinding.DataField = 'BOY_CM'
           DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 13
-          Width = 108
+          ExplicitLeft = 543
+          ExplicitWidth = 108
+          Width = 101
         end
         object edtBoyGun2: TcxDBTextEdit
-          Left = 651
+          Left = 604
           Top = 58
           Align = alClient
           Properties.Alignment.Horz = taCenter
           TabOrder = 14
-          Width = 109
+          ExplicitLeft = 651
+          ExplicitWidth = 109
+          Width = 100
         end
         object edtBoyGun3: TcxDBTextEdit
-          Left = 760
+          Left = 704
           Top = 58
           Align = alClient
           Properties.Alignment.Horz = taCenter
           TabOrder = 15
-          Width = 108
+          ExplicitLeft = 760
+          ExplicitWidth = 108
+          Width = 101
         end
         object edtBoyGun4: TcxDBTextEdit
-          Left = 868
+          Left = 805
           Top = 58
           Align = alClient
           Properties.Alignment.Horz = taCenter
           TabOrder = 16
-          Width = 109
+          ExplicitLeft = 868
+          ExplicitWidth = 109
+          Width = 100
         end
         object edtBoyGun5: TcxDBTextEdit
-          Left = 977
+          Left = 905
           Top = 58
           Align = alClient
           Properties.Alignment.Horz = taCenter
           TabOrder = 17
-          Width = 108
+          ExplicitLeft = 977
+          ExplicitWidth = 108
+          Width = 101
         end
         object cxLabel1: TcxLabel
           Left = 1
@@ -645,54 +695,65 @@ object Form2: TForm2
           Style.Color = clBtnFace
           Properties.Alignment.Horz = taLeftJustify
           Properties.Alignment.Vert = taVCenter
+          ExplicitWidth = 542
           AnchorY = 94
         end
         object edtBasGun1: TcxDBTextEdit
-          Left = 543
+          Left = 503
           Top = 82
           Align = alClient
           DataBinding.DataField = 'BAS_CEVRESI_CM'
           DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 19
-          Width = 108
+          ExplicitLeft = 543
+          ExplicitWidth = 108
+          Width = 101
         end
         object edtBasGun2: TcxDBTextEdit
-          Left = 651
+          Left = 604
           Top = 82
           Align = alClient
           Properties.Alignment.Horz = taCenter
           TabOrder = 20
-          Width = 109
+          ExplicitLeft = 651
+          ExplicitWidth = 109
+          Width = 100
         end
         object edtBasGun3: TcxDBTextEdit
-          Left = 760
+          Left = 704
           Top = 82
           Align = alClient
           Properties.Alignment.Horz = taCenter
           TabOrder = 21
-          Width = 108
+          ExplicitLeft = 760
+          ExplicitWidth = 108
+          Width = 101
         end
         object edtBasGun4: TcxDBTextEdit
-          Left = 868
+          Left = 805
           Top = 82
           Align = alClient
           Properties.Alignment.Horz = taCenter
           TabOrder = 22
-          Width = 109
+          ExplicitLeft = 868
+          ExplicitWidth = 109
+          Width = 100
         end
         object edtBasGun5: TcxDBTextEdit
-          Left = 977
+          Left = 905
           Top = 82
           Align = alClient
           Properties.Alignment.Horz = taCenter
           TabOrder = 23
-          Width = 108
+          ExplicitLeft = 977
+          ExplicitWidth = 108
+          Width = 101
         end
         object grdpnl4: TGridPanel
           Left = 1
           Top = 105
-          Width = 542
+          Width = 502
           Height = 285
           Align = alClient
           ColumnCollection = <
@@ -718,10 +779,11 @@ object Form2: TForm2
               Value = 100.000000000000000000
             end>
           TabOrder = 24
+          ExplicitWidth = 542
           object PaintBoxYuksekRisk: TPaintBox
             Left = 1
             Top = 1
-            Width = 27
+            Width = 25
             Height = 283
             Align = alClient
             OnPaint = PaintBoxYuksekRiskPaint
@@ -731,9 +793,9 @@ object Form2: TForm2
             ExplicitHeight = 220
           end
           object grdpnl5: TGridPanel
-            Left = 28
+            Left = 26
             Top = 1
-            Width = 513
+            Width = 475
             Height = 283
             Align = alClient
             ColumnCollection = <
@@ -785,6 +847,8 @@ object Form2: TForm2
                 Value = 30.008141647426720000
               end>
             TabOrder = 0
+            ExplicitLeft = 28
+            ExplicitWidth = 513
             object cxlbl10: TcxLabel
               Left = 1
               Top = 1
@@ -803,7 +867,8 @@ object Form2: TForm2
               StyleDisabled.BorderColor = clBtnText
               Properties.Alignment.Horz = taCenter
               Properties.Alignment.Vert = taVCenter
-              AnchorX = 40
+              ExplicitWidth = 77
+              AnchorX = 37
               AnchorY = 43
             end
             object cxlbl11: TcxLabel
@@ -822,7 +887,8 @@ object Form2: TForm2
               Style.IsFontAssigned = True
               Properties.Alignment.Horz = taCenter
               Properties.Alignment.Vert = taVCenter
-              AnchorX = 40
+              ExplicitWidth = 77
+              AnchorX = 37
               AnchorY = 142
             end
             object cxlbl13: TcxLabel
@@ -841,13 +907,14 @@ object Form2: TForm2
               Style.IsFontAssigned = True
               Properties.Alignment.Horz = taCenter
               Properties.Alignment.Vert = taVCenter
-              AnchorX = 40
+              ExplicitWidth = 77
+              AnchorX = 37
               AnchorY = 240
             end
             object grdpnl6: TGridPanel
-              Left = 78
+              Left = 72
               Top = 1
-              Width = 434
+              Width = 402
               Height = 84
               Align = alClient
               ColumnCollection = <
@@ -897,12 +964,15 @@ object Form2: TForm2
                   Value = 20.000000000000000000
                 end>
               TabOrder = 3
+              ExplicitLeft = 78
+              ExplicitWidth = 434
               object cxlbl12: TcxLabel
                 Left = 1
                 Top = 1
                 Align = alClient
                 Caption = 'HERHANG'#304' B'#304'R'#304
                 Properties.Alignment.Vert = taBottomJustify
+                ExplicitWidth = 432
                 AnchorY = 17
               end
               object cxlbl14: TcxLabel
@@ -911,6 +981,7 @@ object Form2: TForm2
                 Align = alClient
                 Caption = '< 28 Hafta'
                 Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 432
                 AnchorY = 26
               end
               object cxlbl15: TcxLabel
@@ -919,6 +990,7 @@ object Form2: TForm2
                 Align = alClient
                 Caption = '< 1000 gr / Do'#287'um'
                 Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 432
                 AnchorY = 42
               end
               object cxlbl16: TcxLabel
@@ -927,6 +999,7 @@ object Form2: TForm2
                 Align = alClient
                 Caption = 'NEK / G'#304'S Perforasyonu sonras'#305' beslenme'
                 Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 432
                 AnchorY = 59
               end
               object cxlbl17: TcxLabel
@@ -935,13 +1008,14 @@ object Form2: TForm2
                 Align = alClient
                 Caption = #350'iddetli Konjenital G'#304'S anomalili bebek'
                 Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 432
                 AnchorY = 75
               end
             end
             object grdpnl7: TGridPanel
-              Left = 78
+              Left = 72
               Top = 85
-              Width = 434
+              Width = 402
               Height = 113
               Align = alClient
               ColumnCollection = <
@@ -991,12 +1065,15 @@ object Form2: TForm2
                   Value = 18.000000000000000000
                 end>
               TabOrder = 4
+              ExplicitLeft = 78
+              ExplicitWidth = 434
               object cxlbl18: TcxLabel
                 Left = 1
                 Top = 1
                 Align = alClient
                 Caption = 'Herhangi biri'
                 Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 432
                 AnchorY = 11
               end
               object cxlbl19: TcxLabel
@@ -1006,6 +1083,7 @@ object Form2: TForm2
                 Caption = '28 - 31 hafta genel olarak iyi bebek'
                 Properties.Alignment.Horz = taLeftJustify
                 Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 432
                 AnchorY = 31
               end
               object cxlbl20: TcxLabel
@@ -1016,6 +1094,7 @@ object Form2: TForm2
                   #304'UGR(kilo < 10 persantilpersantil) ve endend-diastolik ak'#305'm kayb' +
                   #305' < 35 hafta'
                 Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 432
                 AnchorY = 57
               end
               object cxlbl21: TcxLabel
@@ -1024,6 +1103,7 @@ object Form2: TForm2
                 Align = alClient
                 Caption = '1000 - 1500 gr. / Do'#287'um'
                 Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 432
                 AnchorY = 82
               end
               object cxlbl22: TcxLabel
@@ -1032,13 +1112,14 @@ object Form2: TForm2
                 Align = alClient
                 Caption = 'Hastal'#305'k veya konjenital anomaliye ba'#287'l'#305' beslenememe'
                 Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 432
                 AnchorY = 102
               end
             end
             object grdpnl8: TGridPanel
-              Left = 78
+              Left = 72
               Top = 198
-              Width = 434
+              Width = 402
               Height = 84
               Align = alClient
               ColumnCollection = <
@@ -1080,12 +1161,15 @@ object Form2: TForm2
                   Value = 20.000000000000000000
                 end>
               TabOrder = 5
+              ExplicitLeft = 78
+              ExplicitWidth = 434
               object cxlbl23: TcxLabel
                 Left = 1
                 Top = 1
                 Align = alClient
                 Caption = 'Herhangi biri'
                 Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 432
                 AnchorY = 9
               end
               object cxlbl24: TcxLabel
@@ -1094,6 +1178,7 @@ object Form2: TForm2
                 Align = alClient
                 Caption = '32 - 35. hafta, genel olarak iyi bebek'
                 Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 432
                 AnchorY = 26
               end
               object cxlbl25: TcxLabel
@@ -1104,6 +1189,7 @@ object Form2: TForm2
                   #304'UGR (kilo < 10 persantil) ve endend-diastolik ak'#305'm kayb'#305' > 35 h' +
                   'afta'
                 Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 432
                 AnchorY = 51
               end
               object cxlbl26: TcxLabel
@@ -1112,15 +1198,16 @@ object Form2: TForm2
                 Align = alClient
                 Caption = #304'yi g'#246'r'#252'nen term bebek > 37 hafta'
                 Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 432
                 AnchorY = 75
               end
             end
           end
         end
         object grdpnl9: TGridPanel
-          Left = 543
+          Left = 503
           Top = 105
-          Width = 108
+          Width = 101
           Height = 285
           Align = alClient
           ColumnCollection = <
@@ -1149,10 +1236,12 @@ object Form2: TForm2
               Value = 30.010000000000000000
             end>
           TabOrder = 25
+          ExplicitLeft = 543
+          ExplicitWidth = 108
           object grdpnl10: TGridPanel
             Left = 1
             Top = 1
-            Width = 106
+            Width = 99
             Height = 85
             Align = alClient
             ColumnCollection = <
@@ -1162,28 +1251,13 @@ object Form2: TForm2
             ControlCollection = <
               item
                 Column = 0
-                Control = HButGun1
-                Row = 1
-              end
-              item
-                Column = 0
-                Control = grButGun1
-                Row = 2
-              end
-              item
-                Column = 0
-                Control = nekButGun1
-                Row = 3
-              end
-              item
-                Column = 0
-                Control = gisButGun1
-                Row = 4
-              end
-              item
-                Column = 0
                 Control = lbl1
                 Row = 0
+              end
+              item
+                Column = 0
+                Control = chkYR28Gun1
+                Row = 1
               end>
             RowCollection = <
               item
@@ -1205,71 +1279,35 @@ object Form2: TForm2
                 SizeStyle = ssAuto
               end>
             TabOrder = 0
-            object HButGun1: TcxDBButtonEdit
-              Left = 1
-              Top = 18
-              Align = alClient
-              DataBinding.DataField = 'YR_28_HAFTA'
-              DataBinding.DataSource = dsHasta
-              Properties.Alignment.Horz = taCenter
-              Properties.Buttons = <>
-              Properties.ReadOnly = True
-              TabOrder = 0
-              Width = 104
-            end
-            object grButGun1: TcxDBButtonEdit
-              Left = 1
-              Top = 34
-              Align = alClient
-              Properties.Alignment.Horz = taCenter
-              Properties.Buttons = <
-                item
-                  Default = True
-                  Kind = bkEllipsis
-                end>
-              TabOrder = 1
-              Width = 104
-            end
-            object nekButGun1: TcxDBButtonEdit
-              Left = 1
-              Top = 51
-              Align = alClient
-              Properties.Alignment.Horz = taCenter
-              Properties.Buttons = <
-                item
-                  Default = True
-                  Kind = bkEllipsis
-                end>
-              TabOrder = 2
-              Width = 104
-            end
-            object gisButGun1: TcxDBButtonEdit
-              Left = 1
-              Top = 67
-              Align = alClient
-              Properties.Alignment.Horz = taCenter
-              Properties.Buttons = <
-                item
-                  Default = True
-                  Kind = bkEllipsis
-                end>
-              TabOrder = 3
-              Width = 104
-            end
+            ExplicitWidth = 106
             object lbl1: TLabel
               Left = 1
               Top = 1
-              Width = 104
+              Width = 97
               Height = 17
               Align = alClient
               ExplicitWidth = 3
               ExplicitHeight = 15
             end
+            object chkYR28Gun1: TcxDBCheckBox
+              Left = 1
+              Top = 18
+              Align = alClient
+              DataBinding.DataField = 'YR_28_HAFTA'
+              DataBinding.DataSource = dsHasta
+              ParentColor = False
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitWidth = 104
+              Width = 97
+            end
           end
           object grdpnl11: TGridPanel
             Left = 1
             Top = 86
-            Width = 106
+            Width = 99
             Height = 113
             Align = alClient
             ColumnCollection = <
@@ -1294,6 +1332,7 @@ object Form2: TForm2
                 Value = 18.000000000000000000
               end>
             TabOrder = 1
+            ExplicitWidth = 106
           end
         end
       end

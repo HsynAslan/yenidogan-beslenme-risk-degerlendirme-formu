@@ -137,8 +137,7 @@ type
     procedure btnKaydetClick(Sender: TObject);
 
 
-    procedure RiskCheckBoxPropertiesChange(Sender: TObject);
-    procedure RefreshRiskCheckBox(ACheck: TcxDBCheckBox);
+
 
 
 
@@ -155,31 +154,6 @@ implementation
 
 {$R *.dfm}
 
-
-procedure TForm2.RefreshRiskCheckBox(ACheck: TcxDBCheckBox);
-begin
-  if not Assigned(ACheck) then Exit;
-
-  // DevExpress'te ParentColor yok; arkaplanı göstermek için bunu kapatmak gerekebilir
-  ACheck.ParentBackground := False;
-
-  if ACheck.Checked then
-  begin
-    ACheck.Style.Color := clRed;
-    ACheck.Style.Font.Style := [fsBold];
-  end
-  else
-  begin
-    ACheck.Style.Color := clWindow;
-    ACheck.Style.Font.Style := [];
-  end;
-end;
-
- procedure TForm2.RiskCheckBoxPropertiesChange(Sender: TObject);
-begin
-  if Sender is TcxDBCheckBox then
-    RefreshRiskCheckBox(Sender as TcxDBCheckBox);
-end;
 
 
 
@@ -270,7 +244,6 @@ begin
 
   // 5) Her durumda hafta 1 kaydını göster
   rastgeleHasta.Locate('HAFTA_NO', 1, []);
-  RefreshRiskCheckBox(chkYR28Gun1);
 
 
 

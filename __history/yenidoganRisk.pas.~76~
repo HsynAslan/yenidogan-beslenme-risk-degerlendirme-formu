@@ -23,7 +23,7 @@ uses
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint, dxSkinWXI,
   dxSkinXmas2008Blue, cxScrollBox, cxContainer, cxEdit, cxDBLabel, cxLabel,
   Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox, Data.DB, cxTextEdit, cxDBEdit,
-  cxMaskEdit, cxButtonEdit, MemDS, DBAccess, Ora, OraCall;
+  cxMaskEdit, cxButtonEdit, MemDS, DBAccess, Ora, OraCall, cxCheckBox;
 
 type
   TForm2 = class(TForm)
@@ -93,10 +93,6 @@ type
     cxlbl26: TcxLabel;
     grdpnl9: TGridPanel;
     grdpnl10: TGridPanel;
-    HButGun1: TcxDBButtonEdit;
-    grButGun1: TcxDBButtonEdit;
-    nekButGun1: TcxDBButtonEdit;
-    gisButGun1: TcxDBButtonEdit;
     orsn1: TOraSession;
     rastgeleHasta: TOraQuery;
     btnKaydet: TButton;
@@ -133,15 +129,17 @@ type
     dsHasta: TDataSource;
     lbl1: TLabel;
     grdpnl11: TGridPanel;
+    chkYR28Gun1: TcxDBCheckBox;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnKaydetClick(Sender: TObject);
 
-    procedure ToggleRiskButton(AButton: TcxDBButtonEdit);
-    procedure RefreshRiskButton(AButton: TcxDBButtonEdit);
-    procedure RiskButtonClick(Sender: TObject);
+
+
+
+
 
   private
     { Private declarations }
@@ -156,62 +154,6 @@ implementation
 
 {$R *.dfm}
 
-
-procedure TForm2.RefreshRiskButton(AButton: TcxDBButtonEdit);
-var
-  V: string;
-begin
-  if not Assigned(AButton) then Exit;
-  if not rastgeleHasta.Active then Exit;
-  if AButton.DataBinding.DataField = '' then Exit;
-
-  V := rastgeleHasta.FieldByName(
-         AButton.DataBinding.DataField
-       ).AsString;
-
-  if V = 'T' then
-  begin
-    AButton.Text := '✔';
-    AButton.Style.Color := clRed;
-    AButton.Style.Font.Style := [fsBold];
-  end
-  else
-  begin
-    AButton.Text := '-';
-    AButton.Style.Color := clWindow;
-    AButton.Style.Font.Style := [];
-  end;
-end;
-
-procedure TForm2.ToggleRiskButton(AButton: TcxDBButtonEdit);
-var
-  F: TField;
-begin
-  if not Assigned(AButton) then Exit;
-  if not rastgeleHasta.Active then Exit;
-  if AButton.DataBinding.DataField = '' then Exit;
-
-  if not (rastgeleHasta.State in dsEditModes) then
-    rastgeleHasta.Edit;
-
-  F := rastgeleHasta.FieldByName(AButton.DataBinding.DataField);
-
-  if F.AsString = 'T' then
-    F.AsString := 'F'
-  else
-    F.AsString := 'T';
-
-  rastgeleHasta.Post;
-
-  RefreshRiskButton(AButton);
-end;
-
-
-procedure TForm2.RiskButtonClick(Sender: TObject);
-begin
-  if Sender is TcxDBButtonEdit then
-    ToggleRiskButton(Sender as TcxDBButtonEdit);
-end;
 
 
 
@@ -302,7 +244,9 @@ begin
 
   // 5) Her durumda hafta 1 kaydını göster
   rastgeleHasta.Locate('HAFTA_NO', 1, []);
-  RefreshRiskButton(HButGun1);
+  RefreshRiskCheckBox(chkYR28Gun1);
+
+
 
 end;
 
