@@ -129,16 +129,20 @@ type
     dsHasta: TDataSource;
     lbl1: TLabel;
     grdpnl11: TGridPanel;
-    HButGun1: TcxDBCheckBox;
+    chkYR28Gun1: TcxDBCheckBox;
+    YR_C1000G1: TcxDBCheckBox;
+    YR_CNEKG1: TcxDBCheckBox;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnKaydetClick(Sender: TObject);
-
-
     procedure RiskCheckBoxPropertiesChange(Sender: TObject);
+
     procedure RefreshRiskCheckBox(ACheck: TcxDBCheckBox);
+
+
+
 
   private
     { Private declarations }
@@ -153,29 +157,6 @@ implementation
 
 {$R *.dfm}
 
- procedure TForm2.RefreshRiskCheckBox(ACheck: TcxDBCheckBox);
-begin
-  if not Assigned(ACheck) then Exit;
-
-  ACheck.Style.ParentColor := False;
-
-  if ACheck.Checked then
-  begin
-    ACheck.Style.Color := clRed;
-    ACheck.Font.Style := [fsBold];
-  end
-  else
-  begin
-    ACheck.Style.Color := clWindow;
-    ACheck.Font.Style := [];
-  end;
-end;
-
- procedure TForm2.RiskCheckBoxPropertiesChange(Sender: TObject);
-begin
-  if Sender is TcxDBCheckBox then
-    RefreshRiskCheckBox(Sender as TcxDBCheckBox);
-end;
 
 
 
@@ -266,7 +247,8 @@ begin
 
   // 5) Her durumda hafta 1 kaydını göster
   rastgeleHasta.Locate('HAFTA_NO', 1, []);
-  RefreshRiskButton(HButGun1);
+
+
 
 end;
 
@@ -310,6 +292,42 @@ begin
 
     TextOut(X, Y, Txt);
   end;
+end;
+
+procedure TForm2.RefreshRiskCheckBox(ACheck: TcxDBCheckBox);
+begin
+  if not Assigned(ACheck) then Exit;
+
+  ACheck.ParentBackground := False;
+
+  if ACheck.Checked then
+  begin
+    ACheck.Style.Color := clRed;
+    ACheck.Style.Font.Style := [fsBold];
+  end
+  else
+  begin
+    ACheck.Style.Color := clWindow;
+    ACheck.Style.Font.Style := [];
+  end;
+end;
+
+
+procedure TForm2.RiskCheckBoxPropertiesChange(Sender: TObject);
+var
+  C: TcxDBCheckBox;
+begin
+  if not (Sender is TcxDBCheckBox) then Exit;
+  C := TcxDBCheckBox(Sender);
+
+  // Dataset edit moduna al
+  if Assigned(C.DataBinding.DataSource)
+     and Assigned(C.DataBinding.DataSource.DataSet)
+     and not (C.DataBinding.DataSource.DataSet.State in dsEditModes) then
+    C.DataBinding.DataSource.DataSet.Edit;
+
+  // Görsel güncelle
+  RefreshRiskCheckBox(C);
 end;
 
 

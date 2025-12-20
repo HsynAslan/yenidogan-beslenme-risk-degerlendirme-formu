@@ -1137,6 +1137,11 @@ object Form2: TForm2
               Column = 0
               Control = grdpnl11
               Row = 1
+            end
+            item
+              Column = 0
+              Control = grdpnl12
+              Row = 2
             end>
           RowCollection = <
             item
@@ -1169,6 +1174,21 @@ object Form2: TForm2
                 Column = 0
                 Control = chkYR28Gun1
                 Row = 1
+              end
+              item
+                Column = 0
+                Control = YR_C1000G1
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = YR_CNEKG1
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = YR_CGISG1
+                Row = 4
               end>
             RowCollection = <
               item
@@ -1208,8 +1228,51 @@ object Form2: TForm2
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.BorderStyle = ebsSingle
               Style.TransparentBorder = False
               TabOrder = 0
+              Width = 97
+            end
+            object YR_C1000G1: TcxDBCheckBox
+              Left = 1
+              Top = 34
+              Align = alClient
+              DataBinding.DataField = 'YR_1000_GR'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              Width = 97
+            end
+            object YR_CNEKG1: TcxDBCheckBox
+              Left = 1
+              Top = 51
+              Align = alClient
+              DataBinding.DataField = 'YR_NEK_GIS'
+              DataBinding.DataSource = dsHasta
+              ParentColor = False
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 2
+              Width = 97
+            end
+            object YR_CGISG1: TcxDBCheckBox
+              Left = 1
+              Top = 67
+              Align = alClient
+              DataBinding.DataField = 'YR_NEK_GIS'
+              DataBinding.DataSource = dsHasta
+              ParentBackground = False
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 3
               Width = 97
             end
           end
@@ -1223,7 +1286,32 @@ object Form2: TForm2
               item
                 Value = 100.000000000000000000
               end>
-            ControlCollection = <>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl2
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = OR_C28G1
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = OR_CIUGRG1
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = OR_C1000G1
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = OR_CKONJENITALG1
+                Row = 4
+              end>
             RowCollection = <
               item
                 Value = 18.000000000000000000
@@ -1241,6 +1329,172 @@ object Form2: TForm2
                 Value = 18.000000000000000000
               end>
             TabOrder = 1
+            object lbl2: TLabel
+              Left = 1
+              Top = 1
+              Width = 97
+              Height = 20
+              Align = alClient
+              ExplicitWidth = 3
+              ExplicitHeight = 15
+            end
+            object OR_C28G1: TcxDBCheckBox
+              Left = 1
+              Top = 21
+              Align = alClient
+              DataBinding.DataField = 'OR_28_31_HAFTA'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              Width = 97
+            end
+            object OR_CIUGRG1: TcxDBCheckBox
+              Left = 1
+              Top = 41
+              Align = alClient
+              DataBinding.DataField = 'OR_IUGR'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              Width = 97
+            end
+            object OR_C1000G1: TcxDBCheckBox
+              Left = 1
+              Top = 72
+              Align = alClient
+              DataBinding.DataField = 'OR_1000_1500_GR'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 2
+              ExplicitLeft = 2
+              ExplicitTop = 66
+              Width = 97
+            end
+            object OR_CKONJENITALG1: TcxDBCheckBox
+              Left = 1
+              Top = 92
+              Align = alClient
+              DataBinding.DataField = 'OR_KONJ_BESLENME'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 3
+              Width = 97
+            end
+          end
+          object grdpnl12: TGridPanel
+            Left = 1
+            Top = 199
+            Width = 99
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl3
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = DR_C32G1
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = DR_CIUGRG1
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = DR_C37G1
+                Row = 3
+              end>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 40.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 2
+            DesignSize = (
+              99
+              85)
+            object lbl3: TLabel
+              Left = 48
+              Top = 2
+              Width = 3
+              Height = 15
+              Anchors = []
+              ExplicitLeft = 44
+            end
+            object DR_C32G1: TcxDBCheckBox
+              Left = 1
+              Top = 18
+              Align = alClient
+              DataBinding.DataField = 'DR_32_35_HAFTA'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitWidth = 72
+              ExplicitHeight = 19
+              Width = 97
+            end
+            object DR_CIUGRG1: TcxDBCheckBox
+              Left = 1
+              Top = 34
+              Align = alClient
+              DataBinding.DataField = 'DR_IUGR_35'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              ExplicitLeft = 5
+              ExplicitTop = 40
+              ExplicitWidth = 86
+              ExplicitHeight = 19
+              Width = 97
+            end
+            object DR_C37G1: TcxDBCheckBox
+              Left = 1
+              Top = 67
+              Align = alClient
+              DataBinding.DataField = 'DR_TERM'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Style.TransparentBorder = False
+              TabOrder = 2
+              ExplicitWidth = 72
+              ExplicitHeight = 19
+              Width = 97
+            end
           end
         end
       end
