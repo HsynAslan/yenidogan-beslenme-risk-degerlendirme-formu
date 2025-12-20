@@ -414,6 +414,11 @@ object Form2: TForm2
             Column = 4
             Control = grdpnl18
             Row = 4
+          end
+          item
+            Column = 5
+            Control = grdpnl19
+            Row = 4
           end>
         RowCollection = <
           item
@@ -1878,7 +1883,22 @@ object Form2: TForm2
             item
               Value = 100.000000000000000000
             end>
-          ControlCollection = <>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = grdpnl20
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = grdpnl23
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = grdpnl26
+              Row = 2
+            end>
           RowCollection = <
             item
               Value = 29.990000000000000000
@@ -1890,9 +1910,126 @@ object Form2: TForm2
               Value = 30.010000000000000000
             end>
           TabOrder = 27
-          ExplicitTop = 227
-          ExplicitWidth = 185
-          ExplicitHeight = 41
+          object grdpnl20: TGridPanel
+            Left = 1
+            Top = 1
+            Width = 99
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl7
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = YR_C28G3
+                Row = 1
+              end>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 0
+            DesignSize = (
+              99
+              85)
+            object lbl7: TLabel
+              Left = 48
+              Top = 2
+              Width = 3
+              Height = 15
+              Anchors = []
+              ExplicitLeft = 44
+            end
+            object YR_C28G3: TcxDBCheckBox
+              Left = 1
+              Top = 18
+              Align = alClient
+              DataBinding.DataField = 'YR_28_HAFTA'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitWidth = 71
+              ExplicitHeight = 19
+              Width = 97
+            end
+          end
+          object grdpnl23: TGridPanel
+            Left = 1
+            Top = 86
+            Width = 99
+            Height = 113
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <>
+            RowCollection = <
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 28.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end>
+            TabOrder = 1
+          end
+          object grdpnl26: TGridPanel
+            Left = 1
+            Top = 199
+            Width = 99
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 40.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 2
+          end
         end
         object grdpnl18: TGridPanel
           Left = 805
@@ -1905,22 +2042,239 @@ object Form2: TForm2
             item
               Value = 100.000000000000000000
             end>
-          ControlCollection = <>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = grdpnl21
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = grdpnl24
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = grdpnl27
+              Row = 2
+            end>
           RowCollection = <
             item
-              Value = 38.461538461538460000
+              Value = 29.990000000000000000
             end
             item
-              Value = 38.461538461538460000
+              Value = 40.000000000000000000
             end
             item
-              Value = 23.076923076923080000
+              Value = 30.010000000000000000
             end>
           TabOrder = 28
-          ExplicitLeft = 856
-          ExplicitTop = 176
-          ExplicitWidth = 185
-          ExplicitHeight = 41
+          object grdpnl21: TGridPanel
+            Left = 1
+            Top = 1
+            Width = 98
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 0
+          end
+          object grdpnl24: TGridPanel
+            Left = 1
+            Top = 86
+            Width = 98
+            Height = 113
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <>
+            RowCollection = <
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 28.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end>
+            TabOrder = 1
+          end
+          object grdpnl27: TGridPanel
+            Left = 1
+            Top = 199
+            Width = 98
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 40.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 2
+          end
+        end
+        object grdpnl19: TGridPanel
+          Left = 905
+          Top = 105
+          Width = 101
+          Height = 285
+          Align = alClient
+          ColumnCollection = <
+            item
+              Value = 100.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = grdpnl22
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = grdpnl25
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = grdpnl28
+              Row = 2
+            end>
+          RowCollection = <
+            item
+              Value = 29.990000000000000000
+            end
+            item
+              Value = 40.000000000000000000
+            end
+            item
+              Value = 30.010000000000000000
+            end>
+          TabOrder = 29
+          object grdpnl22: TGridPanel
+            Left = 1
+            Top = 1
+            Width = 99
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 0
+          end
+          object grdpnl25: TGridPanel
+            Left = 1
+            Top = 86
+            Width = 99
+            Height = 113
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <>
+            RowCollection = <
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 28.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end>
+            TabOrder = 1
+          end
+          object grdpnl28: TGridPanel
+            Left = 1
+            Top = 199
+            Width = 99
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 40.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 2
+          end
         end
       end
     end

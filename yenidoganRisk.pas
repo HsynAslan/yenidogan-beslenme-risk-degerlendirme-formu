@@ -173,6 +173,27 @@ type
     grdpnl26: TGridPanel;
     grdpnl27: TGridPanel;
     grdpnl28: TGridPanel;
+    lbl7: TLabel;
+    YR_C28G3: TcxDBCheckBox;
+    YR_C1000G3: TcxDBCheckBox;
+    YR_CNEKG3: TcxDBCheckBox;
+    YR_CGISG3: TcxDBCheckBox;
+    lbl8: TLabel;
+    OR_C28G3: TcxDBCheckBox;
+    OR_CIUGRG3: TcxDBCheckBox;
+    OR_C1000G3: TcxDBCheckBox;
+    OR_CKONJENITALG3: TcxDBCheckBox;
+    lbl9: TLabel;
+    DR_C32G3: TcxDBCheckBox;
+    DR_CIUGRG3: TcxDBCheckBox;
+    DR_C37G3: TcxDBCheckBox;
+    lbl10: TLabel;
+    YR_C28G4: TcxDBCheckBox;
+    YR_CN1000_GR4: TcxDBCheckBox;
+    YR_CNEKG4: TcxDBCheckBox;
+    YR_CGISG4: TcxDBCheckBox;
+    lbl11: TLabel;
+    OR_C28G4: TcxDBCheckBox;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);

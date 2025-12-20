@@ -21,9 +21,10 @@ object Form2: TForm2
     Width = 950
     Height = 694
     Align = alClient
+    HorzScrollBar.Position = 63
     TabOrder = 0
     object grpAna1: TcxGroupBox
-      Left = 0
+      Left = -63
       Top = 0
       Align = alTop
       Style.BorderStyle = ebsNone
@@ -42,7 +43,7 @@ object Form2: TForm2
       end
     end
     object grpAna2: TcxGroupBox
-      Left = 0
+      Left = -63
       Top = 35
       Align = alTop
       Style.BorderStyle = ebsNone
@@ -236,7 +237,7 @@ object Form2: TForm2
       end
     end
     object grpOlcum: TcxGroupBox
-      Left = 0
+      Left = -63
       Top = 135
       Align = alTop
       Caption = 'grpOlcum'
@@ -402,6 +403,21 @@ object Form2: TForm2
           item
             Column = 2
             Control = grdpnl13
+            Row = 4
+          end
+          item
+            Column = 3
+            Control = grdpnl17
+            Row = 4
+          end
+          item
+            Column = 4
+            Control = grdpnl18
+            Row = 4
+          end
+          item
+            Column = 5
+            Control = grdpnl19
             Row = 4
           end>
         RowCollection = <
@@ -1853,16 +1869,652 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitWidth = 72
-              ExplicitHeight = 19
               Width = 96
             end
+          end
+        end
+        object grdpnl17: TGridPanel
+          Left = 704
+          Top = 105
+          Width = 101
+          Height = 285
+          Align = alClient
+          ColumnCollection = <
+            item
+              Value = 100.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = grdpnl20
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = grdpnl23
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = grdpnl26
+              Row = 2
+            end>
+          RowCollection = <
+            item
+              Value = 29.990000000000000000
+            end
+            item
+              Value = 40.000000000000000000
+            end
+            item
+              Value = 30.010000000000000000
+            end>
+          TabOrder = 27
+          object grdpnl20: TGridPanel
+            Left = 1
+            Top = 1
+            Width = 99
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl7
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = YR_C28G3
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = YR_C1000G3
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = YR_CNEKG3
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = YR_CGISG3
+                Row = 4
+              end>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 0
+            DesignSize = (
+              99
+              85)
+            object lbl7: TLabel
+              Left = 48
+              Top = 2
+              Width = 3
+              Height = 15
+              Anchors = []
+              ExplicitLeft = 44
+            end
+            object YR_C28G3: TcxDBCheckBox
+              Left = 1
+              Top = 18
+              Align = alClient
+              DataBinding.DataField = 'YR_28_HAFTA'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitWidth = 71
+              ExplicitHeight = 19
+              Width = 97
+            end
+            object YR_C1000G3: TcxDBCheckBox
+              Left = 1
+              Top = 34
+              Align = alClient
+              DataBinding.DataField = 'YR_1000_GR'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              ExplicitWidth = 83
+              ExplicitHeight = 19
+              Width = 97
+            end
+            object YR_CNEKG3: TcxDBCheckBox
+              Left = 1
+              Top = 51
+              Align = alClient
+              DataBinding.DataField = 'YR_NEK_GIS'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 2
+              ExplicitWidth = 80
+              ExplicitHeight = 19
+              Width = 97
+            end
+            object YR_CGISG3: TcxDBCheckBox
+              Left = 1
+              Top = 67
+              Align = alClient
+              DataBinding.DataField = 'YR_KONJ_GIS'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 3
+              ExplicitWidth = 76
+              ExplicitHeight = 19
+              Width = 97
+            end
+          end
+          object grdpnl23: TGridPanel
+            Left = 1
+            Top = 86
+            Width = 99
+            Height = 113
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl8
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = OR_C28G3
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = OR_CIUGRG3
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = OR_C1000G3
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = OR_CKONJENITALG3
+                Row = 4
+              end>
+            RowCollection = <
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 28.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end>
+            TabOrder = 1
+            DesignSize = (
+              99
+              113)
+            object lbl8: TLabel
+              Left = 48
+              Top = 3
+              Width = 3
+              Height = 15
+              Anchors = []
+              ExplicitLeft = 44
+            end
+            object OR_C28G3: TcxDBCheckBox
+              Left = 1
+              Top = 21
+              Align = alClient
+              DataBinding.DataField = 'OR_28_31_HAFTA'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitWidth = 73
+              ExplicitHeight = 19
+              Width = 97
+            end
+            object OR_CIUGRG3: TcxDBCheckBox
+              Left = 1
+              Top = 41
+              Align = alClient
+              DataBinding.DataField = 'OR_IUGR'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              ExplicitTop = 47
+              ExplicitWidth = 87
+              ExplicitHeight = 19
+              Width = 97
+            end
+            object OR_C1000G3: TcxDBCheckBox
+              Left = 1
+              Top = 72
+              Align = alClient
+              DataBinding.DataField = 'OR_1000_1500_GR'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 2
+              ExplicitWidth = 85
+              ExplicitHeight = 19
+              Width = 97
+            end
+            object OR_CKONJENITALG3: TcxDBCheckBox
+              Left = 1
+              Top = 92
+              Align = alClient
+              DataBinding.DataField = 'OR_KONJ_BESLENME'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 3
+              ExplicitWidth = 127
+              ExplicitHeight = 19
+              Width = 97
+            end
+          end
+          object grdpnl26: TGridPanel
+            Left = 1
+            Top = 199
+            Width = 99
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl9
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = DR_C32G3
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = DR_CIUGRG3
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = DR_C37G3
+                Row = 3
+              end>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 40.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 2
+            DesignSize = (
+              99
+              85)
+            object lbl9: TLabel
+              Left = 48
+              Top = 2
+              Width = 3
+              Height = 15
+              Anchors = []
+              ExplicitLeft = 44
+            end
+            object DR_C32G3: TcxDBCheckBox
+              Left = 1
+              Top = 18
+              Align = alClient
+              DataBinding.DataField = 'DR_32_35_HAFTA'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitWidth = 72
+              ExplicitHeight = 19
+              Width = 97
+            end
+            object DR_CIUGRG3: TcxDBCheckBox
+              Left = 1
+              Top = 34
+              Align = alClient
+              DataBinding.DataField = 'DR_IUGR_35'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              ExplicitTop = 41
+              ExplicitWidth = 86
+              ExplicitHeight = 19
+              Width = 97
+            end
+            object DR_C37G3: TcxDBCheckBox
+              Left = 1
+              Top = 67
+              Align = alClient
+              Caption = 'DR_C37G3'
+              DataBinding.DataField = 'DR_TERM'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 2
+              ExplicitWidth = 72
+              ExplicitHeight = 19
+              Width = 97
+            end
+          end
+        end
+        object grdpnl18: TGridPanel
+          Left = 805
+          Top = 105
+          Width = 100
+          Height = 285
+          Align = alClient
+          Caption = 'grdpnl18'
+          ColumnCollection = <
+            item
+              Value = 100.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = grdpnl21
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = grdpnl24
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = grdpnl27
+              Row = 2
+            end>
+          RowCollection = <
+            item
+              Value = 29.990000000000000000
+            end
+            item
+              Value = 40.000000000000000000
+            end
+            item
+              Value = 30.010000000000000000
+            end>
+          TabOrder = 28
+          object grdpnl21: TGridPanel
+            Left = 1
+            Top = 1
+            Width = 98
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 0
+          end
+          object grdpnl24: TGridPanel
+            Left = 1
+            Top = 86
+            Width = 98
+            Height = 113
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <>
+            RowCollection = <
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 28.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end>
+            TabOrder = 1
+          end
+          object grdpnl27: TGridPanel
+            Left = 1
+            Top = 199
+            Width = 98
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 40.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 2
+          end
+        end
+        object grdpnl19: TGridPanel
+          Left = 905
+          Top = 105
+          Width = 101
+          Height = 285
+          Align = alClient
+          ColumnCollection = <
+            item
+              Value = 100.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = grdpnl22
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = grdpnl25
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = grdpnl28
+              Row = 2
+            end>
+          RowCollection = <
+            item
+              Value = 29.990000000000000000
+            end
+            item
+              Value = 40.000000000000000000
+            end
+            item
+              Value = 30.010000000000000000
+            end>
+          TabOrder = 29
+          object grdpnl22: TGridPanel
+            Left = 1
+            Top = 1
+            Width = 99
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 0
+          end
+          object grdpnl25: TGridPanel
+            Left = 1
+            Top = 86
+            Width = 99
+            Height = 113
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <>
+            RowCollection = <
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 28.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end>
+            TabOrder = 1
+          end
+          object grdpnl28: TGridPanel
+            Left = 1
+            Top = 199
+            Width = 99
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 40.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 2
           end
         end
       end
     end
     object btnKaydet: TButton
-      Left = 936
+      Left = 873
       Top = 648
       Width = 75
       Height = 25

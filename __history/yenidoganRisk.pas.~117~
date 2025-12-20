@@ -162,6 +162,19 @@ type
     DR_CIUGRG2: TcxDBCheckBox;
     DR_C37G2: TcxDBCheckBox;
     grdpnl17: TGridPanel;
+    grdpnl18: TGridPanel;
+    grdpnl19: TGridPanel;
+    grdpnl20: TGridPanel;
+    grdpnl21: TGridPanel;
+    grdpnl22: TGridPanel;
+    grdpnl23: TGridPanel;
+    grdpnl24: TGridPanel;
+    grdpnl25: TGridPanel;
+    grdpnl26: TGridPanel;
+    grdpnl27: TGridPanel;
+    grdpnl28: TGridPanel;
+    lbl7: TLabel;
+    YR_C28G3: TcxDBCheckBox;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
