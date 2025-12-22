@@ -186,6 +186,23 @@ type
     lbl9: TLabel;
     DR_C32G3: TcxDBCheckBox;
     DR_CIUGRG3: TcxDBCheckBox;
+    DR_C37G3: TcxDBCheckBox;
+    lbl10: TLabel;
+    YR_C28G4: TcxDBCheckBox;
+    YR_CN1000_GR4: TcxDBCheckBox;
+    YR_CNEKG4: TcxDBCheckBox;
+    YR_CGISG4: TcxDBCheckBox;
+    lbl11: TLabel;
+    OR_C28G4: TcxDBCheckBox;
+    OR_CIUGRG4: TcxDBCheckBox;
+    OR_C1000G4: TcxDBCheckBox;
+    OR_CKONJENITALG4: TcxDBCheckBox;
+    lbl12: TLabel;
+    DR_C32G4: TcxDBCheckBox;
+    DR_CIUGRG4: TcxDBCheckBox;
+    DR_C37G4: TcxDBCheckBox;
+    lbl13: TLabel;
+    YR_C28G5: TcxDBCheckBox;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
