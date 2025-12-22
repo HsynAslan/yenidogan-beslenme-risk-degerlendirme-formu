@@ -419,6 +419,66 @@ object Form2: TForm2
             Column = 5
             Control = grdpnl19
             Row = 4
+          end
+          item
+            Column = 0
+            Control = cxlbl27
+            Row = 5
+          end
+          item
+            Column = 4
+            Control = scorGun4
+            Row = 5
+          end
+          item
+            Column = 5
+            Control = scorGun5
+            Row = 5
+          end
+          item
+            Column = 0
+            Control = grdpnl29
+            Row = 6
+          end
+          item
+            Column = 1
+            Control = DR_GUN1
+            Row = 6
+          end
+          item
+            Column = 2
+            Control = DR_GUN2
+            Row = 6
+          end
+          item
+            Column = 3
+            Control = DR_GUN3
+            Row = 6
+          end
+          item
+            Column = 4
+            Control = DR_GUN4
+            Row = 6
+          end
+          item
+            Column = 5
+            Control = DR_GUN5
+            Row = 6
+          end
+          item
+            Column = 1
+            Control = scorGun1
+            Row = 5
+          end
+          item
+            Column = 2
+            Control = scorGun2
+            Row = 5
+          end
+          item
+            Column = 3
+            Control = scorGun3
+            Row = 5
           end>
         RowCollection = <
           item
@@ -579,6 +639,8 @@ object Form2: TForm2
           Left = 604
           Top = 34
           Align = alClient
+          DataBinding.DataField = 'KILO_KG'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 8
           Width = 100
@@ -587,6 +649,8 @@ object Form2: TForm2
           Left = 704
           Top = 34
           Align = alClient
+          DataBinding.DataField = 'KILO_KG'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 9
           Width = 101
@@ -595,6 +659,8 @@ object Form2: TForm2
           Left = 805
           Top = 34
           Align = alClient
+          DataBinding.DataField = 'KILO_KG'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 10
           Width = 100
@@ -603,6 +669,8 @@ object Form2: TForm2
           Left = 905
           Top = 34
           Align = alClient
+          DataBinding.DataField = 'KILO_KG'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 11
           Width = 101
@@ -629,6 +697,8 @@ object Form2: TForm2
           Left = 604
           Top = 58
           Align = alClient
+          DataBinding.DataField = 'BOY_CM'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 14
           Width = 100
@@ -637,6 +707,8 @@ object Form2: TForm2
           Left = 704
           Top = 58
           Align = alClient
+          DataBinding.DataField = 'BOY_CM'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 15
           Width = 101
@@ -645,6 +717,8 @@ object Form2: TForm2
           Left = 805
           Top = 58
           Align = alClient
+          DataBinding.DataField = 'BOY_CM'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 16
           Width = 100
@@ -653,6 +727,8 @@ object Form2: TForm2
           Left = 905
           Top = 58
           Align = alClient
+          DataBinding.DataField = 'BOY_CM'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 17
           Width = 101
@@ -682,6 +758,8 @@ object Form2: TForm2
           Left = 604
           Top = 82
           Align = alClient
+          DataBinding.DataField = 'BAS_CEVRESI_CM'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 20
           Width = 100
@@ -690,6 +768,8 @@ object Form2: TForm2
           Left = 704
           Top = 82
           Align = alClient
+          DataBinding.DataField = 'BAS_CEVRESI_CM'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 21
           Width = 101
@@ -698,6 +778,8 @@ object Form2: TForm2
           Left = 805
           Top = 82
           Align = alClient
+          DataBinding.DataField = 'BAS_CEVRESI_CM'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 22
           Width = 100
@@ -706,6 +788,8 @@ object Form2: TForm2
           Left = 905
           Top = 82
           Align = alClient
+          DataBinding.DataField = 'BAS_CEVRESI_CM'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 23
           Width = 101
@@ -2471,8 +2555,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitLeft = 4
-              ExplicitTop = 24
               Width = 96
             end
             object OR_CIUGRG4: TcxDBCheckBox
@@ -2486,8 +2568,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitLeft = 3
-              ExplicitTop = 35
               Width = 96
             end
             object OR_C1000G4: TcxDBCheckBox
@@ -2501,8 +2581,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitWidth = 85
-              ExplicitHeight = 19
               Width = 96
             end
             object OR_CKONJENITALG4: TcxDBCheckBox
@@ -2516,8 +2594,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
-              ExplicitWidth = 127
-              ExplicitHeight = 19
               Width = 96
             end
           end
@@ -2588,8 +2664,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitWidth = 72
-              ExplicitHeight = 19
               Width = 96
             end
             object DR_CIUGRG4: TcxDBCheckBox
@@ -2603,9 +2677,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitTop = 41
-              ExplicitWidth = 86
-              ExplicitHeight = 19
               Width = 96
             end
             object DR_C37G4: TcxDBCheckBox
@@ -2619,8 +2690,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitWidth = 72
-              ExplicitHeight = 19
               Width = 96
             end
           end
@@ -2737,9 +2806,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitLeft = 14
-              ExplicitWidth = 13
-              ExplicitHeight = 17
               Width = 97
             end
             object YR_C1000G5: TcxDBCheckBox
@@ -2753,8 +2819,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitWidth = 83
-              ExplicitHeight = 19
               Width = 97
             end
             object YR_CNEKG5: TcxDBCheckBox
@@ -2768,9 +2832,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitLeft = 9
-              ExplicitWidth = 13
-              ExplicitHeight = 17
               Width = 97
             end
             object YR_CGISG5: TcxDBCheckBox
@@ -2784,10 +2845,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
-              ExplicitLeft = 5
-              ExplicitTop = 73
-              ExplicitWidth = 76
-              ExplicitHeight = 19
               Width = 97
             end
           end
@@ -2866,8 +2923,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitWidth = 73
-              ExplicitHeight = 19
               Width = 97
             end
             object OR_CIUGRG5: TcxDBCheckBox
@@ -2881,9 +2936,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitTop = 47
-              ExplicitWidth = 87
-              ExplicitHeight = 19
               Width = 97
             end
             object OR_C1000G5: TcxDBCheckBox
@@ -2897,8 +2949,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitWidth = 85
-              ExplicitHeight = 19
               Width = 97
             end
             object OR_CKONJENITALG5: TcxDBCheckBox
@@ -2912,10 +2962,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
-              ExplicitLeft = -23
-              ExplicitTop = 90
-              ExplicitWidth = 127
-              ExplicitHeight = 19
               Width = 97
             end
           end
@@ -2986,29 +3032,318 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitWidth = 72
-              ExplicitHeight = 19
               Width = 97
             end
             object DR_CIUGRG5: TcxDBCheckBox
-              Left = 6
-              Top = 41
-              Anchors = []
-              Caption = 'DR_CIUGRG5'
+              Left = 1
+              Top = 34
+              Align = alClient
+              DataBinding.DataField = 'DR_IUGR_35'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitLeft = 1
+              Width = 97
             end
             object DR_CTERMG5: TcxDBCheckBox
-              Left = 4
+              Left = 1
               Top = 67
-              Anchors = []
-              Caption = 'DR_CTERMG5'
+              Align = alClient
+              DataBinding.DataField = 'DR_TERM'
+              DataBinding.DataSource = dsHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitLeft = 1
+              Width = 97
             end
           end
+        end
+        object cxlbl27: TcxLabel
+          Left = 1
+          Top = 390
+          Align = alClient
+          Caption = 'R'#304'SK SKORU (Orta veya Y'#252'ksek olarak yaz'#305'lacak)'
+          Properties.Alignment.Horz = taRightJustify
+          Properties.Alignment.Vert = taVCenter
+          AnchorX = 503
+          AnchorY = 407
+        end
+        object scorGun4: TcxLabel
+          Left = 805
+          Top = 390
+          Align = alClient
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -12
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          AnchorX = 855
+          AnchorY = 407
+        end
+        object scorGun5: TcxLabel
+          Left = 905
+          Top = 390
+          Align = alClient
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -12
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          AnchorX = 956
+          AnchorY = 407
+        end
+        object grdpnl29: TGridPanel
+          Left = 1
+          Top = 423
+          Width = 502
+          Height = 52
+          Align = alClient
+          ColumnCollection = <
+            item
+              Value = 100.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = lbl16
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = cxlbl28
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = cxlbl29
+              Row = 2
+            end
+            item
+              Column = 0
+              Control = lbl17
+              Row = 3
+            end>
+          RowCollection = <
+            item
+              Value = 10.000000000000000000
+            end
+            item
+              Value = 40.000000000000000000
+            end
+            item
+              Value = 40.000000000000000000
+            end
+            item
+              Value = 10.000000000000000000
+            end>
+          TabOrder = 33
+          DesignSize = (
+            502
+            52)
+          object lbl16: TLabel
+            Left = 249
+            Top = 1
+            Width = 3
+            Height = 15
+            Anchors = []
+            ExplicitLeft = 238
+          end
+          object cxlbl28: TcxLabel
+            Left = 1
+            Top = 6
+            Align = alClient
+            Caption = 'DE'#286'ERLEND'#304'RMEY'#304' YAPANIN;'
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -12
+            Style.Font.Name = 'Segoe UI'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Properties.Alignment.Vert = taVCenter
+            ExplicitLeft = 226
+            ExplicitWidth = 40
+            ExplicitHeight = 19
+            AnchorX = 501
+            AnchorY = 16
+          end
+          object cxlbl29: TcxLabel
+            Left = 1
+            Top = 26
+            Align = alClient
+            Caption = 'ADI - SOYADI:'
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -12
+            Style.Font.Name = 'Segoe UI'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Properties.Alignment.Vert = taVCenter
+            ExplicitLeft = 226
+            ExplicitWidth = 40
+            ExplicitHeight = 19
+            AnchorX = 501
+            AnchorY = 36
+          end
+          object lbl17: TLabel
+            Left = 249
+            Top = 46
+            Width = 3
+            Height = 15
+            Anchors = []
+            ExplicitLeft = 238
+          end
+        end
+        object DR_GUN1: TcxDBLabel
+          Left = 503
+          Top = 423
+          Align = alClient
+          DataBinding.DataField = 'DOKTOR_ADI'
+          DataBinding.DataSource = dsHasta
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 536
+          ExplicitTop = 440
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 52
+          Width = 101
+          AnchorX = 554
+          AnchorY = 449
+        end
+        object DR_GUN2: TcxDBLabel
+          Left = 604
+          Top = 423
+          Align = alClient
+          DataBinding.DataField = 'DOKTOR_ADI'
+          DataBinding.DataSource = dsHasta
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 640
+          ExplicitTop = 440
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 52
+          Width = 100
+          AnchorX = 654
+          AnchorY = 449
+        end
+        object DR_GUN3: TcxDBLabel
+          Left = 704
+          Top = 423
+          Align = alClient
+          DataBinding.DataField = 'DOKTOR_ADI'
+          DataBinding.DataSource = dsHasta
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 744
+          ExplicitTop = 432
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 52
+          Width = 101
+          AnchorX = 755
+          AnchorY = 449
+        end
+        object DR_GUN4: TcxDBLabel
+          Left = 805
+          Top = 423
+          Align = alClient
+          DataBinding.DataField = 'DOKTOR_ADI'
+          DataBinding.DataSource = dsHasta
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 832
+          ExplicitTop = 440
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 52
+          Width = 100
+          AnchorX = 855
+          AnchorY = 449
+        end
+        object DR_GUN5: TcxDBLabel
+          Left = 905
+          Top = 423
+          Align = alClient
+          DataBinding.DataField = 'DOKTOR_ADI'
+          DataBinding.DataSource = dsHasta
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 944
+          ExplicitTop = 432
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 52
+          Width = 101
+          AnchorX = 956
+          AnchorY = 449
+        end
+        object scorGun1: TcxDBLabel
+          Left = 503
+          Top = 390
+          Align = alClient
+          DataBinding.DataField = 'RISK_SEVIYE'
+          DataBinding.DataSource = dsHasta
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 536
+          ExplicitTop = 400
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 33
+          Width = 101
+          AnchorX = 554
+          AnchorY = 407
+        end
+        object scorGun2: TcxDBLabel
+          Left = 604
+          Top = 390
+          Align = alClient
+          DataBinding.DataField = 'RISK_SEVIYE'
+          DataBinding.DataSource = dsHasta
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 648
+          ExplicitTop = 400
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 33
+          Width = 100
+          AnchorX = 654
+          AnchorY = 407
+        end
+        object scorGun3: TcxDBLabel
+          Left = 704
+          Top = 390
+          Align = alClient
+          DataBinding.DataField = 'RISK_SEVIYE'
+          DataBinding.DataSource = dsHasta
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 752
+          ExplicitTop = 392
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 33
+          Width = 101
+          AnchorX = 755
+          AnchorY = 407
         end
       end
     end

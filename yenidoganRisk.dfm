@@ -426,31 +426,6 @@ object Form2: TForm2
             Row = 5
           end
           item
-            Column = 1
-            Control = scorGun1
-            Row = 5
-          end
-          item
-            Column = 2
-            Control = scorGun2
-            Row = 5
-          end
-          item
-            Column = 3
-            Control = scorGun3
-            Row = 5
-          end
-          item
-            Column = 4
-            Control = scorGun4
-            Row = 5
-          end
-          item
-            Column = 5
-            Control = scorGun5
-            Row = 5
-          end
-          item
             Column = 0
             Control = grdpnl29
             Row = 6
@@ -479,6 +454,31 @@ object Form2: TForm2
             Column = 5
             Control = DR_GUN5
             Row = 6
+          end
+          item
+            Column = 1
+            Control = scorGun1
+            Row = 5
+          end
+          item
+            Column = 2
+            Control = scorGun2
+            Row = 5
+          end
+          item
+            Column = 3
+            Control = scorGun3
+            Row = 5
+          end
+          item
+            Column = 4
+            Control = scorGun4
+            Row = 5
+          end
+          item
+            Column = 5
+            Control = scorGun5
+            Row = 5
           end>
         RowCollection = <
           item
@@ -3072,86 +3072,6 @@ object Form2: TForm2
           AnchorX = 503
           AnchorY = 407
         end
-        object scorGun1: TcxLabel
-          Left = 503
-          Top = 390
-          Align = alClient
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Properties.Alignment.Horz = taCenter
-          Properties.Alignment.Vert = taVCenter
-          AnchorX = 554
-          AnchorY = 407
-        end
-        object scorGun2: TcxLabel
-          Left = 604
-          Top = 390
-          Align = alClient
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Properties.Alignment.Horz = taCenter
-          Properties.Alignment.Vert = taVCenter
-          AnchorX = 654
-          AnchorY = 407
-        end
-        object scorGun3: TcxLabel
-          Left = 704
-          Top = 390
-          Align = alClient
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Properties.Alignment.Horz = taCenter
-          Properties.Alignment.Vert = taVCenter
-          AnchorX = 755
-          AnchorY = 407
-        end
-        object scorGun4: TcxLabel
-          Left = 805
-          Top = 390
-          Align = alClient
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Properties.Alignment.Horz = taCenter
-          Properties.Alignment.Vert = taVCenter
-          AnchorX = 855
-          AnchorY = 407
-        end
-        object scorGun5: TcxLabel
-          Left = 905
-          Top = 390
-          Align = alClient
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -12
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Properties.Alignment.Horz = taCenter
-          Properties.Alignment.Vert = taVCenter
-          AnchorX = 956
-          AnchorY = 407
-        end
         object grdpnl29: TGridPanel
           Left = 1
           Top = 423
@@ -3196,7 +3116,7 @@ object Form2: TForm2
             item
               Value = 10.000000000000000000
             end>
-          TabOrder = 36
+          TabOrder = 31
           DesignSize = (
             502
             52)
@@ -3341,6 +3261,91 @@ object Form2: TForm2
           Width = 101
           AnchorX = 956
           AnchorY = 449
+        end
+        object scorGun1: TcxDBLabel
+          Left = 503
+          Top = 390
+          Align = alClient
+          DataBinding.DataField = 'RISK_SEVIYE'
+          DataBinding.DataSource = dsHasta
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 536
+          ExplicitTop = 400
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 33
+          Width = 101
+          AnchorX = 554
+          AnchorY = 407
+        end
+        object scorGun2: TcxDBLabel
+          Left = 604
+          Top = 390
+          Align = alClient
+          DataBinding.DataField = 'RISK_SEVIYE'
+          DataBinding.DataSource = dsHasta
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 648
+          ExplicitTop = 400
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 33
+          Width = 100
+          AnchorX = 654
+          AnchorY = 407
+        end
+        object scorGun3: TcxDBLabel
+          Left = 704
+          Top = 390
+          Align = alClient
+          DataBinding.DataField = 'RISK_SEVIYE'
+          DataBinding.DataSource = dsHasta
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 752
+          ExplicitTop = 392
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 33
+          Width = 101
+          AnchorX = 755
+          AnchorY = 407
+        end
+        object scorGun4: TcxDBLabel
+          Left = 805
+          Top = 390
+          Align = alClient
+          DataBinding.DataField = 'RISK_SEVIYE'
+          DataBinding.DataSource = dsHasta
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 832
+          ExplicitTop = 400
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 33
+          Width = 100
+          AnchorX = 855
+          AnchorY = 407
+        end
+        object scorGun5: TcxDBLabel
+          Left = 905
+          Top = 390
+          Align = alClient
+          DataBinding.DataField = 'RISK_SEVIYE'
+          DataBinding.DataSource = dsHasta
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 936
+          ExplicitTop = 400
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 33
+          Width = 101
+          AnchorX = 956
+          AnchorY = 407
         end
       end
     end
