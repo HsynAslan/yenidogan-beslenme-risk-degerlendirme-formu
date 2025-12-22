@@ -579,6 +579,8 @@ object Form2: TForm2
           Left = 604
           Top = 34
           Align = alClient
+          DataBinding.DataField = 'KILO_KG'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 8
           Width = 100
@@ -587,6 +589,8 @@ object Form2: TForm2
           Left = 704
           Top = 34
           Align = alClient
+          DataBinding.DataField = 'KILO_KG'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 9
           Width = 101
@@ -595,6 +599,8 @@ object Form2: TForm2
           Left = 805
           Top = 34
           Align = alClient
+          DataBinding.DataField = 'KILO_KG'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 10
           Width = 100
@@ -603,6 +609,8 @@ object Form2: TForm2
           Left = 905
           Top = 34
           Align = alClient
+          DataBinding.DataField = 'KILO_KG'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 11
           Width = 101
@@ -629,6 +637,8 @@ object Form2: TForm2
           Left = 604
           Top = 58
           Align = alClient
+          DataBinding.DataField = 'BOY_CM'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 14
           Width = 100
@@ -637,6 +647,8 @@ object Form2: TForm2
           Left = 704
           Top = 58
           Align = alClient
+          DataBinding.DataField = 'BOY_CM'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 15
           Width = 101
@@ -645,14 +657,20 @@ object Form2: TForm2
           Left = 805
           Top = 58
           Align = alClient
+          DataBinding.DataField = 'BOY_CM'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 16
+          ExplicitLeft = 799
+          ExplicitTop = 52
           Width = 100
         end
         object edtBoyGun5: TcxDBTextEdit
           Left = 905
           Top = 58
           Align = alClient
+          DataBinding.DataField = 'BOY_CM'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 17
           Width = 101
@@ -682,6 +700,8 @@ object Form2: TForm2
           Left = 604
           Top = 82
           Align = alClient
+          DataBinding.DataField = 'BAS_CEVRESI_CM'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 20
           Width = 100
@@ -690,6 +710,8 @@ object Form2: TForm2
           Left = 704
           Top = 82
           Align = alClient
+          DataBinding.DataField = 'BAS_CEVRESI_CM'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 21
           Width = 101
@@ -698,14 +720,20 @@ object Form2: TForm2
           Left = 805
           Top = 82
           Align = alClient
+          DataBinding.DataField = 'BAS_CEVRESI_CM'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 22
+          ExplicitLeft = 800
+          ExplicitTop = 79
           Width = 100
         end
         object edtBasGun5: TcxDBTextEdit
           Left = 905
           Top = 82
           Align = alClient
+          DataBinding.DataField = 'BAS_CEVRESI_CM'
+          DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 23
           Width = 101
@@ -2471,8 +2499,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitLeft = 4
-              ExplicitTop = 24
               Width = 96
             end
             object OR_CIUGRG4: TcxDBCheckBox
@@ -2486,8 +2512,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitLeft = 3
-              ExplicitTop = 35
               Width = 96
             end
             object OR_C1000G4: TcxDBCheckBox
@@ -2501,8 +2525,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitWidth = 85
-              ExplicitHeight = 19
               Width = 96
             end
             object OR_CKONJENITALG4: TcxDBCheckBox
@@ -2516,8 +2538,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
-              ExplicitWidth = 127
-              ExplicitHeight = 19
               Width = 96
             end
           end
@@ -2588,8 +2608,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitWidth = 72
-              ExplicitHeight = 19
               Width = 96
             end
             object DR_CIUGRG4: TcxDBCheckBox
@@ -2603,9 +2621,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitTop = 41
-              ExplicitWidth = 86
-              ExplicitHeight = 19
               Width = 96
             end
             object DR_C37G4: TcxDBCheckBox
@@ -2619,8 +2634,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitWidth = 72
-              ExplicitHeight = 19
               Width = 96
             end
           end
@@ -2737,9 +2750,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitLeft = 14
-              ExplicitWidth = 13
-              ExplicitHeight = 17
               Width = 97
             end
             object YR_C1000G5: TcxDBCheckBox
@@ -2753,8 +2763,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitWidth = 83
-              ExplicitHeight = 19
               Width = 97
             end
             object YR_CNEKG5: TcxDBCheckBox
@@ -2768,9 +2776,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitLeft = 9
-              ExplicitWidth = 13
-              ExplicitHeight = 17
               Width = 97
             end
             object YR_CGISG5: TcxDBCheckBox
@@ -2784,10 +2789,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
-              ExplicitLeft = 5
-              ExplicitTop = 73
-              ExplicitWidth = 76
-              ExplicitHeight = 19
               Width = 97
             end
           end
@@ -2866,8 +2867,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitWidth = 73
-              ExplicitHeight = 19
               Width = 97
             end
             object OR_CIUGRG5: TcxDBCheckBox
@@ -2881,9 +2880,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitTop = 47
-              ExplicitWidth = 87
-              ExplicitHeight = 19
               Width = 97
             end
             object OR_C1000G5: TcxDBCheckBox
@@ -2897,8 +2893,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitWidth = 85
-              ExplicitHeight = 19
               Width = 97
             end
             object OR_CKONJENITALG5: TcxDBCheckBox
@@ -2912,10 +2906,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
-              ExplicitLeft = -23
-              ExplicitTop = 90
-              ExplicitWidth = 127
-              ExplicitHeight = 19
               Width = 97
             end
           end
@@ -2986,8 +2976,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitWidth = 72
-              ExplicitHeight = 19
               Width = 97
             end
             object DR_CIUGRG5: TcxDBCheckBox
@@ -3001,9 +2989,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitTop = 41
-              ExplicitWidth = 86
-              ExplicitHeight = 19
               Width = 97
             end
             object DR_CTERMG5: TcxDBCheckBox
@@ -3017,8 +3002,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitWidth = 91
-              ExplicitHeight = 19
               Width = 97
             end
           end
