@@ -240,7 +240,7 @@ type
 
     procedure RefreshRiskCheckBox(ACheck: TcxDBCheckBox);
 
-
+    function GetAktifHafta: Integer;
 
 
   private
@@ -256,6 +256,30 @@ implementation
 
 {$R *.dfm}
 
+function TForm2.GetAktifHafta: Integer;
+var
+  Bmk: TBookmark;
+begin
+  Result := 0;
+  if not rastgeleHasta.Active then Exit;
+
+  Bmk := rastgeleHasta.GetBookmark;
+  try
+    rastgeleHasta.First;
+    while not rastgeleHasta.Eof do
+    begin
+      if Trim(rastgeleHasta.FieldByName('RISK_SEVIYE').AsString) = '' then
+      begin
+        Result := Trunc(rastgeleHasta.FieldByName('HAFTA_NO').AsFloat);
+        Exit;
+      end;
+      rastgeleHasta.Next;
+    end;
+  finally
+    rastgeleHasta.GotoBookmark(Bmk);
+    rastgeleHasta.FreeBookmark(Bmk);
+  end;
+end;
 
 
 
@@ -314,7 +338,10 @@ end;
 
 
 procedure TForm2.FormShow(Sender: TObject);
+var
+  AktifHafta: Integer;
 begin
+  AktifHafta := GetAktifHafta;
   // 1) Oracle bağlantısı
   if not Orsn1.Connected then
     Orsn1.Connected := True;

@@ -1586,8 +1586,11 @@ object Form2: TForm2
               DataBinding.DataSource = dsHasta
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
+              ExplicitLeft = -1
+              ExplicitTop = 73
               Width = 97
             end
           end
@@ -2462,6 +2465,7 @@ object Form2: TForm2
               DataBinding.DataSource = dsHasta
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
               Width = 96
