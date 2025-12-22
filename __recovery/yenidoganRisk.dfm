@@ -1,0 +1,3601 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = 
+    'YEN'#304'DO'#286'AN BESLENME (NUTR'#304'SYON) R'#304'SK DE'#286'ERLEND'#304'RME (GOMEZ SKALASI' +
+    ') FORMU'
+  ClientHeight = 694
+  ClientWidth = 1094
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  Position = poScreenCenter
+  OnShow = FormShow
+  TextHeight = 15
+  object scrMain: TcxScrollBox
+    Left = 0
+    Top = 0
+    Width = 1094
+    Height = 694
+    Align = alClient
+    TabOrder = 0
+    object grpAna1: TcxGroupBox
+      Left = 0
+      Top = 0
+      Align = alTop
+      Style.BorderStyle = ebsNone
+      TabOrder = 0
+      Height = 35
+      Width = 1092
+      object cxlbl5: TcxLabel
+        Left = 2
+        Top = 20
+        Align = alClient
+        Caption = 'Hastan'#305'n Servise Kabul'#252'nde ve Her Pazartesi Doldurulacak'
+        Properties.Alignment.Horz = taCenter
+        Properties.Alignment.Vert = taVCenter
+        ExplicitWidth = 1007
+        AnchorX = 546
+        AnchorY = 27
+      end
+    end
+    object grpAna2: TcxGroupBox
+      Left = 0
+      Top = 35
+      Align = alTop
+      Style.BorderStyle = ebsNone
+      TabOrder = 1
+      Height = 100
+      Width = 1092
+      object grdpnl1: TGridPanel
+        Left = 2
+        Top = 20
+        Width = 1088
+        Height = 78
+        Align = alClient
+        ColumnCollection = <
+          item
+            Value = 30.000000000000000000
+          end
+          item
+            Value = 70.000000000000000000
+          end>
+        ControlCollection = <
+          item
+            Column = 0
+            Control = grpAna3
+            Row = 0
+          end
+          item
+            Column = 1
+            Control = grdpnl2
+            Row = 0
+          end>
+        RowCollection = <
+          item
+            Value = 100.000000000000000000
+          end>
+        TabOrder = 0
+        ExplicitWidth = 1007
+        object grpAna3: TcxGroupBox
+          Left = 1
+          Top = 1
+          Align = alClient
+          Caption = 'grpAna3'
+          TabOrder = 0
+          ExplicitWidth = 302
+          Height = 76
+          Width = 326
+        end
+        object grdpnl2: TGridPanel
+          Left = 327
+          Top = 1
+          Width = 760
+          Height = 76
+          Align = alClient
+          ColumnCollection = <
+            item
+              Value = 40.000000000000000000
+            end
+            item
+              Value = 60.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = cxlbl1
+              Row = 0
+            end
+            item
+              Column = 1
+              Control = cxdblbl1
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = cxlbl2
+              Row = 1
+            end
+            item
+              Column = 1
+              Control = cxdblbl2
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = cxlbl3
+              Row = 2
+            end
+            item
+              Column = 1
+              Control = cxdblbl3
+              Row = 2
+            end
+            item
+              Column = 0
+              Control = cxlbl4
+              Row = 3
+            end
+            item
+              Column = 1
+              Control = cxdblbl4
+              Row = 3
+            end>
+          RowCollection = <
+            item
+              Value = 25.519099711222400000
+            end
+            item
+              Value = 24.879258331897610000
+            end
+            item
+              Value = 24.942277783412190000
+            end
+            item
+              Value = 24.659364173467800000
+            end>
+          TabOrder = 1
+          ExplicitLeft = 303
+          ExplicitWidth = 703
+          object cxlbl1: TcxLabel
+            Left = 1
+            Top = 1
+            Align = alClient
+            Caption = 'Gestasyon Haftas'#305': '
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -12
+            Style.Font.Name = 'Segoe UI'
+            Style.Font.Style = []
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taLeftJustify
+            Properties.Alignment.Vert = taVCenter
+            ExplicitWidth = 280
+            AnchorY = 11
+          end
+          object cxdblbl1: TcxDBLabel
+            Left = 304
+            Top = 1
+            Align = alClient
+            DataBinding.DataField = 'GESTASYON_HAFTASI'
+            DataBinding.DataSource = dsRastgeleHasta
+            Properties.Alignment.Horz = taLeftJustify
+            Properties.Alignment.Vert = taVCenter
+            ExplicitLeft = 281
+            ExplicitWidth = 421
+            Height = 19
+            Width = 455
+            AnchorY = 11
+          end
+          object cxlbl2: TcxLabel
+            Left = 1
+            Top = 20
+            Align = alClient
+            Caption = 'Do'#287'um Tart'#305's'#305' (Persantil): '
+            Properties.Alignment.Vert = taVCenter
+            ExplicitWidth = 280
+            AnchorY = 29
+          end
+          object cxdblbl2: TcxDBLabel
+            Left = 304
+            Top = 20
+            Align = alClient
+            DataBinding.DataField = 'DOGUM_KILOSU_GR'
+            DataBinding.DataSource = dsRastgeleHasta
+            Properties.Alignment.Vert = taVCenter
+            ExplicitLeft = 281
+            ExplicitWidth = 421
+            Height = 18
+            Width = 455
+            AnchorY = 29
+          end
+          object cxlbl3: TcxLabel
+            Left = 1
+            Top = 38
+            Align = alClient
+            Caption = 'Do'#287'um Boyu (Persantil): '
+            Properties.Alignment.Vert = taVCenter
+            ExplicitWidth = 280
+            AnchorY = 48
+          end
+          object cxdblbl3: TcxDBLabel
+            Left = 304
+            Top = 38
+            Align = alClient
+            DataBinding.DataField = 'DOGUM_BOYU_CM'
+            DataBinding.DataSource = dsRastgeleHasta
+            Properties.Alignment.Vert = taVCenter
+            ExplicitLeft = 281
+            ExplicitWidth = 421
+            Height = 19
+            Width = 455
+            AnchorY = 48
+          end
+          object cxlbl4: TcxLabel
+            Left = 1
+            Top = 57
+            Align = alClient
+            Caption = 'Do'#287'um Ba'#351' '#199'evresi (Persantil): '
+            Properties.Alignment.Vert = taVCenter
+            ExplicitWidth = 280
+            AnchorY = 66
+          end
+          object cxdblbl4: TcxDBLabel
+            Left = 304
+            Top = 57
+            Align = alClient
+            DataBinding.DataField = 'DOGUM_BAS_CEVRESI'
+            DataBinding.DataSource = dsRastgeleHasta
+            Properties.Alignment.Vert = taVCenter
+            ExplicitLeft = 281
+            ExplicitWidth = 421
+            Height = 18
+            Width = 455
+            AnchorY = 66
+          end
+        end
+      end
+    end
+    object grpOlcum: TcxGroupBox
+      Left = 0
+      Top = 135
+      Align = alTop
+      Caption = 'grpOlcum'
+      TabOrder = 2
+      Height = 498
+      Width = 1092
+      object grdpnl3: TGridPanel
+        Left = 2
+        Top = 20
+        Width = 1088
+        Height = 476
+        Align = alClient
+        ColumnCollection = <
+          item
+            Value = 50.000000000000000000
+          end
+          item
+            Value = 10.000000000000000000
+          end
+          item
+            Value = 10.000000000000000000
+          end
+          item
+            Value = 10.000000000000000000
+          end
+          item
+            Value = 10.000000000000000000
+          end
+          item
+            Value = 10.000000000000000000
+          end>
+        ControlCollection = <
+          item
+            Column = 0
+            Control = cxlbl6
+            Row = 0
+          end
+          item
+            Column = 1
+            Control = cxlbl7
+            Row = 0
+          end
+          item
+            Column = 2
+            Control = lblGun2Tarih
+            Row = 0
+          end
+          item
+            Column = 3
+            Control = lblGun3Tarih
+            Row = 0
+          end
+          item
+            Column = 4
+            Control = lblGun4Tarih
+            Row = 0
+          end
+          item
+            Column = 5
+            Control = lblGun5Tarih
+            Row = 0
+          end
+          item
+            Column = 0
+            Control = cxlbl8
+            Row = 1
+          end
+          item
+            Column = 1
+            Control = edtKiloGun1
+            Row = 1
+          end
+          item
+            Column = 2
+            Control = edtKiloGun2
+            Row = 1
+          end
+          item
+            Column = 3
+            Control = edtKiloGun3
+            Row = 1
+          end
+          item
+            Column = 4
+            Control = edtKiloGun4
+            Row = 1
+          end
+          item
+            Column = 5
+            Control = edtKiloGun5
+            Row = 1
+          end
+          item
+            Column = 0
+            Control = cxlbl9
+            Row = 2
+          end
+          item
+            Column = 1
+            Control = edtBoyGun1
+            Row = 2
+          end
+          item
+            Column = 2
+            Control = edtBoyGun2
+            Row = 2
+          end
+          item
+            Column = 3
+            Control = edtBoyGun3
+            Row = 2
+          end
+          item
+            Column = 4
+            Control = edtBoyGun4
+            Row = 2
+          end
+          item
+            Column = 5
+            Control = edtBoyGun5
+            Row = 2
+          end
+          item
+            Column = 0
+            Control = cxLabel1
+            Row = 3
+          end
+          item
+            Column = 1
+            Control = edtBasGun1
+            Row = 3
+          end
+          item
+            Column = 2
+            Control = edtBasGun2
+            Row = 3
+          end
+          item
+            Column = 3
+            Control = edtBasGun3
+            Row = 3
+          end
+          item
+            Column = 4
+            Control = edtBasGun4
+            Row = 3
+          end
+          item
+            Column = 5
+            Control = edtBasGun5
+            Row = 3
+          end
+          item
+            Column = 0
+            Control = grdpnl4
+            Row = 4
+          end
+          item
+            Column = 1
+            Control = grdpnl9
+            Row = 4
+          end
+          item
+            Column = 2
+            Control = grdpnl13
+            Row = 4
+          end
+          item
+            Column = 3
+            Control = grdpnl17
+            Row = 4
+          end
+          item
+            Column = 4
+            Control = grdpnl18
+            Row = 4
+          end
+          item
+            Column = 5
+            Control = grdpnl19
+            Row = 4
+          end
+          item
+            Column = 0
+            Control = cxlbl27
+            Row = 5
+          end
+          item
+            Column = 0
+            Control = grdpnl29
+            Row = 6
+          end
+          item
+            Column = 1
+            Control = DR_GUN1
+            Row = 6
+          end
+          item
+            Column = 2
+            Control = DR_GUN2
+            Row = 6
+          end
+          item
+            Column = 3
+            Control = DR_GUN3
+            Row = 6
+          end
+          item
+            Column = 4
+            Control = DR_GUN4
+            Row = 6
+          end
+          item
+            Column = 5
+            Control = DR_GUN5
+            Row = 6
+          end
+          item
+            Column = 1
+            Control = scorGun1
+            Row = 5
+          end
+          item
+            Column = 2
+            Control = scorGun2
+            Row = 5
+          end
+          item
+            Column = 3
+            Control = scorGun3
+            Row = 5
+          end
+          item
+            Column = 4
+            Control = scorGun4
+            Row = 5
+          end
+          item
+            Column = 5
+            Control = scorGun5
+            Row = 5
+          end>
+        RowCollection = <
+          item
+            Value = 7.000000000000000000
+          end
+          item
+            Value = 5.000000000000000000
+          end
+          item
+            Value = 5.000000000000000000
+          end
+          item
+            Value = 5.000000000000000000
+          end
+          item
+            Value = 60.000000000000000000
+          end
+          item
+            Value = 7.000000000000000000
+          end
+          item
+            Value = 11.000000000000000000
+          end>
+        TabOrder = 0
+        ExplicitWidth = 1007
+        DesignSize = (
+          1088
+          476)
+        object cxlbl6: TcxLabel
+          Left = 1
+          Top = 1
+          Align = alClient
+          Caption = '1. B'#220'Y'#220'MEN'#304'N R'#304'SK DE'#286'ERLEND'#304'RMES'#304
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -13
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taLeftJustify
+          Properties.Alignment.Vert = taVCenter
+          ExplicitWidth = 502
+          AnchorY = 18
+        end
+        object cxlbl7: TcxLabel
+          Tag = 1
+          Left = 544
+          Top = 1
+          Cursor = crHandPoint
+          Align = alClient
+          Caption = '--.--.----'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -15
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          OnClick = lblGunTarihClick
+          ExplicitLeft = 503
+          ExplicitWidth = 101
+          AnchorX = 599
+          AnchorY = 18
+        end
+        object lblGun2Tarih: TcxLabel
+          Tag = 2
+          Left = 677
+          Top = 5
+          Cursor = crHandPoint
+          Anchors = []
+          Caption = '--.--.----'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -15
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          OnClick = lblGunTarihClick
+          ExplicitLeft = 624
+          AnchorX = 707
+          AnchorY = 17
+        end
+        object lblGun3Tarih: TcxLabel
+          Tag = 3
+          Left = 761
+          Top = 1
+          Align = alClient
+          Caption = '--.--.----'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -15
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          OnClick = lblGunTarihClick
+          ExplicitLeft = 704
+          ExplicitWidth = 101
+          AnchorX = 816
+          AnchorY = 18
+        end
+        object lblGun4Tarih: TcxLabel
+          Left = 870
+          Top = 1
+          Align = alClient
+          Caption = '--.--.----'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -15
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          OnClick = lblGunTarihClick
+          ExplicitLeft = 805
+          ExplicitWidth = 100
+          AnchorX = 924
+          AnchorY = 18
+        end
+        object lblGun5Tarih: TcxLabel
+          Left = 978
+          Top = 1
+          Align = alClient
+          Caption = '--.--.----'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -15
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          OnClick = lblGunTarihClick
+          ExplicitLeft = 905
+          ExplicitWidth = 101
+          AnchorX = 1033
+          AnchorY = 18
+        end
+        object cxlbl8: TcxLabel
+          Left = 1
+          Top = 34
+          Align = alClient
+          Caption = 'Kilo / Persantil'
+          Properties.Alignment.Vert = taVCenter
+          ExplicitWidth = 502
+          AnchorY = 46
+        end
+        object edtKiloGun1: TcxDBTextEdit
+          Left = 544
+          Top = 34
+          Align = alClient
+          DataBinding.DataField = 'KILO_KG'
+          DataBinding.DataSource = dsRastgeleHasta
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 7
+          ExplicitLeft = 503
+          ExplicitWidth = 101
+          Width = 109
+        end
+        object edtKiloGun2: TcxDBTextEdit
+          Left = 653
+          Top = 34
+          Align = alClient
+          DataBinding.DataField = 'KILO_KG'
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 8
+          ExplicitLeft = 604
+          ExplicitWidth = 100
+          Width = 108
+        end
+        object edtKiloGun3: TcxDBTextEdit
+          Left = 761
+          Top = 34
+          Align = alClient
+          DataBinding.DataField = 'KILO_KG'
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 9
+          ExplicitLeft = 704
+          ExplicitWidth = 101
+          Width = 109
+        end
+        object edtKiloGun4: TcxDBTextEdit
+          Left = 870
+          Top = 34
+          Align = alClient
+          DataBinding.DataField = 'KILO_KG'
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 10
+          ExplicitLeft = 805
+          ExplicitWidth = 100
+          Width = 108
+        end
+        object edtKiloGun5: TcxDBTextEdit
+          Left = 978
+          Top = 34
+          Align = alClient
+          DataBinding.DataField = 'KILO_KG'
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 11
+          ExplicitLeft = 905
+          ExplicitWidth = 101
+          Width = 109
+        end
+        object cxlbl9: TcxLabel
+          Left = 1
+          Top = 58
+          Align = alClient
+          Caption = 'Boy / Persantil'
+          Properties.Alignment.Vert = taVCenter
+          ExplicitWidth = 502
+          AnchorY = 70
+        end
+        object edtBoyGun1: TcxDBTextEdit
+          Left = 544
+          Top = 58
+          Align = alClient
+          DataBinding.DataField = 'BOY_CM'
+          DataBinding.DataSource = dsRastgeleHasta
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 13
+          ExplicitLeft = 503
+          ExplicitWidth = 101
+          Width = 109
+        end
+        object edtBoyGun2: TcxDBTextEdit
+          Left = 653
+          Top = 58
+          Align = alClient
+          DataBinding.DataField = 'BOY_CM'
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 14
+          ExplicitLeft = 604
+          ExplicitWidth = 100
+          Width = 108
+        end
+        object edtBoyGun3: TcxDBTextEdit
+          Left = 761
+          Top = 58
+          Align = alClient
+          DataBinding.DataField = 'BOY_CM'
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 15
+          ExplicitLeft = 704
+          ExplicitWidth = 101
+          Width = 109
+        end
+        object edtBoyGun4: TcxDBTextEdit
+          Left = 870
+          Top = 58
+          Align = alClient
+          DataBinding.DataField = 'BOY_CM'
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 16
+          ExplicitLeft = 805
+          ExplicitWidth = 100
+          Width = 108
+        end
+        object edtBoyGun5: TcxDBTextEdit
+          Left = 978
+          Top = 58
+          Align = alClient
+          DataBinding.DataField = 'BOY_CM'
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 17
+          ExplicitLeft = 905
+          ExplicitWidth = 101
+          Width = 109
+        end
+        object cxLabel1: TcxLabel
+          Left = 1
+          Top = 82
+          Align = alClient
+          Caption = 'Ba'#351' '#199'evresi / Persantil'
+          ParentColor = False
+          Style.Color = clBtnFace
+          Properties.Alignment.Horz = taLeftJustify
+          Properties.Alignment.Vert = taVCenter
+          ExplicitWidth = 502
+          AnchorY = 94
+        end
+        object edtBasGun1: TcxDBTextEdit
+          Left = 544
+          Top = 82
+          Align = alClient
+          DataBinding.DataField = 'BAS_CEVRESI_CM'
+          DataBinding.DataSource = dsRastgeleHasta
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 19
+          ExplicitLeft = 503
+          ExplicitWidth = 101
+          Width = 109
+        end
+        object edtBasGun2: TcxDBTextEdit
+          Left = 653
+          Top = 82
+          Align = alClient
+          DataBinding.DataField = 'BAS_CEVRESI_CM'
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 20
+          ExplicitLeft = 604
+          ExplicitWidth = 100
+          Width = 108
+        end
+        object edtBasGun3: TcxDBTextEdit
+          Left = 761
+          Top = 82
+          Align = alClient
+          DataBinding.DataField = 'BAS_CEVRESI_CM'
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 21
+          ExplicitLeft = 704
+          ExplicitWidth = 101
+          Width = 109
+        end
+        object edtBasGun4: TcxDBTextEdit
+          Left = 870
+          Top = 82
+          Align = alClient
+          DataBinding.DataField = 'BAS_CEVRESI_CM'
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 22
+          ExplicitLeft = 805
+          ExplicitWidth = 100
+          Width = 108
+        end
+        object edtBasGun5: TcxDBTextEdit
+          Left = 978
+          Top = 82
+          Align = alClient
+          DataBinding.DataField = 'BAS_CEVRESI_CM'
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 23
+          ExplicitLeft = 905
+          ExplicitWidth = 101
+          Width = 109
+        end
+        object grdpnl4: TGridPanel
+          Left = 1
+          Top = 105
+          Width = 543
+          Height = 285
+          Align = alClient
+          ColumnCollection = <
+            item
+              Value = 5.000000000000000000
+            end
+            item
+              Value = 95.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = PaintBoxYuksekRisk
+              Row = 0
+            end
+            item
+              Column = 1
+              Control = grdpnl5
+              Row = 0
+            end>
+          RowCollection = <
+            item
+              Value = 100.000000000000000000
+            end>
+          TabOrder = 24
+          ExplicitWidth = 502
+          object PaintBoxYuksekRisk: TPaintBox
+            Left = 1
+            Top = 1
+            Width = 27
+            Height = 283
+            Align = alClient
+            OnPaint = PaintBoxYuksekRiskPaint
+            ExplicitLeft = 0
+            ExplicitTop = 6
+            ExplicitWidth = 54
+            ExplicitHeight = 220
+          end
+          object grdpnl5: TGridPanel
+            Left = 28
+            Top = 1
+            Width = 514
+            Height = 283
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 15.000000000000000000
+              end
+              item
+                Value = 85.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = cxlbl10
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = cxlbl11
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = cxlbl13
+                Row = 2
+              end
+              item
+                Column = 1
+                Control = grdpnl6
+                Row = 0
+              end
+              item
+                Column = 1
+                Control = grdpnl7
+                Row = 1
+              end
+              item
+                Column = 1
+                Control = grdpnl8
+                Row = 2
+              end>
+            RowCollection = <
+              item
+                Value = 29.991858352573290000
+              end
+              item
+                Value = 40.000000000000000000
+              end
+              item
+                Value = 30.008141647426720000
+              end>
+            TabOrder = 0
+            ExplicitLeft = 26
+            ExplicitWidth = 475
+            object cxlbl10: TcxLabel
+              Left = 1
+              Top = 1
+              Align = alClient
+              Caption = 'Y'#220'KSEK R'#304'SK'
+              ParentColor = False
+              ParentFont = False
+              Style.Color = clRed
+              Style.Font.Charset = DEFAULT_CHARSET
+              Style.Font.Color = clWindowText
+              Style.Font.Height = -12
+              Style.Font.Name = 'Segoe UI'
+              Style.Font.Style = [fsBold]
+              Style.TextColor = clWindow
+              Style.IsFontAssigned = True
+              StyleDisabled.BorderColor = clBtnText
+              Properties.Alignment.Horz = taCenter
+              Properties.Alignment.Vert = taVCenter
+              ExplicitWidth = 71
+              AnchorX = 40
+              AnchorY = 43
+            end
+            object cxlbl11: TcxLabel
+              Left = 1
+              Top = 85
+              Align = alClient
+              Caption = 'ORTA R'#304'SK'
+              ParentColor = False
+              ParentFont = False
+              Style.Color = clBtnShadow
+              Style.Font.Charset = DEFAULT_CHARSET
+              Style.Font.Color = clWhite
+              Style.Font.Height = -12
+              Style.Font.Name = 'Segoe UI'
+              Style.Font.Style = [fsBold]
+              Style.IsFontAssigned = True
+              Properties.Alignment.Horz = taCenter
+              Properties.Alignment.Vert = taVCenter
+              ExplicitWidth = 71
+              AnchorX = 40
+              AnchorY = 142
+            end
+            object cxlbl13: TcxLabel
+              Left = 1
+              Top = 198
+              Align = alClient
+              Caption = 'D'#220#350#220'K R'#304'SK'
+              ParentColor = False
+              ParentFont = False
+              Style.Color = clGreen
+              Style.Font.Charset = DEFAULT_CHARSET
+              Style.Font.Color = clWhite
+              Style.Font.Height = -12
+              Style.Font.Name = 'Segoe UI'
+              Style.Font.Style = [fsBold]
+              Style.IsFontAssigned = True
+              Properties.Alignment.Horz = taCenter
+              Properties.Alignment.Vert = taVCenter
+              ExplicitWidth = 71
+              AnchorX = 40
+              AnchorY = 240
+            end
+            object grdpnl6: TGridPanel
+              Left = 78
+              Top = 1
+              Width = 435
+              Height = 84
+              Align = alClient
+              ColumnCollection = <
+                item
+                  Value = 100.000000000000000000
+                end>
+              ControlCollection = <
+                item
+                  Column = 0
+                  Control = cxlbl12
+                  Row = 0
+                end
+                item
+                  Column = 0
+                  Control = cxlbl14
+                  Row = 1
+                end
+                item
+                  Column = 0
+                  Control = cxlbl15
+                  Row = 2
+                end
+                item
+                  Column = 0
+                  Control = cxlbl16
+                  Row = 3
+                end
+                item
+                  Column = 0
+                  Control = cxlbl17
+                  Row = 4
+                end>
+              RowCollection = <
+                item
+                  Value = 20.000000000000000000
+                end
+                item
+                  Value = 20.000000000000000000
+                end
+                item
+                  Value = 20.000000000000000000
+                end
+                item
+                  Value = 20.000000000000000000
+                end
+                item
+                  Value = 20.000000000000000000
+                end>
+              TabOrder = 3
+              ExplicitLeft = 72
+              ExplicitWidth = 402
+              object cxlbl12: TcxLabel
+                Left = 1
+                Top = 1
+                Align = alClient
+                Caption = 'HERHANG'#304' B'#304'R'#304
+                Properties.Alignment.Vert = taBottomJustify
+                ExplicitWidth = 400
+                AnchorY = 17
+              end
+              object cxlbl14: TcxLabel
+                Left = 1
+                Top = 17
+                Align = alClient
+                Caption = '< 28 Hafta'
+                Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 400
+                AnchorY = 26
+              end
+              object cxlbl15: TcxLabel
+                Left = 1
+                Top = 34
+                Align = alClient
+                Caption = '< 1000 gr / Do'#287'um'
+                Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 400
+                AnchorY = 42
+              end
+              object cxlbl16: TcxLabel
+                Left = 1
+                Top = 50
+                Align = alClient
+                Caption = 'NEK / G'#304'S Perforasyonu sonras'#305' beslenme'
+                Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 400
+                AnchorY = 59
+              end
+              object cxlbl17: TcxLabel
+                Left = 1
+                Top = 67
+                Align = alClient
+                Caption = #350'iddetli Konjenital G'#304'S anomalili bebek'
+                Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 400
+                AnchorY = 75
+              end
+            end
+            object grdpnl7: TGridPanel
+              Left = 78
+              Top = 85
+              Width = 435
+              Height = 113
+              Align = alClient
+              ColumnCollection = <
+                item
+                  Value = 100.000000000000000000
+                end>
+              ControlCollection = <
+                item
+                  Column = 0
+                  Control = cxlbl18
+                  Row = 0
+                end
+                item
+                  Column = 0
+                  Control = cxlbl19
+                  Row = 1
+                end
+                item
+                  Column = 0
+                  Control = cxlbl20
+                  Row = 2
+                end
+                item
+                  Column = 0
+                  Control = cxlbl21
+                  Row = 3
+                end
+                item
+                  Column = 0
+                  Control = cxlbl22
+                  Row = 4
+                end>
+              RowCollection = <
+                item
+                  Value = 18.000000000000000000
+                end
+                item
+                  Value = 18.000000000000000000
+                end
+                item
+                  Value = 28.000000000000000000
+                end
+                item
+                  Value = 18.000000000000000000
+                end
+                item
+                  Value = 18.000000000000000000
+                end>
+              TabOrder = 4
+              ExplicitLeft = 72
+              ExplicitWidth = 402
+              object cxlbl18: TcxLabel
+                Left = 1
+                Top = 1
+                Align = alClient
+                Caption = 'Herhangi biri'
+                Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 400
+                AnchorY = 11
+              end
+              object cxlbl19: TcxLabel
+                Left = 1
+                Top = 21
+                Align = alClient
+                Caption = '28 - 31 hafta genel olarak iyi bebek'
+                Properties.Alignment.Horz = taLeftJustify
+                Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 400
+                AnchorY = 31
+              end
+              object cxlbl20: TcxLabel
+                Left = 1
+                Top = 41
+                Align = alClient
+                Caption = 
+                  #304'UGR(kilo < 10 persantilpersantil) ve endend-diastolik ak'#305'm kayb' +
+                  #305' < 35 hafta'
+                Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 400
+                AnchorY = 57
+              end
+              object cxlbl21: TcxLabel
+                Left = 1
+                Top = 72
+                Align = alClient
+                Caption = '1000 - 1500 gr. / Do'#287'um'
+                Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 400
+                AnchorY = 82
+              end
+              object cxlbl22: TcxLabel
+                Left = 1
+                Top = 92
+                Align = alClient
+                Caption = 'Hastal'#305'k veya konjenital anomaliye ba'#287'l'#305' beslenememe'
+                Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 400
+                AnchorY = 102
+              end
+            end
+            object grdpnl8: TGridPanel
+              Left = 78
+              Top = 198
+              Width = 435
+              Height = 84
+              Align = alClient
+              ColumnCollection = <
+                item
+                  Value = 100.000000000000000000
+                end>
+              ControlCollection = <
+                item
+                  Column = 0
+                  Control = cxlbl23
+                  Row = 0
+                end
+                item
+                  Column = 0
+                  Control = cxlbl24
+                  Row = 1
+                end
+                item
+                  Column = 0
+                  Control = cxlbl25
+                  Row = 2
+                end
+                item
+                  Column = 0
+                  Control = cxlbl26
+                  Row = 3
+                end>
+              RowCollection = <
+                item
+                  Value = 20.000000000000000000
+                end
+                item
+                  Value = 20.000000000000000000
+                end
+                item
+                  Value = 40.000000000000000000
+                end
+                item
+                  Value = 20.000000000000000000
+                end>
+              TabOrder = 5
+              ExplicitLeft = 72
+              ExplicitWidth = 402
+              object cxlbl23: TcxLabel
+                Left = 1
+                Top = 1
+                Align = alClient
+                Caption = 'Herhangi biri'
+                Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 400
+                AnchorY = 9
+              end
+              object cxlbl24: TcxLabel
+                Left = 1
+                Top = 17
+                Align = alClient
+                Caption = '32 - 35. hafta, genel olarak iyi bebek'
+                Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 400
+                AnchorY = 26
+              end
+              object cxlbl25: TcxLabel
+                Left = 1
+                Top = 34
+                Align = alClient
+                Caption = 
+                  #304'UGR (kilo < 10 persantil) ve endend-diastolik ak'#305'm kayb'#305' > 35 h' +
+                  'afta'
+                Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 400
+                AnchorY = 51
+              end
+              object cxlbl26: TcxLabel
+                Left = 1
+                Top = 67
+                Align = alClient
+                Caption = #304'yi g'#246'r'#252'nen term bebek > 37 hafta'
+                Properties.Alignment.Vert = taVCenter
+                ExplicitWidth = 400
+                AnchorY = 75
+              end
+            end
+          end
+        end
+        object grdpnl9: TGridPanel
+          Left = 544
+          Top = 105
+          Width = 109
+          Height = 285
+          Align = alClient
+          ColumnCollection = <
+            item
+              Value = 100.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = grdpnl10
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = grdpnl11
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = grdpnl12
+              Row = 2
+            end>
+          RowCollection = <
+            item
+              Value = 29.990000000000000000
+            end
+            item
+              Value = 40.000000000000000000
+            end
+            item
+              Value = 30.010000000000000000
+            end>
+          TabOrder = 25
+          ExplicitLeft = 503
+          ExplicitWidth = 101
+          object grdpnl10: TGridPanel
+            Left = 1
+            Top = 1
+            Width = 107
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl1
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = YR_C28G1
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = YR_C1000G1
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = YR_CNEKG1
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = YR_CGISG1
+                Row = 4
+              end>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                SizeStyle = ssAuto
+              end>
+            TabOrder = 0
+            ExplicitWidth = 99
+            object lbl1: TLabel
+              Left = 1
+              Top = 1
+              Width = 105
+              Height = 17
+              Align = alClient
+              ExplicitWidth = 3
+              ExplicitHeight = 15
+            end
+            object YR_C28G1: TcxDBCheckBox
+              Left = 1
+              Top = 18
+              Align = alClient
+              DataBinding.DataField = 'YR_28_HAFTA'
+              DataBinding.DataSource = dsRastgeleHasta
+              ParentColor = False
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.BorderStyle = ebsSingle
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitLeft = 2
+              ExplicitTop = 24
+              Width = 105
+            end
+            object YR_C1000G1: TcxDBCheckBox
+              Left = 1
+              Top = 34
+              Align = alClient
+              DataBinding.DataField = 'YR_1000_GR'
+              DataBinding.DataSource = dsRastgeleHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object YR_CNEKG1: TcxDBCheckBox
+              Left = 1
+              Top = 51
+              Align = alClient
+              DataBinding.DataField = 'YR_NEK_GIS'
+              DataBinding.DataSource = dsRastgeleHasta
+              ParentColor = False
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 2
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object YR_CGISG1: TcxDBCheckBox
+              Left = 1
+              Top = 67
+              Align = alClient
+              DataBinding.DataField = 'YR_NEK_GIS'
+              DataBinding.DataSource = dsRastgeleHasta
+              ParentBackground = False
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 3
+              ExplicitWidth = 97
+              Width = 105
+            end
+          end
+          object grdpnl11: TGridPanel
+            Left = 1
+            Top = 86
+            Width = 107
+            Height = 113
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl2
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = OR_C28G1
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = OR_CIUGRG1
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = OR_C1000G1
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = OR_CKONJENITALG1
+                Row = 4
+              end>
+            RowCollection = <
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 28.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end>
+            TabOrder = 1
+            ExplicitWidth = 99
+            object lbl2: TLabel
+              Left = 1
+              Top = 1
+              Width = 105
+              Height = 20
+              Align = alClient
+              ExplicitWidth = 3
+              ExplicitHeight = 15
+            end
+            object OR_C28G1: TcxDBCheckBox
+              Left = 1
+              Top = 21
+              Align = alClient
+              DataBinding.DataField = 'OR_28_31_HAFTA'
+              DataBinding.DataSource = dsRastgeleHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object OR_CIUGRG1: TcxDBCheckBox
+              Left = 1
+              Top = 41
+              Align = alClient
+              DataBinding.DataField = 'OR_IUGR'
+              DataBinding.DataSource = dsRastgeleHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object OR_C1000G1: TcxDBCheckBox
+              Left = 1
+              Top = 72
+              Align = alClient
+              DataBinding.DataField = 'OR_1000_1500_GR'
+              DataBinding.DataSource = dsRastgeleHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 2
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object OR_CKONJENITALG1: TcxDBCheckBox
+              Left = 1
+              Top = 92
+              Align = alClient
+              DataBinding.DataField = 'OR_KONJ_BESLENME'
+              DataBinding.DataSource = dsRastgeleHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 3
+              ExplicitWidth = 97
+              Width = 105
+            end
+          end
+          object grdpnl12: TGridPanel
+            Left = 1
+            Top = 199
+            Width = 107
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl3
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = DR_C32G1
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = DR_CIUGRG1
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = DR_C37G1
+                Row = 3
+              end>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 40.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 2
+            ExplicitWidth = 99
+            DesignSize = (
+              107
+              85)
+            object lbl3: TLabel
+              Left = 52
+              Top = 2
+              Width = 3
+              Height = 15
+              Anchors = []
+              ExplicitLeft = 44
+            end
+            object DR_C32G1: TcxDBCheckBox
+              Left = 1
+              Top = 18
+              Align = alClient
+              DataBinding.DataField = 'DR_32_35_HAFTA'
+              DataBinding.DataSource = dsRastgeleHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object DR_CIUGRG1: TcxDBCheckBox
+              Left = 1
+              Top = 34
+              Align = alClient
+              DataBinding.DataField = 'DR_IUGR_35'
+              DataBinding.DataSource = dsRastgeleHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object DR_C37G1: TcxDBCheckBox
+              Left = 1
+              Top = 67
+              Align = alClient
+              DataBinding.DataField = 'DR_TERM'
+              DataBinding.DataSource = dsRastgeleHasta
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 2
+              ExplicitWidth = 97
+              Width = 105
+            end
+          end
+        end
+        object grdpnl13: TGridPanel
+          Left = 653
+          Top = 105
+          Width = 108
+          Height = 285
+          Align = alClient
+          Caption = 'grdpnl13'
+          ColumnCollection = <
+            item
+              Value = 100.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = grdpnl14
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = grdpnl15
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = grdpnl16
+              Row = 2
+            end>
+          RowCollection = <
+            item
+              Value = 29.990000000000000000
+            end
+            item
+              Value = 40.000000000000000000
+            end
+            item
+              Value = 30.010000000000000000
+            end>
+          TabOrder = 26
+          ExplicitLeft = 604
+          ExplicitWidth = 100
+          object grdpnl14: TGridPanel
+            Left = 1
+            Top = 1
+            Width = 106
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl4
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = YR_C28G2
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = YR_C1000G2
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = YR_CNEKG2
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = YR_CGISG2
+                Row = 4
+              end>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 0
+            ExplicitWidth = 98
+            object lbl4: TLabel
+              Left = 1
+              Top = 1
+              Width = 104
+              Height = 17
+              Align = alClient
+              ExplicitWidth = 3
+              ExplicitHeight = 15
+            end
+            object YR_C28G2: TcxDBCheckBox
+              Left = 1
+              Top = 18
+              Align = alClient
+              DataBinding.DataField = 'YR_28_HAFTA'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitLeft = -1
+              ExplicitTop = 12
+              Width = 104
+            end
+            object YR_C1000G2: TcxDBCheckBox
+              Left = 1
+              Top = 34
+              Align = alClient
+              DataBinding.DataField = 'YR_1000_GR'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              ExplicitWidth = 96
+              Width = 104
+            end
+            object YR_CNEKG2: TcxDBCheckBox
+              Left = 1
+              Top = 51
+              Align = alClient
+              DataBinding.DataField = 'YR_NEK_GIS'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 2
+              ExplicitWidth = 96
+              Width = 104
+            end
+            object YR_CGISG2: TcxDBCheckBox
+              Left = 1
+              Top = 67
+              Align = alClient
+              DataBinding.DataField = 'YR_KONJ_GIS'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 3
+              ExplicitWidth = 96
+              Width = 104
+            end
+          end
+          object grdpnl15: TGridPanel
+            Left = 1
+            Top = 86
+            Width = 106
+            Height = 113
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl5
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = OR_C28G2
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = OR_CIUGRG2
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = OR_C1000G2
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = OR_CKONJENITALG2
+                Row = 4
+              end>
+            RowCollection = <
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 28.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end>
+            TabOrder = 1
+            ExplicitWidth = 98
+            object lbl5: TLabel
+              Left = 1
+              Top = 1
+              Width = 104
+              Height = 20
+              Align = alClient
+              ExplicitWidth = 3
+              ExplicitHeight = 15
+            end
+            object OR_C28G2: TcxDBCheckBox
+              Left = 1
+              Top = 21
+              Align = alClient
+              DataBinding.DataField = 'OR_28_31_HAFTA'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitWidth = 96
+              Width = 104
+            end
+            object OR_CIUGRG2: TcxDBCheckBox
+              Left = 1
+              Top = 41
+              Align = alClient
+              DataBinding.DataField = 'OR_IUGR'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              ExplicitWidth = 96
+              Width = 104
+            end
+            object OR_C1000G2: TcxDBCheckBox
+              Left = 1
+              Top = 72
+              Align = alClient
+              DataBinding.DataField = 'OR_1000_1500_GR'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 2
+              ExplicitWidth = 96
+              Width = 104
+            end
+            object OR_CKONJENITALG2: TcxDBCheckBox
+              Left = 1
+              Top = 92
+              Align = alClient
+              DataBinding.DataField = 'OR_KONJ_BESLENME'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 3
+              ExplicitWidth = 96
+              Width = 104
+            end
+          end
+          object grdpnl16: TGridPanel
+            Left = 1
+            Top = 199
+            Width = 106
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl6
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = DR_C32G2
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = DR_CIUGRG2
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = DR_C37G2
+                Row = 3
+              end>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 40.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 2
+            ExplicitWidth = 98
+            DesignSize = (
+              106
+              85)
+            object lbl6: TLabel
+              Left = 51
+              Top = 2
+              Width = 3
+              Height = 15
+              Anchors = []
+              ExplicitLeft = 44
+            end
+            object DR_C32G2: TcxDBCheckBox
+              Left = 1
+              Top = 18
+              Align = alClient
+              DataBinding.DataField = 'DR_32_35_HAFTA'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitWidth = 96
+              Width = 104
+            end
+            object DR_CIUGRG2: TcxDBCheckBox
+              Left = 1
+              Top = 34
+              Align = alClient
+              DataBinding.DataField = 'DR_IUGR_35'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              ExplicitWidth = 96
+              Width = 104
+            end
+            object DR_C37G2: TcxDBCheckBox
+              Left = 1
+              Top = 67
+              Align = alClient
+              DataBinding.DataField = 'DR_TERM'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 2
+              ExplicitWidth = 96
+              Width = 104
+            end
+          end
+        end
+        object grdpnl17: TGridPanel
+          Left = 761
+          Top = 105
+          Width = 109
+          Height = 285
+          Align = alClient
+          ColumnCollection = <
+            item
+              Value = 100.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = grdpnl20
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = grdpnl23
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = grdpnl26
+              Row = 2
+            end>
+          RowCollection = <
+            item
+              Value = 29.990000000000000000
+            end
+            item
+              Value = 40.000000000000000000
+            end
+            item
+              Value = 30.010000000000000000
+            end>
+          TabOrder = 27
+          ExplicitLeft = 704
+          ExplicitWidth = 101
+          object grdpnl20: TGridPanel
+            Left = 1
+            Top = 1
+            Width = 107
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl7
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = YR_C28G3
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = YR_C1000G3
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = YR_CNEKG3
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = YR_CGISG3
+                Row = 4
+              end>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 0
+            ExplicitWidth = 99
+            DesignSize = (
+              107
+              85)
+            object lbl7: TLabel
+              Left = 52
+              Top = 2
+              Width = 3
+              Height = 15
+              Anchors = []
+              ExplicitLeft = 44
+            end
+            object YR_C28G3: TcxDBCheckBox
+              Left = 1
+              Top = 18
+              Align = alClient
+              DataBinding.DataField = 'YR_28_HAFTA'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object YR_C1000G3: TcxDBCheckBox
+              Left = 1
+              Top = 34
+              Align = alClient
+              DataBinding.DataField = 'YR_1000_GR'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object YR_CNEKG3: TcxDBCheckBox
+              Left = 1
+              Top = 51
+              Align = alClient
+              DataBinding.DataField = 'YR_NEK_GIS'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 2
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object YR_CGISG3: TcxDBCheckBox
+              Left = 1
+              Top = 67
+              Align = alClient
+              DataBinding.DataField = 'YR_KONJ_GIS'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 3
+              ExplicitWidth = 97
+              Width = 105
+            end
+          end
+          object grdpnl23: TGridPanel
+            Left = 1
+            Top = 86
+            Width = 107
+            Height = 113
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl8
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = OR_C28G3
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = OR_CIUGRG3
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = OR_C1000G3
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = OR_CKONJENITALG3
+                Row = 4
+              end>
+            RowCollection = <
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 28.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end>
+            TabOrder = 1
+            ExplicitWidth = 99
+            DesignSize = (
+              107
+              113)
+            object lbl8: TLabel
+              Left = 52
+              Top = 3
+              Width = 3
+              Height = 15
+              Anchors = []
+              ExplicitLeft = 44
+            end
+            object OR_C28G3: TcxDBCheckBox
+              Left = 1
+              Top = 21
+              Align = alClient
+              DataBinding.DataField = 'OR_28_31_HAFTA'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object OR_CIUGRG3: TcxDBCheckBox
+              Left = 1
+              Top = 41
+              Align = alClient
+              DataBinding.DataField = 'OR_IUGR'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object OR_C1000G3: TcxDBCheckBox
+              Left = 1
+              Top = 72
+              Align = alClient
+              DataBinding.DataField = 'OR_1000_1500_GR'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 2
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object OR_CKONJENITALG3: TcxDBCheckBox
+              Left = 1
+              Top = 92
+              Align = alClient
+              DataBinding.DataField = 'OR_KONJ_BESLENME'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 3
+              ExplicitWidth = 97
+              Width = 105
+            end
+          end
+          object grdpnl26: TGridPanel
+            Left = 1
+            Top = 199
+            Width = 107
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl9
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = DR_C32G3
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = DR_CIUGRG3
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = DR_C37G3
+                Row = 3
+              end>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 40.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 2
+            ExplicitWidth = 99
+            DesignSize = (
+              107
+              85)
+            object lbl9: TLabel
+              Left = 52
+              Top = 2
+              Width = 3
+              Height = 15
+              Anchors = []
+              ExplicitLeft = 44
+            end
+            object DR_C32G3: TcxDBCheckBox
+              Left = 1
+              Top = 18
+              Align = alClient
+              DataBinding.DataField = 'DR_32_35_HAFTA'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object DR_CIUGRG3: TcxDBCheckBox
+              Left = 1
+              Top = 34
+              Align = alClient
+              DataBinding.DataField = 'DR_IUGR_35'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object DR_C37G3: TcxDBCheckBox
+              Left = 1
+              Top = 67
+              Align = alClient
+              Caption = 'DR_C37G3'
+              DataBinding.DataField = 'DR_TERM'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 2
+              ExplicitWidth = 97
+              Width = 105
+            end
+          end
+        end
+        object grdpnl18: TGridPanel
+          Left = 870
+          Top = 105
+          Width = 108
+          Height = 285
+          Align = alClient
+          Caption = 'grdpnl18'
+          ColumnCollection = <
+            item
+              Value = 100.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = grdpnl21
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = grdpnl24
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = grdpnl27
+              Row = 2
+            end>
+          RowCollection = <
+            item
+              Value = 29.990000000000000000
+            end
+            item
+              Value = 40.000000000000000000
+            end
+            item
+              Value = 30.010000000000000000
+            end>
+          TabOrder = 28
+          ExplicitLeft = 805
+          ExplicitWidth = 100
+          object grdpnl21: TGridPanel
+            Left = 1
+            Top = 1
+            Width = 106
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl10
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = YR_C28G4
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = YR_C1000G4
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = YR_CNEKG4
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = YR_CGISG4
+                Row = 4
+              end>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 0
+            ExplicitWidth = 98
+            DesignSize = (
+              106
+              85)
+            object lbl10: TLabel
+              Left = 51
+              Top = 2
+              Width = 3
+              Height = 15
+              Anchors = []
+              ExplicitLeft = 44
+            end
+            object YR_C28G4: TcxDBCheckBox
+              Left = 1
+              Top = 18
+              Align = alClient
+              DataBinding.DataField = 'YR_28_HAFTA'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitWidth = 96
+              Width = 104
+            end
+            object YR_C1000G4: TcxDBCheckBox
+              Left = 1
+              Top = 34
+              Align = alClient
+              DataBinding.DataField = 'YR_1000_GR'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              ExplicitWidth = 96
+              Width = 104
+            end
+            object YR_CNEKG4: TcxDBCheckBox
+              Left = 1
+              Top = 51
+              Align = alClient
+              DataBinding.DataField = 'YR_NEK_GIS'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 2
+              ExplicitWidth = 96
+              Width = 104
+            end
+            object YR_CGISG4: TcxDBCheckBox
+              Left = 1
+              Top = 67
+              Align = alClient
+              DataBinding.DataField = 'YR_KONJ_GIS'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 3
+              ExplicitWidth = 96
+              Width = 104
+            end
+          end
+          object grdpnl24: TGridPanel
+            Left = 1
+            Top = 86
+            Width = 106
+            Height = 113
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl11
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = OR_C28G4
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = OR_CIUGRG4
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = OR_C1000G4
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = OR_CKONJENITALG4
+                Row = 4
+              end>
+            RowCollection = <
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 28.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end>
+            TabOrder = 1
+            ExplicitWidth = 98
+            DesignSize = (
+              106
+              113)
+            object lbl11: TLabel
+              Left = 51
+              Top = 3
+              Width = 3
+              Height = 15
+              Anchors = []
+              ExplicitLeft = 36
+            end
+            object OR_C28G4: TcxDBCheckBox
+              Left = 1
+              Top = 21
+              Align = alClient
+              DataBinding.DataField = 'OR_28_31_HAFTA'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitWidth = 96
+              Width = 104
+            end
+            object OR_CIUGRG4: TcxDBCheckBox
+              Left = 1
+              Top = 41
+              Align = alClient
+              DataBinding.DataField = 'OR_IUGR'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              ExplicitWidth = 96
+              Width = 104
+            end
+            object OR_C1000G4: TcxDBCheckBox
+              Left = 1
+              Top = 72
+              Align = alClient
+              DataBinding.DataField = 'OR_1000_1500_GR'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 2
+              ExplicitWidth = 96
+              Width = 104
+            end
+            object OR_CKONJENITALG4: TcxDBCheckBox
+              Left = 1
+              Top = 92
+              Align = alClient
+              DataBinding.DataField = 'OR_KONJ_BESLENME'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 3
+              ExplicitWidth = 96
+              Width = 104
+            end
+          end
+          object grdpnl27: TGridPanel
+            Left = 1
+            Top = 199
+            Width = 106
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl12
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = DR_C32G4
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = DR_CIUGRG4
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = DR_C37G4
+                Row = 3
+              end>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 40.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 2
+            ExplicitWidth = 98
+            DesignSize = (
+              106
+              85)
+            object lbl12: TLabel
+              Left = 51
+              Top = 2
+              Width = 3
+              Height = 15
+              Anchors = []
+              ExplicitLeft = 36
+            end
+            object DR_C32G4: TcxDBCheckBox
+              Left = 1
+              Top = 18
+              Align = alClient
+              DataBinding.DataField = 'DR_32_35_HAFTA'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitWidth = 96
+              Width = 104
+            end
+            object DR_CIUGRG4: TcxDBCheckBox
+              Left = 1
+              Top = 34
+              Align = alClient
+              DataBinding.DataField = 'DR_IUGR_35'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              ExplicitWidth = 96
+              Width = 104
+            end
+            object DR_C37G4: TcxDBCheckBox
+              Left = 1
+              Top = 67
+              Align = alClient
+              DataBinding.DataField = 'DR_TERM'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 2
+              ExplicitWidth = 96
+              Width = 104
+            end
+          end
+        end
+        object grdpnl19: TGridPanel
+          Left = 978
+          Top = 105
+          Width = 109
+          Height = 285
+          Align = alClient
+          ColumnCollection = <
+            item
+              Value = 100.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = grdpnl22
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = grdpnl25
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = grdpnl28
+              Row = 2
+            end>
+          RowCollection = <
+            item
+              Value = 29.990000000000000000
+            end
+            item
+              Value = 40.000000000000000000
+            end
+            item
+              Value = 30.010000000000000000
+            end>
+          TabOrder = 29
+          ExplicitLeft = 905
+          ExplicitWidth = 101
+          object grdpnl22: TGridPanel
+            Left = 1
+            Top = 1
+            Width = 107
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl13
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = YR_C28G5
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = YR_C1000G5
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = YR_CNEKG5
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = YR_CGISG5
+                Row = 4
+              end>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 0
+            ExplicitWidth = 99
+            DesignSize = (
+              107
+              85)
+            object lbl13: TLabel
+              Left = 52
+              Top = 2
+              Width = 3
+              Height = 15
+              Anchors = []
+              ExplicitLeft = 37
+            end
+            object YR_C28G5: TcxDBCheckBox
+              Left = 1
+              Top = 18
+              Align = alClient
+              DataBinding.DataField = 'YR_28_HAFTA'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object YR_C1000G5: TcxDBCheckBox
+              Left = 1
+              Top = 34
+              Align = alClient
+              DataBinding.DataField = 'YR_1000_GR'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object YR_CNEKG5: TcxDBCheckBox
+              Left = 1
+              Top = 51
+              Align = alClient
+              DataBinding.DataField = 'YR_NEK_GIS'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 2
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object YR_CGISG5: TcxDBCheckBox
+              Left = 1
+              Top = 67
+              Align = alClient
+              DataBinding.DataField = 'YR_KONJ_GIS'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 3
+              ExplicitWidth = 97
+              Width = 105
+            end
+          end
+          object grdpnl25: TGridPanel
+            Left = 1
+            Top = 86
+            Width = 107
+            Height = 113
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl14
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = OR_C28G5
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = OR_CIUGRG5
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = OR_C1000G5
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = OR_CKONJENITALG5
+                Row = 4
+              end>
+            RowCollection = <
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 28.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end
+              item
+                Value = 18.000000000000000000
+              end>
+            TabOrder = 1
+            ExplicitWidth = 99
+            DesignSize = (
+              107
+              113)
+            object lbl14: TLabel
+              Left = 52
+              Top = 3
+              Width = 3
+              Height = 15
+              Anchors = []
+              ExplicitLeft = 37
+            end
+            object OR_C28G5: TcxDBCheckBox
+              Left = 1
+              Top = 21
+              Align = alClient
+              DataBinding.DataField = 'OR_28_31_HAFTA'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object OR_CIUGRG5: TcxDBCheckBox
+              Left = 1
+              Top = 41
+              Align = alClient
+              DataBinding.DataField = 'OR_IUGR'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object OR_C1000G5: TcxDBCheckBox
+              Left = 1
+              Top = 72
+              Align = alClient
+              DataBinding.DataField = 'OR_1000_1500_GR'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 2
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object OR_CKONJENITALG5: TcxDBCheckBox
+              Left = 1
+              Top = 92
+              Align = alClient
+              DataBinding.DataField = 'OR_KONJ_BESLENME'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 3
+              ExplicitWidth = 97
+              Width = 105
+            end
+          end
+          object grdpnl28: TGridPanel
+            Left = 1
+            Top = 199
+            Width = 107
+            Height = 85
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = lbl15
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = DR_C32G5
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = DR_CIUGRG5
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = DR_CTERMG5
+                Row = 3
+              end>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 40.000000000000000000
+              end
+              item
+                Value = 20.000000000000000000
+              end>
+            TabOrder = 2
+            ExplicitWidth = 99
+            DesignSize = (
+              107
+              85)
+            object lbl15: TLabel
+              Left = 52
+              Top = 2
+              Width = 3
+              Height = 15
+              Anchors = []
+              ExplicitLeft = 37
+            end
+            object DR_C32G5: TcxDBCheckBox
+              Left = 1
+              Top = 18
+              Align = alClient
+              DataBinding.DataField = 'DR_32_35_HAFTA'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 0
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object DR_CIUGRG5: TcxDBCheckBox
+              Left = 1
+              Top = 34
+              Align = alClient
+              DataBinding.DataField = 'DR_IUGR_35'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 1
+              ExplicitWidth = 97
+              Width = 105
+            end
+            object DR_CTERMG5: TcxDBCheckBox
+              Left = 1
+              Top = 67
+              Align = alClient
+              DataBinding.DataField = 'DR_TERM'
+              Properties.Alignment = taCenter
+              Properties.NullStyle = nssUnchecked
+              Properties.OnChange = RiskCheckBoxPropertiesChange
+              Style.TransparentBorder = False
+              TabOrder = 2
+              ExplicitWidth = 97
+              Width = 105
+            end
+          end
+        end
+        object cxlbl27: TcxLabel
+          Left = 1
+          Top = 390
+          Align = alClient
+          Caption = 'R'#304'SK SKORU (Orta veya Y'#252'ksek olarak yaz'#305'lacak)'
+          Properties.Alignment.Horz = taRightJustify
+          Properties.Alignment.Vert = taVCenter
+          ExplicitWidth = 502
+          AnchorX = 544
+          AnchorY = 407
+        end
+        object grdpnl29: TGridPanel
+          Left = 1
+          Top = 423
+          Width = 543
+          Height = 52
+          Align = alClient
+          ColumnCollection = <
+            item
+              Value = 100.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = lbl16
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = cxlbl28
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = cxlbl29
+              Row = 2
+            end
+            item
+              Column = 0
+              Control = lbl17
+              Row = 3
+            end>
+          RowCollection = <
+            item
+              Value = 10.000000000000000000
+            end
+            item
+              Value = 40.000000000000000000
+            end
+            item
+              Value = 40.000000000000000000
+            end
+            item
+              Value = 10.000000000000000000
+            end>
+          TabOrder = 31
+          ExplicitWidth = 502
+          DesignSize = (
+            543
+            52)
+          object lbl16: TLabel
+            Left = 270
+            Top = 1
+            Width = 3
+            Height = 15
+            Anchors = []
+            ExplicitLeft = 238
+          end
+          object cxlbl28: TcxLabel
+            Left = 1
+            Top = 6
+            Align = alClient
+            Caption = 'DE'#286'ERLEND'#304'RMEY'#304' YAPANIN;'
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -12
+            Style.Font.Name = 'Segoe UI'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Properties.Alignment.Vert = taVCenter
+            ExplicitWidth = 500
+            AnchorX = 542
+            AnchorY = 16
+          end
+          object cxlbl29: TcxLabel
+            Left = 1
+            Top = 26
+            Align = alClient
+            Caption = 'ADI - SOYADI:'
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -12
+            Style.Font.Name = 'Segoe UI'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Properties.Alignment.Vert = taVCenter
+            ExplicitWidth = 500
+            AnchorX = 542
+            AnchorY = 36
+          end
+          object lbl17: TLabel
+            Left = 270
+            Top = 46
+            Width = 3
+            Height = 15
+            Anchors = []
+            ExplicitLeft = 238
+          end
+        end
+        object DR_GUN1: TcxDBLabel
+          Left = 544
+          Top = 423
+          Align = alClient
+          DataBinding.DataField = 'DOKTOR_ADI'
+          DataBinding.DataSource = dsRastgeleHasta
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 503
+          ExplicitWidth = 101
+          Height = 52
+          Width = 109
+          AnchorX = 599
+          AnchorY = 449
+        end
+        object DR_GUN2: TcxDBLabel
+          Left = 653
+          Top = 423
+          Align = alClient
+          DataBinding.DataField = 'DOKTOR_ADI'
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 604
+          ExplicitWidth = 100
+          Height = 52
+          Width = 108
+          AnchorX = 707
+          AnchorY = 449
+        end
+        object DR_GUN3: TcxDBLabel
+          Left = 761
+          Top = 423
+          Align = alClient
+          DataBinding.DataField = 'DOKTOR_ADI'
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 704
+          ExplicitWidth = 101
+          Height = 52
+          Width = 109
+          AnchorX = 816
+          AnchorY = 449
+        end
+        object DR_GUN4: TcxDBLabel
+          Left = 870
+          Top = 423
+          Align = alClient
+          DataBinding.DataField = 'DOKTOR_ADI'
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 805
+          ExplicitWidth = 100
+          Height = 52
+          Width = 108
+          AnchorX = 924
+          AnchorY = 449
+        end
+        object DR_GUN5: TcxDBLabel
+          Left = 978
+          Top = 423
+          Align = alClient
+          DataBinding.DataField = 'DOKTOR_ADI'
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 905
+          ExplicitWidth = 101
+          Height = 52
+          Width = 109
+          AnchorX = 1033
+          AnchorY = 449
+        end
+        object scorGun1: TcxDBLabel
+          Left = 544
+          Top = 390
+          Align = alClient
+          DataBinding.DataField = 'RISK_SEVIYE'
+          DataBinding.DataSource = dsRastgeleHasta
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 503
+          ExplicitWidth = 101
+          Height = 33
+          Width = 109
+          AnchorX = 599
+          AnchorY = 407
+        end
+        object scorGun2: TcxDBLabel
+          Left = 653
+          Top = 390
+          Align = alClient
+          DataBinding.DataField = 'RISK_SEVIYE'
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 604
+          ExplicitWidth = 100
+          Height = 33
+          Width = 108
+          AnchorX = 707
+          AnchorY = 407
+        end
+        object scorGun3: TcxDBLabel
+          Left = 761
+          Top = 390
+          Align = alClient
+          DataBinding.DataField = 'RISK_SEVIYE'
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 704
+          ExplicitWidth = 101
+          Height = 33
+          Width = 109
+          AnchorX = 816
+          AnchorY = 407
+        end
+        object scorGun4: TcxDBLabel
+          Left = 870
+          Top = 390
+          Align = alClient
+          DataBinding.DataField = 'RISK_SEVIYE'
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 805
+          ExplicitWidth = 100
+          Height = 33
+          Width = 108
+          AnchorX = 924
+          AnchorY = 407
+        end
+        object scorGun5: TcxDBLabel
+          Left = 978
+          Top = 390
+          Align = alClient
+          DataBinding.DataField = 'RISK_SEVIYE'
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 905
+          ExplicitWidth = 101
+          Height = 33
+          Width = 109
+          AnchorX = 1033
+          AnchorY = 407
+        end
+      end
+    end
+    object btnKaydet: TButton
+      Left = 936
+      Top = 648
+      Width = 75
+      Height = 25
+      Caption = 'Kaydet'
+      TabOrder = 3
+      OnClick = btnKaydetClick
+    end
+  end
+  object orsn1: TOraSession
+    Username = 'HASTANE'
+    Server = 'ASYA'
+    Connected = True
+    Left = 1032
+    Top = 16
+    EncryptedPassword = '97FF'
+  end
+  object qrrastgeleHasta: TOraQuery
+    Session = orsn1
+    SQL.Strings = (
+      'SELECT *'
+      'FROM YD_RISK_IZLEM'
+      'WHERE DOSYA_NO = :DOSYA_NO'
+      '  AND PROTOKOL_NO = :PROTOKOL_NO'
+      'ORDER BY HAFTA_NO')
+    Left = 952
+    Top = 16
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DOSYA_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PROTOKOL_NO'
+        Value = nil
+      end>
+    object fltfldHastaHASTA_ID: TFloatField
+      FieldName = 'HASTA_ID'
+      Required = True
+    end
+    object fltfldHastaHAFTA_NO: TFloatField
+      FieldName = 'HAFTA_NO'
+      Required = True
+    end
+    object fltfldHastaDOSYA_NO: TFloatField
+      FieldName = 'DOSYA_NO'
+      Required = True
+    end
+    object fltfldHastaPROTOKOL_NO: TFloatField
+      FieldName = 'PROTOKOL_NO'
+      Required = True
+    end
+    object dtmfldHastaIZLEM_TARIHI: TDateTimeField
+      FieldName = 'IZLEM_TARIHI'
+      Required = True
+    end
+    object fltfldHastaGESTASYON_HAFTASI: TFloatField
+      FieldName = 'GESTASYON_HAFTASI'
+    end
+    object fltfldHastaDOGUM_KILOSU_GR: TFloatField
+      FieldName = 'DOGUM_KILOSU_GR'
+    end
+    object fltfldHastaDOGUM_BOYU_CM: TFloatField
+      FieldName = 'DOGUM_BOYU_CM'
+    end
+    object fltfldHastaDOGUM_BAS_CEVRESI: TFloatField
+      FieldName = 'DOGUM_BAS_CEVRESI'
+    end
+    object strngfldHastaYR_28_HAFTA: TStringField
+      FieldName = 'YR_28_HAFTA'
+      Size = 1
+    end
+    object strngfldHastaYR_1000_GR: TStringField
+      FieldName = 'YR_1000_GR'
+      Size = 1
+    end
+    object strngfldHastaYR_NEK_GIS: TStringField
+      FieldName = 'YR_NEK_GIS'
+      Size = 1
+    end
+    object strngfldHastaYR_KONJ_GIS: TStringField
+      FieldName = 'YR_KONJ_GIS'
+      Size = 1
+    end
+    object strngfldHastaOR_28_31_HAFTA: TStringField
+      FieldName = 'OR_28_31_HAFTA'
+      Size = 1
+    end
+    object strngfldHastaOR_IUGR: TStringField
+      FieldName = 'OR_IUGR'
+      Size = 1
+    end
+    object strngfldHastaOR_1000_1500_GR: TStringField
+      FieldName = 'OR_1000_1500_GR'
+      Size = 1
+    end
+    object strngfldHastaOR_KONJ_BESLENME: TStringField
+      FieldName = 'OR_KONJ_BESLENME'
+      Size = 1
+    end
+    object strngfldHastaDR_32_35_HAFTA: TStringField
+      FieldName = 'DR_32_35_HAFTA'
+      Size = 1
+    end
+    object strngfldHastaDR_IUGR_35: TStringField
+      FieldName = 'DR_IUGR_35'
+      Size = 1
+    end
+    object strngfldHastaDR_TERM: TStringField
+      FieldName = 'DR_TERM'
+      Size = 1
+    end
+    object strngfldHastaRISK_SEVIYE: TStringField
+      FieldName = 'RISK_SEVIYE'
+      Size = 10
+    end
+    object strngfldHastaIHT_2_HAFTA_KILO: TStringField
+      FieldName = 'IHT_2_HAFTA_KILO'
+      Size = 1
+    end
+    object strngfldHastaIHT_15_KAYIP: TStringField
+      FieldName = 'IHT_15_KAYIP'
+      Size = 1
+    end
+    object strngfldHastaIHT_10G_KAZANIM: TStringField
+      FieldName = 'IHT_10G_KAZANIM'
+      Size = 1
+    end
+    object strngfldHastaIHT_NEK_CERRAHI: TStringField
+      FieldName = 'IHT_NEK_CERRAHI'
+      Size = 1
+    end
+    object strngfldHastaDOKTOR_ADI: TStringField
+      FieldName = 'DOKTOR_ADI'
+      Size = 100
+    end
+    object dtmfldHastaKAYIT_TARIHI: TDateTimeField
+      FieldName = 'KAYIT_TARIHI'
+    end
+    object fltfldHastaKILO_KG: TFloatField
+      FieldName = 'KILO_KG'
+    end
+    object fltfldHastaBOY_CM: TFloatField
+      FieldName = 'BOY_CM'
+    end
+    object fltfldHastaBAS_CEVRESI_CM: TFloatField
+      FieldName = 'BAS_CEVRESI_CM'
+    end
+  end
+  object dsRastgeleHasta: TOraDataSource
+    DataSet = qrrastgeleHasta
+    Left = 792
+    Top = 16
+  end
+end

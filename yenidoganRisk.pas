@@ -256,7 +256,6 @@ var
 
 implementation
 
-
 {$R *.dfm}
 
 function TForm2.GetAktifHafta: Integer;
@@ -273,7 +272,7 @@ begin
     qrrastgeleHasta.First;
     while not qrrastgeleHasta.Eof do
     begin
-      // Aktif hafta mantığı: RISK_SEVIYE boş olan ilk kayıt
+      // Aktif hafta = RISK_SEVIYE boş olan ilk kayıt
       if Trim(qrrastgeleHasta.FieldByName('RISK_SEVIYE').AsString) = '' then
       begin
         Result := Trunc(qrrastgeleHasta.FieldByName('HAFTA_NO').AsFloat);
@@ -282,7 +281,7 @@ begin
       qrrastgeleHasta.Next;
     end;
 
-    // Hepsi doluysa: son haftayı aktif kabul et (istersen 0 döndür de yapabiliriz)
+    // Hepsi doluysa son haftayı aktif kabul et
     qrrastgeleHasta.Last;
     Result := Trunc(qrrastgeleHasta.FieldByName('HAFTA_NO').AsFloat);
   finally
@@ -301,11 +300,11 @@ begin
   if (not qrrastgeleHasta.Active) or qrrastgeleHasta.IsEmpty then
     Exit;
 
-  // Mevcut satırın hasta anahtarları (FDosyaNo/FProtokolNo yok!)
+  // Mevcut hastanın anahtarları (tek kaynak qrrastgeleHasta)
   DosyaNo    := qrrastgeleHasta.FieldByName('DOSYA_NO').AsInteger;
   ProtokolNo := qrrastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger;
 
-  // Aktif hafta = şu an ekranda durduğun satırın haftası
+  // Aktif hafta = ekranda bulunduğumuz satır
   AktifHafta := Trunc(qrrastgeleHasta.FieldByName('HAFTA_NO').AsFloat);
 
   // En az bir ölçüm girilmiş mi?
@@ -319,7 +318,7 @@ begin
     Exit;
   end;
 
-  // Mevcut haftayı kaydet (checkbox değişince zaten Edit’e geçiyor olabilir)
+  // Mevcut haftayı kaydet
   if not (qrrastgeleHasta.State in dsEditModes) then
     qrrastgeleHasta.Edit;
 
@@ -329,23 +328,20 @@ begin
   qrrastgeleHasta.Last;
   SonHafta := Trunc(qrrastgeleHasta.FieldByName('HAFTA_NO').AsFloat);
 
-  // Sadece aktif hafta = son hafta ise ve 5'ten küçükse yeni hafta aç
+  // Aktif hafta son haftaysa ve 5'ten küçükse yeni hafta aç
   if (AktifHafta = SonHafta) and (SonHafta < 5) then
   begin
     YeniHafta := SonHafta + 1;
 
     qrrastgeleHasta.Append;
-    qrrastgeleHasta.FieldByName('HASTA_ID').AsInteger := 1; // test (canlıda sequence/trigger vs varsa burası değişebilir)
+    qrrastgeleHasta.FieldByName('HASTA_ID').AsInteger := 1; // test
     qrrastgeleHasta.FieldByName('HAFTA_NO').AsInteger := YeniHafta;
-
-    // Anahtarlar mevcut hastadan
-    qrrastgeleHasta.FieldByName('DOSYA_NO').AsInteger    := DosyaNo;
+    qrrastgeleHasta.FieldByName('DOSYA_NO').AsInteger := DosyaNo;
     qrrastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := ProtokolNo;
-
     qrrastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
     qrrastgeleHasta.Post;
 
-    // yeni haftaya geçmiyoruz, ekranda aynı hafta kalsın
+    // Yeni haftaya geçmiyoruz
     qrrastgeleHasta.Locate('HAFTA_NO', AktifHafta, []);
   end;
 
@@ -358,8 +354,52 @@ const
   TEST_DOSYA_NO    = 12;
   TEST_PROTOKOL_NO = 400;
 var
-  AktifHafta: Integer;
   DosyaNo, ProtokolNo: Integer;
+  KayitSayisi: Integer;
+  MinHafta, MaxHafta: Integer;
+  AktifHafta: Integer;
+  Msg: string;
+  Bmk: TBookmark;
+
+  function FieldExists(const AFieldName: string): Boolean;
+  begin
+    Result := Assigned(qrrastgeleHasta.FindField(AFieldName));
+  end;
+
+  function FieldIsRequired(const AFieldName: string): Boolean;
+  var
+    F: TField;
+  begin
+    Result := False;
+    F := qrrastgeleHasta.FindField(AFieldName);
+    if Assigned(F) then
+      Result := F.Required;
+  end;
+
+  procedure CalcMinMaxHafta(out AMin, AMax: Integer);
+  begin
+    AMin := 0;
+    AMax := 0;
+
+    if (not qrrastgeleHasta.Active) or qrrastgeleHasta.IsEmpty then
+      Exit;
+
+    if not FieldExists('HAFTA_NO') then
+      Exit;
+
+    Bmk := qrrastgeleHasta.GetBookmark;
+    try
+      qrrastgeleHasta.First;
+      AMin := Trunc(qrrastgeleHasta.FieldByName('HAFTA_NO').AsFloat);
+
+      qrrastgeleHasta.Last;
+      AMax := Trunc(qrrastgeleHasta.FieldByName('HAFTA_NO').AsFloat);
+    finally
+      qrrastgeleHasta.GotoBookmark(Bmk);
+      qrrastgeleHasta.FreeBookmark(Bmk);
+    end;
+  end;
+
 begin
   // 1) Oracle bağlantısı
   if not Orsn1.Connected then
@@ -372,19 +412,14 @@ begin
   ProtokolNo := TEST_PROTOKOL_NO;
 
   // ==============================
-  // İLERİDE CANLI SİSTEMDE:
-  // Form açılmadan önce bu iki değer set edilecek, burada direkt kullanılacak.
+  // İLERİDE CANLI SİSTEM (örnek):
+  // DosyaNo    := qrrastgeleHasta.FieldByName('DOSYA_NO').AsInteger;
+  // ProtokolNo := qrrastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger;
   //
-  // ÖRNEK 1 (başka bir dataset’ten):
-  // DosyaNo    := DM.qrrastgeleHasta.FieldByName('DOSYA_NO').AsInteger;
+  // veya formu açan yerden:
+  // DosyaNo := DM.qrrastgeleHasta.FieldByName('DOSYA_NO').AsInteger;
   // ProtokolNo := DM.qrrastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger;
-  //
-  // ÖRNEK 2 (bu formu açan yerden property/param ile verilecekse):
-  // DosyaNo := ADosyaNo; ProtokolNo := AProtokolNo;
   // ==============================
-
-  //Insert ederken ParamByName değil FieldByName
-
 
   // 2) Query kapat/aç
   if qrrastgeleHasta.Active then
@@ -396,30 +431,80 @@ begin
 
   qrrastgeleHasta.Open;
 
-  // 4) Hiç kayıt yoksa -> 1. hafta oluştur
+  // 4) Kayıt bilgileri (açılış)
+  KayitSayisi := qrrastgeleHasta.RecordCount;
+  CalcMinMaxHafta(MinHafta, MaxHafta);
+
+  // 5) DB boşsa -> 1. hafta oluşturmayı dene
   if qrrastgeleHasta.IsEmpty then
   begin
     qrrastgeleHasta.Append;
-    qrrastgeleHasta.FieldByName('HASTA_ID').AsInteger := 1; // test
-    qrrastgeleHasta.FieldByName('HAFTA_NO').AsInteger := 1;
-    qrrastgeleHasta.FieldByName('DOSYA_NO').AsInteger    := DosyaNo;
-    qrrastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := ProtokolNo;
-    qrrastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
-    qrrastgeleHasta.Post;
 
+    // HAFTA_NO
+    if FieldExists('HAFTA_NO') then
+      qrrastgeleHasta.FieldByName('HAFTA_NO').AsInteger := 1;
+
+    // DOSYA_NO / PROTOKOL_NO
+    if FieldExists('DOSYA_NO') then
+      qrrastgeleHasta.FieldByName('DOSYA_NO').AsInteger := DosyaNo;
+
+    if FieldExists('PROTOKOL_NO') then
+      qrrastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := ProtokolNo;
+
+    // IZLEM_TARIHI
+    if FieldExists('IZLEM_TARIHI') then
+      qrrastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
+
+    // HASTA_ID:
+    // ÇOĞU DB'DE trigger/sequence üretir, bu yüzden elle set etmiyoruz.
+    // Ama field Required ise ve DB üretmiyorsa Post patlar -> aşağıda yakalıyoruz.
+
+    try
+      qrrastgeleHasta.Post;
+    except
+      on E: Exception do
+      begin
+        qrrastgeleHasta.Cancel;
+
+        Msg :=
+          'İlk kayıt otomatik açılamadı!' + sLineBreak +
+          'Sebep: ' + E.Message + sLineBreak + sLineBreak +
+          'Kontrol:' + sLineBreak +
+          '- HASTA_ID alanı Required mı? ' + BoolToStr(FieldIsRequired('HASTA_ID'), True) + sLineBreak +
+          '- Eğer Required ise DB tarafında trigger/sequence ile otomatik üretilmeli.' + sLineBreak +
+          '- Otomatik üretim yoksa HASTA_ID için NEXTVAL çekip set etmek gerekir.';
+
+        ShowMessage(Msg);
+        Exit;
+      end;
+    end;
+
+    // tekrar aç
     qrrastgeleHasta.Close;
     qrrastgeleHasta.Open;
   end;
 
-  // 5) Aktif haftaya git (dataset açıldıktan sonra!)
+  // 6) Aktif haftayı bul ve o haftaya git
   AktifHafta := GetAktifHafta;
-  if AktifHafta > 0 then
+  if (AktifHafta > 0) and FieldExists('HAFTA_NO') then
     qrrastgeleHasta.Locate('HAFTA_NO', AktifHafta, [])
   else
     qrrastgeleHasta.First;
 
-  // (İstersen burada AktifHafta’ya göre sütun açma/gösterme işini de ekleriz.)
+  // 7) Debug mesajı (güncel)
+  KayitSayisi := qrrastgeleHasta.RecordCount;
+  CalcMinMaxHafta(MinHafta, MaxHafta);
+
+  Msg :=
+    'DOSYA_NO: ' + IntToStr(DosyaNo) + sLineBreak +
+    'PROTOKOL_NO: ' + IntToStr(ProtokolNo) + sLineBreak +
+    'Geçmiş kayıt sayısı: ' + IntToStr(KayitSayisi) + sLineBreak +
+    'Hafta aralığı: ' + IntToStr(MinHafta) + ' - ' + IntToStr(MaxHafta) + sLineBreak +
+    'Aktif hafta: ' + IntToStr(AktifHafta);
+
+  ShowMessage(Msg);
 end;
+
 
 
 procedure TForm2.lblGunTarihClick(Sender: TObject);
@@ -489,7 +574,7 @@ begin
   if not (Sender is TcxDBCheckBox) then Exit;
   C := TcxDBCheckBox(Sender);
 
-  // Dataset edit moduna al (dsRastgeleHasta bağlıysa otomatik qrrastgeleHasta’ya gider)
+  // DataSource üzerinden dataset Edit moduna alınır
   if Assigned(C.DataBinding.DataSource)
      and Assigned(C.DataBinding.DataSource.DataSet)
      and not (C.DataBinding.DataSource.DataSet.State in dsEditModes) then
