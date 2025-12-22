@@ -1361,7 +1361,7 @@ object Form2: TForm2
               end
               item
                 Column = 0
-                Control = chkYR28Gun1
+                Control = YR_C28G1
                 Row = 1
               end
               item
@@ -1409,7 +1409,7 @@ object Form2: TForm2
               ExplicitWidth = 3
               ExplicitHeight = 15
             end
-            object chkYR28Gun1: TcxDBCheckBox
+            object YR_C28G1: TcxDBCheckBox
               Left = 1
               Top = 18
               Align = alClient
@@ -1422,8 +1422,8 @@ object Form2: TForm2
               Style.BorderStyle = ebsSingle
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitLeft = -1
-              ExplicitTop = 13
+              ExplicitLeft = 2
+              ExplicitTop = 24
               Width = 105
             end
             object YR_C1000G1: TcxDBCheckBox
@@ -1805,7 +1805,8 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitWidth = 96
+              ExplicitLeft = -1
+              ExplicitTop = 12
               Width = 104
             end
             object YR_C1000G2: TcxDBCheckBox
@@ -2499,7 +2500,7 @@ object Form2: TForm2
               end
               item
                 Column = 0
-                Control = YR_CN1000_GR4
+                Control = YR_C1000G4
                 Row = 2
               end
               item
@@ -2554,7 +2555,7 @@ object Form2: TForm2
               ExplicitWidth = 96
               Width = 104
             end
-            object YR_CN1000_GR4: TcxDBCheckBox
+            object YR_C1000G4: TcxDBCheckBox
               Left = 1
               Top = 34
               Align = alClient
@@ -3055,7 +3056,8 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitWidth = 97
+              ExplicitLeft = 3
+              ExplicitTop = 35
               Width = 105
             end
             object OR_C1000G5: TcxDBCheckBox
@@ -3113,7 +3115,7 @@ object Form2: TForm2
               end
               item
                 Column = 0
-                Control = DR_CTERMG5
+                Control = DR_C37G5
                 Row = 3
               end>
             RowCollection = <
@@ -3168,7 +3170,7 @@ object Form2: TForm2
               ExplicitWidth = 97
               Width = 105
             end
-            object DR_CTERMG5: TcxDBCheckBox
+            object DR_C37G5: TcxDBCheckBox
               Left = 1
               Top = 67
               Align = alClient

@@ -128,7 +128,7 @@ type
     fltfldHastaBAS_CEVRESI_CM: TFloatField;
     lbl1: TLabel;
     grdpnl11: TGridPanel;
-    chkYR28Gun1: TcxDBCheckBox;
+    YR_C28G1: TcxDBCheckBox;
     YR_C1000G1: TcxDBCheckBox;
     YR_CNEKG1: TcxDBCheckBox;
     YR_CGISG1: TcxDBCheckBox;
@@ -188,7 +188,7 @@ type
     DR_C37G3: TcxDBCheckBox;
     lbl10: TLabel;
     YR_C28G4: TcxDBCheckBox;
-    YR_CN1000_GR4: TcxDBCheckBox;
+    YR_C1000G4: TcxDBCheckBox;
     YR_CNEKG4: TcxDBCheckBox;
     YR_CGISG4: TcxDBCheckBox;
     lbl11: TLabel;
@@ -213,7 +213,7 @@ type
     lbl15: TLabel;
     DR_C32G5: TcxDBCheckBox;
     DR_CIUGRG5: TcxDBCheckBox;
-    DR_CTERMG5: TcxDBCheckBox;
+    DR_C37G5: TcxDBCheckBox;
     cxlbl27: TcxLabel;
     grdpnl29: TGridPanel;
     lbl16: TLabel;
@@ -240,6 +240,9 @@ type
 
     procedure RefreshRiskCheckBox(ACheck: TcxDBCheckBox);
 
+    procedure SetHaftaAktif(AHafta: Integer);
+
+
     function GetAktifHafta: Integer;
 
 
@@ -257,6 +260,60 @@ var
 implementation
 
 {$R *.dfm}
+
+
+procedure TForm2.SetHaftaAktif(AHafta: Integer);
+var
+  I: Integer;
+
+  procedure SetCtrlEnabled(const BaseName: string; AEnabled: Boolean);
+  var
+    C: TComponent;
+  begin
+    C := FindComponent(BaseName);
+    if Assigned(C) and (C is TControl) then
+      TControl(C).Enabled := AEnabled;
+  end;
+
+begin
+  // Güvenlik
+  if (AHafta < 1) then Exit;
+  if (AHafta > 5) then AHafta := 5;
+
+  // 1–5 haftalar
+  for I := 1 to 5 do
+  begin
+    // Aktif haftadan büyük olanlar KAPALI
+    // Aktif ve öncekiler AÇIK
+    // -------------------------------
+    // Ölçümler
+    SetCtrlEnabled('edtKiloGun' + IntToStr(I), I <= AHafta);
+    SetCtrlEnabled('edtBoyGun'  + IntToStr(I), I <= AHafta);
+    SetCtrlEnabled('edtBasGun'  + IntToStr(I), I <= AHafta);
+
+    // YÜKSEK RİSK
+    SetCtrlEnabled('YR_C28G'    + IntToStr(I), I <= AHafta);
+    SetCtrlEnabled('YR_C1000G'  + IntToStr(I), I <= AHafta);
+    SetCtrlEnabled('YR_CNEKG'   + IntToStr(I), I <= AHafta);
+    SetCtrlEnabled('YR_CGISG'   + IntToStr(I), I <= AHafta);
+
+    // ORTA RİSK
+    SetCtrlEnabled('OR_C28G'        + IntToStr(I), I <= AHafta);
+    SetCtrlEnabled('OR_CIUGRG'      + IntToStr(I), I <= AHafta);
+    SetCtrlEnabled('OR_C1000G'      + IntToStr(I), I <= AHafta);
+    SetCtrlEnabled('OR_CKONJENITALG'+ IntToStr(I), I <= AHafta);
+
+    // DÜŞÜK RİSK
+    SetCtrlEnabled('DR_C32G'   + IntToStr(I), I <= AHafta);
+    SetCtrlEnabled('DR_CIUGRG' + IntToStr(I), I <= AHafta);
+    SetCtrlEnabled('DR_C37G'   + IntToStr(I), I <= AHafta);
+
+    // LABEL / SKOR
+    SetCtrlEnabled('scorGun' + IntToStr(I), I <= AHafta);
+    SetCtrlEnabled('DR_GUN'  + IntToStr(I), I <= AHafta);
+  end;
+end;
+
 
 function TForm2.GetAktifHafta: Integer;
 var
@@ -491,6 +548,10 @@ begin
   else
     qrrastgeleHasta.First;
 
+    // Haftaya göre alanları kilitle
+    SetHaftaAktif(AktifHafta);
+
+
   // 7) Debug mesajı (güncel)
   KayitSayisi := qrrastgeleHasta.RecordCount;
   CalcMinMaxHafta(MinHafta, MaxHafta);
@@ -503,6 +564,9 @@ begin
     'Aktif hafta: ' + IntToStr(AktifHafta);
 
   ShowMessage(Msg);
+
+
+
 end;
 
 
