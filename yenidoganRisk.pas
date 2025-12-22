@@ -194,6 +194,13 @@ type
     YR_CGISG4: TcxDBCheckBox;
     lbl11: TLabel;
     OR_C28G4: TcxDBCheckBox;
+    OR_CIUGRG4: TcxDBCheckBox;
+    OR_C1000G4: TcxDBCheckBox;
+    OR_CKONJENITALG4: TcxDBCheckBox;
+    lbl12: TLabel;
+    DR_C32G4: TcxDBCheckBox;
+    DR_CIUGRG4: TcxDBCheckBox;
+    DR_C37G4: TcxDBCheckBox;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
