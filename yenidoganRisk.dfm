@@ -678,6 +678,7 @@ object Form2: TForm2
           Top = 34
           Align = alClient
           DataBinding.DataField = 'KILO_KG'
+          DataBinding.DataSource = dsRastgeleHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 8
           ExplicitLeft = 604
@@ -743,6 +744,7 @@ object Form2: TForm2
           Top = 58
           Align = alClient
           DataBinding.DataField = 'BOY_CM'
+          DataBinding.DataSource = dsRastgeleHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 14
           ExplicitLeft = 604
@@ -811,6 +813,7 @@ object Form2: TForm2
           Top = 82
           Align = alClient
           DataBinding.DataField = 'BAS_CEVRESI_CM'
+          DataBinding.DataSource = dsRastgeleHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 20
           ExplicitLeft = 604
@@ -1800,6 +1803,7 @@ object Form2: TForm2
               Top = 18
               Align = alClient
               DataBinding.DataField = 'YR_28_HAFTA'
+              DataBinding.DataSource = dsRastgeleHasta
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.OnChange = RiskCheckBoxPropertiesChange
@@ -1814,6 +1818,7 @@ object Form2: TForm2
               Top = 34
               Align = alClient
               DataBinding.DataField = 'YR_1000_GR'
+              DataBinding.DataSource = dsRastgeleHasta
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.OnChange = RiskCheckBoxPropertiesChange
@@ -1827,6 +1832,7 @@ object Form2: TForm2
               Top = 51
               Align = alClient
               DataBinding.DataField = 'YR_NEK_GIS'
+              DataBinding.DataSource = dsRastgeleHasta
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.OnChange = RiskCheckBoxPropertiesChange
@@ -1840,6 +1846,7 @@ object Form2: TForm2
               Top = 67
               Align = alClient
               DataBinding.DataField = 'YR_KONJ_GIS'
+              DataBinding.DataSource = dsRastgeleHasta
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.OnChange = RiskCheckBoxPropertiesChange
@@ -1917,6 +1924,7 @@ object Form2: TForm2
               Top = 21
               Align = alClient
               DataBinding.DataField = 'OR_28_31_HAFTA'
+              DataBinding.DataSource = dsRastgeleHasta
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.OnChange = RiskCheckBoxPropertiesChange
@@ -1930,6 +1938,7 @@ object Form2: TForm2
               Top = 41
               Align = alClient
               DataBinding.DataField = 'OR_IUGR'
+              DataBinding.DataSource = dsRastgeleHasta
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.OnChange = RiskCheckBoxPropertiesChange
@@ -1943,6 +1952,7 @@ object Form2: TForm2
               Top = 72
               Align = alClient
               DataBinding.DataField = 'OR_1000_1500_GR'
+              DataBinding.DataSource = dsRastgeleHasta
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.OnChange = RiskCheckBoxPropertiesChange
@@ -1956,6 +1966,7 @@ object Form2: TForm2
               Top = 92
               Align = alClient
               DataBinding.DataField = 'OR_KONJ_BESLENME'
+              DataBinding.DataSource = dsRastgeleHasta
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.OnChange = RiskCheckBoxPropertiesChange
@@ -2027,6 +2038,7 @@ object Form2: TForm2
               Top = 18
               Align = alClient
               DataBinding.DataField = 'DR_32_35_HAFTA'
+              DataBinding.DataSource = dsRastgeleHasta
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.OnChange = RiskCheckBoxPropertiesChange
@@ -2040,6 +2052,7 @@ object Form2: TForm2
               Top = 34
               Align = alClient
               DataBinding.DataField = 'DR_IUGR_35'
+              DataBinding.DataSource = dsRastgeleHasta
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.OnChange = RiskCheckBoxPropertiesChange
@@ -2053,6 +2066,7 @@ object Form2: TForm2
               Top = 67
               Align = alClient
               DataBinding.DataField = 'DR_TERM'
+              DataBinding.DataSource = dsRastgeleHasta
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.OnChange = RiskCheckBoxPropertiesChange
@@ -3318,6 +3332,7 @@ object Form2: TForm2
           Top = 423
           Align = alClient
           DataBinding.DataField = 'DOKTOR_ADI'
+          DataBinding.DataSource = dsRastgeleHasta
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taVCenter
           ExplicitLeft = 604
@@ -3389,6 +3404,7 @@ object Form2: TForm2
           Top = 390
           Align = alClient
           DataBinding.DataField = 'RISK_SEVIYE'
+          DataBinding.DataSource = dsRastgeleHasta
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taVCenter
           ExplicitLeft = 604
