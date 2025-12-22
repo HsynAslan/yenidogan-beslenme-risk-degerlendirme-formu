@@ -419,6 +419,66 @@ object Form2: TForm2
             Column = 5
             Control = grdpnl19
             Row = 4
+          end
+          item
+            Column = 0
+            Control = cxlbl27
+            Row = 5
+          end
+          item
+            Column = 1
+            Control = scorGun1
+            Row = 5
+          end
+          item
+            Column = 2
+            Control = scorGun2
+            Row = 5
+          end
+          item
+            Column = 3
+            Control = scorGun3
+            Row = 5
+          end
+          item
+            Column = 4
+            Control = scorGun4
+            Row = 5
+          end
+          item
+            Column = 5
+            Control = scorGun5
+            Row = 5
+          end
+          item
+            Column = 0
+            Control = grdpnl29
+            Row = 6
+          end
+          item
+            Column = 1
+            Control = DR_GUN1
+            Row = 6
+          end
+          item
+            Column = 2
+            Control = DR_GUN2
+            Row = 6
+          end
+          item
+            Column = 3
+            Control = DR_GUN3
+            Row = 6
+          end
+          item
+            Column = 4
+            Control = DR_GUN4
+            Row = 6
+          end
+          item
+            Column = 5
+            Control = DR_GUN5
+            Row = 6
           end>
         RowCollection = <
           item
@@ -661,8 +721,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 16
-          ExplicitLeft = 799
-          ExplicitTop = 52
           Width = 100
         end
         object edtBoyGun5: TcxDBTextEdit
@@ -724,8 +782,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHasta
           Properties.Alignment.Horz = taCenter
           TabOrder = 22
-          ExplicitLeft = 800
-          ExplicitTop = 79
           Width = 100
         end
         object edtBasGun5: TcxDBTextEdit
@@ -3005,6 +3061,286 @@ object Form2: TForm2
               Width = 97
             end
           end
+        end
+        object cxlbl27: TcxLabel
+          Left = 1
+          Top = 390
+          Align = alClient
+          Caption = 'R'#304'SK SKORU (Orta veya Y'#252'ksek olarak yaz'#305'lacak)'
+          Properties.Alignment.Horz = taRightJustify
+          Properties.Alignment.Vert = taVCenter
+          AnchorX = 503
+          AnchorY = 407
+        end
+        object scorGun1: TcxLabel
+          Left = 503
+          Top = 390
+          Align = alClient
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -12
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          AnchorX = 554
+          AnchorY = 407
+        end
+        object scorGun2: TcxLabel
+          Left = 604
+          Top = 390
+          Align = alClient
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -12
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          AnchorX = 654
+          AnchorY = 407
+        end
+        object scorGun3: TcxLabel
+          Left = 704
+          Top = 390
+          Align = alClient
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -12
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          AnchorX = 755
+          AnchorY = 407
+        end
+        object scorGun4: TcxLabel
+          Left = 805
+          Top = 390
+          Align = alClient
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -12
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          AnchorX = 855
+          AnchorY = 407
+        end
+        object scorGun5: TcxLabel
+          Left = 905
+          Top = 390
+          Align = alClient
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -12
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          AnchorX = 956
+          AnchorY = 407
+        end
+        object grdpnl29: TGridPanel
+          Left = 1
+          Top = 423
+          Width = 502
+          Height = 52
+          Align = alClient
+          ColumnCollection = <
+            item
+              Value = 100.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = lbl16
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = cxlbl28
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = cxlbl29
+              Row = 2
+            end
+            item
+              Column = 0
+              Control = lbl17
+              Row = 3
+            end>
+          RowCollection = <
+            item
+              Value = 10.000000000000000000
+            end
+            item
+              Value = 40.000000000000000000
+            end
+            item
+              Value = 40.000000000000000000
+            end
+            item
+              Value = 10.000000000000000000
+            end>
+          TabOrder = 36
+          DesignSize = (
+            502
+            52)
+          object lbl16: TLabel
+            Left = 249
+            Top = 1
+            Width = 3
+            Height = 15
+            Anchors = []
+            ExplicitLeft = 238
+          end
+          object cxlbl28: TcxLabel
+            Left = 1
+            Top = 6
+            Align = alClient
+            Caption = 'DE'#286'ERLEND'#304'RMEY'#304' YAPANIN;'
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -12
+            Style.Font.Name = 'Segoe UI'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Properties.Alignment.Vert = taVCenter
+            ExplicitLeft = 226
+            ExplicitWidth = 40
+            ExplicitHeight = 19
+            AnchorX = 501
+            AnchorY = 16
+          end
+          object cxlbl29: TcxLabel
+            Left = 1
+            Top = 26
+            Align = alClient
+            Caption = 'ADI - SOYADI:'
+            ParentFont = False
+            Style.Font.Charset = DEFAULT_CHARSET
+            Style.Font.Color = clWindowText
+            Style.Font.Height = -12
+            Style.Font.Name = 'Segoe UI'
+            Style.Font.Style = [fsBold]
+            Style.IsFontAssigned = True
+            Properties.Alignment.Horz = taRightJustify
+            Properties.Alignment.Vert = taVCenter
+            ExplicitLeft = 226
+            ExplicitWidth = 40
+            ExplicitHeight = 19
+            AnchorX = 501
+            AnchorY = 36
+          end
+          object lbl17: TLabel
+            Left = 249
+            Top = 46
+            Width = 3
+            Height = 15
+            Anchors = []
+            ExplicitLeft = 238
+          end
+        end
+        object DR_GUN1: TcxDBLabel
+          Left = 503
+          Top = 423
+          Align = alClient
+          DataBinding.DataField = 'DOKTOR_ADI'
+          DataBinding.DataSource = dsHasta
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 536
+          ExplicitTop = 440
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 52
+          Width = 101
+          AnchorX = 554
+          AnchorY = 449
+        end
+        object DR_GUN2: TcxDBLabel
+          Left = 604
+          Top = 423
+          Align = alClient
+          DataBinding.DataField = 'DOKTOR_ADI'
+          DataBinding.DataSource = dsHasta
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 640
+          ExplicitTop = 440
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 52
+          Width = 100
+          AnchorX = 654
+          AnchorY = 449
+        end
+        object DR_GUN3: TcxDBLabel
+          Left = 704
+          Top = 423
+          Align = alClient
+          DataBinding.DataField = 'DOKTOR_ADI'
+          DataBinding.DataSource = dsHasta
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 744
+          ExplicitTop = 432
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 52
+          Width = 101
+          AnchorX = 755
+          AnchorY = 449
+        end
+        object DR_GUN4: TcxDBLabel
+          Left = 805
+          Top = 423
+          Align = alClient
+          DataBinding.DataField = 'DOKTOR_ADI'
+          DataBinding.DataSource = dsHasta
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 832
+          ExplicitTop = 440
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 52
+          Width = 100
+          AnchorX = 855
+          AnchorY = 449
+        end
+        object DR_GUN5: TcxDBLabel
+          Left = 905
+          Top = 423
+          Align = alClient
+          DataBinding.DataField = 'DOKTOR_ADI'
+          DataBinding.DataSource = dsHasta
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 944
+          ExplicitTop = 432
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 52
+          Width = 101
+          AnchorX = 956
+          AnchorY = 449
         end
       end
     end

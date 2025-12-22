@@ -215,6 +215,22 @@ type
     DR_C32G5: TcxDBCheckBox;
     DR_CIUGRG5: TcxDBCheckBox;
     DR_CTERMG5: TcxDBCheckBox;
+    cxlbl27: TcxLabel;
+    scorGun1: TcxLabel;
+    scorGun2: TcxLabel;
+    scorGun3: TcxLabel;
+    scorGun4: TcxLabel;
+    scorGun5: TcxLabel;
+    grdpnl29: TGridPanel;
+    lbl16: TLabel;
+    cxlbl28: TcxLabel;
+    cxlbl29: TcxLabel;
+    lbl17: TLabel;
+    DR_GUN1: TcxDBLabel;
+    DR_GUN2: TcxDBLabel;
+    DR_GUN3: TcxDBLabel;
+    DR_GUN4: TcxDBLabel;
+    DR_GUN5: TcxDBLabel;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
