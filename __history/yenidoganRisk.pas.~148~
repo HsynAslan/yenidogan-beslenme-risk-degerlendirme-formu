@@ -245,6 +245,9 @@ type
 
   private
     { Private declarations }
+
+    FDosyaNo   : Integer;
+    FProtokolNo: Integer;
   public
     { Public declarations }
   end;
@@ -256,6 +259,30 @@ implementation
 
 {$R *.dfm}
 
+function TForm2.GetAktifHafta: Integer;
+var
+  Bmk: TBookmark;
+begin
+  Result := 0;
+  if not rastgeleHasta.Active then Exit;
+
+  Bmk := rastgeleHasta.GetBookmark;
+  try
+    rastgeleHasta.First;
+    while not rastgeleHasta.Eof do
+    begin
+      if Trim(rastgeleHasta.FieldByName('RISK_SEVIYE').AsString) = '' then
+      begin
+        Result := Trunc(rastgeleHasta.FieldByName('HAFTA_NO').AsFloat);
+        Exit;
+      end;
+      rastgeleHasta.Next;
+    end;
+  finally
+    rastgeleHasta.GotoBookmark(Bmk);
+    rastgeleHasta.FreeBookmark(Bmk);
+  end;
+end;
 
 
 
@@ -315,42 +342,21 @@ end;
 
 procedure TForm2.FormShow(Sender: TObject);
 begin
-  // 1) Oracle bağlantısı
-  if not Orsn1.Connected then
-    Orsn1.Connected := True;
+  // =====================================================
+  // 🔧 TEST MODU (ŞİMDİLİK)
+  // =====================================================
+  FDosyaNo    := 12;
+  FProtokolNo := 400;
 
-  // 2) Query kapat/aç
-  if rastgeleHasta.Active then
-    rastgeleHasta.Close;
-
-  // 3) Test hasta parametreleri
-  rastgeleHasta.ParamByName('DOSYA_NO').AsInteger := 12;
-  rastgeleHasta.ParamByName('PROTOKOL_NO').AsInteger := 400;
-
-  rastgeleHasta.Open;
-
-  // 4) Hiç kayıt yoksa -> 1. hafta oluştur
-  if rastgeleHasta.IsEmpty then
-  begin
-    rastgeleHasta.Append;
-    rastgeleHasta.FieldByName('HASTA_ID').AsInteger := 1; // test sabit
-    rastgeleHasta.FieldByName('HAFTA_NO').AsInteger := 1;
-    rastgeleHasta.FieldByName('DOSYA_NO').AsInteger := 12;
-    rastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := 400;
-    rastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
-    rastgeleHasta.Post;
-
-    rastgeleHasta.Close;
-    rastgeleHasta.Open;
-  end;
-
-  // 5) Her durumda hafta 1 kaydını göster
-  rastgeleHasta.Locate('HAFTA_NO', 1, []);
-
-
-
-end;
-
+  // =====================================================
+  // 🔜 CANLI SİSTEMDE BU KOD AKTİF OLACAK
+  //
+  // FDosyaNo    := DM.Tbprtkldosya_NO.Value;
+  // FProtokolNo := DM.TbPrtklPROTOKOL_NO.Value;
+  //
+  // veya
+  // Form2.DosyaNo / Form2.ProtokolNo property üzerinden
+  // =====================================================
 
 
 procedure TForm2.lblGunTarihClick(Sender: TObject);

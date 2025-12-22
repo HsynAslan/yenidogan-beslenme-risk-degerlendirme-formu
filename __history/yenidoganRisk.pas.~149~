@@ -1,4 +1,4 @@
-unit yenidoganRisk;
+﻿unit yenidoganRisk;
 
 interface
 
@@ -245,6 +245,9 @@ type
 
   private
     { Private declarations }
+
+    FDosyaNo   : Integer;
+    FProtokolNo: Integer;
   public
     { Public declarations }
   end;
@@ -341,6 +344,19 @@ procedure TForm2.FormShow(Sender: TObject);
 var
   AktifHafta: Integer;
 begin
+  // ==============================
+  // TEST AMAÇLI (ŞİMDİLİK)
+  // ==============================
+  FDosyaNo    := 12;
+  FProtokolNo := 400;
+
+  // ==============================
+  // İLERİDE CANLI SİSTEM
+  //
+  // FDosyaNo    := DM.Tbprtkldosya_NO.Value;
+  // FProtokolNo := DM.TbPrtklPROTOKOL_NO.Value;
+  // ==============================
+
   AktifHafta := GetAktifHafta;
   // 1) Oracle bağlantısı
   if not Orsn1.Connected then
@@ -351,8 +367,9 @@ begin
     rastgeleHasta.Close;
 
   // 3) Test hasta parametreleri
-  rastgeleHasta.ParamByName('DOSYA_NO').AsInteger := 12;
-  rastgeleHasta.ParamByName('PROTOKOL_NO').AsInteger := 400;
+rastgeleHasta.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
+rastgeleHasta.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+
 
   rastgeleHasta.Open;
 
@@ -374,10 +391,7 @@ begin
   // 5) Her durumda hafta 1 kaydını göster
   rastgeleHasta.Locate('HAFTA_NO', 1, []);
 
-  if AktifHafta > 0 then
-    rastgeleHasta.Locate('HAFTA_NO', AktifHafta, [])
-  else
-    ShowMessage('Bu hastanın tüm haftaları tamamlanmış.');
+
 
 end;
 

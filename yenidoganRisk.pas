@@ -94,7 +94,7 @@ type
     grdpnl9: TGridPanel;
     grdpnl10: TGridPanel;
     orsn1: TOraSession;
-    rastgeleHasta: TOraQuery;
+    qrrastgeleHasta: TOraQuery;
     btnKaydet: TButton;
     fltfldHastaHASTA_ID: TFloatField;
     fltfldHastaHAFTA_NO: TFloatField;
@@ -126,7 +126,6 @@ type
     fltfldHastaKILO_KG: TFloatField;
     fltfldHastaBOY_CM: TFloatField;
     fltfldHastaBAS_CEVRESI_CM: TFloatField;
-    dsHasta: TDataSource;
     lbl1: TLabel;
     grdpnl11: TGridPanel;
     chkYR28Gun1: TcxDBCheckBox;
@@ -231,6 +230,7 @@ type
     scorGun3: TcxDBLabel;
     scorGun4: TcxDBLabel;
     scorGun5: TcxDBLabel;
+    dsRastgeleHasta: TOraDataSource;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -245,6 +245,8 @@ type
 
   private
     { Private declarations }
+
+
   public
     { Public declarations }
   end;
@@ -254,6 +256,7 @@ var
 
 implementation
 
+
 {$R *.dfm}
 
 function TForm2.GetAktifHafta: Integer;
@@ -261,129 +264,169 @@ var
   Bmk: TBookmark;
 begin
   Result := 0;
-  if not rastgeleHasta.Active then Exit;
 
-  Bmk := rastgeleHasta.GetBookmark;
+  if (not qrrastgeleHasta.Active) or qrrastgeleHasta.IsEmpty then
+    Exit;
+
+  Bmk := qrrastgeleHasta.GetBookmark;
   try
-    rastgeleHasta.First;
-    while not rastgeleHasta.Eof do
+    qrrastgeleHasta.First;
+    while not qrrastgeleHasta.Eof do
     begin
-      if Trim(rastgeleHasta.FieldByName('RISK_SEVIYE').AsString) = '' then
+      // Aktif hafta mantığı: RISK_SEVIYE boş olan ilk kayıt
+      if Trim(qrrastgeleHasta.FieldByName('RISK_SEVIYE').AsString) = '' then
       begin
-        Result := Trunc(rastgeleHasta.FieldByName('HAFTA_NO').AsFloat);
+        Result := Trunc(qrrastgeleHasta.FieldByName('HAFTA_NO').AsFloat);
         Exit;
       end;
-      rastgeleHasta.Next;
+      qrrastgeleHasta.Next;
     end;
+
+    // Hepsi doluysa: son haftayı aktif kabul et (istersen 0 döndür de yapabiliriz)
+    qrrastgeleHasta.Last;
+    Result := Trunc(qrrastgeleHasta.FieldByName('HAFTA_NO').AsFloat);
   finally
-    rastgeleHasta.GotoBookmark(Bmk);
-    rastgeleHasta.FreeBookmark(Bmk);
+    qrrastgeleHasta.GotoBookmark(Bmk);
+    qrrastgeleHasta.FreeBookmark(Bmk);
   end;
 end;
-
 
 
 procedure TForm2.btnKaydetClick(Sender: TObject);
 var
   AktifHafta, SonHafta, YeniHafta: Integer;
   KiloVar, BoyVar, BasVar: Boolean;
+  DosyaNo, ProtokolNo: Integer;
 begin
-  if not rastgeleHasta.Active then Exit;
+  if (not qrrastgeleHasta.Active) or qrrastgeleHasta.IsEmpty then
+    Exit;
 
-  // 🔹 Aktif hafta
-  AktifHafta := Trunc(rastgeleHasta.FieldByName('HAFTA_NO').AsFloat);
+  // Mevcut satırın hasta anahtarları (FDosyaNo/FProtokolNo yok!)
+  DosyaNo    := qrrastgeleHasta.FieldByName('DOSYA_NO').AsInteger;
+  ProtokolNo := qrrastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger;
 
-  // 🔹 En az bir ölçüm girilmiş mi?
-  KiloVar := not rastgeleHasta.FieldByName('KILO_KG').IsNull;
-  BoyVar  := not rastgeleHasta.FieldByName('BOY_CM').IsNull;
-  BasVar  := not rastgeleHasta.FieldByName('BAS_CEVRESI_CM').IsNull;
+  // Aktif hafta = şu an ekranda durduğun satırın haftası
+  AktifHafta := Trunc(qrrastgeleHasta.FieldByName('HAFTA_NO').AsFloat);
 
-  // 🔹 Hiçbir şey girilmediyse ilerleme YOK
+  // En az bir ölçüm girilmiş mi?
+  KiloVar := not qrrastgeleHasta.FieldByName('KILO_KG').IsNull;
+  BoyVar  := not qrrastgeleHasta.FieldByName('BOY_CM').IsNull;
+  BasVar  := not qrrastgeleHasta.FieldByName('BAS_CEVRESI_CM').IsNull;
+
   if not (KiloVar or BoyVar or BasVar) then
   begin
     ShowMessage('Lütfen en az bir ölçüm giriniz.');
     Exit;
   end;
 
-  // 🔹 Mevcut haftayı kaydet
-  if not (rastgeleHasta.State in dsEditModes) then
-    rastgeleHasta.Edit;
+  // Mevcut haftayı kaydet (checkbox değişince zaten Edit’e geçiyor olabilir)
+  if not (qrrastgeleHasta.State in dsEditModes) then
+    qrrastgeleHasta.Edit;
 
-  rastgeleHasta.Post;
+  qrrastgeleHasta.Post;
 
-  // 🔹 Son haftayı bul
-  rastgeleHasta.Last;
-  SonHafta := Trunc(rastgeleHasta.FieldByName('HAFTA_NO').AsFloat);
+  // Son haftayı bul
+  qrrastgeleHasta.Last;
+  SonHafta := Trunc(qrrastgeleHasta.FieldByName('HAFTA_NO').AsFloat);
 
-  // 🔹 Sadece aktif hafta son haftaysa VE 5'ten küçükse yeni hafta aç
+  // Sadece aktif hafta = son hafta ise ve 5'ten küçükse yeni hafta aç
   if (AktifHafta = SonHafta) and (SonHafta < 5) then
   begin
     YeniHafta := SonHafta + 1;
 
-    rastgeleHasta.Append;
-    rastgeleHasta.FieldByName('HASTA_ID').AsInteger := 1; // test
-    rastgeleHasta.FieldByName('HAFTA_NO').AsInteger := YeniHafta;
-    rastgeleHasta.FieldByName('DOSYA_NO').AsInteger := 12;
-    rastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := 400;
-    rastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
-    rastgeleHasta.Post;
+    qrrastgeleHasta.Append;
+    qrrastgeleHasta.FieldByName('HASTA_ID').AsInteger := 1; // test (canlıda sequence/trigger vs varsa burası değişebilir)
+    qrrastgeleHasta.FieldByName('HAFTA_NO').AsInteger := YeniHafta;
 
-    // ⚠️ ÖNEMLİ: yeni haftaya GEÇMİYORUZ
-    rastgeleHasta.Locate('HAFTA_NO', AktifHafta, []);
+    // Anahtarlar mevcut hastadan
+    qrrastgeleHasta.FieldByName('DOSYA_NO').AsInteger    := DosyaNo;
+    qrrastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := ProtokolNo;
+
+    qrrastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
+    qrrastgeleHasta.Post;
+
+    // yeni haftaya geçmiyoruz, ekranda aynı hafta kalsın
+    qrrastgeleHasta.Locate('HAFTA_NO', AktifHafta, []);
   end;
 
   ShowMessage('Kayıt kaydedildi.');
 end;
 
 
-
 procedure TForm2.FormShow(Sender: TObject);
+const
+  TEST_DOSYA_NO    = 12;
+  TEST_PROTOKOL_NO = 400;
 var
   AktifHafta: Integer;
+  DosyaNo, ProtokolNo: Integer;
 begin
-  AktifHafta := GetAktifHafta;
   // 1) Oracle bağlantısı
   if not Orsn1.Connected then
     Orsn1.Connected := True;
 
+  // ==============================
+  // ŞİMDİLİK TEST (12 / 400)
+  // ==============================
+  DosyaNo    := TEST_DOSYA_NO;
+  ProtokolNo := TEST_PROTOKOL_NO;
+
+  // ==============================
+  // İLERİDE CANLI SİSTEMDE:
+  // Form açılmadan önce bu iki değer set edilecek, burada direkt kullanılacak.
+  //
+  // ÖRNEK 1 (başka bir dataset’ten):
+  // DosyaNo    := DM.qrrastgeleHasta.FieldByName('DOSYA_NO').AsInteger;
+  // ProtokolNo := DM.qrrastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger;
+  //
+  // ÖRNEK 2 (bu formu açan yerden property/param ile verilecekse):
+  // DosyaNo := ADosyaNo; ProtokolNo := AProtokolNo;
+  // ==============================
+
+  //Insert ederken ParamByName değil FieldByName
+
+
   // 2) Query kapat/aç
-  if rastgeleHasta.Active then
-    rastgeleHasta.Close;
+  if qrrastgeleHasta.Active then
+    qrrastgeleHasta.Close;
 
-  // 3) Test hasta parametreleri
-  rastgeleHasta.ParamByName('DOSYA_NO').AsInteger := 12;
-  rastgeleHasta.ParamByName('PROTOKOL_NO').AsInteger := 400;
+  // 3) Parametreleri ver
+  qrrastgeleHasta.ParamByName('DOSYA_NO').AsInteger    := DosyaNo;
+  qrrastgeleHasta.ParamByName('PROTOKOL_NO').AsInteger := ProtokolNo;
 
-  rastgeleHasta.Open;
+  qrrastgeleHasta.Open;
 
   // 4) Hiç kayıt yoksa -> 1. hafta oluştur
-  if rastgeleHasta.IsEmpty then
+  if qrrastgeleHasta.IsEmpty then
   begin
-    rastgeleHasta.Append;
-    rastgeleHasta.FieldByName('HASTA_ID').AsInteger := 1; // test sabit
-    rastgeleHasta.FieldByName('HAFTA_NO').AsInteger := 1;
-    rastgeleHasta.FieldByName('DOSYA_NO').AsInteger := 12;
-    rastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := 400;
-    rastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
-    rastgeleHasta.Post;
+    qrrastgeleHasta.Append;
+    qrrastgeleHasta.FieldByName('HASTA_ID').AsInteger := 1; // test
+    qrrastgeleHasta.FieldByName('HAFTA_NO').AsInteger := 1;
+    qrrastgeleHasta.FieldByName('DOSYA_NO').AsInteger    := DosyaNo;
+    qrrastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := ProtokolNo;
+    qrrastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
+    qrrastgeleHasta.Post;
 
-    rastgeleHasta.Close;
-    rastgeleHasta.Open;
+    qrrastgeleHasta.Close;
+    qrrastgeleHasta.Open;
   end;
 
-  // 5) Her durumda hafta 1 kaydını göster
-  rastgeleHasta.Locate('HAFTA_NO', 1, []);
+  // 5) Aktif haftaya git (dataset açıldıktan sonra!)
+  AktifHafta := GetAktifHafta;
+  if AktifHafta > 0 then
+    qrrastgeleHasta.Locate('HAFTA_NO', AktifHafta, [])
+  else
+    qrrastgeleHasta.First;
 
-
-
+  // (İstersen burada AktifHafta’ya göre sütun açma/gösterme işini de ekleriz.)
 end;
-
 
 
 procedure TForm2.lblGunTarihClick(Sender: TObject);
 begin
-///////
+  // TODO
 end;
+
 
 procedure TForm2.PaintBoxYuksekRiskPaint(Sender: TObject);
 var
@@ -406,19 +449,19 @@ begin
     SetGraphicsMode(Handle, GM_ADVANCED);
 
     GetObject(Font.Handle, SizeOf(LF), @LF);
-    LF.lfEscapement  := 900;  // 90 derece
+    LF.lfEscapement  := 900;
     LF.lfOrientation := 900;
     Font.Handle := CreateFontIndirect(LF);
 
     R := PaintBoxYuksekRisk.ClientRect;
 
-    // 🔥 DİKEY YAZI İÇİN GERÇEK MERKEZLEME
     X := (R.Right - TextHeight(Txt)) div 2;
     Y := (R.Bottom + TextWidth(Txt)) div 2;
 
     TextOut(X, Y, Txt);
   end;
 end;
+
 
 procedure TForm2.RefreshRiskCheckBox(ACheck: TcxDBCheckBox);
 begin
@@ -446,15 +489,13 @@ begin
   if not (Sender is TcxDBCheckBox) then Exit;
   C := TcxDBCheckBox(Sender);
 
-  // Dataset edit moduna al
+  // Dataset edit moduna al (dsRastgeleHasta bağlıysa otomatik qrrastgeleHasta’ya gider)
   if Assigned(C.DataBinding.DataSource)
      and Assigned(C.DataBinding.DataSource.DataSet)
      and not (C.DataBinding.DataSource.DataSet.State in dsEditModes) then
     C.DataBinding.DataSource.DataSet.Edit;
 
-  // Görsel güncelle
   RefreshRiskCheckBox(C);
 end;
-
 
 end.

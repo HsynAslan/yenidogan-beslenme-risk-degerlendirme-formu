@@ -216,11 +216,6 @@ type
     DR_CIUGRG5: TcxDBCheckBox;
     DR_CTERMG5: TcxDBCheckBox;
     cxlbl27: TcxLabel;
-    scorGun1: TcxLabel;
-    scorGun2: TcxLabel;
-    scorGun3: TcxLabel;
-    scorGun4: TcxLabel;
-    scorGun5: TcxLabel;
     grdpnl29: TGridPanel;
     lbl16: TLabel;
     cxlbl28: TcxLabel;
@@ -231,6 +226,11 @@ type
     DR_GUN3: TcxDBLabel;
     DR_GUN4: TcxDBLabel;
     DR_GUN5: TcxDBLabel;
+    scorGun1: TcxDBLabel;
+    scorGun2: TcxDBLabel;
+    scorGun3: TcxDBLabel;
+    scorGun4: TcxDBLabel;
+    scorGun5: TcxDBLabel;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -240,11 +240,14 @@ type
 
     procedure RefreshRiskCheckBox(ACheck: TcxDBCheckBox);
 
-
+    function GetAktifHafta: Integer;
 
 
   private
     { Private declarations }
+
+    FDosyaNo   : Integer;
+    FProtokolNo: Integer;
   public
     { Public declarations }
   end;
@@ -253,9 +256,41 @@ var
   Form2: TForm2;
 
 implementation
+// =============================================
+// MDI FORM'DAN AÇILIŞ (İLERİDE)
+//
+// Form2 := TForm2.Create(Self);
+// Form2.FDosyaNo    := DM.Tbprtkldosya_NO.Value;
+// Form2.FProtokolNo := DM.TbPrtklPROTOKOL_NO.Value;
+// Form2.ShowModal;
+// =============================================
 
 {$R *.dfm}
 
+function TForm2.GetAktifHafta: Integer;
+var
+  Bmk: TBookmark;
+begin
+  Result := 0;
+  if not rastgeleHasta.Active then Exit;
+
+  Bmk := rastgeleHasta.GetBookmark;
+  try
+    rastgeleHasta.First;
+    while not rastgeleHasta.Eof do
+    begin
+      if Trim(rastgeleHasta.FieldByName('RISK_SEVIYE').AsString) = '' then
+      begin
+        Result := Trunc(rastgeleHasta.FieldByName('HAFTA_NO').AsFloat);
+        Exit;
+      end;
+      rastgeleHasta.Next;
+    end;
+  finally
+    rastgeleHasta.GotoBookmark(Bmk);
+    rastgeleHasta.FreeBookmark(Bmk);
+  end;
+end;
 
 
 
@@ -299,8 +334,9 @@ begin
     rastgeleHasta.Append;
     rastgeleHasta.FieldByName('HASTA_ID').AsInteger := 1; // test
     rastgeleHasta.FieldByName('HAFTA_NO').AsInteger := YeniHafta;
-    rastgeleHasta.FieldByName('DOSYA_NO').AsInteger := 12;
-    rastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := 400;
+    rastgeleHasta.FieldByName('DOSYA_NO').AsInteger    := FDosyaNo;
+    rastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+
     rastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
     rastgeleHasta.Post;
 
@@ -314,7 +350,23 @@ end;
 
 
 procedure TForm2.FormShow(Sender: TObject);
+var
+  AktifHafta: Integer;
 begin
+  // ==============================
+  // TEST AMAÇLI (ŞİMDİLİK)
+  // ==============================
+  FDosyaNo    := 12;
+  FProtokolNo := 400;
+
+  // ==============================
+  // İLERİDE CANLI SİSTEM
+  //
+  // FDosyaNo    := DM.Tbprtkldosya_NO.Value;
+  // FProtokolNo := DM.TbPrtklPROTOKOL_NO.Value;
+  // ==============================
+
+  AktifHafta := GetAktifHafta;
   // 1) Oracle bağlantısı
   if not Orsn1.Connected then
     Orsn1.Connected := True;
@@ -324,8 +376,9 @@ begin
     rastgeleHasta.Close;
 
   // 3) Test hasta parametreleri
-  rastgeleHasta.ParamByName('DOSYA_NO').AsInteger := 12;
-  rastgeleHasta.ParamByName('PROTOKOL_NO').AsInteger := 400;
+rastgeleHasta.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
+rastgeleHasta.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+
 
   rastgeleHasta.Open;
 
@@ -335,8 +388,8 @@ begin
     rastgeleHasta.Append;
     rastgeleHasta.FieldByName('HASTA_ID').AsInteger := 1; // test sabit
     rastgeleHasta.FieldByName('HAFTA_NO').AsInteger := 1;
-    rastgeleHasta.FieldByName('DOSYA_NO').AsInteger := 12;
-    rastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := 400;
+    rastgeleHasta.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
+    rastgeleHasta.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
     rastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
     rastgeleHasta.Post;
 
@@ -428,6 +481,8 @@ begin
   // Görsel güncelle
   RefreshRiskCheckBox(C);
 end;
+
+
 
 
 end.
