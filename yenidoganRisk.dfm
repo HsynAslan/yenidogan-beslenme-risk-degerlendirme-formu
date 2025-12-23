@@ -1255,6 +1255,8 @@ object Form2: TForm2
               Style.BorderStyle = ebsSingle
               Style.TransparentBorder = False
               TabOrder = 0
+              ExplicitLeft = 2
+              ExplicitTop = 13
               Width = 105
             end
             object YR_C1000G1: TcxDBCheckBox
@@ -3492,7 +3494,6 @@ object Form2: TForm2
       end>
     object fltfldHastaHASTA_ID: TFloatField
       FieldName = 'HASTA_ID'
-      Required = True
     end
     object fltfldHastaHAFTA_NO: TFloatField
       FieldName = 'HAFTA_NO'
@@ -3636,7 +3637,6 @@ object Form2: TForm2
       end>
     object fltfldHafta1HASTA_ID: TFloatField
       FieldName = 'HASTA_ID'
-      Required = True
     end
     object fltfldHafta1HAFTA_NO: TFloatField
       FieldName = 'HAFTA_NO'
@@ -3775,7 +3775,6 @@ object Form2: TForm2
       end>
     object fltfldHafta2HASTA_ID: TFloatField
       FieldName = 'HASTA_ID'
-      Required = True
     end
     object fltfldHafta2HAFTA_NO: TFloatField
       FieldName = 'HAFTA_NO'
@@ -3914,7 +3913,6 @@ object Form2: TForm2
       end>
     object fltfldHafta3HASTA_ID: TFloatField
       FieldName = 'HASTA_ID'
-      Required = True
     end
     object fltfldHafta3HAFTA_NO: TFloatField
       FieldName = 'HAFTA_NO'
@@ -4053,7 +4051,6 @@ object Form2: TForm2
       end>
     object fltfldHafta4HASTA_ID: TFloatField
       FieldName = 'HASTA_ID'
-      Required = True
     end
     object fltfldHafta4HAFTA_NO: TFloatField
       FieldName = 'HAFTA_NO'
@@ -4192,7 +4189,6 @@ object Form2: TForm2
       end>
     object fltfldHafta5HASTA_ID: TFloatField
       FieldName = 'HASTA_ID'
-      Required = True
     end
     object fltfldHafta5HAFTA_NO: TFloatField
       FieldName = 'HAFTA_NO'
