@@ -128,7 +128,7 @@ type
     fltfldHastaBAS_CEVRESI_CM: TFloatField;
     lbl1: TLabel;
     grdpnl11: TGridPanel;
-    chkYR28Gun1: TcxDBCheckBox;
+    YR_C28G1: TcxDBCheckBox;
     YR_C1000G1: TcxDBCheckBox;
     YR_CNEKG1: TcxDBCheckBox;
     YR_CGISG1: TcxDBCheckBox;
@@ -188,7 +188,7 @@ type
     DR_C37G3: TcxDBCheckBox;
     lbl10: TLabel;
     YR_C28G4: TcxDBCheckBox;
-    YR_CN1000_GR4: TcxDBCheckBox;
+    YR_C1000G4: TcxDBCheckBox;
     YR_CNEKG4: TcxDBCheckBox;
     YR_CGISG4: TcxDBCheckBox;
     lbl11: TLabel;
@@ -213,7 +213,7 @@ type
     lbl15: TLabel;
     DR_C32G5: TcxDBCheckBox;
     DR_CIUGRG5: TcxDBCheckBox;
-    DR_CTERMG5: TcxDBCheckBox;
+    DR_C37G5: TcxDBCheckBox;
     cxlbl27: TcxLabel;
     grdpnl29: TGridPanel;
     lbl16: TLabel;
@@ -240,6 +240,9 @@ type
 
     procedure RefreshRiskCheckBox(ACheck: TcxDBCheckBox);
 
+    procedure SetHaftaAktif(ASonHafta: Integer);
+
+
     function GetAktifHafta: Integer;
 
 
@@ -257,6 +260,81 @@ var
 implementation
 
 {$R *.dfm}
+
+
+procedure TForm2.SetHaftaAktif(ASonHafta: Integer);
+var
+  I: Integer;
+  AcikHafta: Integer;
+
+  procedure SetCtrlEnabled(const BaseName: string; AEnabled: Boolean);
+  var
+    C: TComponent;
+  begin
+    C := FindComponent(BaseName);
+    if Assigned(C) and (C is TControl) then
+      TControl(C).Enabled := AEnabled;
+  end;
+
+begin
+  // Giriş yapılacak hafta = son hafta + 1
+  AcikHafta := ASonHafta + 1;
+
+  // 1–5 sınırı dışındaysa: hepsi kapalı
+  if (AcikHafta < 1) or (AcikHafta > 5) then
+  begin
+    for I := 1 to 5 do
+    begin
+      SetCtrlEnabled('edtKiloGun' + IntToStr(I), False);
+      SetCtrlEnabled('edtBoyGun'  + IntToStr(I), False);
+      SetCtrlEnabled('edtBasGun'  + IntToStr(I), False);
+
+      SetCtrlEnabled('YR_C28G'   + IntToStr(I), False);
+      SetCtrlEnabled('YR_C1000G' + IntToStr(I), False);
+      SetCtrlEnabled('YR_CNEKG'  + IntToStr(I), False);
+      SetCtrlEnabled('YR_CGISG'  + IntToStr(I), False);
+
+      SetCtrlEnabled('OR_C28G'         + IntToStr(I), False);
+      SetCtrlEnabled('OR_CIUGRG'       + IntToStr(I), False);
+      SetCtrlEnabled('OR_C1000G'       + IntToStr(I), False);
+      SetCtrlEnabled('OR_CKONJENITALG' + IntToStr(I), False);
+
+      SetCtrlEnabled('DR_C32G'   + IntToStr(I), False);
+      SetCtrlEnabled('DR_CIUGRG' + IntToStr(I), False);
+      SetCtrlEnabled('DR_C37G'   + IntToStr(I), False);
+
+      SetCtrlEnabled('scorGun' + IntToStr(I), False);
+      SetCtrlEnabled('DR_GUN'  + IntToStr(I), False);
+    end;
+    Exit;
+  end;
+
+  // Sadece AcikHafta açık, diğerleri kapalı
+  for I := 1 to 5 do
+  begin
+    SetCtrlEnabled('edtKiloGun' + IntToStr(I), I = AcikHafta);
+    SetCtrlEnabled('edtBoyGun'  + IntToStr(I), I = AcikHafta);
+    SetCtrlEnabled('edtBasGun'  + IntToStr(I), I = AcikHafta);
+
+    SetCtrlEnabled('YR_C28G'   + IntToStr(I), I = AcikHafta);
+    SetCtrlEnabled('YR_C1000G' + IntToStr(I), I = AcikHafta);
+    SetCtrlEnabled('YR_CNEKG'  + IntToStr(I), I = AcikHafta);
+    SetCtrlEnabled('YR_CGISG'  + IntToStr(I), I = AcikHafta);
+
+    SetCtrlEnabled('OR_C28G'         + IntToStr(I), I = AcikHafta);
+    SetCtrlEnabled('OR_CIUGRG'       + IntToStr(I), I = AcikHafta);
+    SetCtrlEnabled('OR_C1000G'       + IntToStr(I), I = AcikHafta);
+    SetCtrlEnabled('OR_CKONJENITALG' + IntToStr(I), I = AcikHafta);
+
+    SetCtrlEnabled('DR_C32G'   + IntToStr(I), I = AcikHafta);
+    SetCtrlEnabled('DR_CIUGRG' + IntToStr(I), I = AcikHafta);
+    SetCtrlEnabled('DR_C37G'   + IntToStr(I), I = AcikHafta);
+
+    SetCtrlEnabled('scorGun' + IntToStr(I), I = AcikHafta);
+    SetCtrlEnabled('DR_GUN'  + IntToStr(I), I = AcikHafta);
+  end;
+end;
+
 
 function TForm2.GetAktifHafta: Integer;
 var
@@ -354,52 +432,88 @@ const
   TEST_DOSYA_NO    = 12;
   TEST_PROTOKOL_NO = 400;
 var
-  AktifHafta: Integer;
+  DosyaNo, ProtokolNo: Integer;
+  KayitSayisi: Integer;
+  MinHafta, MaxHafta: Integer;
+  Msg: string;
+  Bmk: TBookmark;
+
+  function FieldExists(const AFieldName: string): Boolean;
+  begin
+    Result := Assigned(qrrastgeleHasta.FindField(AFieldName));
+  end;
+
+  procedure CalcMinMaxHafta(out AMin, AMax: Integer);
+  begin
+    AMin := 0;
+    AMax := 0;
+
+    if qrrastgeleHasta.IsEmpty then Exit;
+
+    Bmk := qrrastgeleHasta.GetBookmark;
+    try
+      qrrastgeleHasta.First;
+      AMin := qrrastgeleHasta.FieldByName('HAFTA_NO').AsInteger;
+
+      qrrastgeleHasta.Last;
+      AMax := qrrastgeleHasta.FieldByName('HAFTA_NO').AsInteger;
+    finally
+      qrrastgeleHasta.GotoBookmark(Bmk);
+      qrrastgeleHasta.FreeBookmark(Bmk);
+    end;
+  end;
+
 begin
   // 1) Oracle bağlantısı
   if not Orsn1.Connected then
     Orsn1.Connected := True;
 
-  // 2) Query kapat
+  // TEST
+  DosyaNo    := TEST_DOSYA_NO;
+  ProtokolNo := TEST_PROTOKOL_NO;
+
+  // 2) Query kapat / aç
   if qrrastgeleHasta.Active then
     qrrastgeleHasta.Close;
 
-  // ==============================
-  // TEST AŞAMASI
-  // ==============================
-  qrrastgeleHasta.ParamByName('DOSYA_NO').AsInteger    := TEST_DOSYA_NO;
-  qrrastgeleHasta.ParamByName('PROTOKOL_NO').AsInteger := TEST_PROTOKOL_NO;
-
-  // ==============================
-  // CANLI SİSTEMDE:
-  // Bu parametreler form açılmadan önce
-  // set edilecek (buraya dokunulmayacak)
-  // ==============================
-
+  qrrastgeleHasta.ParamByName('DOSYA_NO').AsInteger    := DosyaNo;
+  qrrastgeleHasta.ParamByName('PROTOKOL_NO').AsInteger := ProtokolNo;
   qrrastgeleHasta.Open;
 
-  // 3) Hiç kayıt yoksa → 1. hafta oluştur
+  // 3) Kayıt sayısı
+  KayitSayisi := qrrastgeleHasta.RecordCount;
+
+  // Kayıt yoksa sadece mesaj ver (INSERT YOK)
   if qrrastgeleHasta.IsEmpty then
   begin
-    qrrastgeleHasta.Append;
-    qrrastgeleHasta.FieldByName('HASTA_ID').AsInteger := 1; // test
-    qrrastgeleHasta.FieldByName('HAFTA_NO').AsInteger := 1;
-    qrrastgeleHasta.FieldByName('DOSYA_NO').AsInteger := TEST_DOSYA_NO;
-    qrrastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := TEST_PROTOKOL_NO;
-    qrrastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
-    qrrastgeleHasta.Post;
-
-    qrrastgeleHasta.Close;
-    qrrastgeleHasta.Open;
+    ShowMessage(
+      'Bu hasta için henüz izlem kaydı yok.' + sLineBreak +
+      'İlk izlem Kaydet ile başlatılmalıdır.'
+    );
+    Exit;
   end;
 
-  // 4) Aktif haftaya git
-  AktifHafta := GetAktifHafta;
-  if AktifHafta > 0 then
-    qrrastgeleHasta.Locate('HAFTA_NO', AktifHafta, [])
-  else
-    qrrastgeleHasta.First;
+  // 4) Min / Max hafta
+  CalcMinMaxHafta(MinHafta, MaxHafta);
+
+  // 5) Dataset’i SON HAFTAYA götür
+  qrrastgeleHasta.Locate('HAFTA_NO', MaxHafta, []);
+
+  // 6) SADECE BİR SONRAKİ HAFTAYI AÇ
+  SetHaftaAktif(MaxHafta);
+
+  // 7) Debug
+  Msg :=
+    'DOSYA_NO: ' + IntToStr(DosyaNo) + sLineBreak +
+    'PROTOKOL_NO: ' + IntToStr(ProtokolNo) + sLineBreak +
+    'Geçmiş kayıt sayısı: ' + IntToStr(KayitSayisi) + sLineBreak +
+    'Hafta aralığı: ' + IntToStr(MinHafta) + ' - ' + IntToStr(MaxHafta) + sLineBreak +
+    'Giriş yapılacak hafta: ' + IntToStr(MaxHafta + 1);
+
+  ShowMessage(Msg);
 end;
+
+
 
 
 procedure TForm2.lblGunTarihClick(Sender: TObject);

@@ -231,6 +231,16 @@ type
     scorGun4: TcxDBLabel;
     scorGun5: TcxDBLabel;
     dsRastgeleHasta: TOraDataSource;
+    qrHafta1: TOraQuery;
+    qrHafta2: TOraQuery;
+    qrHafta3: TOraQuery;
+    qrHafta4: TOraQuery;
+    qrHafta5: TOraQuery;
+    dsHafta1: TOraDataSource;
+    dsHafta2: TOraDataSource;
+    dsHafta3: TOraDataSource;
+    dsHafta4: TOraDataSource;
+    dsHafta5: TOraDataSource;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
