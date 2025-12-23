@@ -35,13 +35,9 @@ type
     grpAna3: TcxGroupBox;
     grdpnl2: TGridPanel;
     cxlbl1: TcxLabel;
-    cxdblbl1: TcxDBLabel;
     cxlbl2: TcxLabel;
-    cxdblbl2: TcxDBLabel;
     cxlbl3: TcxLabel;
-    cxdblbl3: TcxDBLabel;
     cxlbl4: TcxLabel;
-    cxdblbl4: TcxDBLabel;
     grpOlcum: TcxGroupBox;
     cxlbl5: TcxLabel;
     grdpnl3: TGridPanel;
@@ -216,11 +212,6 @@ type
     cxlbl28: TcxLabel;
     cxlbl29: TcxLabel;
     lbl17: TLabel;
-    DR_GUN1: TcxDBLabel;
-    DR_GUN2: TcxDBLabel;
-    DR_GUN3: TcxDBLabel;
-    DR_GUN4: TcxDBLabel;
-    DR_GUN5: TcxDBLabel;
     scorGun1: TcxDBLabel;
     scorGun2: TcxDBLabel;
     scorGun3: TcxDBLabel;
@@ -392,6 +383,15 @@ type
     lblTarih3: TcxDBLabel;
     lblTarih4: TcxDBLabel;
     lblTarih5: TcxDBLabel;
+    edtDestasyon: TcxDBTextEdit;
+    edtDTartisi: TcxDBTextEdit;
+    edtDBoyu: TcxDBTextEdit;
+    edtDBas: TcxDBTextEdit;
+    edtDRGun1: TcxDBTextEdit;
+    edtDRGun2: TcxDBTextEdit;
+    edtDRGun3: TcxDBTextEdit;
+    edtDRgun4: TcxDBTextEdit;
+    edtDRGun5: TcxDBTextEdit;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -427,14 +427,27 @@ const
 
 function TForm2.GetAktifHaftaFromQueries: Integer;
 begin
+  // HİÇ KAYIT YOKSA → 1. HAFTA
+  if qrHafta1.IsEmpty
+     and qrHafta2.IsEmpty
+     and qrHafta3.IsEmpty
+     and qrHafta4.IsEmpty
+     and qrHafta5.IsEmpty then
+  begin
+    Result := 1;
+    Exit;
+  end;
+
+  // EN SON DOLU HAFTAYI BUL
   if not qrHafta5.IsEmpty then Result := 5 else
   if not qrHafta4.IsEmpty then Result := 4 else
   if not qrHafta3.IsEmpty then Result := 3 else
   if not qrHafta2.IsEmpty then Result := 2 else
-  if not qrHafta1.IsEmpty then Result := 1 else
+  if not qrHafta1.IsEmpty then Result := 1
+  else
     Result := 1;
 
-  // Bir sonraki haftaya giriş yapılacak
+  // BİR SONRAKİ HAFTAYA GİR
   if Result < 5 then
     Inc(Result);
 end;
@@ -541,7 +554,6 @@ procedure TForm2.btnKaydetClick(Sender: TObject);
 var
   AktifHafta: Integer;
   Q: TOraQuery;
-  DosyaNo, ProtokolNo: Integer;
 begin
   AktifHafta := GetAktifHaftaFromQueries;
 
@@ -555,17 +567,11 @@ begin
     Exit;
   end;
 
-  // Eğer kayıt yoksa INSERT
   if Q.IsEmpty then
     Q.Append
   else
     Q.Edit;
 
-  // ⚠️ Param değil, FIELD
-  DosyaNo    := Q.ParamByName('DOSYA_NO').AsInteger; // ❌ SİL
-  ProtokolNo := Q.ParamByName('PROTOKOL_NO').AsInteger; // ❌ SİL
-
-  // ✅ DOĞRUSU
   Q.FieldByName('DOSYA_NO').AsInteger    := TEST_DOSYA_NO;
   Q.FieldByName('PROTOKOL_NO').AsInteger := TEST_PROTOKOL_NO;
   Q.FieldByName('HAFTA_NO').AsInteger    := AktifHafta;
@@ -573,7 +579,6 @@ begin
 
   Q.Post;
 
-  // Yeniden oku
   Q.Close;
   Q.Open;
 
@@ -586,11 +591,11 @@ begin
 end;
 
 
-
 procedure TForm2.FormShow(Sender: TObject);
 var
   DosyaNo, ProtokolNo: Integer;
   Msg: string;
+  AktifHafta: Integer;
 
   procedure OpenHafta(Q: TOraQuery; AHafta: Integer);
   begin
@@ -605,56 +610,38 @@ var
 
   function HaftaDurum(Q: TOraQuery): string;
   begin
-    if Q.IsEmpty then
-      Result := 'BOŞ'
-    else
-      Result := 'DOLU';
+    if Q.IsEmpty then Result := 'BOŞ' else Result := 'DOLU';
   end;
 
-var
-  AktifHafta: Integer;
 begin
   if not Orsn1.Connected then
     Orsn1.Connected := True;
 
-  // ======================
-  // TEST DEĞERLERİ
-  // ======================
   DosyaNo    := TEST_DOSYA_NO;
   ProtokolNo := TEST_PROTOKOL_NO;
 
-  // ======================
-  // HAFTALARI AÇ
-  // ======================
   OpenHafta(qrHafta1, 1);
   OpenHafta(qrHafta2, 2);
   OpenHafta(qrHafta3, 3);
   OpenHafta(qrHafta4, 4);
   OpenHafta(qrHafta5, 5);
 
-  // ======================
-  // AKTİF HAFTA
-  // ======================
   AktifHafta := GetAktifHaftaFromQueries;
   SetHaftaAktif(AktifHafta);
 
-  // ======================
-  // DEBUG BİLGİ
-  // ======================
   Msg :=
     'DOSYA_NO: ' + IntToStr(DosyaNo) + sLineBreak +
     'PROTOKOL_NO: ' + IntToStr(ProtokolNo) + sLineBreak + sLineBreak +
-
     '1. Hafta: ' + HaftaDurum(qrHafta1) + sLineBreak +
     '2. Hafta: ' + HaftaDurum(qrHafta2) + sLineBreak +
     '3. Hafta: ' + HaftaDurum(qrHafta3) + sLineBreak +
     '4. Hafta: ' + HaftaDurum(qrHafta4) + sLineBreak +
     '5. Hafta: ' + HaftaDurum(qrHafta5) + sLineBreak + sLineBreak +
-
     'Aktif (giriş yapılacak) hafta: ' + IntToStr(AktifHafta);
 
   ShowMessage(Msg);
 end;
+
 
 
 

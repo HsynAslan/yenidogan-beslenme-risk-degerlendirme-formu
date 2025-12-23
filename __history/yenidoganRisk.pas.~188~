@@ -23,7 +23,8 @@ uses
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint, dxSkinWXI,
   dxSkinXmas2008Blue, cxScrollBox, cxContainer, cxEdit, cxDBLabel, cxLabel,
   Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox, Data.DB, cxTextEdit, cxDBEdit,
-  cxMaskEdit, cxButtonEdit, MemDS, DBAccess, Ora, OraCall, cxCheckBox;
+  cxMaskEdit, cxButtonEdit, MemDS, DBAccess, Ora, OraCall, cxCheckBox, Vcl.Mask,
+  Vcl.DBCtrls;
 
 type
   TForm2 = class(TForm)
@@ -45,11 +46,6 @@ type
     cxlbl5: TcxLabel;
     grdpnl3: TGridPanel;
     cxlbl6: TcxLabel;
-    cxlbl7: TcxLabel;
-    lblGun2Tarih: TcxLabel;
-    lblGun3Tarih: TcxLabel;
-    lblGun4Tarih: TcxLabel;
-    lblGun5Tarih: TcxLabel;
     cxlbl8: TcxLabel;
     edtKiloGun1: TcxDBTextEdit;
     edtKiloGun2: TcxDBTextEdit;
@@ -271,6 +267,131 @@ type
     fltfldHafta1KILO_KG: TFloatField;
     fltfldHafta1BOY_CM: TFloatField;
     fltfldHafta1BAS_CEVRESI_CM: TFloatField;
+    fltfldHafta2HASTA_ID: TFloatField;
+    fltfldHafta2HAFTA_NO: TFloatField;
+    fltfldHafta2DOSYA_NO: TFloatField;
+    fltfldHafta2PROTOKOL_NO: TFloatField;
+    dtmfldHafta2IZLEM_TARIHI: TDateTimeField;
+    fltfldHafta2GESTASYON_HAFTASI: TFloatField;
+    fltfldHafta2DOGUM_KILOSU_GR: TFloatField;
+    fltfldHafta2DOGUM_BOYU_CM: TFloatField;
+    fltfldHafta2DOGUM_BAS_CEVRESI: TFloatField;
+    strngfldHafta2YR_28_HAFTA: TStringField;
+    strngfldHafta2YR_1000_GR: TStringField;
+    strngfldHafta2YR_NEK_GIS: TStringField;
+    strngfldHafta2YR_KONJ_GIS: TStringField;
+    strngfldHafta2OR_28_31_HAFTA: TStringField;
+    strngfldHafta2OR_IUGR: TStringField;
+    strngfldHafta2OR_1000_1500_GR: TStringField;
+    strngfldHafta2OR_KONJ_BESLENME: TStringField;
+    strngfldHafta2DR_32_35_HAFTA: TStringField;
+    strngfldHafta2DR_IUGR_35: TStringField;
+    strngfldHafta2DR_TERM: TStringField;
+    strngfldHafta2RISK_SEVIYE: TStringField;
+    strngfldHafta2IHT_2_HAFTA_KILO: TStringField;
+    strngfldHafta2IHT_15_KAYIP: TStringField;
+    strngfldHafta2IHT_10G_KAZANIM: TStringField;
+    strngfldHafta2IHT_NEK_CERRAHI: TStringField;
+    strngfldHafta2DOKTOR_ADI: TStringField;
+    dtmfldHafta2KAYIT_TARIHI: TDateTimeField;
+    fltfldHafta2KILO_KG: TFloatField;
+    fltfldHafta2BOY_CM: TFloatField;
+    fltfldHafta2BAS_CEVRESI_CM: TFloatField;
+    fltfldHafta3HASTA_ID: TFloatField;
+    fltfldHafta3HAFTA_NO: TFloatField;
+    fltfldHafta3DOSYA_NO: TFloatField;
+    fltfldHafta3PROTOKOL_NO: TFloatField;
+    dtmfldHafta3IZLEM_TARIHI: TDateTimeField;
+    fltfldHafta3GESTASYON_HAFTASI: TFloatField;
+    fltfldHafta3DOGUM_KILOSU_GR: TFloatField;
+    fltfldHafta3DOGUM_BOYU_CM: TFloatField;
+    fltfldHafta3DOGUM_BAS_CEVRESI: TFloatField;
+    strngfldHafta3YR_28_HAFTA: TStringField;
+    strngfldHafta3YR_1000_GR: TStringField;
+    strngfldHafta3YR_NEK_GIS: TStringField;
+    strngfldHafta3YR_KONJ_GIS: TStringField;
+    strngfldHafta3OR_28_31_HAFTA: TStringField;
+    strngfldHafta3OR_IUGR: TStringField;
+    strngfldHafta3OR_1000_1500_GR: TStringField;
+    strngfldHafta3OR_KONJ_BESLENME: TStringField;
+    strngfldHafta3DR_32_35_HAFTA: TStringField;
+    strngfldHafta3DR_IUGR_35: TStringField;
+    strngfldHafta3DR_TERM: TStringField;
+    strngfldHafta3RISK_SEVIYE: TStringField;
+    strngfldHafta3IHT_2_HAFTA_KILO: TStringField;
+    strngfldHafta3IHT_15_KAYIP: TStringField;
+    strngfldHafta3IHT_10G_KAZANIM: TStringField;
+    strngfldHafta3IHT_NEK_CERRAHI: TStringField;
+    strngfldHafta3DOKTOR_ADI: TStringField;
+    dtmfldHafta3KAYIT_TARIHI: TDateTimeField;
+    fltfldHafta3KILO_KG: TFloatField;
+    fltfldHafta3BOY_CM: TFloatField;
+    fltfldHafta3BAS_CEVRESI_CM: TFloatField;
+    fltfldHafta4HASTA_ID: TFloatField;
+    fltfldHafta4HAFTA_NO: TFloatField;
+    fltfldHafta4DOSYA_NO: TFloatField;
+    fltfldHafta4PROTOKOL_NO: TFloatField;
+    dtmfldHafta4IZLEM_TARIHI: TDateTimeField;
+    fltfldHafta4GESTASYON_HAFTASI: TFloatField;
+    fltfldHafta4DOGUM_KILOSU_GR: TFloatField;
+    fltfldHafta4DOGUM_BOYU_CM: TFloatField;
+    fltfldHafta4DOGUM_BAS_CEVRESI: TFloatField;
+    strngfldHafta4YR_28_HAFTA: TStringField;
+    strngfldHafta4YR_1000_GR: TStringField;
+    strngfldHafta4YR_NEK_GIS: TStringField;
+    strngfldHafta4YR_KONJ_GIS: TStringField;
+    strngfldHafta4OR_28_31_HAFTA: TStringField;
+    strngfldHafta4OR_IUGR: TStringField;
+    strngfldHafta4OR_1000_1500_GR: TStringField;
+    strngfldHafta4OR_KONJ_BESLENME: TStringField;
+    strngfldHafta4DR_32_35_HAFTA: TStringField;
+    strngfldHafta4DR_IUGR_35: TStringField;
+    strngfldHafta4DR_TERM: TStringField;
+    strngfldHafta4RISK_SEVIYE: TStringField;
+    strngfldHafta4IHT_2_HAFTA_KILO: TStringField;
+    strngfldHafta4IHT_15_KAYIP: TStringField;
+    strngfldHafta4IHT_10G_KAZANIM: TStringField;
+    strngfldHafta4IHT_NEK_CERRAHI: TStringField;
+    strngfldHafta4DOKTOR_ADI: TStringField;
+    dtmfldHafta4KAYIT_TARIHI: TDateTimeField;
+    fltfldHafta4KILO_KG: TFloatField;
+    fltfldHafta4BOY_CM: TFloatField;
+    fltfldHafta4BAS_CEVRESI_CM: TFloatField;
+    fltfldHafta5HASTA_ID: TFloatField;
+    fltfldHafta5HAFTA_NO: TFloatField;
+    fltfldHafta5DOSYA_NO: TFloatField;
+    fltfldHafta5PROTOKOL_NO: TFloatField;
+    dtmfldHafta5IZLEM_TARIHI: TDateTimeField;
+    fltfldHafta5GESTASYON_HAFTASI: TFloatField;
+    fltfldHafta5DOGUM_KILOSU_GR: TFloatField;
+    fltfldHafta5DOGUM_BOYU_CM: TFloatField;
+    fltfldHafta5DOGUM_BAS_CEVRESI: TFloatField;
+    strngfldHafta5YR_28_HAFTA: TStringField;
+    strngfldHafta5YR_1000_GR: TStringField;
+    strngfldHafta5YR_NEK_GIS: TStringField;
+    strngfldHafta5YR_KONJ_GIS: TStringField;
+    strngfldHafta5OR_28_31_HAFTA: TStringField;
+    strngfldHafta5OR_IUGR: TStringField;
+    strngfldHafta5OR_1000_1500_GR: TStringField;
+    strngfldHafta5OR_KONJ_BESLENME: TStringField;
+    strngfldHafta5DR_32_35_HAFTA: TStringField;
+    strngfldHafta5DR_IUGR_35: TStringField;
+    strngfldHafta5DR_TERM: TStringField;
+    strngfldHafta5RISK_SEVIYE: TStringField;
+    strngfldHafta5IHT_2_HAFTA_KILO: TStringField;
+    strngfldHafta5IHT_15_KAYIP: TStringField;
+    strngfldHafta5IHT_10G_KAZANIM: TStringField;
+    strngfldHafta5IHT_NEK_CERRAHI: TStringField;
+    strngfldHafta5DOKTOR_ADI: TStringField;
+    dtmfldHafta5KAYIT_TARIHI: TDateTimeField;
+    fltfldHafta5KILO_KG: TFloatField;
+    fltfldHafta5BOY_CM: TFloatField;
+    fltfldHafta5BAS_CEVRESI_CM: TFloatField;
+    lblTarih1: TcxDBLabel;
+    lblTarih2: TcxDBLabel;
+    lblTarih3: TcxDBLabel;
+    lblTarih4: TcxDBLabel;
+    lblTarih5: TcxDBLabel;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -306,14 +427,27 @@ const
 
 function TForm2.GetAktifHaftaFromQueries: Integer;
 begin
+  // HİÇ KAYIT YOKSA → 1. HAFTA
+  if qrHafta1.IsEmpty
+     and qrHafta2.IsEmpty
+     and qrHafta3.IsEmpty
+     and qrHafta4.IsEmpty
+     and qrHafta5.IsEmpty then
+  begin
+    Result := 1;
+    Exit;
+  end;
+
+  // EN SON DOLU HAFTAYI BUL
   if not qrHafta5.IsEmpty then Result := 5 else
   if not qrHafta4.IsEmpty then Result := 4 else
   if not qrHafta3.IsEmpty then Result := 3 else
   if not qrHafta2.IsEmpty then Result := 2 else
-  if not qrHafta1.IsEmpty then Result := 1 else
+  if not qrHafta1.IsEmpty then Result := 1
+  else
     Result := 1;
 
-  // Bir sonraki haftaya giriş yapılacak
+  // BİR SONRAKİ HAFTAYA GİR
   if Result < 5 then
     Inc(Result);
 end;
@@ -420,7 +554,6 @@ procedure TForm2.btnKaydetClick(Sender: TObject);
 var
   AktifHafta: Integer;
   Q: TOraQuery;
-  DosyaNo, ProtokolNo: Integer;
 begin
   AktifHafta := GetAktifHaftaFromQueries;
 
@@ -434,17 +567,11 @@ begin
     Exit;
   end;
 
-  // Eğer kayıt yoksa INSERT
   if Q.IsEmpty then
     Q.Append
   else
     Q.Edit;
 
-  // ⚠️ Param değil, FIELD
-  DosyaNo    := Q.ParamByName('DOSYA_NO').AsInteger; // ❌ SİL
-  ProtokolNo := Q.ParamByName('PROTOKOL_NO').AsInteger; // ❌ SİL
-
-  // ✅ DOĞRUSU
   Q.FieldByName('DOSYA_NO').AsInteger    := TEST_DOSYA_NO;
   Q.FieldByName('PROTOKOL_NO').AsInteger := TEST_PROTOKOL_NO;
   Q.FieldByName('HAFTA_NO').AsInteger    := AktifHafta;
@@ -452,7 +579,6 @@ begin
 
   Q.Post;
 
-  // Yeniden oku
   Q.Close;
   Q.Open;
 
@@ -465,26 +591,32 @@ begin
 end;
 
 
-
 procedure TForm2.FormShow(Sender: TObject);
-
 var
   DosyaNo, ProtokolNo: Integer;
+  Msg: string;
+  AktifHafta: Integer;
 
   procedure OpenHafta(Q: TOraQuery; AHafta: Integer);
   begin
     if Q.Active then Q.Close;
+
     Q.ParamByName('DOSYA_NO').AsInteger    := DosyaNo;
     Q.ParamByName('PROTOKOL_NO').AsInteger := ProtokolNo;
     Q.ParamByName('HAFTA_NO').AsInteger    := AHafta;
+
     Q.Open;
+  end;
+
+  function HaftaDurum(Q: TOraQuery): string;
+  begin
+    if Q.IsEmpty then Result := 'BOŞ' else Result := 'DOLU';
   end;
 
 begin
   if not Orsn1.Connected then
     Orsn1.Connected := True;
 
-  // ŞİMDİLİK TEST
   DosyaNo    := TEST_DOSYA_NO;
   ProtokolNo := TEST_PROTOKOL_NO;
 
@@ -494,9 +626,22 @@ begin
   OpenHafta(qrHafta4, 4);
   OpenHafta(qrHafta5, 5);
 
-  // Aktif haftayı bul (örnek: en büyük dolu hafta + 1)
-  SetHaftaAktif(GetAktifHaftaFromQueries);
+  AktifHafta := GetAktifHaftaFromQueries;
+  SetHaftaAktif(AktifHafta);
+
+  Msg :=
+    'DOSYA_NO: ' + IntToStr(DosyaNo) + sLineBreak +
+    'PROTOKOL_NO: ' + IntToStr(ProtokolNo) + sLineBreak + sLineBreak +
+    '1. Hafta: ' + HaftaDurum(qrHafta1) + sLineBreak +
+    '2. Hafta: ' + HaftaDurum(qrHafta2) + sLineBreak +
+    '3. Hafta: ' + HaftaDurum(qrHafta3) + sLineBreak +
+    '4. Hafta: ' + HaftaDurum(qrHafta4) + sLineBreak +
+    '5. Hafta: ' + HaftaDurum(qrHafta5) + sLineBreak + sLineBreak +
+    'Aktif (giriş yapılacak) hafta: ' + IntToStr(AktifHafta);
+
+  ShowMessage(Msg);
 end;
+
 
 
 
