@@ -23,7 +23,8 @@ uses
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint, dxSkinWXI,
   dxSkinXmas2008Blue, cxScrollBox, cxContainer, cxEdit, cxDBLabel, cxLabel,
   Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox, Data.DB, cxTextEdit, cxDBEdit,
-  cxMaskEdit, cxButtonEdit, MemDS, DBAccess, Ora, OraCall, cxCheckBox;
+  cxMaskEdit, cxButtonEdit, MemDS, DBAccess, Ora, OraCall, cxCheckBox, Vcl.Mask,
+  Vcl.DBCtrls;
 
 type
   TForm2 = class(TForm)
@@ -45,11 +46,6 @@ type
     cxlbl5: TcxLabel;
     grdpnl3: TGridPanel;
     cxlbl6: TcxLabel;
-    lblGun1Tarih: TcxLabel;
-    lblGun2Tarih: TcxLabel;
-    lblGun3Tarih: TcxLabel;
-    lblGun4Tarih: TcxLabel;
-    lblGun5Tarih: TcxLabel;
     cxlbl8: TcxLabel;
     edtKiloGun1: TcxDBTextEdit;
     edtKiloGun2: TcxDBTextEdit;
@@ -391,6 +387,11 @@ type
     fltfldHafta5KILO_KG: TFloatField;
     fltfldHafta5BOY_CM: TFloatField;
     fltfldHafta5BAS_CEVRESI_CM: TFloatField;
+    lblTarih1: TcxDBLabel;
+    lblTarih2: TcxDBLabel;
+    lblTarih3: TcxDBLabel;
+    lblTarih4: TcxDBLabel;
+    lblTarih5: TcxDBLabel;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);

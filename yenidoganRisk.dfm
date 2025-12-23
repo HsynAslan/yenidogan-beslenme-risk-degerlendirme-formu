@@ -286,31 +286,6 @@ object Form2: TForm2
             Row = 0
           end
           item
-            Column = 1
-            Control = lblGun1Tarih
-            Row = 0
-          end
-          item
-            Column = 2
-            Control = lblGun2Tarih
-            Row = 0
-          end
-          item
-            Column = 3
-            Control = lblGun3Tarih
-            Row = 0
-          end
-          item
-            Column = 4
-            Control = lblGun4Tarih
-            Row = 0
-          end
-          item
-            Column = 5
-            Control = lblGun5Tarih
-            Row = 0
-          end
-          item
             Column = 0
             Control = cxlbl8
             Row = 1
@@ -489,6 +464,31 @@ object Form2: TForm2
             Column = 5
             Control = scorGun5
             Row = 5
+          end
+          item
+            Column = 1
+            Control = lblTarih1
+            Row = 0
+          end
+          item
+            Column = 2
+            Control = lblTarih2
+            Row = 0
+          end
+          item
+            Column = 3
+            Control = lblTarih3
+            Row = 0
+          end
+          item
+            Column = 4
+            Control = lblTarih4
+            Row = 0
+          end
+          item
+            Column = 5
+            Control = lblTarih5
+            Row = 0
           end>
         RowCollection = <
           item
@@ -511,11 +511,11 @@ object Form2: TForm2
           end
           item
             Value = 11.000000000000000000
+          end
+          item
+            SizeStyle = ssAuto
           end>
         TabOrder = 0
-        DesignSize = (
-          1088
-          476)
         object cxlbl6: TcxLabel
           Left = 1
           Top = 1
@@ -530,101 +530,6 @@ object Form2: TForm2
           Style.IsFontAssigned = True
           Properties.Alignment.Horz = taLeftJustify
           Properties.Alignment.Vert = taVCenter
-          AnchorY = 18
-        end
-        object lblGun1Tarih: TcxLabel
-          Tag = 1
-          Left = 544
-          Top = 1
-          Cursor = crHandPoint
-          Align = alClient
-          Caption = '--.--.----'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -15
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Properties.Alignment.Horz = taCenter
-          Properties.Alignment.Vert = taVCenter
-          OnClick = lblGunTarihClick
-          AnchorX = 599
-          AnchorY = 18
-        end
-        object lblGun2Tarih: TcxLabel
-          Tag = 2
-          Left = 677
-          Top = 5
-          Cursor = crHandPoint
-          Anchors = []
-          Caption = '--.--.----'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -15
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Properties.Alignment.Horz = taCenter
-          Properties.Alignment.Vert = taVCenter
-          OnClick = lblGunTarihClick
-          AnchorX = 707
-          AnchorY = 17
-        end
-        object lblGun3Tarih: TcxLabel
-          Tag = 3
-          Left = 761
-          Top = 1
-          Align = alClient
-          Caption = '--.--.----'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -15
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Properties.Alignment.Horz = taCenter
-          Properties.Alignment.Vert = taVCenter
-          OnClick = lblGunTarihClick
-          AnchorX = 816
-          AnchorY = 18
-        end
-        object lblGun4Tarih: TcxLabel
-          Left = 870
-          Top = 1
-          Align = alClient
-          Caption = '--.--.----'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -15
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Properties.Alignment.Horz = taCenter
-          Properties.Alignment.Vert = taVCenter
-          OnClick = lblGunTarihClick
-          AnchorX = 924
-          AnchorY = 18
-        end
-        object lblGun5Tarih: TcxLabel
-          Left = 978
-          Top = 1
-          Align = alClient
-          Caption = '--.--.----'
-          ParentFont = False
-          Style.Font.Charset = DEFAULT_CHARSET
-          Style.Font.Color = clWindowText
-          Style.Font.Height = -15
-          Style.Font.Name = 'Segoe UI'
-          Style.Font.Style = [fsBold]
-          Style.IsFontAssigned = True
-          Properties.Alignment.Horz = taCenter
-          Properties.Alignment.Vert = taVCenter
-          OnClick = lblGunTarihClick
-          AnchorX = 1033
           AnchorY = 18
         end
         object cxlbl8: TcxLabel
@@ -642,7 +547,7 @@ object Form2: TForm2
           DataBinding.DataField = 'KILO_KG'
           DataBinding.DataSource = dsHafta1
           Properties.Alignment.Horz = taCenter
-          TabOrder = 7
+          TabOrder = 2
           Width = 109
         end
         object edtKiloGun2: TcxDBTextEdit
@@ -652,7 +557,7 @@ object Form2: TForm2
           DataBinding.DataField = 'KILO_KG'
           DataBinding.DataSource = dsHafta2
           Properties.Alignment.Horz = taCenter
-          TabOrder = 8
+          TabOrder = 3
           Width = 108
         end
         object edtKiloGun3: TcxDBTextEdit
@@ -662,7 +567,7 @@ object Form2: TForm2
           DataBinding.DataField = 'KILO_KG'
           DataBinding.DataSource = dsHafta3
           Properties.Alignment.Horz = taCenter
-          TabOrder = 9
+          TabOrder = 4
           Width = 109
         end
         object edtKiloGun4: TcxDBTextEdit
@@ -672,7 +577,7 @@ object Form2: TForm2
           DataBinding.DataField = 'KILO_KG'
           DataBinding.DataSource = dsHafta4
           Properties.Alignment.Horz = taCenter
-          TabOrder = 10
+          TabOrder = 5
           Width = 108
         end
         object edtKiloGun5: TcxDBTextEdit
@@ -682,7 +587,7 @@ object Form2: TForm2
           DataBinding.DataField = 'KILO_KG'
           DataBinding.DataSource = dsHafta5
           Properties.Alignment.Horz = taCenter
-          TabOrder = 11
+          TabOrder = 6
           Width = 109
         end
         object cxlbl9: TcxLabel
@@ -700,7 +605,7 @@ object Form2: TForm2
           DataBinding.DataField = 'BOY_CM'
           DataBinding.DataSource = dsHafta1
           Properties.Alignment.Horz = taCenter
-          TabOrder = 13
+          TabOrder = 8
           Width = 109
         end
         object edtBoyGun2: TcxDBTextEdit
@@ -710,7 +615,7 @@ object Form2: TForm2
           DataBinding.DataField = 'BOY_CM'
           DataBinding.DataSource = dsHafta2
           Properties.Alignment.Horz = taCenter
-          TabOrder = 14
+          TabOrder = 9
           Width = 108
         end
         object edtBoyGun3: TcxDBTextEdit
@@ -720,7 +625,7 @@ object Form2: TForm2
           DataBinding.DataField = 'BOY_CM'
           DataBinding.DataSource = dsHafta3
           Properties.Alignment.Horz = taCenter
-          TabOrder = 15
+          TabOrder = 10
           Width = 109
         end
         object edtBoyGun4: TcxDBTextEdit
@@ -730,7 +635,7 @@ object Form2: TForm2
           DataBinding.DataField = 'BOY_CM'
           DataBinding.DataSource = dsHafta4
           Properties.Alignment.Horz = taCenter
-          TabOrder = 16
+          TabOrder = 11
           Width = 108
         end
         object edtBoyGun5: TcxDBTextEdit
@@ -740,7 +645,7 @@ object Form2: TForm2
           DataBinding.DataField = 'BOY_CM'
           DataBinding.DataSource = dsHafta5
           Properties.Alignment.Horz = taCenter
-          TabOrder = 17
+          TabOrder = 12
           Width = 109
         end
         object cxLabel1: TcxLabel
@@ -761,9 +666,7 @@ object Form2: TForm2
           DataBinding.DataField = 'BAS_CEVRESI_CM'
           DataBinding.DataSource = dsHafta1
           Properties.Alignment.Horz = taCenter
-          TabOrder = 19
-          ExplicitLeft = 540
-          ExplicitTop = 79
+          TabOrder = 14
           Width = 109
         end
         object edtBasGun2: TcxDBTextEdit
@@ -773,7 +676,7 @@ object Form2: TForm2
           DataBinding.DataField = 'BAS_CEVRESI_CM'
           DataBinding.DataSource = dsHafta2
           Properties.Alignment.Horz = taCenter
-          TabOrder = 20
+          TabOrder = 15
           Width = 108
         end
         object edtBasGun3: TcxDBTextEdit
@@ -783,7 +686,7 @@ object Form2: TForm2
           DataBinding.DataField = 'BAS_CEVRESI_CM'
           DataBinding.DataSource = dsHafta3
           Properties.Alignment.Horz = taCenter
-          TabOrder = 21
+          TabOrder = 16
           Width = 109
         end
         object edtBasGun4: TcxDBTextEdit
@@ -793,7 +696,7 @@ object Form2: TForm2
           DataBinding.DataField = 'BAS_CEVRESI_CM'
           DataBinding.DataSource = dsHafta4
           Properties.Alignment.Horz = taCenter
-          TabOrder = 22
+          TabOrder = 17
           Width = 108
         end
         object edtBasGun5: TcxDBTextEdit
@@ -803,7 +706,7 @@ object Form2: TForm2
           DataBinding.DataField = 'BAS_CEVRESI_CM'
           DataBinding.DataSource = dsHafta5
           Properties.Alignment.Horz = taCenter
-          TabOrder = 23
+          TabOrder = 18
           Width = 109
         end
         object grdpnl4: TGridPanel
@@ -834,7 +737,7 @@ object Form2: TForm2
             item
               Value = 100.000000000000000000
             end>
-          TabOrder = 24
+          TabOrder = 19
           object PaintBoxYuksekRisk: TPaintBox
             Left = 1
             Top = 1
@@ -1270,7 +1173,7 @@ object Form2: TForm2
             item
               Value = 30.010000000000000000
             end>
-          TabOrder = 25
+          TabOrder = 20
           object grdpnl10: TGridPanel
             Left = 1
             Top = 1
@@ -1623,8 +1526,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitLeft = -1
-              ExplicitTop = 63
               Width = 105
             end
           end
@@ -1666,7 +1567,7 @@ object Form2: TForm2
             item
               Value = 30.010000000000000000
             end>
-          TabOrder = 26
+          TabOrder = 21
           object grdpnl14: TGridPanel
             Left = 1
             Top = 1
@@ -2052,7 +1953,7 @@ object Form2: TForm2
             item
               Value = 30.010000000000000000
             end>
-          TabOrder = 27
+          TabOrder = 22
           object grdpnl20: TGridPanel
             Left = 1
             Top = 1
@@ -2130,8 +2031,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitLeft = -1
-              ExplicitTop = 23
               Width = 105
             end
             object YR_C1000G3: TcxDBCheckBox
@@ -2446,7 +2345,7 @@ object Form2: TForm2
             item
               Value = 30.010000000000000000
             end>
-          TabOrder = 28
+          TabOrder = 23
           object grdpnl21: TGridPanel
             Left = 1
             Top = 1
@@ -2649,8 +2548,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitLeft = -1
-              ExplicitTop = 24
               Width = 104
             end
             object OR_CIUGRG4: TcxDBCheckBox
@@ -2838,7 +2735,7 @@ object Form2: TForm2
             item
               Value = 30.010000000000000000
             end>
-          TabOrder = 29
+          TabOrder = 24
           object grdpnl22: TGridPanel
             Left = 1
             Top = 1
@@ -2916,8 +2813,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitLeft = 3
-              ExplicitTop = 12
               Width = 105
             end
             object YR_C1000G5: TcxDBCheckBox
@@ -3043,8 +2938,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitLeft = 3
-              ExplicitTop = 24
               Width = 105
             end
             object OR_CIUGRG5: TcxDBCheckBox
@@ -3250,7 +3143,7 @@ object Form2: TForm2
             item
               Value = 10.000000000000000000
             end>
-          TabOrder = 31
+          TabOrder = 26
           DesignSize = (
             543
             52)
@@ -3339,8 +3232,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta3
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taVCenter
-          ExplicitLeft = 755
-          ExplicitTop = 429
           Height = 52
           Width = 109
           AnchorX = 816
@@ -3436,6 +3327,125 @@ object Form2: TForm2
           Width = 109
           AnchorX = 1033
           AnchorY = 407
+        end
+        object lblTarih1: TcxDBLabel
+          Left = 544
+          Top = 1
+          Align = alClient
+          DataBinding.DataField = 'IZLEM_TARIHI'
+          DataBinding.DataSource = dsHafta1
+          ParentFont = False
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taBottomJustify
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -12
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.ReadOnly = False
+          Style.IsFontAssigned = True
+          ExplicitLeft = 584
+          ExplicitTop = 8
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 33
+          Width = 109
+          AnchorX = 599
+          AnchorY = 34
+        end
+        object lblTarih2: TcxDBLabel
+          Left = 653
+          Top = 1
+          Align = alClient
+          DataBinding.DataField = 'IZLEM_TARIHI'
+          DataBinding.DataSource = dsHafta2
+          ParentFont = False
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taBottomJustify
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -12
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          ExplicitLeft = 688
+          ExplicitTop = 8
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 33
+          Width = 108
+          AnchorX = 707
+          AnchorY = 34
+        end
+        object lblTarih3: TcxDBLabel
+          Left = 761
+          Top = 1
+          Align = alClient
+          DataBinding.DataField = 'IZLEM_TARIHI'
+          DataBinding.DataSource = dsHafta3
+          ParentFont = False
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taBottomJustify
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -12
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          ExplicitLeft = 784
+          ExplicitTop = 8
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 33
+          Width = 109
+          AnchorX = 816
+          AnchorY = 34
+        end
+        object lblTarih4: TcxDBLabel
+          Left = 870
+          Top = 1
+          Align = alClient
+          DataBinding.DataField = 'IZLEM_TARIHI'
+          DataBinding.DataSource = dsHafta4
+          ParentFont = False
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taBottomJustify
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -12
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          ExplicitLeft = 896
+          ExplicitTop = 8
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 33
+          Width = 108
+          AnchorX = 924
+          AnchorY = 34
+        end
+        object lblTarih5: TcxDBLabel
+          Left = 978
+          Top = 1
+          Align = alClient
+          ParentFont = False
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taBottomJustify
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -12
+          Style.Font.Name = 'Segoe UI'
+          Style.Font.Style = [fsBold]
+          Style.IsFontAssigned = True
+          ExplicitLeft = 1008
+          ExplicitTop = 16
+          ExplicitWidth = 121
+          ExplicitHeight = 21
+          Height = 33
+          Width = 109
+          AnchorX = 1033
+          AnchorY = 34
         end
       end
     end

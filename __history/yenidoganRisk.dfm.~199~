@@ -176,7 +176,7 @@ object Form2: TForm2
             Top = 1
             Align = alClient
             DataBinding.DataField = 'GESTASYON_HAFTASI'
-            DataBinding.DataSource = dsRastgeleHasta
+            DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
             Properties.Alignment.Vert = taVCenter
             Height = 19
@@ -196,7 +196,7 @@ object Form2: TForm2
             Top = 20
             Align = alClient
             DataBinding.DataField = 'DOGUM_KILOSU_GR'
-            DataBinding.DataSource = dsRastgeleHasta
+            DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
             Properties.Alignment.Vert = taVCenter
             Height = 18
@@ -216,7 +216,7 @@ object Form2: TForm2
             Top = 38
             Align = alClient
             DataBinding.DataField = 'DOGUM_BOYU_CM'
-            DataBinding.DataSource = dsRastgeleHasta
+            DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
             Properties.Alignment.Vert = taVCenter
             Height = 19
@@ -236,7 +236,7 @@ object Form2: TForm2
             Top = 57
             Align = alClient
             DataBinding.DataField = 'DOGUM_BAS_CEVRESI'
-            DataBinding.DataSource = dsRastgeleHasta
+            DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
             Properties.Alignment.Vert = taVCenter
             Height = 18
@@ -287,7 +287,7 @@ object Form2: TForm2
           end
           item
             Column = 1
-            Control = cxlbl7
+            Control = lblGun1Tarih
             Row = 0
           end
           item
@@ -532,7 +532,7 @@ object Form2: TForm2
           Properties.Alignment.Vert = taVCenter
           AnchorY = 18
         end
-        object cxlbl7: TcxLabel
+        object lblGun1Tarih: TcxLabel
           Tag = 1
           Left = 544
           Top = 1
@@ -2125,6 +2125,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
@@ -2140,6 +2142,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
@@ -2153,6 +2157,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
@@ -2166,6 +2172,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
@@ -2244,6 +2252,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
@@ -2257,6 +2267,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
@@ -2270,6 +2282,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
@@ -2283,6 +2297,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
@@ -2353,6 +2369,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
@@ -2366,6 +2384,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
@@ -2380,6 +2400,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
@@ -2497,6 +2519,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
@@ -2510,6 +2534,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
@@ -2523,6 +2549,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
@@ -2536,6 +2564,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
@@ -2614,9 +2644,13 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
+              ExplicitLeft = -1
+              ExplicitTop = 24
               Width = 104
             end
             object OR_CIUGRG4: TcxDBCheckBox
@@ -2627,6 +2661,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
@@ -2640,6 +2676,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
@@ -2653,6 +2691,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
@@ -2723,6 +2763,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
@@ -2736,6 +2778,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
@@ -2749,6 +2793,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
@@ -2865,9 +2911,13 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
+              ExplicitLeft = 3
+              ExplicitTop = 12
               Width = 105
             end
             object YR_C1000G5: TcxDBCheckBox
@@ -2878,6 +2928,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
@@ -2891,6 +2943,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
@@ -2904,6 +2958,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
@@ -2982,6 +3038,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
@@ -2997,6 +3055,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
@@ -3010,6 +3070,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
@@ -3023,6 +3085,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
@@ -3093,6 +3157,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
@@ -3106,6 +3172,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
@@ -3119,6 +3187,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
@@ -3552,26 +3622,674 @@ object Form2: TForm2
         Name = 'HAFTA_NO'
         Value = nil
       end>
+    object fltfldHafta1HASTA_ID: TFloatField
+      FieldName = 'HASTA_ID'
+      Required = True
+    end
+    object fltfldHafta1HAFTA_NO: TFloatField
+      FieldName = 'HAFTA_NO'
+      Required = True
+    end
+    object fltfldHafta1DOSYA_NO: TFloatField
+      FieldName = 'DOSYA_NO'
+      Required = True
+    end
+    object fltfldHafta1PROTOKOL_NO: TFloatField
+      FieldName = 'PROTOKOL_NO'
+      Required = True
+    end
+    object dtmfldHafta1IZLEM_TARIHI: TDateTimeField
+      FieldName = 'IZLEM_TARIHI'
+      Required = True
+    end
+    object fltfldHafta1GESTASYON_HAFTASI: TFloatField
+      FieldName = 'GESTASYON_HAFTASI'
+    end
+    object fltfldHafta1DOGUM_KILOSU_GR: TFloatField
+      FieldName = 'DOGUM_KILOSU_GR'
+    end
+    object fltfldHafta1DOGUM_BOYU_CM: TFloatField
+      FieldName = 'DOGUM_BOYU_CM'
+    end
+    object fltfldHafta1DOGUM_BAS_CEVRESI: TFloatField
+      FieldName = 'DOGUM_BAS_CEVRESI'
+    end
+    object strngfldHafta1YR_28_HAFTA: TStringField
+      FieldName = 'YR_28_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta1YR_1000_GR: TStringField
+      FieldName = 'YR_1000_GR'
+      Size = 1
+    end
+    object strngfldHafta1YR_NEK_GIS: TStringField
+      FieldName = 'YR_NEK_GIS'
+      Size = 1
+    end
+    object strngfldHafta1YR_KONJ_GIS: TStringField
+      FieldName = 'YR_KONJ_GIS'
+      Size = 1
+    end
+    object strngfldHafta1OR_28_31_HAFTA: TStringField
+      FieldName = 'OR_28_31_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta1OR_IUGR: TStringField
+      FieldName = 'OR_IUGR'
+      Size = 1
+    end
+    object strngfldHafta1OR_1000_1500_GR: TStringField
+      FieldName = 'OR_1000_1500_GR'
+      Size = 1
+    end
+    object strngfldHafta1OR_KONJ_BESLENME: TStringField
+      FieldName = 'OR_KONJ_BESLENME'
+      Size = 1
+    end
+    object strngfldHafta1DR_32_35_HAFTA: TStringField
+      FieldName = 'DR_32_35_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta1DR_IUGR_35: TStringField
+      FieldName = 'DR_IUGR_35'
+      Size = 1
+    end
+    object strngfldHafta1DR_TERM: TStringField
+      FieldName = 'DR_TERM'
+      Size = 1
+    end
+    object strngfldHafta1RISK_SEVIYE: TStringField
+      FieldName = 'RISK_SEVIYE'
+      Size = 10
+    end
+    object strngfldHafta1IHT_2_HAFTA_KILO: TStringField
+      FieldName = 'IHT_2_HAFTA_KILO'
+      Size = 1
+    end
+    object strngfldHafta1IHT_15_KAYIP: TStringField
+      FieldName = 'IHT_15_KAYIP'
+      Size = 1
+    end
+    object strngfldHafta1IHT_10G_KAZANIM: TStringField
+      FieldName = 'IHT_10G_KAZANIM'
+      Size = 1
+    end
+    object strngfldHafta1IHT_NEK_CERRAHI: TStringField
+      FieldName = 'IHT_NEK_CERRAHI'
+      Size = 1
+    end
+    object strngfldHafta1DOKTOR_ADI: TStringField
+      FieldName = 'DOKTOR_ADI'
+      Size = 100
+    end
+    object dtmfldHafta1KAYIT_TARIHI: TDateTimeField
+      FieldName = 'KAYIT_TARIHI'
+    end
+    object fltfldHafta1KILO_KG: TFloatField
+      FieldName = 'KILO_KG'
+    end
+    object fltfldHafta1BOY_CM: TFloatField
+      FieldName = 'BOY_CM'
+    end
+    object fltfldHafta1BAS_CEVRESI_CM: TFloatField
+      FieldName = 'BAS_CEVRESI_CM'
+    end
   end
   object qrHafta2: TOraQuery
     Session = orsn1
+    SQL.Strings = (
+      'SELECT *'
+      'FROM YD_RISK_IZLEM'
+      'WHERE DOSYA_NO = :DOSYA_NO'
+      '  AND PROTOKOL_NO = :PROTOKOL_NO'
+      '  AND HAFTA_NO = :HAFTA_NO')
     Left = 96
     Top = 16
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DOSYA_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PROTOKOL_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'HAFTA_NO'
+        Value = nil
+      end>
+    object fltfldHafta2HASTA_ID: TFloatField
+      FieldName = 'HASTA_ID'
+      Required = True
+    end
+    object fltfldHafta2HAFTA_NO: TFloatField
+      FieldName = 'HAFTA_NO'
+      Required = True
+    end
+    object fltfldHafta2DOSYA_NO: TFloatField
+      FieldName = 'DOSYA_NO'
+      Required = True
+    end
+    object fltfldHafta2PROTOKOL_NO: TFloatField
+      FieldName = 'PROTOKOL_NO'
+      Required = True
+    end
+    object dtmfldHafta2IZLEM_TARIHI: TDateTimeField
+      FieldName = 'IZLEM_TARIHI'
+      Required = True
+    end
+    object fltfldHafta2GESTASYON_HAFTASI: TFloatField
+      FieldName = 'GESTASYON_HAFTASI'
+    end
+    object fltfldHafta2DOGUM_KILOSU_GR: TFloatField
+      FieldName = 'DOGUM_KILOSU_GR'
+    end
+    object fltfldHafta2DOGUM_BOYU_CM: TFloatField
+      FieldName = 'DOGUM_BOYU_CM'
+    end
+    object fltfldHafta2DOGUM_BAS_CEVRESI: TFloatField
+      FieldName = 'DOGUM_BAS_CEVRESI'
+    end
+    object strngfldHafta2YR_28_HAFTA: TStringField
+      FieldName = 'YR_28_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta2YR_1000_GR: TStringField
+      FieldName = 'YR_1000_GR'
+      Size = 1
+    end
+    object strngfldHafta2YR_NEK_GIS: TStringField
+      FieldName = 'YR_NEK_GIS'
+      Size = 1
+    end
+    object strngfldHafta2YR_KONJ_GIS: TStringField
+      FieldName = 'YR_KONJ_GIS'
+      Size = 1
+    end
+    object strngfldHafta2OR_28_31_HAFTA: TStringField
+      FieldName = 'OR_28_31_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta2OR_IUGR: TStringField
+      FieldName = 'OR_IUGR'
+      Size = 1
+    end
+    object strngfldHafta2OR_1000_1500_GR: TStringField
+      FieldName = 'OR_1000_1500_GR'
+      Size = 1
+    end
+    object strngfldHafta2OR_KONJ_BESLENME: TStringField
+      FieldName = 'OR_KONJ_BESLENME'
+      Size = 1
+    end
+    object strngfldHafta2DR_32_35_HAFTA: TStringField
+      FieldName = 'DR_32_35_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta2DR_IUGR_35: TStringField
+      FieldName = 'DR_IUGR_35'
+      Size = 1
+    end
+    object strngfldHafta2DR_TERM: TStringField
+      FieldName = 'DR_TERM'
+      Size = 1
+    end
+    object strngfldHafta2RISK_SEVIYE: TStringField
+      FieldName = 'RISK_SEVIYE'
+      Size = 10
+    end
+    object strngfldHafta2IHT_2_HAFTA_KILO: TStringField
+      FieldName = 'IHT_2_HAFTA_KILO'
+      Size = 1
+    end
+    object strngfldHafta2IHT_15_KAYIP: TStringField
+      FieldName = 'IHT_15_KAYIP'
+      Size = 1
+    end
+    object strngfldHafta2IHT_10G_KAZANIM: TStringField
+      FieldName = 'IHT_10G_KAZANIM'
+      Size = 1
+    end
+    object strngfldHafta2IHT_NEK_CERRAHI: TStringField
+      FieldName = 'IHT_NEK_CERRAHI'
+      Size = 1
+    end
+    object strngfldHafta2DOKTOR_ADI: TStringField
+      FieldName = 'DOKTOR_ADI'
+      Size = 100
+    end
+    object dtmfldHafta2KAYIT_TARIHI: TDateTimeField
+      FieldName = 'KAYIT_TARIHI'
+    end
+    object fltfldHafta2KILO_KG: TFloatField
+      FieldName = 'KILO_KG'
+    end
+    object fltfldHafta2BOY_CM: TFloatField
+      FieldName = 'BOY_CM'
+    end
+    object fltfldHafta2BAS_CEVRESI_CM: TFloatField
+      FieldName = 'BAS_CEVRESI_CM'
+    end
   end
   object qrHafta3: TOraQuery
     Session = orsn1
+    SQL.Strings = (
+      'SELECT *'
+      'FROM YD_RISK_IZLEM'
+      'WHERE DOSYA_NO = :DOSYA_NO'
+      '  AND PROTOKOL_NO = :PROTOKOL_NO'
+      '  AND HAFTA_NO = :HAFTA_NO')
     Left = 152
     Top = 16
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DOSYA_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PROTOKOL_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'HAFTA_NO'
+        Value = nil
+      end>
+    object fltfldHafta3HASTA_ID: TFloatField
+      FieldName = 'HASTA_ID'
+      Required = True
+    end
+    object fltfldHafta3HAFTA_NO: TFloatField
+      FieldName = 'HAFTA_NO'
+      Required = True
+    end
+    object fltfldHafta3DOSYA_NO: TFloatField
+      FieldName = 'DOSYA_NO'
+      Required = True
+    end
+    object fltfldHafta3PROTOKOL_NO: TFloatField
+      FieldName = 'PROTOKOL_NO'
+      Required = True
+    end
+    object dtmfldHafta3IZLEM_TARIHI: TDateTimeField
+      FieldName = 'IZLEM_TARIHI'
+      Required = True
+    end
+    object fltfldHafta3GESTASYON_HAFTASI: TFloatField
+      FieldName = 'GESTASYON_HAFTASI'
+    end
+    object fltfldHafta3DOGUM_KILOSU_GR: TFloatField
+      FieldName = 'DOGUM_KILOSU_GR'
+    end
+    object fltfldHafta3DOGUM_BOYU_CM: TFloatField
+      FieldName = 'DOGUM_BOYU_CM'
+    end
+    object fltfldHafta3DOGUM_BAS_CEVRESI: TFloatField
+      FieldName = 'DOGUM_BAS_CEVRESI'
+    end
+    object strngfldHafta3YR_28_HAFTA: TStringField
+      FieldName = 'YR_28_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta3YR_1000_GR: TStringField
+      FieldName = 'YR_1000_GR'
+      Size = 1
+    end
+    object strngfldHafta3YR_NEK_GIS: TStringField
+      FieldName = 'YR_NEK_GIS'
+      Size = 1
+    end
+    object strngfldHafta3YR_KONJ_GIS: TStringField
+      FieldName = 'YR_KONJ_GIS'
+      Size = 1
+    end
+    object strngfldHafta3OR_28_31_HAFTA: TStringField
+      FieldName = 'OR_28_31_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta3OR_IUGR: TStringField
+      FieldName = 'OR_IUGR'
+      Size = 1
+    end
+    object strngfldHafta3OR_1000_1500_GR: TStringField
+      FieldName = 'OR_1000_1500_GR'
+      Size = 1
+    end
+    object strngfldHafta3OR_KONJ_BESLENME: TStringField
+      FieldName = 'OR_KONJ_BESLENME'
+      Size = 1
+    end
+    object strngfldHafta3DR_32_35_HAFTA: TStringField
+      FieldName = 'DR_32_35_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta3DR_IUGR_35: TStringField
+      FieldName = 'DR_IUGR_35'
+      Size = 1
+    end
+    object strngfldHafta3DR_TERM: TStringField
+      FieldName = 'DR_TERM'
+      Size = 1
+    end
+    object strngfldHafta3RISK_SEVIYE: TStringField
+      FieldName = 'RISK_SEVIYE'
+      Size = 10
+    end
+    object strngfldHafta3IHT_2_HAFTA_KILO: TStringField
+      FieldName = 'IHT_2_HAFTA_KILO'
+      Size = 1
+    end
+    object strngfldHafta3IHT_15_KAYIP: TStringField
+      FieldName = 'IHT_15_KAYIP'
+      Size = 1
+    end
+    object strngfldHafta3IHT_10G_KAZANIM: TStringField
+      FieldName = 'IHT_10G_KAZANIM'
+      Size = 1
+    end
+    object strngfldHafta3IHT_NEK_CERRAHI: TStringField
+      FieldName = 'IHT_NEK_CERRAHI'
+      Size = 1
+    end
+    object strngfldHafta3DOKTOR_ADI: TStringField
+      FieldName = 'DOKTOR_ADI'
+      Size = 100
+    end
+    object dtmfldHafta3KAYIT_TARIHI: TDateTimeField
+      FieldName = 'KAYIT_TARIHI'
+    end
+    object fltfldHafta3KILO_KG: TFloatField
+      FieldName = 'KILO_KG'
+    end
+    object fltfldHafta3BOY_CM: TFloatField
+      FieldName = 'BOY_CM'
+    end
+    object fltfldHafta3BAS_CEVRESI_CM: TFloatField
+      FieldName = 'BAS_CEVRESI_CM'
+    end
   end
   object qrHafta4: TOraQuery
     Session = orsn1
+    SQL.Strings = (
+      'SELECT *'
+      'FROM YD_RISK_IZLEM'
+      'WHERE DOSYA_NO = :DOSYA_NO'
+      '  AND PROTOKOL_NO = :PROTOKOL_NO'
+      '  AND HAFTA_NO = :HAFTA_NO')
     Left = 216
     Top = 16
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DOSYA_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PROTOKOL_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'HAFTA_NO'
+        Value = nil
+      end>
+    object fltfldHafta4HASTA_ID: TFloatField
+      FieldName = 'HASTA_ID'
+      Required = True
+    end
+    object fltfldHafta4HAFTA_NO: TFloatField
+      FieldName = 'HAFTA_NO'
+      Required = True
+    end
+    object fltfldHafta4DOSYA_NO: TFloatField
+      FieldName = 'DOSYA_NO'
+      Required = True
+    end
+    object fltfldHafta4PROTOKOL_NO: TFloatField
+      FieldName = 'PROTOKOL_NO'
+      Required = True
+    end
+    object dtmfldHafta4IZLEM_TARIHI: TDateTimeField
+      FieldName = 'IZLEM_TARIHI'
+      Required = True
+    end
+    object fltfldHafta4GESTASYON_HAFTASI: TFloatField
+      FieldName = 'GESTASYON_HAFTASI'
+    end
+    object fltfldHafta4DOGUM_KILOSU_GR: TFloatField
+      FieldName = 'DOGUM_KILOSU_GR'
+    end
+    object fltfldHafta4DOGUM_BOYU_CM: TFloatField
+      FieldName = 'DOGUM_BOYU_CM'
+    end
+    object fltfldHafta4DOGUM_BAS_CEVRESI: TFloatField
+      FieldName = 'DOGUM_BAS_CEVRESI'
+    end
+    object strngfldHafta4YR_28_HAFTA: TStringField
+      FieldName = 'YR_28_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta4YR_1000_GR: TStringField
+      FieldName = 'YR_1000_GR'
+      Size = 1
+    end
+    object strngfldHafta4YR_NEK_GIS: TStringField
+      FieldName = 'YR_NEK_GIS'
+      Size = 1
+    end
+    object strngfldHafta4YR_KONJ_GIS: TStringField
+      FieldName = 'YR_KONJ_GIS'
+      Size = 1
+    end
+    object strngfldHafta4OR_28_31_HAFTA: TStringField
+      FieldName = 'OR_28_31_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta4OR_IUGR: TStringField
+      FieldName = 'OR_IUGR'
+      Size = 1
+    end
+    object strngfldHafta4OR_1000_1500_GR: TStringField
+      FieldName = 'OR_1000_1500_GR'
+      Size = 1
+    end
+    object strngfldHafta4OR_KONJ_BESLENME: TStringField
+      FieldName = 'OR_KONJ_BESLENME'
+      Size = 1
+    end
+    object strngfldHafta4DR_32_35_HAFTA: TStringField
+      FieldName = 'DR_32_35_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta4DR_IUGR_35: TStringField
+      FieldName = 'DR_IUGR_35'
+      Size = 1
+    end
+    object strngfldHafta4DR_TERM: TStringField
+      FieldName = 'DR_TERM'
+      Size = 1
+    end
+    object strngfldHafta4RISK_SEVIYE: TStringField
+      FieldName = 'RISK_SEVIYE'
+      Size = 10
+    end
+    object strngfldHafta4IHT_2_HAFTA_KILO: TStringField
+      FieldName = 'IHT_2_HAFTA_KILO'
+      Size = 1
+    end
+    object strngfldHafta4IHT_15_KAYIP: TStringField
+      FieldName = 'IHT_15_KAYIP'
+      Size = 1
+    end
+    object strngfldHafta4IHT_10G_KAZANIM: TStringField
+      FieldName = 'IHT_10G_KAZANIM'
+      Size = 1
+    end
+    object strngfldHafta4IHT_NEK_CERRAHI: TStringField
+      FieldName = 'IHT_NEK_CERRAHI'
+      Size = 1
+    end
+    object strngfldHafta4DOKTOR_ADI: TStringField
+      FieldName = 'DOKTOR_ADI'
+      Size = 100
+    end
+    object dtmfldHafta4KAYIT_TARIHI: TDateTimeField
+      FieldName = 'KAYIT_TARIHI'
+    end
+    object fltfldHafta4KILO_KG: TFloatField
+      FieldName = 'KILO_KG'
+    end
+    object fltfldHafta4BOY_CM: TFloatField
+      FieldName = 'BOY_CM'
+    end
+    object fltfldHafta4BAS_CEVRESI_CM: TFloatField
+      FieldName = 'BAS_CEVRESI_CM'
+    end
   end
   object qrHafta5: TOraQuery
     Session = orsn1
+    SQL.Strings = (
+      'SELECT *'
+      'FROM YD_RISK_IZLEM'
+      'WHERE DOSYA_NO = :DOSYA_NO'
+      '  AND PROTOKOL_NO = :PROTOKOL_NO'
+      '  AND HAFTA_NO = :HAFTA_NO')
     Left = 272
     Top = 16
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DOSYA_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PROTOKOL_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'HAFTA_NO'
+        Value = nil
+      end>
+    object fltfldHafta5HASTA_ID: TFloatField
+      FieldName = 'HASTA_ID'
+      Required = True
+    end
+    object fltfldHafta5HAFTA_NO: TFloatField
+      FieldName = 'HAFTA_NO'
+      Required = True
+    end
+    object fltfldHafta5DOSYA_NO: TFloatField
+      FieldName = 'DOSYA_NO'
+      Required = True
+    end
+    object fltfldHafta5PROTOKOL_NO: TFloatField
+      FieldName = 'PROTOKOL_NO'
+      Required = True
+    end
+    object dtmfldHafta5IZLEM_TARIHI: TDateTimeField
+      FieldName = 'IZLEM_TARIHI'
+      Required = True
+    end
+    object fltfldHafta5GESTASYON_HAFTASI: TFloatField
+      FieldName = 'GESTASYON_HAFTASI'
+    end
+    object fltfldHafta5DOGUM_KILOSU_GR: TFloatField
+      FieldName = 'DOGUM_KILOSU_GR'
+    end
+    object fltfldHafta5DOGUM_BOYU_CM: TFloatField
+      FieldName = 'DOGUM_BOYU_CM'
+    end
+    object fltfldHafta5DOGUM_BAS_CEVRESI: TFloatField
+      FieldName = 'DOGUM_BAS_CEVRESI'
+    end
+    object strngfldHafta5YR_28_HAFTA: TStringField
+      FieldName = 'YR_28_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta5YR_1000_GR: TStringField
+      FieldName = 'YR_1000_GR'
+      Size = 1
+    end
+    object strngfldHafta5YR_NEK_GIS: TStringField
+      FieldName = 'YR_NEK_GIS'
+      Size = 1
+    end
+    object strngfldHafta5YR_KONJ_GIS: TStringField
+      FieldName = 'YR_KONJ_GIS'
+      Size = 1
+    end
+    object strngfldHafta5OR_28_31_HAFTA: TStringField
+      FieldName = 'OR_28_31_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta5OR_IUGR: TStringField
+      FieldName = 'OR_IUGR'
+      Size = 1
+    end
+    object strngfldHafta5OR_1000_1500_GR: TStringField
+      FieldName = 'OR_1000_1500_GR'
+      Size = 1
+    end
+    object strngfldHafta5OR_KONJ_BESLENME: TStringField
+      FieldName = 'OR_KONJ_BESLENME'
+      Size = 1
+    end
+    object strngfldHafta5DR_32_35_HAFTA: TStringField
+      FieldName = 'DR_32_35_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta5DR_IUGR_35: TStringField
+      FieldName = 'DR_IUGR_35'
+      Size = 1
+    end
+    object strngfldHafta5DR_TERM: TStringField
+      FieldName = 'DR_TERM'
+      Size = 1
+    end
+    object strngfldHafta5RISK_SEVIYE: TStringField
+      FieldName = 'RISK_SEVIYE'
+      Size = 10
+    end
+    object strngfldHafta5IHT_2_HAFTA_KILO: TStringField
+      FieldName = 'IHT_2_HAFTA_KILO'
+      Size = 1
+    end
+    object strngfldHafta5IHT_15_KAYIP: TStringField
+      FieldName = 'IHT_15_KAYIP'
+      Size = 1
+    end
+    object strngfldHafta5IHT_10G_KAZANIM: TStringField
+      FieldName = 'IHT_10G_KAZANIM'
+      Size = 1
+    end
+    object strngfldHafta5IHT_NEK_CERRAHI: TStringField
+      FieldName = 'IHT_NEK_CERRAHI'
+      Size = 1
+    end
+    object strngfldHafta5DOKTOR_ADI: TStringField
+      FieldName = 'DOKTOR_ADI'
+      Size = 100
+    end
+    object dtmfldHafta5KAYIT_TARIHI: TDateTimeField
+      FieldName = 'KAYIT_TARIHI'
+    end
+    object fltfldHafta5KILO_KG: TFloatField
+      FieldName = 'KILO_KG'
+    end
+    object fltfldHafta5BOY_CM: TFloatField
+      FieldName = 'BOY_CM'
+    end
+    object fltfldHafta5BAS_CEVRESI_CM: TFloatField
+      FieldName = 'BAS_CEVRESI_CM'
+    end
   end
   object dsHafta1: TOraDataSource
     DataSet = qrHafta1
