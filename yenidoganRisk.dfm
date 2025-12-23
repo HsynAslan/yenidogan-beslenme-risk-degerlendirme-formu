@@ -2125,6 +2125,7 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
               Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
@@ -2141,6 +2142,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
@@ -2154,6 +2157,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
@@ -2167,6 +2172,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
@@ -2245,6 +2252,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
@@ -2258,6 +2267,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
@@ -2271,6 +2282,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
@@ -2284,6 +2297,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
@@ -2354,6 +2369,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
@@ -2367,6 +2384,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
@@ -2381,6 +2400,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
@@ -2498,6 +2519,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
@@ -2511,6 +2534,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
@@ -2524,6 +2549,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
@@ -2537,6 +2564,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
@@ -2615,9 +2644,13 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
+              ExplicitLeft = -1
+              ExplicitTop = 24
               Width = 104
             end
             object OR_CIUGRG4: TcxDBCheckBox
@@ -2628,6 +2661,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
@@ -2641,6 +2676,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
@@ -2654,6 +2691,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
@@ -2724,6 +2763,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
@@ -2737,6 +2778,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
@@ -2750,6 +2793,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
@@ -2866,9 +2911,13 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
+              ExplicitLeft = 3
+              ExplicitTop = 12
               Width = 105
             end
             object YR_C1000G5: TcxDBCheckBox
@@ -2879,6 +2928,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
@@ -2892,6 +2943,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
@@ -2905,6 +2958,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
@@ -2983,6 +3038,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
@@ -2998,6 +3055,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
@@ -3011,6 +3070,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
@@ -3024,6 +3085,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
@@ -3094,6 +3157,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
@@ -3107,6 +3172,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
@@ -3120,6 +3187,8 @@ object Form2: TForm2
               DataBinding.DataSource = dsHafta5
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
+              Properties.ValueChecked = 'T'
+              Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
