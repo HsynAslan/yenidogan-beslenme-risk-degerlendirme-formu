@@ -107,28 +107,13 @@ object Form2: TForm2
               Row = 0
             end
             item
-              Column = 1
-              Control = cxdblbl1
-              Row = 0
-            end
-            item
               Column = 0
               Control = cxlbl2
               Row = 1
             end
             item
-              Column = 1
-              Control = cxdblbl2
-              Row = 1
-            end
-            item
               Column = 0
               Control = cxlbl3
-              Row = 2
-            end
-            item
-              Column = 1
-              Control = cxdblbl3
               Row = 2
             end
             item
@@ -138,7 +123,22 @@ object Form2: TForm2
             end
             item
               Column = 1
-              Control = cxdblbl4
+              Control = edtDestasyon
+              Row = 0
+            end
+            item
+              Column = 1
+              Control = edtDTartisi
+              Row = 1
+            end
+            item
+              Column = 1
+              Control = edtDBoyu
+              Row = 2
+            end
+            item
+              Column = 1
+              Control = edtDBas
               Row = 3
             end>
           RowCollection = <
@@ -171,36 +171,12 @@ object Form2: TForm2
             Properties.Alignment.Vert = taVCenter
             AnchorY = 11
           end
-          object cxdblbl1: TcxDBLabel
-            Left = 304
-            Top = 1
-            Align = alClient
-            DataBinding.DataField = 'GESTASYON_HAFTASI'
-            DataBinding.DataSource = dsHafta1
-            Properties.Alignment.Horz = taLeftJustify
-            Properties.Alignment.Vert = taVCenter
-            Height = 19
-            Width = 455
-            AnchorY = 11
-          end
           object cxlbl2: TcxLabel
             Left = 1
             Top = 20
             Align = alClient
             Caption = 'Do'#287'um Tart'#305's'#305' (Persantil): '
             Properties.Alignment.Vert = taVCenter
-            AnchorY = 29
-          end
-          object cxdblbl2: TcxDBLabel
-            Left = 304
-            Top = 20
-            Align = alClient
-            DataBinding.DataField = 'DOGUM_KILOSU_GR'
-            DataBinding.DataSource = dsHafta1
-            Properties.Alignment.Horz = taLeftJustify
-            Properties.Alignment.Vert = taVCenter
-            Height = 18
-            Width = 455
             AnchorY = 29
           end
           object cxlbl3: TcxLabel
@@ -211,18 +187,6 @@ object Form2: TForm2
             Properties.Alignment.Vert = taVCenter
             AnchorY = 48
           end
-          object cxdblbl3: TcxDBLabel
-            Left = 304
-            Top = 38
-            Align = alClient
-            DataBinding.DataField = 'DOGUM_BOYU_CM'
-            DataBinding.DataSource = dsHafta1
-            Properties.Alignment.Horz = taLeftJustify
-            Properties.Alignment.Vert = taVCenter
-            Height = 19
-            Width = 455
-            AnchorY = 48
-          end
           object cxlbl4: TcxLabel
             Left = 1
             Top = 57
@@ -231,17 +195,57 @@ object Form2: TForm2
             Properties.Alignment.Vert = taVCenter
             AnchorY = 66
           end
-          object cxdblbl4: TcxDBLabel
+          object edtDestasyon: TcxDBTextEdit
+            Left = 304
+            Top = 1
+            Align = alClient
+            DataBinding.DataField = 'GESTASYON_HAFTASI'
+            DataBinding.DataSource = dsHafta1
+            Properties.Alignment.Horz = taLeftJustify
+            TabOrder = 4
+            ExplicitLeft = 471
+            ExplicitWidth = 121
+            ExplicitHeight = 23
+            Width = 455
+          end
+          object edtDTartisi: TcxDBTextEdit
+            Left = 304
+            Top = 20
+            Align = alClient
+            DataBinding.DataField = 'DOGUM_KILOSU_GR'
+            DataBinding.DataSource = dsHafta1
+            Properties.Alignment.Horz = taLeftJustify
+            TabOrder = 5
+            ExplicitLeft = 471
+            ExplicitWidth = 121
+            ExplicitHeight = 23
+            Width = 455
+          end
+          object edtDBoyu: TcxDBTextEdit
+            Left = 304
+            Top = 38
+            Align = alClient
+            DataBinding.DataField = 'DOGUM_BOYU_CM'
+            DataBinding.DataSource = dsHafta1
+            Properties.Alignment.Horz = taLeftJustify
+            TabOrder = 6
+            ExplicitLeft = 471
+            ExplicitWidth = 121
+            ExplicitHeight = 23
+            Width = 455
+          end
+          object edtDBas: TcxDBTextEdit
             Left = 304
             Top = 57
             Align = alClient
             DataBinding.DataField = 'DOGUM_BAS_CEVRESI'
             DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
-            Properties.Alignment.Vert = taVCenter
-            Height = 18
+            TabOrder = 7
+            ExplicitLeft = 471
+            ExplicitWidth = 121
+            ExplicitHeight = 23
             Width = 455
-            AnchorY = 66
           end
         end
       end
@@ -417,31 +421,6 @@ object Form2: TForm2
           end
           item
             Column = 1
-            Control = DR_GUN1
-            Row = 6
-          end
-          item
-            Column = 2
-            Control = DR_GUN2
-            Row = 6
-          end
-          item
-            Column = 3
-            Control = DR_GUN3
-            Row = 6
-          end
-          item
-            Column = 4
-            Control = DR_GUN4
-            Row = 6
-          end
-          item
-            Column = 5
-            Control = DR_GUN5
-            Row = 6
-          end
-          item
-            Column = 1
             Control = scorGun1
             Row = 5
           end
@@ -489,6 +468,31 @@ object Form2: TForm2
             Column = 5
             Control = lblTarih5
             Row = 0
+          end
+          item
+            Column = 1
+            Control = edtDRGun1
+            Row = 6
+          end
+          item
+            Column = 2
+            Control = edtDRGun2
+            Row = 6
+          end
+          item
+            Column = 3
+            Control = edtDRGun3
+            Row = 6
+          end
+          item
+            Column = 4
+            Control = edtDRgun4
+            Row = 6
+          end
+          item
+            Column = 5
+            Control = edtDRGun5
+            Row = 6
           end>
         RowCollection = <
           item
@@ -1254,6 +1258,8 @@ object Form2: TForm2
               Style.BorderStyle = ebsSingle
               Style.TransparentBorder = False
               TabOrder = 0
+              ExplicitLeft = 2
+              ExplicitTop = 13
               Width = 105
             end
             object YR_C1000G1: TcxDBCheckBox
@@ -3198,71 +3204,6 @@ object Form2: TForm2
             ExplicitLeft = 238
           end
         end
-        object DR_GUN1: TcxDBLabel
-          Left = 544
-          Top = 423
-          Align = alClient
-          DataBinding.DataField = 'DOKTOR_ADI'
-          DataBinding.DataSource = dsHafta1
-          Properties.Alignment.Horz = taCenter
-          Properties.Alignment.Vert = taVCenter
-          Height = 52
-          Width = 109
-          AnchorX = 599
-          AnchorY = 449
-        end
-        object DR_GUN2: TcxDBLabel
-          Left = 653
-          Top = 423
-          Align = alClient
-          DataBinding.DataField = 'DOKTOR_ADI'
-          DataBinding.DataSource = dsHafta2
-          Properties.Alignment.Horz = taCenter
-          Properties.Alignment.Vert = taVCenter
-          Height = 52
-          Width = 108
-          AnchorX = 707
-          AnchorY = 449
-        end
-        object DR_GUN3: TcxDBLabel
-          Left = 761
-          Top = 423
-          Align = alClient
-          DataBinding.DataField = 'DOKTOR_ADI'
-          DataBinding.DataSource = dsHafta3
-          Properties.Alignment.Horz = taCenter
-          Properties.Alignment.Vert = taVCenter
-          Height = 52
-          Width = 109
-          AnchorX = 816
-          AnchorY = 449
-        end
-        object DR_GUN4: TcxDBLabel
-          Left = 870
-          Top = 423
-          Align = alClient
-          DataBinding.DataField = 'DOKTOR_ADI'
-          DataBinding.DataSource = dsHafta4
-          Properties.Alignment.Horz = taCenter
-          Properties.Alignment.Vert = taVCenter
-          Height = 52
-          Width = 108
-          AnchorX = 924
-          AnchorY = 449
-        end
-        object DR_GUN5: TcxDBLabel
-          Left = 978
-          Top = 423
-          Align = alClient
-          DataBinding.DataField = 'DOKTOR_ADI'
-          DataBinding.DataSource = dsHafta5
-          Properties.Alignment.Horz = taCenter
-          Properties.Alignment.Vert = taVCenter
-          Height = 52
-          Width = 109
-          AnchorX = 1033
-          AnchorY = 449
-        end
         object scorGun1: TcxDBLabel
           Left = 544
           Top = 390
@@ -3447,6 +3388,72 @@ object Form2: TForm2
           AnchorX = 1033
           AnchorY = 34
         end
+        object edtDRGun1: TcxDBTextEdit
+          Left = 544
+          Top = 423
+          Align = alClient
+          DataBinding.DataField = 'DOKTOR_ADI'
+          DataBinding.DataSource = dsHafta1
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 37
+          ExplicitTop = 438
+          ExplicitWidth = 121
+          ExplicitHeight = 23
+          Width = 109
+        end
+        object edtDRGun2: TcxDBTextEdit
+          Left = 653
+          Top = 423
+          Align = alClient
+          DataBinding.DataField = 'DOKTOR_ADI'
+          DataBinding.DataSource = dsHafta2
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 38
+          ExplicitTop = 438
+          ExplicitWidth = 121
+          ExplicitHeight = 23
+          Width = 108
+        end
+        object edtDRGun3: TcxDBTextEdit
+          Left = 761
+          Top = 423
+          Align = alClient
+          DataBinding.DataField = 'DOKTOR_ADI'
+          DataBinding.DataSource = dsHafta3
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 39
+          ExplicitTop = 438
+          ExplicitWidth = 121
+          ExplicitHeight = 23
+          Width = 109
+        end
+        object edtDRgun4: TcxDBTextEdit
+          Left = 870
+          Top = 423
+          Align = alClient
+          DataBinding.DataField = 'DOKTOR_ADI'
+          DataBinding.DataSource = dsHafta4
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 40
+          ExplicitTop = 438
+          ExplicitWidth = 121
+          ExplicitHeight = 23
+          Width = 108
+        end
+        object edtDRGun5: TcxDBTextEdit
+          Left = 978
+          Top = 423
+          Align = alClient
+          DataBinding.DataField = 'DOKTOR_ADI'
+          DataBinding.DataSource = dsHafta5
+          Properties.Alignment.Horz = taCenter
+          TabOrder = 41
+          ExplicitLeft = 984
+          ExplicitTop = 437
+          ExplicitWidth = 121
+          ExplicitHeight = 23
+          Width = 109
+        end
       end
     end
     object btnKaydet: TButton
@@ -3464,7 +3471,7 @@ object Form2: TForm2
     Server = 'ASYA'
     Connected = True
     Left = 1032
-    Top = 16
+    Top = 8
     EncryptedPassword = '97FF'
   end
   object qrrastgeleHasta: TOraQuery
@@ -3476,7 +3483,7 @@ object Form2: TForm2
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
       'ORDER BY HAFTA_NO')
     Left = 952
-    Top = 16
+    Top = 8
     ParamData = <
       item
         DataType = ftUnknown
@@ -3490,7 +3497,6 @@ object Form2: TForm2
       end>
     object fltfldHastaHASTA_ID: TFloatField
       FieldName = 'HASTA_ID'
-      Required = True
     end
     object fltfldHastaHAFTA_NO: TFloatField
       FieldName = 'HAFTA_NO'
@@ -3603,7 +3609,7 @@ object Form2: TForm2
   end
   object dsRastgeleHasta: TOraDataSource
     DataSet = qrrastgeleHasta
-    Left = 848
+    Left = 864
     Top = 8
   end
   object qrHafta1: TOraQuery
@@ -3634,7 +3640,6 @@ object Form2: TForm2
       end>
     object fltfldHafta1HASTA_ID: TFloatField
       FieldName = 'HASTA_ID'
-      Required = True
     end
     object fltfldHafta1HAFTA_NO: TFloatField
       FieldName = 'HAFTA_NO'
@@ -3773,7 +3778,6 @@ object Form2: TForm2
       end>
     object fltfldHafta2HASTA_ID: TFloatField
       FieldName = 'HASTA_ID'
-      Required = True
     end
     object fltfldHafta2HAFTA_NO: TFloatField
       FieldName = 'HAFTA_NO'
@@ -3912,7 +3916,6 @@ object Form2: TForm2
       end>
     object fltfldHafta3HASTA_ID: TFloatField
       FieldName = 'HASTA_ID'
-      Required = True
     end
     object fltfldHafta3HAFTA_NO: TFloatField
       FieldName = 'HAFTA_NO'
@@ -4051,7 +4054,6 @@ object Form2: TForm2
       end>
     object fltfldHafta4HASTA_ID: TFloatField
       FieldName = 'HASTA_ID'
-      Required = True
     end
     object fltfldHafta4HAFTA_NO: TFloatField
       FieldName = 'HAFTA_NO'
@@ -4190,7 +4192,6 @@ object Form2: TForm2
       end>
     object fltfldHafta5HASTA_ID: TFloatField
       FieldName = 'HASTA_ID'
-      Required = True
     end
     object fltfldHafta5HAFTA_NO: TFloatField
       FieldName = 'HAFTA_NO'

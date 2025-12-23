@@ -315,20 +315,16 @@ end;
 procedure TForm2.SetHaftaAktif(AHafta: Integer);
 var
   I: Integer;
-
   procedure En(const N: string; E: Boolean);
-  var
-    C: TComponent;
+  var C: TComponent;
   begin
     C := FindComponent(N);
     if (C is TControl) then
       TControl(C).Enabled := E;
   end;
-
 begin
   for I := 1 to 5 do
   begin
-    // sadece aktif hafta açık
     En('edtKiloGun' + IntToStr(I), I = AHafta);
     En('edtBoyGun'  + IntToStr(I), I = AHafta);
     En('edtBasGun'  + IntToStr(I), I = AHafta);
@@ -347,14 +343,7 @@ begin
     En('DR_CIUGRG' + IntToStr(I), I = AHafta);
     En('DR_C37G' + IntToStr(I), I = AHafta);
   end;
-
-  // 🔒 SABİT ALANLAR: sadece 1. haftada aktif
-  En('edtDestasyon', AHafta = 1);
-  En('edtDTartisi',  AHafta = 1);
-  En('edtDBoyu',     AHafta = 1);
-  En('edtDBas',      AHafta = 1);
 end;
-
 
 
 function TForm2.GetAktifHafta: Integer;
@@ -407,13 +396,12 @@ begin
     Orsn1.Connected := True;
 
   qrrastgeleHasta.Close;
-  qrrastgeleHasta.ParamByName('DOSYA_NO').AsInteger := TEST_DOSYA_NO;
+  qrrastgeleHasta.ParamByName('DOSYA_NO').AsInteger    := TEST_DOSYA_NO;
   qrrastgeleHasta.ParamByName('PROTOKOL_NO').AsInteger := TEST_PROTOKOL_NO;
   qrrastgeleHasta.Open;
 
   AktifHafta := GetAktifHafta;
 
-  // Eğer hiç kayıt yoksa → 1. hafta oluştur
   if qrrastgeleHasta.IsEmpty then
   begin
     qrrastgeleHasta.Append;
@@ -423,18 +411,7 @@ begin
     qrrastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
   end
   else
-  begin
-    // Aktif haftaya git
-    if not qrrastgeleHasta.Locate('HAFTA_NO', AktifHafta, []) then
-    begin
-      // DB'de yoksa yeni kayıt aç
-      qrrastgeleHasta.Append;
-      qrrastgeleHasta.FieldByName('DOSYA_NO').AsInteger := TEST_DOSYA_NO;
-      qrrastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := TEST_PROTOKOL_NO;
-      qrrastgeleHasta.FieldByName('HAFTA_NO').AsInteger := AktifHafta;
-      qrrastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
-    end;
-  end;
+    qrrastgeleHasta.Locate('HAFTA_NO', AktifHafta, []);
 
   SetHaftaAktif(AktifHafta);
 end;

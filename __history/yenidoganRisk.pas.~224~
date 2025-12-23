@@ -315,20 +315,16 @@ end;
 procedure TForm2.SetHaftaAktif(AHafta: Integer);
 var
   I: Integer;
-
   procedure En(const N: string; E: Boolean);
-  var
-    C: TComponent;
+  var C: TComponent;
   begin
     C := FindComponent(N);
     if (C is TControl) then
       TControl(C).Enabled := E;
   end;
-
 begin
   for I := 1 to 5 do
   begin
-    // sadece aktif hafta açık
     En('edtKiloGun' + IntToStr(I), I = AHafta);
     En('edtBoyGun'  + IntToStr(I), I = AHafta);
     En('edtBasGun'  + IntToStr(I), I = AHafta);
@@ -347,14 +343,7 @@ begin
     En('DR_CIUGRG' + IntToStr(I), I = AHafta);
     En('DR_C37G' + IntToStr(I), I = AHafta);
   end;
-
-  // 🔒 SABİT ALANLAR: sadece 1. haftada aktif
-  En('edtDestasyon', AHafta = 1);
-  En('edtDTartisi',  AHafta = 1);
-  En('edtDBoyu',     AHafta = 1);
-  En('edtDBas',      AHafta = 1);
 end;
-
 
 
 function TForm2.GetAktifHafta: Integer;
