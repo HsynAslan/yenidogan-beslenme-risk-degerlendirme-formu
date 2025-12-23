@@ -45,7 +45,7 @@ type
     cxlbl5: TcxLabel;
     grdpnl3: TGridPanel;
     cxlbl6: TcxLabel;
-    cxlbl7: TcxLabel;
+    lblGun1Tarih: TcxLabel;
     lblGun2Tarih: TcxLabel;
     lblGun3Tarih: TcxLabel;
     lblGun4Tarih: TcxLabel;

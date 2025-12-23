@@ -176,7 +176,7 @@ object Form2: TForm2
             Top = 1
             Align = alClient
             DataBinding.DataField = 'GESTASYON_HAFTASI'
-            DataBinding.DataSource = dsRastgeleHasta
+            DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
             Properties.Alignment.Vert = taVCenter
             Height = 19
@@ -196,7 +196,7 @@ object Form2: TForm2
             Top = 20
             Align = alClient
             DataBinding.DataField = 'DOGUM_KILOSU_GR'
-            DataBinding.DataSource = dsRastgeleHasta
+            DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
             Properties.Alignment.Vert = taVCenter
             Height = 18
@@ -216,7 +216,7 @@ object Form2: TForm2
             Top = 38
             Align = alClient
             DataBinding.DataField = 'DOGUM_BOYU_CM'
-            DataBinding.DataSource = dsRastgeleHasta
+            DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
             Properties.Alignment.Vert = taVCenter
             Height = 19
@@ -236,7 +236,7 @@ object Form2: TForm2
             Top = 57
             Align = alClient
             DataBinding.DataField = 'DOGUM_BAS_CEVRESI'
-            DataBinding.DataSource = dsRastgeleHasta
+            DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
             Properties.Alignment.Vert = taVCenter
             Height = 18
@@ -287,7 +287,7 @@ object Form2: TForm2
           end
           item
             Column = 1
-            Control = cxlbl7
+            Control = lblGun1Tarih
             Row = 0
           end
           item
@@ -532,7 +532,7 @@ object Form2: TForm2
           Properties.Alignment.Vert = taVCenter
           AnchorY = 18
         end
-        object cxlbl7: TcxLabel
+        object lblGun1Tarih: TcxLabel
           Tag = 1
           Left = 544
           Top = 1
