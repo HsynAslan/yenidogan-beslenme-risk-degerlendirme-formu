@@ -23,7 +23,7 @@ uses
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint, dxSkinWXI,
   dxSkinXmas2008Blue, cxScrollBox, cxContainer, cxEdit, cxDBLabel, cxLabel,
   Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox, Data.DB, cxTextEdit, cxDBEdit,
-  cxMaskEdit, cxButtonEdit, MemDS, DBAccess, Ora, OraCall, cxCheckBox, Vcl.Mask,
+  cxMaskEdit, cxButtonEdit, MemDS, DBAccess, Ora, OraCall, cxCheckBox, Vcl.Mask, StrUtils,
   Vcl.DBCtrls;
 
 type
@@ -330,6 +330,9 @@ type
     procedure OpenHafta(Q: TOraQuery; AHafta: Integer);
     procedure CopyFixedFieldsFromFirstWeek(Q: TOraQuery);
     function IsFirstFormFirstWeek: Boolean;
+
+    function CalcRiskSeviye: string;
+    function GetActiveRiskValue(const Prefix: string): Boolean;
   private
     { Private declarations }
 
@@ -508,22 +511,99 @@ ApplyDoctorFieldRules;
 end;
 
 
+function TForm2.GetActiveRiskValue(const Prefix: string): Boolean;
+var
+  C: TComponent;
 
-procedure TForm2.btnKaydetClick(Sender: TObject);
-begin
-  case FAktifHafta of
-    1: if qrHafta1.State in dsEditModes then qrHafta1.Post;
-    2: if qrHafta2.State in dsEditModes then qrHafta2.Post;
-    3: if qrHafta3.State in dsEditModes then qrHafta3.Post;
-    4: if qrHafta4.State in dsEditModes then qrHafta4.Post;
+  function IsChecked(const Name: string): Boolean;
+  begin
+    Result := False;
+    C := FindComponent(Name);
+    if (C is TcxDBCheckBox) then
+      Result := TcxDBCheckBox(C).Checked;
   end;
 
+begin
+  Result := False;
+
+  // 🔴 YÜKSEK RİSK
+  if Prefix = 'YR' then
+  begin
+    if IsChecked('YR_C28G'    + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('YR_C1000G'  + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('YR_CNEKG'   + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('YR_CGISG'   + IntToStr(FAktifHafta)) then Exit(True);
+  end;
+
+  // 🟡 ORTA RİSK
+  if Prefix = 'OR' then
+  begin
+    if IsChecked('OR_C28G'           + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('OR_CIUGRG'         + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('OR_C1000G'         + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('OR_CKONJENITALG'   + IntToStr(FAktifHafta)) then Exit(True);
+  end;
+
+  // 🟢 DÜŞÜK RİSK
+  if Prefix = 'DR' then
+  begin
+    if IsChecked('DR_C32G'   + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('DR_CIUGRG' + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('DR_C37G'   + IntToStr(FAktifHafta)) then Exit(True);
+  end;
+end;
+
+
+function TForm2.CalcRiskSeviye: string;
+begin
+  // Öncelik sırası: Yüksek > Orta > Düşük
+
+  if GetActiveRiskValue('YR') then
+    Exit('Yüksek');
+
+  if GetActiveRiskValue('OR') or GetActiveRiskValue('DR') then
+    Exit('Orta');
+
+  Result := ''; // hiçbiri yok
+end;
+
+
+procedure TForm2.btnKaydetClick(Sender: TObject);
+var
+  Q: TOraQuery;
+  DBRisk: string;
+begin
+  case FAktifHafta of
+    1: Q := qrHafta1;
+    2: Q := qrHafta2;
+    3: Q := qrHafta3;
+    4: Q := qrHafta4;
+  else
+    Exit;
+  end;
+
+  if (Q = nil) or (not Q.Active) then Exit;
+
+  if not (Q.State in dsEditModes) then
+    Q.Edit;
+
+  // 🔹 otomatik risk hesapla
+  DBRisk := CalcRiskSeviye;
+
+  // 🔹 boş da olabilir, sorun yok
+  Q.FieldByName('RISK_SEVIYE').AsString := DBRisk;
+
+  Q.Post;
+
   ShowMessage(
-    Format('Form %d - Hafta %d kaydedildi.',
-      [FAktifForm, FAktifHafta])
+    Format(
+      'Form %d - Hafta %d kaydedildi.%sRisk: %s',
+      [FAktifForm, FAktifHafta, sLineBreak,
+       IfThen(DBRisk = '', '(yok)', DBRisk)]
+    )
   );
 
-  Close; // şimdilik kapatalım, sonra otomatik geçiş yaparız
+  Close;
 end;
 
 

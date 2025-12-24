@@ -3072,7 +3072,7 @@ object Form2: TForm2
       end>
     object fltfldHafta1HASTA_ID: TFloatField
       FieldName = 'HASTA_ID'
-      Required = True
+      ReadOnly = True
     end
     object fltfldHafta1HAFTA_NO: TFloatField
       FieldName = 'HAFTA_NO'
@@ -3220,7 +3220,7 @@ object Form2: TForm2
       end>
     object fltfldHafta2HASTA_ID: TFloatField
       FieldName = 'HASTA_ID'
-      Required = True
+      ReadOnly = True
     end
     object fltfldHafta2HAFTA_NO: TFloatField
       FieldName = 'HAFTA_NO'
@@ -3368,7 +3368,7 @@ object Form2: TForm2
       end>
     object fltfldHafta3HASTA_ID: TFloatField
       FieldName = 'HASTA_ID'
-      Required = True
+      ReadOnly = True
     end
     object fltfldHafta3HAFTA_NO: TFloatField
       FieldName = 'HAFTA_NO'
@@ -3516,7 +3516,7 @@ object Form2: TForm2
       end>
     object fltfldHafta4HASTA_ID: TFloatField
       FieldName = 'HASTA_ID'
-      Required = True
+      ReadOnly = True
     end
     object fltfldHafta4HAFTA_NO: TFloatField
       FieldName = 'HAFTA_NO'
@@ -3649,5 +3649,89 @@ object Form2: TForm2
     DataSet = qrHafta4
     Left = 227
     Top = 64
+  end
+  object qryMaxHafta: TOraQuery
+    Session = orsn1
+    SQL.Strings = (
+      'SELECT'
+      '  NVL(MAX(FORM_NO), 0) AS FORM_NO,'
+      '  COUNT(*) AS HAFTA_SAYISI'
+      'FROM HASTANE.YD_RISK_IZLEM'
+      'WHERE DOSYA_NO = :DOSYA_NO'
+      '  AND PROTOKOL_NO = :PROTOKOL_NO'
+      '  AND FORM_NO = ('
+      '    SELECT NVL(MAX(FORM_NO), 0)'
+      '    FROM HASTANE.YD_RISK_IZLEM'
+      '    WHERE DOSYA_NO = :DOSYA_NO'
+      '      AND PROTOKOL_NO = :PROTOKOL_NO'
+      '  )')
+    Left = 291
+    Top = 72
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DOSYA_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PROTOKOL_NO'
+        Value = nil
+      end>
+    object fltfldMaxHaftaFORM_NO: TFloatField
+      FieldName = 'FORM_NO'
+    end
+    object fltfldMaxHaftaHAFTA_SAYISI: TFloatField
+      FieldName = 'HAFTA_SAYISI'
+    end
+  end
+  object qryFirstWeek: TOraQuery
+    Session = orsn1
+    SQL.Strings = (
+      'SELECT'
+      '  GESTASYON_HAFTASI,'
+      '  DOGUM_KILOSU_GR,'
+      '  DOGUM_BOYU_CM,'
+      '  DOGUM_BAS_CEVRESI'
+      'FROM HASTANE.YD_RISK_IZLEM'
+      'WHERE DOSYA_NO    = :DOSYA_NO'
+      '  AND PROTOKOL_NO = :PROTOKOL_NO'
+      '  AND FORM_NO     = :FORM_NO'
+      '  AND HAFTA_NO    = :HAFTA_NO')
+    Left = 352
+    Top = 8
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DOSYA_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PROTOKOL_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'FORM_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'HAFTA_NO'
+        Value = nil
+      end>
+    object fltfldFirstWeekGESTASYON_HAFTASI: TFloatField
+      FieldName = 'GESTASYON_HAFTASI'
+    end
+    object fltfldFirstWeekDOGUM_KILOSU_GR: TFloatField
+      FieldName = 'DOGUM_KILOSU_GR'
+    end
+    object fltfldFirstWeekDOGUM_BOYU_CM: TFloatField
+      FieldName = 'DOGUM_BOYU_CM'
+    end
+    object fltfldFirstWeekDOGUM_BAS_CEVRESI: TFloatField
+      FieldName = 'DOGUM_BAS_CEVRESI'
+    end
   end
 end

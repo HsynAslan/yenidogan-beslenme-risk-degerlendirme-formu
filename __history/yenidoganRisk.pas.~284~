@@ -309,9 +309,9 @@ type
     fltfldHafta4BAS_CEVRESI_CM: TFloatField;
     intgrfldHafta4FORM_NO: TIntegerField;
     qryMaxHafta: TOraQuery;
+    qryFirstWeek: TOraQuery;
     fltfldMaxHaftaFORM_NO: TFloatField;
     fltfldMaxHaftaHAFTA_SAYISI: TFloatField;
-    qryFirstWeek: TOraQuery;
     fltfldFirstWeekGESTASYON_HAFTASI: TFloatField;
     fltfldFirstWeekDOGUM_KILOSU_GR: TFloatField;
     fltfldFirstWeekDOGUM_BOYU_CM: TFloatField;
@@ -330,6 +330,9 @@ type
     procedure OpenHafta(Q: TOraQuery; AHafta: Integer);
     procedure CopyFixedFieldsFromFirstWeek(Q: TOraQuery);
     function IsFirstFormFirstWeek: Boolean;
+    function NormalizeRiskForDB(const UIRisk: string): string;
+    function CalcRiskSeviye: string;
+    function GetActiveRiskValue(const Prefix: string): Boolean;
   private
     { Private declarations }
 
@@ -399,8 +402,8 @@ begin
   Q.FieldByName('HAFTA_NO').AsInteger := AHafta;
   Q.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
 
-  //  1. form 1. hafta HARİÇ hepsine kopyala
-  if not ((FAktifForm = 1) and (AHafta = 1)) then
+   //  SABİT ALANLARI KOPYALA
+  if not IsFirstFormFirstWeek then
     CopyFixedFieldsFromFirstWeek(Q);
 end;
 
@@ -411,22 +414,24 @@ begin
   qryFirstWeek.Close;
   qryFirstWeek.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
   qryFirstWeek.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+  qryFirstWeek.ParamByName('FORM_NO').AsInteger := 1;
+  qryFirstWeek.ParamByName('HAFTA_NO').AsInteger := 1;
   qryFirstWeek.Open;
 
-  if qryFirstWeek.IsEmpty then
-    Exit;
+  if not qryFirstWeek.IsEmpty then
+  begin
+    Q.FieldByName('GESTASYON_HAFTASI').Value :=
+      qryFirstWeek.FieldByName('GESTASYON_HAFTASI').Value;
 
-  Q.FieldByName('GESTASYON_HAFTASI').Value :=
-    qryFirstWeek.FieldByName('GESTASYON_HAFTASI').Value;
+    Q.FieldByName('DOGUM_KILOSU_GR').Value :=
+      qryFirstWeek.FieldByName('DOGUM_KILOSU_GR').Value;
 
-  Q.FieldByName('DOGUM_KILOSU_GR').Value :=
-    qryFirstWeek.FieldByName('DOGUM_KILOSU_GR').Value;
+    Q.FieldByName('DOGUM_BOYU_CM').Value :=
+      qryFirstWeek.FieldByName('DOGUM_BOYU_CM').Value;
 
-  Q.FieldByName('DOGUM_BOYU_CM').Value :=
-    qryFirstWeek.FieldByName('DOGUM_BOYU_CM').Value;
-
-  Q.FieldByName('DOGUM_BAS_CEVRESI').Value :=
-    qryFirstWeek.FieldByName('DOGUM_BAS_CEVRESI').Value;
+    Q.FieldByName('DOGUM_BAS_CEVRESI').Value :=
+      qryFirstWeek.FieldByName('DOGUM_BAS_CEVRESI').Value;
+  end;
 end;
 
 
@@ -439,24 +444,18 @@ begin
   qryMaxHafta.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
   qryMaxHafta.Open;
 
-  //  Güvenlik
-  if qryMaxHafta.IsEmpty then
+  if qryMaxHafta.FieldByName('FORM_NO').AsInteger = 0 then
   begin
-    FAktifForm := 1;
+    FAktifForm  := 1;
     FAktifHafta := 1;
     Exit;
   end;
 
-  FAktifForm := qryMaxHafta.FieldByName('FORM_NO').AsInteger;
+  FAktifForm  := qryMaxHafta.FieldByName('FORM_NO').AsInteger;
   HaftaSayisi := qryMaxHafta.FieldByName('HAFTA_SAYISI').AsInteger;
 
-  if FAktifForm = 0 then
-  begin
-    FAktifForm := 1;
-    FAktifHafta := 1;
-  end
-  else if HaftaSayisi < 4 then
-    FAktifHafta := HaftaSayisi + 1   //  +1 YOK
+  if HaftaSayisi < 4 then
+    FAktifHafta := HaftaSayisi + 1
   else
   begin
     Inc(FAktifForm);
@@ -511,25 +510,90 @@ ApplyDoctorFieldRules;
 
 end;
 
+function TForm2.NormalizeRiskForDB(const UIRisk: string): string;
+begin
+  // İstediğin kural:
+  // - UI "Yüksek" ise DB "Yüksek"
+  // - UI "Orta" veya "Düşük" ise DB "Orta"
+  // - hiç seçilmemişse boş kalsın
+  if SameText(UIRisk, 'Yüksek') then
+    Result := 'Yüksek'
+  else if SameText(UIRisk, 'Orta') or SameText(UIRisk, 'Düşük') then
+    Result := 'Orta'
+  else
+    Result := ''; // string içinde Null dönülmez
+end;
+
+function TForm2.GetActiveRiskValue(const Prefix: string): Boolean;
+var
+  C: TComponent;
+begin
+  Result := False;
+
+  // örnekler:
+  // YR_C28G?, YR_C1000G?, YR_CNEKG?, YR_CGISG?
+  C := FindComponent(Prefix + '_C28G' + IntToStr(FAktifHafta));
+  if (C is TcxDBCheckBox) and TcxDBCheckBox(C).Checked then Exit(True);
+
+  C := FindComponent(Prefix + '_C1000G' + IntToStr(FAktifHafta));
+  if (C is TcxDBCheckBox) and TcxDBCheckBox(C).Checked then Exit(True);
+
+  C := FindComponent(Prefix + '_CNEKG' + IntToStr(FAktifHafta));
+  if (C is TcxDBCheckBox) and TcxDBCheckBox(C).Checked then Exit(True);
+
+  C := FindComponent(Prefix + '_CGISG' + IntToStr(FAktifHafta));
+  if (C is TcxDBCheckBox) and TcxDBCheckBox(C).Checked then Exit(True);
+end;
+
+
+function TForm2.CalcRiskSeviye: string;
+begin
+  Result := '';
+
+  if GetActiveRiskValue('YR') then
+    Exit('Yüksek');
+
+  if GetActiveRiskValue('OR') then
+    Exit('Orta');
+
+  if GetActiveRiskValue('DR') then
+    Exit('Düşük');
+end;
 
 
 procedure TForm2.btnKaydetClick(Sender: TObject);
+var
+  Q: TOraQuery;
+  UIRisk, DBRisk: string;
 begin
-  case FAktifHafta of
-    1: if qrHafta1.State in dsEditModes then qrHafta1.Post;
-    2: if qrHafta2.State in dsEditModes then qrHafta2.Post;
-    3: if qrHafta3.State in dsEditModes then qrHafta3.Post;
-    4: if qrHafta4.State in dsEditModes then qrHafta4.Post;
+  Q := GetAktifQuery;
+  if (Q = nil) or (not Q.Active) or Q.IsEmpty then
+  begin
+    ShowMessage('Aktif hafta kaydı bulunamadı.');
+    Exit;
   end;
 
-  ShowMessage(
-    Format('Form %d - Hafta %d kaydedildi.',
-      [FAktifForm, FAktifHafta])
-  );
+  // checkbox değiştiyse zaten Edit’e geçiyorsun ama garanti olsun:
+  if not (Q.State in dsEditModes) then
+    Q.Edit;
 
-  Close; // şimdilik kapatalım, sonra otomatik geçiş yaparız
+  // 1) UI riskini hesapla
+  UIRisk := CalcRiskSeviye;
+
+  // 2) DB’ye yazılacak risk (Orta/Düşük => Orta)
+  DBRisk := NormalizeRiskForDB(UIRisk);
+
+  // 3) alanı set et
+  Q.FieldByName('RISK_SEVIYE').AsString := DBRisk;
+
+  // 4) post
+  Q.Post;
+
+  ShowMessage(Format('Form %d - Hafta %d kaydedildi. Risk(UI=%s / DB=%s)',
+    [FAktifForm, FAktifHafta, UIRisk, DBRisk]));
+
+  Close;
 end;
-
 
 
 
