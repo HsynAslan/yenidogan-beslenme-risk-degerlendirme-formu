@@ -200,7 +200,7 @@ object Form2: TForm2
             Top = 1
             Align = alClient
             DataBinding.DataField = 'GESTASYON_HAFTASI'
-            DataBinding.DataSource = dsRastgeleHasta
+            DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
             TabOrder = 4
             Width = 455
@@ -210,11 +210,9 @@ object Form2: TForm2
             Top = 20
             Align = alClient
             DataBinding.DataField = 'DOGUM_KILOSU_GR'
-            DataBinding.DataSource = dsRastgeleHasta
+            DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
             TabOrder = 5
-            ExplicitLeft = 310
-            ExplicitTop = 14
             Width = 455
           end
           object edtDBoyu: TcxDBTextEdit
@@ -222,7 +220,7 @@ object Form2: TForm2
             Top = 38
             Align = alClient
             DataBinding.DataField = 'DOGUM_BOYU_CM'
-            DataBinding.DataSource = dsRastgeleHasta
+            DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
             TabOrder = 6
             Width = 455
@@ -232,7 +230,7 @@ object Form2: TForm2
             Top = 57
             Align = alClient
             DataBinding.DataField = 'DOGUM_BAS_CEVRESI'
-            DataBinding.DataSource = dsRastgeleHasta
+            DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
             TabOrder = 7
             Width = 455
@@ -539,7 +537,7 @@ object Form2: TForm2
           Top = 34
           Align = alClient
           DataBinding.DataField = 'KILO_KG'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta1
           Properties.Alignment.Horz = taCenter
           TabOrder = 2
           Width = 109
@@ -549,7 +547,7 @@ object Form2: TForm2
           Top = 34
           Align = alClient
           DataBinding.DataField = 'KILO_KG'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta2
           Properties.Alignment.Horz = taCenter
           TabOrder = 3
           Width = 108
@@ -559,7 +557,7 @@ object Form2: TForm2
           Top = 34
           Align = alClient
           DataBinding.DataField = 'KILO_KG'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta3
           Properties.Alignment.Horz = taCenter
           TabOrder = 4
           Width = 109
@@ -569,7 +567,7 @@ object Form2: TForm2
           Top = 34
           Align = alClient
           DataBinding.DataField = 'KILO_KG'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta4
           Properties.Alignment.Horz = taCenter
           TabOrder = 5
           Width = 108
@@ -597,7 +595,7 @@ object Form2: TForm2
           Top = 58
           Align = alClient
           DataBinding.DataField = 'BOY_CM'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta1
           Properties.Alignment.Horz = taCenter
           TabOrder = 8
           Width = 109
@@ -607,7 +605,7 @@ object Form2: TForm2
           Top = 58
           Align = alClient
           DataBinding.DataField = 'BOY_CM'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta2
           Properties.Alignment.Horz = taCenter
           TabOrder = 9
           Width = 108
@@ -617,7 +615,7 @@ object Form2: TForm2
           Top = 58
           Align = alClient
           DataBinding.DataField = 'BOY_CM'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta3
           Properties.Alignment.Horz = taCenter
           TabOrder = 10
           Width = 109
@@ -627,7 +625,7 @@ object Form2: TForm2
           Top = 58
           Align = alClient
           DataBinding.DataField = 'BOY_CM'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta4
           Properties.Alignment.Horz = taCenter
           TabOrder = 11
           Width = 108
@@ -658,9 +656,11 @@ object Form2: TForm2
           Top = 82
           Align = alClient
           DataBinding.DataField = 'BAS_CEVRESI_CM'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta1
           Properties.Alignment.Horz = taCenter
           TabOrder = 14
+          ExplicitLeft = 540
+          ExplicitTop = 79
           Width = 109
         end
         object edtBasGun2: TcxDBTextEdit
@@ -668,7 +668,7 @@ object Form2: TForm2
           Top = 82
           Align = alClient
           DataBinding.DataField = 'BAS_CEVRESI_CM'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta2
           Properties.Alignment.Horz = taCenter
           TabOrder = 15
           Width = 108
@@ -678,7 +678,7 @@ object Form2: TForm2
           Top = 82
           Align = alClient
           DataBinding.DataField = 'BAS_CEVRESI_CM'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta3
           Properties.Alignment.Horz = taCenter
           TabOrder = 16
           Width = 109
@@ -688,7 +688,7 @@ object Form2: TForm2
           Top = 82
           Align = alClient
           DataBinding.DataField = 'BAS_CEVRESI_CM'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta4
           Properties.Alignment.Horz = taCenter
           TabOrder = 17
           Width = 108
@@ -1238,7 +1238,7 @@ object Form2: TForm2
               Top = 18
               Align = alClient
               DataBinding.DataField = 'YR_28_HAFTA'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta1
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -1248,6 +1248,8 @@ object Form2: TForm2
               Style.BorderStyle = ebsSingle
               Style.TransparentBorder = False
               TabOrder = 0
+              ExplicitLeft = 2
+              ExplicitTop = 13
               Width = 105
             end
             object YR_C1000G1: TcxDBCheckBox
@@ -1255,7 +1257,7 @@ object Form2: TForm2
               Top = 34
               Align = alClient
               DataBinding.DataField = 'YR_1000_GR'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta1
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -1270,7 +1272,7 @@ object Form2: TForm2
               Top = 51
               Align = alClient
               DataBinding.DataField = 'YR_NEK_GIS'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta1
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -1286,7 +1288,7 @@ object Form2: TForm2
               Top = 67
               Align = alClient
               DataBinding.DataField = 'YR_NEK_GIS'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta1
               ParentBackground = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -1365,7 +1367,7 @@ object Form2: TForm2
               Top = 21
               Align = alClient
               DataBinding.DataField = 'OR_28_31_HAFTA'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta1
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -1380,7 +1382,7 @@ object Form2: TForm2
               Top = 41
               Align = alClient
               DataBinding.DataField = 'OR_IUGR'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta1
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -1395,7 +1397,7 @@ object Form2: TForm2
               Top = 72
               Align = alClient
               DataBinding.DataField = 'OR_1000_1500_GR'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta1
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -1410,7 +1412,7 @@ object Form2: TForm2
               Top = 92
               Align = alClient
               DataBinding.DataField = 'OR_KONJ_BESLENME'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta1
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -1418,8 +1420,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
-              ExplicitLeft = 2
-              ExplicitTop = 89
               Width = 105
             end
           end
@@ -1484,7 +1484,7 @@ object Form2: TForm2
               Top = 18
               Align = alClient
               DataBinding.DataField = 'DR_32_35_HAFTA'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta1
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -1499,7 +1499,7 @@ object Form2: TForm2
               Top = 34
               Align = alClient
               DataBinding.DataField = 'DR_IUGR_35'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta1
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -1514,7 +1514,7 @@ object Form2: TForm2
               Top = 67
               Align = alClient
               DataBinding.DataField = 'DR_TERM'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta1
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -1631,7 +1631,7 @@ object Form2: TForm2
               Top = 18
               Align = alClient
               DataBinding.DataField = 'YR_28_HAFTA'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta2
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -1646,7 +1646,7 @@ object Form2: TForm2
               Top = 34
               Align = alClient
               DataBinding.DataField = 'YR_1000_GR'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta2
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -1661,7 +1661,7 @@ object Form2: TForm2
               Top = 51
               Align = alClient
               DataBinding.DataField = 'YR_NEK_GIS'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta2
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -1669,6 +1669,8 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
+              ExplicitLeft = -1
+              ExplicitTop = 45
               Width = 104
             end
             object YR_CGISG2: TcxDBCheckBox
@@ -1676,7 +1678,7 @@ object Form2: TForm2
               Top = 67
               Align = alClient
               DataBinding.DataField = 'YR_KONJ_GIS'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta2
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -1754,7 +1756,7 @@ object Form2: TForm2
               Top = 21
               Align = alClient
               DataBinding.DataField = 'OR_28_31_HAFTA'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta2
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -1769,7 +1771,7 @@ object Form2: TForm2
               Top = 41
               Align = alClient
               DataBinding.DataField = 'OR_IUGR'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta2
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -1784,7 +1786,7 @@ object Form2: TForm2
               Top = 72
               Align = alClient
               DataBinding.DataField = 'OR_1000_1500_GR'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta2
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -1792,6 +1794,8 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
+              ExplicitLeft = -1
+              ExplicitTop = 66
               Width = 104
             end
             object OR_CKONJENITALG2: TcxDBCheckBox
@@ -1799,7 +1803,7 @@ object Form2: TForm2
               Top = 92
               Align = alClient
               DataBinding.DataField = 'OR_KONJ_BESLENME'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta2
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -1871,7 +1875,7 @@ object Form2: TForm2
               Top = 18
               Align = alClient
               DataBinding.DataField = 'DR_32_35_HAFTA'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta2
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -1886,7 +1890,7 @@ object Form2: TForm2
               Top = 34
               Align = alClient
               DataBinding.DataField = 'DR_IUGR_35'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta2
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -1901,7 +1905,7 @@ object Form2: TForm2
               Top = 67
               Align = alClient
               DataBinding.DataField = 'DR_TERM'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta2
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2019,7 +2023,7 @@ object Form2: TForm2
               Top = 18
               Align = alClient
               DataBinding.DataField = 'YR_28_HAFTA'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2027,6 +2031,8 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
+              ExplicitLeft = -1
+              ExplicitTop = 23
               Width = 105
             end
             object YR_C1000G3: TcxDBCheckBox
@@ -2034,7 +2040,7 @@ object Form2: TForm2
               Top = 34
               Align = alClient
               DataBinding.DataField = 'YR_1000_GR'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2049,7 +2055,7 @@ object Form2: TForm2
               Top = 51
               Align = alClient
               DataBinding.DataField = 'YR_NEK_GIS'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2064,7 +2070,7 @@ object Form2: TForm2
               Top = 67
               Align = alClient
               DataBinding.DataField = 'YR_KONJ_GIS'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2144,7 +2150,7 @@ object Form2: TForm2
               Top = 21
               Align = alClient
               DataBinding.DataField = 'OR_28_31_HAFTA'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2152,8 +2158,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitLeft = -1
-              ExplicitTop = 24
               Width = 105
             end
             object OR_CIUGRG3: TcxDBCheckBox
@@ -2161,7 +2165,7 @@ object Form2: TForm2
               Top = 41
               Align = alClient
               DataBinding.DataField = 'OR_IUGR'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2176,7 +2180,7 @@ object Form2: TForm2
               Top = 72
               Align = alClient
               DataBinding.DataField = 'OR_1000_1500_GR'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2191,7 +2195,7 @@ object Form2: TForm2
               Top = 92
               Align = alClient
               DataBinding.DataField = 'OR_KONJ_BESLENME'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2199,8 +2203,6 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
-              ExplicitLeft = -1
-              ExplicitTop = 89
               Width = 105
             end
           end
@@ -2265,7 +2267,7 @@ object Form2: TForm2
               Top = 18
               Align = alClient
               DataBinding.DataField = 'DR_32_35_HAFTA'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2280,7 +2282,7 @@ object Form2: TForm2
               Top = 34
               Align = alClient
               DataBinding.DataField = 'DR_IUGR_35'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2296,7 +2298,7 @@ object Form2: TForm2
               Align = alClient
               Caption = 'DR_C37G3'
               DataBinding.DataField = 'DR_TERM'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta3
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2415,7 +2417,7 @@ object Form2: TForm2
               Top = 18
               Align = alClient
               DataBinding.DataField = 'YR_28_HAFTA'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2430,7 +2432,7 @@ object Form2: TForm2
               Top = 34
               Align = alClient
               DataBinding.DataField = 'YR_1000_GR'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2445,7 +2447,7 @@ object Form2: TForm2
               Top = 51
               Align = alClient
               DataBinding.DataField = 'YR_NEK_GIS'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2460,7 +2462,7 @@ object Form2: TForm2
               Top = 67
               Align = alClient
               DataBinding.DataField = 'YR_KONJ_GIS'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2540,7 +2542,7 @@ object Form2: TForm2
               Top = 21
               Align = alClient
               DataBinding.DataField = 'OR_28_31_HAFTA'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2555,7 +2557,7 @@ object Form2: TForm2
               Top = 41
               Align = alClient
               DataBinding.DataField = 'OR_IUGR'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2570,7 +2572,7 @@ object Form2: TForm2
               Top = 72
               Align = alClient
               DataBinding.DataField = 'OR_1000_1500_GR'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2585,7 +2587,7 @@ object Form2: TForm2
               Top = 92
               Align = alClient
               DataBinding.DataField = 'OR_KONJ_BESLENME'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2657,7 +2659,7 @@ object Form2: TForm2
               Top = 18
               Align = alClient
               DataBinding.DataField = 'DR_32_35_HAFTA'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2665,6 +2667,8 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
+              ExplicitLeft = -1
+              ExplicitTop = 23
               Width = 104
             end
             object DR_CIUGRG4: TcxDBCheckBox
@@ -2672,7 +2676,7 @@ object Form2: TForm2
               Top = 34
               Align = alClient
               DataBinding.DataField = 'DR_IUGR_35'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -2687,7 +2691,7 @@ object Form2: TForm2
               Top = 67
               Align = alClient
               DataBinding.DataField = 'DR_TERM'
-              DataBinding.DataSource = dsRastgeleHasta
+              DataBinding.DataSource = dsHafta4
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
@@ -3203,9 +3207,10 @@ object Form2: TForm2
           Top = 390
           Align = alClient
           DataBinding.DataField = 'RISK_SEVIYE'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta1
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = 547
           Height = 33
           Width = 109
           AnchorX = 599
@@ -3216,7 +3221,7 @@ object Form2: TForm2
           Top = 390
           Align = alClient
           DataBinding.DataField = 'RISK_SEVIYE'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta2
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taVCenter
           Height = 33
@@ -3229,7 +3234,7 @@ object Form2: TForm2
           Top = 390
           Align = alClient
           DataBinding.DataField = 'RISK_SEVIYE'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta3
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taVCenter
           Height = 33
@@ -3242,7 +3247,7 @@ object Form2: TForm2
           Top = 390
           Align = alClient
           DataBinding.DataField = 'RISK_SEVIYE'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta4
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taVCenter
           Height = 33
@@ -3258,8 +3263,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsRastgeleHasta
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taVCenter
-          ExplicitLeft = 982
-          ExplicitTop = 394
           Height = 33
           Width = 109
           AnchorX = 1033
@@ -3270,7 +3273,7 @@ object Form2: TForm2
           Top = 1
           Align = alClient
           DataBinding.DataField = 'IZLEM_TARIHI'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta1
           ParentFont = False
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taBottomJustify
@@ -3291,7 +3294,7 @@ object Form2: TForm2
           Top = 1
           Align = alClient
           DataBinding.DataField = 'IZLEM_TARIHI'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta2
           ParentFont = False
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taBottomJustify
@@ -3311,7 +3314,7 @@ object Form2: TForm2
           Top = 1
           Align = alClient
           DataBinding.DataField = 'IZLEM_TARIHI'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta3
           ParentFont = False
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taBottomJustify
@@ -3331,7 +3334,7 @@ object Form2: TForm2
           Top = 1
           Align = alClient
           DataBinding.DataField = 'IZLEM_TARIHI'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta4
           ParentFont = False
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taBottomJustify
@@ -3350,7 +3353,7 @@ object Form2: TForm2
           Left = 978
           Top = 1
           Align = alClient
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta4
           ParentFont = False
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taBottomJustify
@@ -3370,7 +3373,7 @@ object Form2: TForm2
           Top = 423
           Align = alClient
           DataBinding.DataField = 'DOKTOR_ADI'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta1
           Properties.Alignment.Horz = taCenter
           TabOrder = 37
           Width = 109
@@ -3380,11 +3383,9 @@ object Form2: TForm2
           Top = 423
           Align = alClient
           DataBinding.DataField = 'DOKTOR_ADI'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta2
           Properties.Alignment.Horz = taCenter
           TabOrder = 38
-          ExplicitLeft = 647
-          ExplicitTop = 429
           Width = 108
         end
         object edtDRGun3: TcxDBTextEdit
@@ -3392,7 +3393,7 @@ object Form2: TForm2
           Top = 423
           Align = alClient
           DataBinding.DataField = 'DOKTOR_ADI'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta3
           Properties.Alignment.Horz = taCenter
           TabOrder = 39
           Width = 109
@@ -3402,7 +3403,7 @@ object Form2: TForm2
           Top = 423
           Align = alClient
           DataBinding.DataField = 'DOKTOR_ADI'
-          DataBinding.DataSource = dsRastgeleHasta
+          DataBinding.DataSource = dsHafta4
           Properties.Alignment.Horz = taCenter
           TabOrder = 40
           Width = 108
@@ -3574,5 +3575,617 @@ object Form2: TForm2
     DataSet = qrrastgeleHasta
     Left = 864
     Top = 8
+  end
+  object qrHafta1: TOraQuery
+    Session = orsn1
+    SQL.Strings = (
+      'SELECT *'
+      'FROM HASTANE.YD_RISK_IZLEM'
+      'WHERE DOSYA_NO    = :DOSYA_NO'
+      '  AND PROTOKOL_NO = :PROTOKOL_NO'
+      '  AND FORM_NO     = :FORM_NO'
+      '  AND HAFTA_NO    = :HAFTA_NO')
+    Left = 32
+    Top = 8
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DOSYA_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PROTOKOL_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'FORM_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'HAFTA_NO'
+        Value = nil
+      end>
+    object fltfldHafta1HASTA_ID: TFloatField
+      FieldName = 'HASTA_ID'
+      Required = True
+    end
+    object fltfldHafta1HAFTA_NO: TFloatField
+      FieldName = 'HAFTA_NO'
+      Required = True
+    end
+    object fltfldHafta1DOSYA_NO: TFloatField
+      FieldName = 'DOSYA_NO'
+      Required = True
+    end
+    object fltfldHafta1PROTOKOL_NO: TFloatField
+      FieldName = 'PROTOKOL_NO'
+      Required = True
+    end
+    object dtmfldHafta1IZLEM_TARIHI: TDateTimeField
+      FieldName = 'IZLEM_TARIHI'
+      Required = True
+    end
+    object fltfldHafta1GESTASYON_HAFTASI: TFloatField
+      FieldName = 'GESTASYON_HAFTASI'
+    end
+    object fltfldHafta1DOGUM_KILOSU_GR: TFloatField
+      FieldName = 'DOGUM_KILOSU_GR'
+    end
+    object fltfldHafta1DOGUM_BOYU_CM: TFloatField
+      FieldName = 'DOGUM_BOYU_CM'
+    end
+    object fltfldHafta1DOGUM_BAS_CEVRESI: TFloatField
+      FieldName = 'DOGUM_BAS_CEVRESI'
+    end
+    object strngfldHafta1YR_28_HAFTA: TStringField
+      FieldName = 'YR_28_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta1YR_1000_GR: TStringField
+      FieldName = 'YR_1000_GR'
+      Size = 1
+    end
+    object strngfldHafta1YR_NEK_GIS: TStringField
+      FieldName = 'YR_NEK_GIS'
+      Size = 1
+    end
+    object strngfldHafta1YR_KONJ_GIS: TStringField
+      FieldName = 'YR_KONJ_GIS'
+      Size = 1
+    end
+    object strngfldHafta1OR_28_31_HAFTA: TStringField
+      FieldName = 'OR_28_31_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta1OR_IUGR: TStringField
+      FieldName = 'OR_IUGR'
+      Size = 1
+    end
+    object strngfldHafta1OR_1000_1500_GR: TStringField
+      FieldName = 'OR_1000_1500_GR'
+      Size = 1
+    end
+    object strngfldHafta1OR_KONJ_BESLENME: TStringField
+      FieldName = 'OR_KONJ_BESLENME'
+      Size = 1
+    end
+    object strngfldHafta1DR_32_35_HAFTA: TStringField
+      FieldName = 'DR_32_35_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta1DR_IUGR_35: TStringField
+      FieldName = 'DR_IUGR_35'
+      Size = 1
+    end
+    object strngfldHafta1DR_TERM: TStringField
+      FieldName = 'DR_TERM'
+      Size = 1
+    end
+    object strngfldHafta1RISK_SEVIYE: TStringField
+      FieldName = 'RISK_SEVIYE'
+      Size = 10
+    end
+    object strngfldHafta1IHT_2_HAFTA_KILO: TStringField
+      FieldName = 'IHT_2_HAFTA_KILO'
+      Size = 1
+    end
+    object strngfldHafta1IHT_15_KAYIP: TStringField
+      FieldName = 'IHT_15_KAYIP'
+      Size = 1
+    end
+    object strngfldHafta1IHT_10G_KAZANIM: TStringField
+      FieldName = 'IHT_10G_KAZANIM'
+      Size = 1
+    end
+    object strngfldHafta1IHT_NEK_CERRAHI: TStringField
+      FieldName = 'IHT_NEK_CERRAHI'
+      Size = 1
+    end
+    object strngfldHafta1DOKTOR_ADI: TStringField
+      FieldName = 'DOKTOR_ADI'
+      Size = 100
+    end
+    object dtmfldHafta1KAYIT_TARIHI: TDateTimeField
+      FieldName = 'KAYIT_TARIHI'
+    end
+    object fltfldHafta1KILO_KG: TFloatField
+      FieldName = 'KILO_KG'
+    end
+    object fltfldHafta1BOY_CM: TFloatField
+      FieldName = 'BOY_CM'
+    end
+    object fltfldHafta1BAS_CEVRESI_CM: TFloatField
+      FieldName = 'BAS_CEVRESI_CM'
+    end
+    object intgrfldHafta1FORM_NO: TIntegerField
+      FieldName = 'FORM_NO'
+    end
+  end
+  object qrHafta2: TOraQuery
+    Session = orsn1
+    SQL.Strings = (
+      'SELECT *'
+      'FROM HASTANE.YD_RISK_IZLEM'
+      'WHERE DOSYA_NO    = :DOSYA_NO'
+      '  AND PROTOKOL_NO = :PROTOKOL_NO'
+      '  AND FORM_NO     = :FORM_NO'
+      '  AND HAFTA_NO    = :HAFTA_NO')
+    Left = 96
+    Top = 8
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DOSYA_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PROTOKOL_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'FORM_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'HAFTA_NO'
+        Value = nil
+      end>
+    object fltfldHafta2HASTA_ID: TFloatField
+      FieldName = 'HASTA_ID'
+      Required = True
+    end
+    object fltfldHafta2HAFTA_NO: TFloatField
+      FieldName = 'HAFTA_NO'
+      Required = True
+    end
+    object fltfldHafta2DOSYA_NO: TFloatField
+      FieldName = 'DOSYA_NO'
+      Required = True
+    end
+    object fltfldHafta2PROTOKOL_NO: TFloatField
+      FieldName = 'PROTOKOL_NO'
+      Required = True
+    end
+    object dtmfldHafta2IZLEM_TARIHI: TDateTimeField
+      FieldName = 'IZLEM_TARIHI'
+      Required = True
+    end
+    object fltfldHafta2GESTASYON_HAFTASI: TFloatField
+      FieldName = 'GESTASYON_HAFTASI'
+    end
+    object fltfldHafta2DOGUM_KILOSU_GR: TFloatField
+      FieldName = 'DOGUM_KILOSU_GR'
+    end
+    object fltfldHafta2DOGUM_BOYU_CM: TFloatField
+      FieldName = 'DOGUM_BOYU_CM'
+    end
+    object fltfldHafta2DOGUM_BAS_CEVRESI: TFloatField
+      FieldName = 'DOGUM_BAS_CEVRESI'
+    end
+    object strngfldHafta2YR_28_HAFTA: TStringField
+      FieldName = 'YR_28_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta2YR_1000_GR: TStringField
+      FieldName = 'YR_1000_GR'
+      Size = 1
+    end
+    object strngfldHafta2YR_NEK_GIS: TStringField
+      FieldName = 'YR_NEK_GIS'
+      Size = 1
+    end
+    object strngfldHafta2YR_KONJ_GIS: TStringField
+      FieldName = 'YR_KONJ_GIS'
+      Size = 1
+    end
+    object strngfldHafta2OR_28_31_HAFTA: TStringField
+      FieldName = 'OR_28_31_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta2OR_IUGR: TStringField
+      FieldName = 'OR_IUGR'
+      Size = 1
+    end
+    object strngfldHafta2OR_1000_1500_GR: TStringField
+      FieldName = 'OR_1000_1500_GR'
+      Size = 1
+    end
+    object strngfldHafta2OR_KONJ_BESLENME: TStringField
+      FieldName = 'OR_KONJ_BESLENME'
+      Size = 1
+    end
+    object strngfldHafta2DR_32_35_HAFTA: TStringField
+      FieldName = 'DR_32_35_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta2DR_IUGR_35: TStringField
+      FieldName = 'DR_IUGR_35'
+      Size = 1
+    end
+    object strngfldHafta2DR_TERM: TStringField
+      FieldName = 'DR_TERM'
+      Size = 1
+    end
+    object strngfldHafta2RISK_SEVIYE: TStringField
+      FieldName = 'RISK_SEVIYE'
+      Size = 10
+    end
+    object strngfldHafta2IHT_2_HAFTA_KILO: TStringField
+      FieldName = 'IHT_2_HAFTA_KILO'
+      Size = 1
+    end
+    object strngfldHafta2IHT_15_KAYIP: TStringField
+      FieldName = 'IHT_15_KAYIP'
+      Size = 1
+    end
+    object strngfldHafta2IHT_10G_KAZANIM: TStringField
+      FieldName = 'IHT_10G_KAZANIM'
+      Size = 1
+    end
+    object strngfldHafta2IHT_NEK_CERRAHI: TStringField
+      FieldName = 'IHT_NEK_CERRAHI'
+      Size = 1
+    end
+    object strngfldHafta2DOKTOR_ADI: TStringField
+      FieldName = 'DOKTOR_ADI'
+      Size = 100
+    end
+    object dtmfldHafta2KAYIT_TARIHI: TDateTimeField
+      FieldName = 'KAYIT_TARIHI'
+    end
+    object fltfldHafta2KILO_KG: TFloatField
+      FieldName = 'KILO_KG'
+    end
+    object fltfldHafta2BOY_CM: TFloatField
+      FieldName = 'BOY_CM'
+    end
+    object fltfldHafta2BAS_CEVRESI_CM: TFloatField
+      FieldName = 'BAS_CEVRESI_CM'
+    end
+    object intgrfldHafta2FORM_NO: TIntegerField
+      FieldName = 'FORM_NO'
+    end
+  end
+  object qrHafta3: TOraQuery
+    Session = orsn1
+    SQL.Strings = (
+      'SELECT *'
+      'FROM HASTANE.YD_RISK_IZLEM'
+      'WHERE DOSYA_NO    = :DOSYA_NO'
+      '  AND PROTOKOL_NO = :PROTOKOL_NO'
+      '  AND FORM_NO     = :FORM_NO'
+      '  AND HAFTA_NO    = :HAFTA_NO')
+    Left = 160
+    Top = 8
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DOSYA_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PROTOKOL_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'FORM_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'HAFTA_NO'
+        Value = nil
+      end>
+    object fltfldHafta3HASTA_ID: TFloatField
+      FieldName = 'HASTA_ID'
+      Required = True
+    end
+    object fltfldHafta3HAFTA_NO: TFloatField
+      FieldName = 'HAFTA_NO'
+      Required = True
+    end
+    object fltfldHafta3DOSYA_NO: TFloatField
+      FieldName = 'DOSYA_NO'
+      Required = True
+    end
+    object fltfldHafta3PROTOKOL_NO: TFloatField
+      FieldName = 'PROTOKOL_NO'
+      Required = True
+    end
+    object dtmfldHafta3IZLEM_TARIHI: TDateTimeField
+      FieldName = 'IZLEM_TARIHI'
+      Required = True
+    end
+    object fltfldHafta3GESTASYON_HAFTASI: TFloatField
+      FieldName = 'GESTASYON_HAFTASI'
+    end
+    object fltfldHafta3DOGUM_KILOSU_GR: TFloatField
+      FieldName = 'DOGUM_KILOSU_GR'
+    end
+    object fltfldHafta3DOGUM_BOYU_CM: TFloatField
+      FieldName = 'DOGUM_BOYU_CM'
+    end
+    object fltfldHafta3DOGUM_BAS_CEVRESI: TFloatField
+      FieldName = 'DOGUM_BAS_CEVRESI'
+    end
+    object strngfldHafta3YR_28_HAFTA: TStringField
+      FieldName = 'YR_28_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta3YR_1000_GR: TStringField
+      FieldName = 'YR_1000_GR'
+      Size = 1
+    end
+    object strngfldHafta3YR_NEK_GIS: TStringField
+      FieldName = 'YR_NEK_GIS'
+      Size = 1
+    end
+    object strngfldHafta3YR_KONJ_GIS: TStringField
+      FieldName = 'YR_KONJ_GIS'
+      Size = 1
+    end
+    object strngfldHafta3OR_28_31_HAFTA: TStringField
+      FieldName = 'OR_28_31_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta3OR_IUGR: TStringField
+      FieldName = 'OR_IUGR'
+      Size = 1
+    end
+    object strngfldHafta3OR_1000_1500_GR: TStringField
+      FieldName = 'OR_1000_1500_GR'
+      Size = 1
+    end
+    object strngfldHafta3OR_KONJ_BESLENME: TStringField
+      FieldName = 'OR_KONJ_BESLENME'
+      Size = 1
+    end
+    object strngfldHafta3DR_32_35_HAFTA: TStringField
+      FieldName = 'DR_32_35_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta3DR_IUGR_35: TStringField
+      FieldName = 'DR_IUGR_35'
+      Size = 1
+    end
+    object strngfldHafta3DR_TERM: TStringField
+      FieldName = 'DR_TERM'
+      Size = 1
+    end
+    object strngfldHafta3RISK_SEVIYE: TStringField
+      FieldName = 'RISK_SEVIYE'
+      Size = 10
+    end
+    object strngfldHafta3IHT_2_HAFTA_KILO: TStringField
+      FieldName = 'IHT_2_HAFTA_KILO'
+      Size = 1
+    end
+    object strngfldHafta3IHT_15_KAYIP: TStringField
+      FieldName = 'IHT_15_KAYIP'
+      Size = 1
+    end
+    object strngfldHafta3IHT_10G_KAZANIM: TStringField
+      FieldName = 'IHT_10G_KAZANIM'
+      Size = 1
+    end
+    object strngfldHafta3IHT_NEK_CERRAHI: TStringField
+      FieldName = 'IHT_NEK_CERRAHI'
+      Size = 1
+    end
+    object strngfldHafta3DOKTOR_ADI: TStringField
+      FieldName = 'DOKTOR_ADI'
+      Size = 100
+    end
+    object dtmfldHafta3KAYIT_TARIHI: TDateTimeField
+      FieldName = 'KAYIT_TARIHI'
+    end
+    object fltfldHafta3KILO_KG: TFloatField
+      FieldName = 'KILO_KG'
+    end
+    object fltfldHafta3BOY_CM: TFloatField
+      FieldName = 'BOY_CM'
+    end
+    object fltfldHafta3BAS_CEVRESI_CM: TFloatField
+      FieldName = 'BAS_CEVRESI_CM'
+    end
+    object intgrfldHafta3FORM_NO: TIntegerField
+      FieldName = 'FORM_NO'
+    end
+  end
+  object qrHafta4: TOraQuery
+    Session = orsn1
+    SQL.Strings = (
+      'SELECT *'
+      'FROM HASTANE.YD_RISK_IZLEM'
+      'WHERE DOSYA_NO    = :DOSYA_NO'
+      '  AND PROTOKOL_NO = :PROTOKOL_NO'
+      '  AND FORM_NO     = :FORM_NO'
+      '  AND HAFTA_NO    = :HAFTA_NO')
+    Left = 224
+    Top = 8
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DOSYA_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PROTOKOL_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'FORM_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'HAFTA_NO'
+        Value = nil
+      end>
+    object fltfldHafta4HASTA_ID: TFloatField
+      FieldName = 'HASTA_ID'
+      Required = True
+    end
+    object fltfldHafta4HAFTA_NO: TFloatField
+      FieldName = 'HAFTA_NO'
+      Required = True
+    end
+    object fltfldHafta4DOSYA_NO: TFloatField
+      FieldName = 'DOSYA_NO'
+      Required = True
+    end
+    object fltfldHafta4PROTOKOL_NO: TFloatField
+      FieldName = 'PROTOKOL_NO'
+      Required = True
+    end
+    object dtmfldHafta4IZLEM_TARIHI: TDateTimeField
+      FieldName = 'IZLEM_TARIHI'
+      Required = True
+    end
+    object fltfldHafta4GESTASYON_HAFTASI: TFloatField
+      FieldName = 'GESTASYON_HAFTASI'
+    end
+    object fltfldHafta4DOGUM_KILOSU_GR: TFloatField
+      FieldName = 'DOGUM_KILOSU_GR'
+    end
+    object fltfldHafta4DOGUM_BOYU_CM: TFloatField
+      FieldName = 'DOGUM_BOYU_CM'
+    end
+    object fltfldHafta4DOGUM_BAS_CEVRESI: TFloatField
+      FieldName = 'DOGUM_BAS_CEVRESI'
+    end
+    object strngfldHafta4YR_28_HAFTA: TStringField
+      FieldName = 'YR_28_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta4YR_1000_GR: TStringField
+      FieldName = 'YR_1000_GR'
+      Size = 1
+    end
+    object strngfldHafta4YR_NEK_GIS: TStringField
+      FieldName = 'YR_NEK_GIS'
+      Size = 1
+    end
+    object strngfldHafta4YR_KONJ_GIS: TStringField
+      FieldName = 'YR_KONJ_GIS'
+      Size = 1
+    end
+    object strngfldHafta4OR_28_31_HAFTA: TStringField
+      FieldName = 'OR_28_31_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta4OR_IUGR: TStringField
+      FieldName = 'OR_IUGR'
+      Size = 1
+    end
+    object strngfldHafta4OR_1000_1500_GR: TStringField
+      FieldName = 'OR_1000_1500_GR'
+      Size = 1
+    end
+    object strngfldHafta4OR_KONJ_BESLENME: TStringField
+      FieldName = 'OR_KONJ_BESLENME'
+      Size = 1
+    end
+    object strngfldHafta4DR_32_35_HAFTA: TStringField
+      FieldName = 'DR_32_35_HAFTA'
+      Size = 1
+    end
+    object strngfldHafta4DR_IUGR_35: TStringField
+      FieldName = 'DR_IUGR_35'
+      Size = 1
+    end
+    object strngfldHafta4DR_TERM: TStringField
+      FieldName = 'DR_TERM'
+      Size = 1
+    end
+    object strngfldHafta4RISK_SEVIYE: TStringField
+      FieldName = 'RISK_SEVIYE'
+      Size = 10
+    end
+    object strngfldHafta4IHT_2_HAFTA_KILO: TStringField
+      FieldName = 'IHT_2_HAFTA_KILO'
+      Size = 1
+    end
+    object strngfldHafta4IHT_15_KAYIP: TStringField
+      FieldName = 'IHT_15_KAYIP'
+      Size = 1
+    end
+    object strngfldHafta4IHT_10G_KAZANIM: TStringField
+      FieldName = 'IHT_10G_KAZANIM'
+      Size = 1
+    end
+    object strngfldHafta4IHT_NEK_CERRAHI: TStringField
+      FieldName = 'IHT_NEK_CERRAHI'
+      Size = 1
+    end
+    object strngfldHafta4DOKTOR_ADI: TStringField
+      FieldName = 'DOKTOR_ADI'
+      Size = 100
+    end
+    object dtmfldHafta4KAYIT_TARIHI: TDateTimeField
+      FieldName = 'KAYIT_TARIHI'
+    end
+    object fltfldHafta4KILO_KG: TFloatField
+      FieldName = 'KILO_KG'
+    end
+    object fltfldHafta4BOY_CM: TFloatField
+      FieldName = 'BOY_CM'
+    end
+    object fltfldHafta4BAS_CEVRESI_CM: TFloatField
+      FieldName = 'BAS_CEVRESI_CM'
+    end
+    object intgrfldHafta4FORM_NO: TIntegerField
+      FieldName = 'FORM_NO'
+    end
+  end
+  object dsHafta1: TOraDataSource
+    DataSet = qrHafta1
+    Left = 27
+    Top = 64
+  end
+  object dsHafta2: TOraDataSource
+    DataSet = qrHafta2
+    Left = 99
+    Top = 64
+  end
+  object dsHafta3: TOraDataSource
+    DataSet = qrHafta3
+    Left = 171
+    Top = 64
+  end
+  object dsHafta4: TOraDataSource
+    DataSet = qrHafta4
+    Left = 227
+    Top = 64
   end
 end

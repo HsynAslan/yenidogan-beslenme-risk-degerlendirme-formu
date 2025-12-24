@@ -232,6 +232,14 @@ type
     edtDRGun3: TcxDBTextEdit;
     edtDRgun4: TcxDBTextEdit;
     edtDRGun5: TcxDBTextEdit;
+    qrHafta1: TOraQuery;
+    qrHafta2: TOraQuery;
+    qrHafta3: TOraQuery;
+    qrHafta4: TOraQuery;
+    dsHafta1: TOraDataSource;
+    dsHafta2: TOraDataSource;
+    dsHafta3: TOraDataSource;
+    dsHafta4: TOraDataSource;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -245,7 +253,7 @@ type
     procedure EnsureHaftaRecord(Q: TOraQuery; AHafta: Integer);
 
     function GetAktifHafta: Integer;
-    function GetAktifHaftaFromQueries: Integer;
+
 
   private
     { Private declarations }
@@ -254,7 +262,7 @@ type
 
   public
     { Public declarations }
-     function CalcRiskSeviye(Q: TOraQuery): string;
+     function CalcRiskSeviye: string;
   end;
 
 var
@@ -312,20 +320,23 @@ end;
 
 
 
-
 procedure TForm2.SetHaftaAktif(AHafta: Integer);
 var
   I: Integer;
+
   procedure En(const N: string; E: Boolean);
-  var C: TComponent;
+  var
+    C: TComponent;
   begin
     C := FindComponent(N);
     if (C is TControl) then
       TControl(C).Enabled := E;
   end;
+
 begin
   for I := 1 to 5 do
   begin
+    // sadece aktif hafta açık
     En('edtKiloGun' + IntToStr(I), I = AHafta);
     En('edtBoyGun'  + IntToStr(I), I = AHafta);
     En('edtBasGun'  + IntToStr(I), I = AHafta);
@@ -344,7 +355,14 @@ begin
     En('DR_CIUGRG' + IntToStr(I), I = AHafta);
     En('DR_C37G' + IntToStr(I), I = AHafta);
   end;
+
+  // 🔒 SABİT ALANLAR: sadece 1. haftada aktif
+  En('edtDestasyon', AHafta = 1);
+  En('edtDTartisi',  AHafta = 1);
+  En('edtDBoyu',     AHafta = 1);
+  En('edtDBas',      AHafta = 1);
 end;
+
 
 
 function TForm2.GetAktifHafta: Integer;
@@ -364,7 +382,6 @@ begin
   else
     Result := 5;
 end;
-
 
 procedure TForm2.btnKaydetClick(Sender: TObject);
 var
@@ -389,6 +406,7 @@ end;
 
 
 
+
 procedure TForm2.FormShow(Sender: TObject);
 var
   AktifHafta: Integer;
@@ -403,7 +421,7 @@ begin
 
   AktifHafta := GetAktifHafta;
 
-  // Kayıt yoksa yeni hafta aç
+  // Eğer hiç kayıt yoksa → 1. hafta oluştur
   if qrrastgeleHasta.IsEmpty then
   begin
     qrrastgeleHasta.Append;
@@ -413,7 +431,18 @@ begin
     qrrastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
   end
   else
-    qrrastgeleHasta.Locate('HAFTA_NO', AktifHafta, []);
+  begin
+    // Aktif haftaya git
+    if not qrrastgeleHasta.Locate('HAFTA_NO', AktifHafta, []) then
+    begin
+      // DB'de yoksa yeni kayıt aç
+      qrrastgeleHasta.Append;
+      qrrastgeleHasta.FieldByName('DOSYA_NO').AsInteger := TEST_DOSYA_NO;
+      qrrastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := TEST_PROTOKOL_NO;
+      qrrastgeleHasta.FieldByName('HAFTA_NO').AsInteger := AktifHafta;
+      qrrastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
+    end;
+  end;
 
   SetHaftaAktif(AktifHafta);
 end;
@@ -490,7 +519,6 @@ begin
   if not (Sender is TcxDBCheckBox) then Exit;
   C := TcxDBCheckBox(Sender);
 
-  // DataSource üzerinden dataset Edit moduna alınır
   if Assigned(C.DataBinding.DataSource)
      and Assigned(C.DataBinding.DataSource.DataSet)
      and not (C.DataBinding.DataSource.DataSet.State in dsEditModes) then
@@ -498,5 +526,6 @@ begin
 
   RefreshRiskCheckBox(C);
 end;
+
 
 end.
