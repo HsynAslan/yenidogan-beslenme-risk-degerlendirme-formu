@@ -22,38 +22,41 @@
     Height = 1061
     Align = alClient
     TabOrder = 0
-    object grpAna1: TcxGroupBox
+    object grpBaslik: TcxGroupBox
       Left = 0
       Top = 0
       Align = alTop
+      PanelStyle.Active = True
       Style.BorderStyle = ebsNone
       TabOrder = 0
-      Height = 35
+      Height = 17
       Width = 1092
       object cxlbl5: TcxLabel
         Left = 2
-        Top = 20
+        Top = 2
         Align = alClient
         Caption = 'Hastan'#305'n Servise Kabul'#252'nde ve Her Pazartesi Doldurulacak'
         Properties.Alignment.Horz = taCenter
         Properties.Alignment.Vert = taVCenter
+        ExplicitTop = 20
         AnchorX = 546
-        AnchorY = 27
+        AnchorY = 9
       end
     end
-    object grpAna2: TcxGroupBox
+    object grpDogumBilgileri: TcxGroupBox
       Left = 0
-      Top = 35
+      Top = 17
       Align = alTop
+      PanelStyle.Active = True
       Style.BorderStyle = ebsNone
       TabOrder = 1
-      Height = 100
+      Height = 80
       Width = 1092
       object grdpnl1: TGridPanel
         Left = 2
-        Top = 20
+        Top = 2
         Width = 1088
-        Height = 78
+        Height = 76
         Align = alClient
         ColumnCollection = <
           item
@@ -78,20 +81,22 @@
             Value = 100.000000000000000000
           end>
         TabOrder = 0
+        ExplicitTop = 20
+        ExplicitHeight = 78
         object grpAna3: TcxGroupBox
           Left = 1
           Top = 1
           Align = alClient
-          Caption = 'grpAna3'
           TabOrder = 0
-          Height = 76
+          ExplicitHeight = 76
+          Height = 74
           Width = 326
         end
         object grdpnl2: TGridPanel
           Left = 327
           Top = 1
           Width = 760
-          Height = 76
+          Height = 74
           Align = alClient
           ColumnCollection = <
             item
@@ -155,6 +160,7 @@
               Value = 24.659364173467800000
             end>
           TabOrder = 1
+          ExplicitHeight = 76
           object cxlbl1: TcxLabel
             Left = 1
             Top = 1
@@ -169,31 +175,36 @@
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taLeftJustify
             Properties.Alignment.Vert = taVCenter
-            AnchorY = 11
+            ExplicitHeight = 19
+            AnchorY = 10
           end
           object cxlbl2: TcxLabel
             Left = 1
-            Top = 20
+            Top = 19
             Align = alClient
             Caption = 'Do'#287'um Tart'#305's'#305' (Persantil): '
             Properties.Alignment.Vert = taVCenter
-            AnchorY = 29
+            ExplicitTop = 20
+            AnchorY = 28
           end
           object cxlbl3: TcxLabel
             Left = 1
-            Top = 38
+            Top = 37
             Align = alClient
             Caption = 'Do'#287'um Boyu (Persantil): '
             Properties.Alignment.Vert = taVCenter
-            AnchorY = 48
+            ExplicitTop = 38
+            ExplicitHeight = 19
+            AnchorY = 46
           end
           object cxlbl4: TcxLabel
             Left = 1
-            Top = 57
+            Top = 55
             Align = alClient
             Caption = 'Do'#287'um Ba'#351' '#199'evresi (Persantil): '
             Properties.Alignment.Vert = taVCenter
-            AnchorY = 66
+            ExplicitTop = 57
+            AnchorY = 64
           end
           object edtDestasyon: TcxDBTextEdit
             Left = 304
@@ -203,36 +214,41 @@
             DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
             TabOrder = 4
+            ExplicitHeight = 19
             Width = 455
           end
           object edtDTartisi: TcxDBTextEdit
             Left = 304
-            Top = 20
+            Top = 19
             Align = alClient
             DataBinding.DataField = 'DOGUM_KILOSU_GR'
             DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
             TabOrder = 5
+            ExplicitTop = 20
             Width = 455
           end
           object edtDBoyu: TcxDBTextEdit
             Left = 304
-            Top = 38
+            Top = 37
             Align = alClient
             DataBinding.DataField = 'DOGUM_BOYU_CM'
             DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
             TabOrder = 6
+            ExplicitTop = 38
+            ExplicitHeight = 19
             Width = 455
           end
           object edtDBas: TcxDBTextEdit
             Left = 304
-            Top = 57
+            Top = 55
             Align = alClient
             DataBinding.DataField = 'DOGUM_BAS_CEVRESI'
             DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
             TabOrder = 7
+            ExplicitTop = 57
             Width = 455
           end
         end
@@ -240,10 +256,11 @@
     end
     object grpOlcum: TcxGroupBox
       Left = 0
-      Top = 135
+      Top = 97
       Align = alTop
       Caption = 'grpOlcum'
       TabOrder = 2
+      ExplicitTop = 135
       Height = 498
       Width = 1092
       object grdpnl3: TGridPanel
@@ -2909,7 +2926,7 @@
     end
     object btnKaydet: TButton
       Left = 989
-      Top = 812
+      Top = 957
       Width = 75
       Height = 25
       Caption = 'Kaydet'
@@ -2918,10 +2935,11 @@
     end
     object grpGözdenGecirme: TcxGroupBox
       Left = 0
-      Top = 633
+      Top = 595
       Align = alTop
       Caption = 'grpG'#246'zdenGecirme'
       TabOrder = 4
+      ExplicitTop = 633
       Height = 152
       Width = 1092
       object grdpnl19: TGridPanel
@@ -3742,12 +3760,46 @@
         end
       end
     end
+    object grpGridListe: TcxGroupBox
+      Left = 0
+      Top = 747
+      Align = alTop
+      Caption = 'grpGridListe'
+      TabOrder = 5
+      ExplicitTop = 785
+      Height = 168
+      Width = 1092
+      object dbgrdFormHistory: TDBGrid
+        Left = 2
+        Top = 20
+        Width = 1088
+        Height = 146
+        Align = alClient
+        DataSource = dsFormHistory
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -12
+        TitleFont.Name = 'Segoe UI'
+        TitleFont.Style = []
+        OnCellClick = dbgrdFormHistoryCellClick
+      end
+    end
+    object btnYeni: TButton
+      Left = 891
+      Top = 957
+      Width = 75
+      Height = 25
+      Caption = 'Yeni'
+      TabOrder = 6
+      OnClick = btnYeniFormClick
+    end
   end
   object orsn1: TOraSession
     Username = 'HASTANE'
     Server = 'ASYA'
     Connected = True
-    Left = 288
+    Left = 1056
     Top = 8
     EncryptedPassword = '97FF'
   end
@@ -3760,8 +3812,8 @@
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
       '  AND FORM_NO     = :FORM_NO'
       '  AND HAFTA_NO    = :HAFTA_NO')
-    Left = 32
-    Top = 8
+    Left = 616
+    Top = 160
     ParamData = <
       item
         DataType = ftUnknown
@@ -3933,8 +3985,8 @@
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
       '  AND FORM_NO     = :FORM_NO'
       '  AND HAFTA_NO    = :HAFTA_NO')
-    Left = 96
-    Top = 8
+    Left = 736
+    Top = 160
     ParamData = <
       item
         DataType = ftUnknown
@@ -4106,8 +4158,8 @@
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
       '  AND FORM_NO     = :FORM_NO'
       '  AND HAFTA_NO    = :HAFTA_NO')
-    Left = 160
-    Top = 8
+    Left = 872
+    Top = 160
     ParamData = <
       item
         DataType = ftUnknown
@@ -4279,8 +4331,8 @@
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
       '  AND FORM_NO     = :FORM_NO'
       '  AND HAFTA_NO    = :HAFTA_NO')
-    Left = 224
-    Top = 8
+    Left = 984
+    Top = 160
     ParamData = <
       item
         DataType = ftUnknown
@@ -4445,23 +4497,23 @@
   end
   object dsHafta1: TOraDataSource
     DataSet = qrHafta1
-    Left = 27
-    Top = 64
+    Left = 675
+    Top = 160
   end
   object dsHafta2: TOraDataSource
     DataSet = qrHafta2
-    Left = 99
-    Top = 64
+    Left = 779
+    Top = 160
   end
   object dsHafta3: TOraDataSource
     DataSet = qrHafta3
-    Left = 171
-    Top = 64
+    Left = 915
+    Top = 160
   end
   object dsHafta4: TOraDataSource
     DataSet = qrHafta4
-    Left = 227
-    Top = 64
+    Left = 1035
+    Top = 160
   end
   object qryMaxHafta: TOraQuery
     Session = orsn1
@@ -4478,8 +4530,8 @@
       '    WHERE DOSYA_NO = :DOSYA_NO'
       '      AND PROTOKOL_NO = :PROTOKOL_NO'
       '  )')
-    Left = 291
-    Top = 72
+    Left = 867
+    Top = 8
     ParamData = <
       item
         DataType = ftUnknown
@@ -4511,8 +4563,8 @@
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
       '  AND FORM_NO     = :FORM_NO'
       '  AND HAFTA_NO    = :HAFTA_NO')
-    Left = 352
-    Top = 8
+    Left = 728
+    Top = 72
     ParamData = <
       item
         DataType = ftUnknown
@@ -4546,5 +4598,50 @@
     object fltfldFirstWeekDOGUM_BAS_CEVRESI: TFloatField
       FieldName = 'DOGUM_BAS_CEVRESI'
     end
+  end
+  object qryFormHistory: TOraQuery
+    Session = orsn1
+    SQL.Strings = (
+      'SELECT'
+      '  FORM_NO,'
+      '  MIN(IZLEM_TARIHI)   AS ILK_TARIH,'
+      '  MAX(IZLEM_TARIHI)   AS SON_TARIH,'
+      '  MAX(RISK_SEVIYE)    AS RISK_SEVIYE'
+      'FROM HASTANE.YD_RISK_IZLEM'
+      'WHERE DOSYA_NO    = :DOSYA_NO'
+      '  AND PROTOKOL_NO = :PROTOKOL_NO'
+      'GROUP BY FORM_NO'
+      'ORDER BY FORM_NO DESC')
+    Left = 1009
+    Top = 8
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DOSYA_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PROTOKOL_NO'
+        Value = nil
+      end>
+    object intgrfldFormHistoryFORM_NO: TIntegerField
+      FieldName = 'FORM_NO'
+    end
+    object dtmfldFormHistoryILK_TARIH: TDateTimeField
+      FieldName = 'ILK_TARIH'
+    end
+    object dtmfldFormHistorySON_TARIH: TDateTimeField
+      FieldName = 'SON_TARIH'
+    end
+    object strngfldFormHistoryRISK_SEVIYE: TStringField
+      FieldName = 'RISK_SEVIYE'
+      Size = 10
+    end
+  end
+  object dsFormHistory: TOraDataSource
+    DataSet = qryFormHistory
+    Left = 937
+    Top = 8
   end
 end

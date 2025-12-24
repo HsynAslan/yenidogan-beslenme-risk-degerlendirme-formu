@@ -24,7 +24,7 @@ uses
   dxSkinXmas2008Blue, cxScrollBox, cxContainer, cxEdit, cxDBLabel, cxLabel,
   Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox, Data.DB, cxTextEdit, cxDBEdit,
   cxMaskEdit, cxButtonEdit, MemDS, DBAccess, Ora, OraCall, cxCheckBox, Vcl.Mask, StrUtils,
-  Vcl.DBCtrls;
+  Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids;
 
 type
   TForm2 = class(TForm)
@@ -372,6 +372,15 @@ type
     strngfldHafta4TG_KILO_KAYIP_15: TStringField;
     strngfldHafta4TG_KILO_KAZANIM_10: TStringField;
     strngfldHafta4TG_NEK_CERRAHI: TStringField;
+    qryFormHistory: TOraQuery;
+    intgrfldFormHistoryFORM_NO: TIntegerField;
+    dtmfldFormHistoryILK_TARIH: TDateTimeField;
+    dtmfldFormHistorySON_TARIH: TDateTimeField;
+    strngfldFormHistoryRISK_SEVIYE: TStringField;
+    dsFormHistory: TOraDataSource;
+    grpGridListe: TcxGroupBox;
+    dbgrdFormHistory: TDBGrid;
+    btnYeni: TButton;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -392,11 +401,14 @@ type
 
     procedure TGCheckBoxPropertiesChange(Sender: TObject);
     procedure ApplyTGFieldRules;
-
+     procedure LoadFormReadOnly(AFormNo: Integer);
    procedure ClearRiskFieldsInDatasetExcept(DS: TDataSet; const ExceptField: string );
+    procedure dbgrdFormHistoryCellClick(Column: TColumn);
+    procedure ApplyReadOnlyMode;
+    procedure btnYeniFormClick(Sender: TObject);
   private
     { Private declarations }
-
+   FReadOnlyMode: Boolean;
   FDosyaNo    : Integer;
   FProtokolNo : Integer;
   FAktifForm  : Integer;
@@ -413,7 +425,7 @@ implementation
 
 const
   TEST_DOSYA_NO    = 12;
-  TEST_PROTOKOL_NO = 303;
+  TEST_PROTOKOL_NO = 400;
 {$R *.dfm}
 procedure TForm2.ApplyFixedFieldRules;
 var
@@ -426,7 +438,45 @@ begin
   edtDBoyu.Enabled     := E;
   edtDBas.Enabled      := E;
 end;
+procedure TForm2.ApplyReadOnlyMode;
+var
+  I: Integer;
+begin
+  if not FReadOnlyMode then Exit;
 
+  // haftalar
+  for I := 1 to 4 do
+  begin
+    qrHafta1.ReadOnly := True;
+    qrHafta2.ReadOnly := True;
+    qrHafta3.ReadOnly := True;
+    qrHafta4.ReadOnly := True;
+  end;
+
+  // tüm inputları kilitle
+  scrMain.Enabled := False;
+
+  // grid açık kalsın
+  dbgrdFormHistory.Enabled := True;
+
+  // kaydet kapalı
+  btnKaydet.Enabled := False;
+end;
+
+ procedure TForm2.LoadFormReadOnly(AFormNo: Integer);
+begin
+  FReadOnlyMode := True;
+
+  FAktifForm  := AFormNo;
+  FAktifHafta := 1; // fark etmez, hepsi açılacak
+
+  OpenHafta(qrHafta1, 1);
+  OpenHafta(qrHafta2, 2);
+  OpenHafta(qrHafta3, 3);
+  OpenHafta(qrHafta4, 4);
+
+  ApplyReadOnlyMode;
+end;
 
  procedure TForm2.ApplyTGFieldRules;
 var
@@ -524,6 +574,18 @@ begin
     Q.FieldByName('DOGUM_BAS_CEVRESI').Value :=
       qryFirstWeek.FieldByName('DOGUM_BAS_CEVRESI').Value;
   end;
+end;
+
+
+procedure TForm2.dbgrdFormHistoryCellClick(Column: TColumn);
+var
+  SelectedForm: Integer;
+begin
+  if qryFormHistory.IsEmpty then Exit;
+
+  SelectedForm := qryFormHistory.FieldByName('FORM_NO').AsInteger;
+
+  LoadFormReadOnly(SelectedForm);
 end;
 
 
@@ -701,14 +763,9 @@ end;
 
 
 
-procedure TForm2.FormShow(Sender: TObject);
+procedure TForm2.btnYeniFormClick(Sender: TObject);
 begin
-  if not Orsn1.Connected then
-    Orsn1.Connected := True;
-
-  // test için tek yerden
-  FDosyaNo    := TEST_DOSYA_NO;
-  FProtokolNo := TEST_PROTOKOL_NO;
+  FReadOnlyMode := False;
 
   CalcAktifFormHafta;
 
@@ -717,14 +774,50 @@ begin
   OpenHafta(qrHafta3, 3);
   OpenHafta(qrHafta4, 4);
 
+  scrMain.Enabled := True;
+  btnKaydet.Enabled := True;
+
+  SetHaftaAktif(FAktifHafta);
+end;
+
+
+procedure TForm2.FormShow(Sender: TObject);
+begin
+  // 1️⃣ DB bağlantısı
+  if not Orsn1.Connected then
+    Orsn1.Connected := True;
+
+  // 2️⃣ Hasta bilgisi (ÖNCE)
+  FDosyaNo    := TEST_DOSYA_NO;
+  FProtokolNo := TEST_PROTOKOL_NO;
+
+  // 3️⃣ 🔹 GEÇMİŞ FORM LİSTESİ (DBGrid için)
+  qryFormHistory.Close;
+  qryFormHistory.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
+  qryFormHistory.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+  qryFormHistory.Open;
+
+  // 4️⃣ Aktif form / hafta hesapla
+  CalcAktifFormHafta;
+
+  // 5️⃣ Haftalık datasetleri aç
+  OpenHafta(qrHafta1, 1);
+  OpenHafta(qrHafta2, 2);
+  OpenHafta(qrHafta3, 3);
+  OpenHafta(qrHafta4, 4);
+
+  // 6️⃣ Ekran kuralları
   SetHaftaAktif(FAktifHafta);
   ApplyTGFieldRules;
   ApplyFixedFieldRules;
-  ShowMessage(
-  Format('Form=%d  Hafta=%d',
-    [FAktifForm, FAktifHafta])
-);
 
+  // (debug – sonra silebilirsin)
+  ShowMessage(
+    Format(
+      'Form=%d  Hafta=%d%sGeçmiş kayıt sayısı=%d',
+      [FAktifForm, FAktifHafta, sLineBreak, qryFormHistory.RecordCount]
+    )
+  );
 end;
 
 

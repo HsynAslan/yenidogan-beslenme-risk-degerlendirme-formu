@@ -29,8 +29,8 @@ uses
 type
   TForm2 = class(TForm)
     scrMain: TcxScrollBox;
-    grpAna1: TcxGroupBox;
-    grpAna2: TcxGroupBox;
+    grpBaslik: TcxGroupBox;
+    grpDogumBilgileri: TcxGroupBox;
     grdpnl1: TGridPanel;
     grpAna3: TcxGroupBox;
     grdpnl2: TGridPanel;
@@ -156,10 +156,7 @@ type
     DR_C37G4: TcxDBCheckBox;
     cxlbl27: TcxLabel;
     grdpnl29: TGridPanel;
-    lbl16: TLabel;
     cxlbl28: TcxLabel;
-    cxlbl29: TcxLabel;
-    lbl17: TLabel;
     scorGun1: TcxDBLabel;
     scorGun2: TcxDBLabel;
     scorGun3: TcxDBLabel;
@@ -381,6 +378,21 @@ type
     grpGridListe: TcxGroupBox;
     dbgrdFormHistory: TDBGrid;
     btnYeni: TButton;
+    grdpnl30: TGridPanel;
+    grdpnl31: TGridPanel;
+    lbl13: TLabel;
+    lbl14: TLabel;
+    lbl15: TLabel;
+    lbl16: TLabel;
+    lbl17: TLabel;
+    lbl18: TLabel;
+    lbl19: TLabel;
+    lbl20: TLabel;
+    lbl21: TLabel;
+    lbl22: TLabel;
+    lbl23: TLabel;
+    btnYazdir: TButton;
+    lbl24: TLabel;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
