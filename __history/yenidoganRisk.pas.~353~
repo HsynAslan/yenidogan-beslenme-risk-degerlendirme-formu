@@ -29,8 +29,8 @@ uses
 type
   TForm2 = class(TForm)
     scrMain: TcxScrollBox;
-    grpAna1: TcxGroupBox;
-    grpAna2: TcxGroupBox;
+    grpBaslik: TcxGroupBox;
+    grpDogumBilgileri: TcxGroupBox;
     grdpnl1: TGridPanel;
     grpAna3: TcxGroupBox;
     grdpnl2: TGridPanel;
@@ -156,10 +156,7 @@ type
     DR_C37G4: TcxDBCheckBox;
     cxlbl27: TcxLabel;
     grdpnl29: TGridPanel;
-    lbl16: TLabel;
     cxlbl28: TcxLabel;
-    cxlbl29: TcxLabel;
-    lbl17: TLabel;
     scorGun1: TcxDBLabel;
     scorGun2: TcxDBLabel;
     scorGun3: TcxDBLabel;
@@ -318,7 +315,6 @@ type
     fltfldFirstWeekDOGUM_BAS_CEVRESI: TFloatField;
     grpGözdenGecirme: TcxGroupBox;
     grdpnl19: TGridPanel;
-    cxlbl7: TcxLabel;
     grdpnl22: TGridPanel;
     grdpnl25: TGridPanel;
     cxlbl30: TcxLabel;
@@ -380,6 +376,22 @@ type
     dsFormHistory: TOraDataSource;
     grpGridListe: TcxGroupBox;
     dbgrdFormHistory: TDBGrid;
+    btnYeni: TButton;
+    grdpnl30: TGridPanel;
+    grdpnl31: TGridPanel;
+    lbl13: TLabel;
+    lbl14: TLabel;
+    lbl15: TLabel;
+    lbl16: TLabel;
+    lbl17: TLabel;
+    lbl18: TLabel;
+    lbl19: TLabel;
+    lbl20: TLabel;
+    lbl21: TLabel;
+    lbl22: TLabel;
+    lbl23: TLabel;
+    btnYazdir: TButton;
+    lbl24: TLabel;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -404,6 +416,7 @@ type
    procedure ClearRiskFieldsInDatasetExcept(DS: TDataSet; const ExceptField: string );
     procedure dbgrdFormHistoryCellClick(Column: TColumn);
     procedure ApplyReadOnlyMode;
+    procedure btnYeniFormClick(Sender: TObject);
   private
     { Private declarations }
    FReadOnlyMode: Boolean;
@@ -761,14 +774,9 @@ end;
 
 
 
-procedure TForm2.FormShow(Sender: TObject);
+procedure TForm2.btnYeniFormClick(Sender: TObject);
 begin
-  if not Orsn1.Connected then
-    Orsn1.Connected := True;
-
-  // test için tek yerden
-  FDosyaNo    := TEST_DOSYA_NO;
-  FProtokolNo := TEST_PROTOKOL_NO;
+  FReadOnlyMode := False;
 
   CalcAktifFormHafta;
 
@@ -777,14 +785,50 @@ begin
   OpenHafta(qrHafta3, 3);
   OpenHafta(qrHafta4, 4);
 
+  scrMain.Enabled := True;
+  btnKaydet.Enabled := True;
+
+  SetHaftaAktif(FAktifHafta);
+end;
+
+
+procedure TForm2.FormShow(Sender: TObject);
+begin
+  // 1️⃣ DB bağlantısı
+  if not Orsn1.Connected then
+    Orsn1.Connected := True;
+
+  // 2️⃣ Hasta bilgisi (ÖNCE)
+  FDosyaNo    := TEST_DOSYA_NO;
+  FProtokolNo := TEST_PROTOKOL_NO;
+
+  // 3️⃣ 🔹 GEÇMİŞ FORM LİSTESİ (DBGrid için)
+  qryFormHistory.Close;
+  qryFormHistory.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
+  qryFormHistory.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+  qryFormHistory.Open;
+
+  // 4️⃣ Aktif form / hafta hesapla
+  CalcAktifFormHafta;
+
+  // 5️⃣ Haftalık datasetleri aç
+  OpenHafta(qrHafta1, 1);
+  OpenHafta(qrHafta2, 2);
+  OpenHafta(qrHafta3, 3);
+  OpenHafta(qrHafta4, 4);
+
+  // 6️⃣ Ekran kuralları
   SetHaftaAktif(FAktifHafta);
   ApplyTGFieldRules;
   ApplyFixedFieldRules;
-  ShowMessage(
-  Format('Form=%d  Hafta=%d',
-    [FAktifForm, FAktifHafta])
-);
 
+  // (debug – sonra silebilirsin)
+  ShowMessage(
+    Format(
+      'Form=%d  Hafta=%d%sGeçmiş kayıt sayısı=%d',
+      [FAktifForm, FAktifHafta, sLineBreak, qryFormHistory.RecordCount]
+    )
+  );
 end;
 
 

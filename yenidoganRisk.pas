@@ -32,7 +32,6 @@ type
     grpBaslik: TcxGroupBox;
     grpDogumBilgileri: TcxGroupBox;
     grdpnl1: TGridPanel;
-    grpAna3: TcxGroupBox;
     grdpnl2: TGridPanel;
     cxlbl1: TcxLabel;
     cxlbl2: TcxLabel;
@@ -315,7 +314,6 @@ type
     fltfldFirstWeekDOGUM_BAS_CEVRESI: TFloatField;
     grpGözdenGecirme: TcxGroupBox;
     grdpnl19: TGridPanel;
-    cxlbl7: TcxLabel;
     grdpnl22: TGridPanel;
     grdpnl25: TGridPanel;
     cxlbl30: TcxLabel;
@@ -370,10 +368,6 @@ type
     strngfldHafta4TG_KILO_KAZANIM_10: TStringField;
     strngfldHafta4TG_NEK_CERRAHI: TStringField;
     qryFormHistory: TOraQuery;
-    intgrfldFormHistoryFORM_NO: TIntegerField;
-    dtmfldFormHistoryILK_TARIH: TDateTimeField;
-    dtmfldFormHistorySON_TARIH: TDateTimeField;
-    strngfldFormHistoryRISK_SEVIYE: TStringField;
     dsFormHistory: TOraDataSource;
     grpGridListe: TcxGroupBox;
     dbgrdFormHistory: TDBGrid;
@@ -393,6 +387,21 @@ type
     lbl23: TLabel;
     btnYazdir: TButton;
     lbl24: TLabel;
+    grdpnl32: TGridPanel;
+    cxlbl7: TcxLabel;
+    lblHastaAdiSoyadi: TcxDBLabel;
+    cxlbl29: TcxLabel;
+    lblHastaDosyaNo: TcxDBLabel;
+    cxlbl36: TcxLabel;
+    lblHastaProtokolNo: TcxDBLabel;
+    cxlbl37: TcxLabel;
+    lblHastaBolum: TcxDBLabel;
+    cxlbl38: TcxLabel;
+    lblHastaTani: TcxDBLabel;
+    intgrfldFormHistoryFORM_NO: TIntegerField;
+    dtmfldFormHistoryILK_TARIH: TDateTimeField;
+    dtmfldFormHistorySON_TARIH: TDateTimeField;
+    strngfldFormHistoryRISK_SEVIYE: TStringField;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
