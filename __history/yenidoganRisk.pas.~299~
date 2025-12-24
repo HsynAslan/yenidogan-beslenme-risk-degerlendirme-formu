@@ -23,7 +23,7 @@ uses
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint, dxSkinWXI,
   dxSkinXmas2008Blue, cxScrollBox, cxContainer, cxEdit, cxDBLabel, cxLabel,
   Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox, Data.DB, cxTextEdit, cxDBEdit,
-  cxMaskEdit, cxButtonEdit, MemDS, DBAccess, Ora, OraCall, cxCheckBox, Vcl.Mask,
+  cxMaskEdit, cxButtonEdit, MemDS, DBAccess, Ora, OraCall, cxCheckBox, Vcl.Mask, StrUtils,
   Vcl.DBCtrls;
 
 type
@@ -330,7 +330,7 @@ type
     procedure OpenHafta(Q: TOraQuery; AHafta: Integer);
     procedure CopyFixedFieldsFromFirstWeek(Q: TOraQuery);
     function IsFirstFormFirstWeek: Boolean;
-    function NormalizeRiskForDB(const UIRisk: string): string;
+    procedure ClearOtherRiskGroups(const ActivePrefix: string);
     function CalcRiskSeviye: string;
     function GetActiveRiskValue(const Prefix: string): Boolean;
   private
@@ -510,86 +510,102 @@ ApplyDoctorFieldRules;
 
 end;
 
-function TForm2.NormalizeRiskForDB(const UIRisk: string): string;
-begin
-  // İstediğin kural:
-  // - UI "Yüksek" ise DB "Yüksek"
-  // - UI "Orta" veya "Düşük" ise DB "Orta"
-  // - hiç seçilmemişse boş kalsın
-  if SameText(UIRisk, 'Yüksek') then
-    Result := 'Yüksek'
-  else if SameText(UIRisk, 'Orta') or SameText(UIRisk, 'Düşük') then
-    Result := 'Orta'
-  else
-    Result := ''; // string içinde Null dönülmez
-end;
 
 function TForm2.GetActiveRiskValue(const Prefix: string): Boolean;
 var
   C: TComponent;
+
+  function IsChecked(const Name: string): Boolean;
+  begin
+    Result := False;
+    C := FindComponent(Name);
+    if (C is TcxDBCheckBox) then
+      Result := TcxDBCheckBox(C).Checked;
+  end;
+
 begin
   Result := False;
 
-  // Örnek isimler:
-  // YR_C28G1, OR_CIUGRG2, DR_C37G4
-  C := FindComponent(
-         Prefix + '_C28G' + IntToStr(FAktifHafta)
-       );
+  //  YÜKSEK RİSK
+  if Prefix = 'YR' then
+  begin
+    if IsChecked('YR_C28G'    + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('YR_C1000G'  + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('YR_CNEKG'   + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('YR_CGISG'   + IntToStr(FAktifHafta)) then Exit(True);
+  end;
 
-  if (C is TcxDBCheckBox) then
-    Result := TcxDBCheckBox(C).Checked;
+  //  ORTA RİSK
+  if Prefix = 'OR' then
+  begin
+    if IsChecked('OR_C28G'           + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('OR_CIUGRG'         + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('OR_C1000G'         + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('OR_CKONJENITALG'   + IntToStr(FAktifHafta)) then Exit(True);
+  end;
+
+  //  DÜŞÜK RİSK
+  if Prefix = 'DR' then
+  begin
+    if IsChecked('DR_C32G'   + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('DR_CIUGRG' + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('DR_C37G'   + IntToStr(FAktifHafta)) then Exit(True);
+  end;
 end;
 
- function TForm2.CalcRiskSeviye: string;
-begin
-  Result := '';
 
-  // 🔴 YÜKSEK
-  if (GetActiveRiskValue('YR')) then
+function TForm2.CalcRiskSeviye: string;
+begin
+  // Öncelik sırası: Yüksek > Orta > Düşük
+
+  if GetActiveRiskValue('YR') then
     Exit('Yüksek');
 
-  // 🟡 ORTA
-  if (GetActiveRiskValue('OR')) then
+  if GetActiveRiskValue('OR') or GetActiveRiskValue('DR') then
     Exit('Orta');
 
-  // 🟢 DÜŞÜK
-  if (GetActiveRiskValue('DR')) then
-    Exit('Düşük');
+  Result := ''; // hiçbiri yok
 end;
+
 
 procedure TForm2.btnKaydetClick(Sender: TObject);
 var
   Q: TOraQuery;
-  UIRisk, DBRisk: string;
+  DBRisk: string;
 begin
-  Q := GetAktifQuery;
-  if (Q = nil) or (not Q.Active) or Q.IsEmpty then
-  begin
-    ShowMessage('Aktif hafta kaydı bulunamadı.');
+  case FAktifHafta of
+    1: Q := qrHafta1;
+    2: Q := qrHafta2;
+    3: Q := qrHafta3;
+    4: Q := qrHafta4;
+  else
     Exit;
   end;
 
-  // checkbox değiştiyse zaten Edit’e geçiyorsun ama garanti olsun:
+  if (Q = nil) or (not Q.Active) then Exit;
+
   if not (Q.State in dsEditModes) then
     Q.Edit;
 
-  // 1) UI riskini hesapla
-  UIRisk := CalcRiskSeviye;
+  // 🔹 otomatik risk hesapla
+  DBRisk := CalcRiskSeviye;
 
-  // 2) DB’ye yazılacak risk (Orta/Düşük => Orta)
-  DBRisk := NormalizeRiskForDB(UIRisk);
-
-  // 3) alanı set et
+  // 🔹 boş da olabilir, sorun yok
   Q.FieldByName('RISK_SEVIYE').AsString := DBRisk;
 
-  // 4) post
   Q.Post;
 
-  ShowMessage(Format('Form %d - Hafta %d kaydedildi. Risk(UI=%s / DB=%s)',
-    [FAktifForm, FAktifHafta, UIRisk, DBRisk]));
+  ShowMessage(
+    Format(
+      'Form %d - Hafta %d kaydedildi.%sRisk: %s',
+      [FAktifForm, FAktifHafta, sLineBreak,
+       IfThen(DBRisk = '', '(yok)', DBRisk)]
+    )
+  );
 
   Close;
 end;
+
 
 
 
@@ -682,21 +698,70 @@ begin
   end;
 end;
 
+procedure TForm2.ClearOtherRiskGroups(const ActivePrefix: string);
+const
+  YR_FIELDS: array[0..3] of string = ('C28G', 'C1000G', 'CNEKG', 'CGISG');
+  OR_FIELDS: array[0..3] of string = ('C28G', 'CIUGRG', 'C1000G', 'CKONJENITALG');
+  DR_FIELDS: array[0..2] of string = ('C32G', 'CIUGRG', 'C37G');
+var
+  C: TComponent;
+
+  procedure ClearGroup(const Prefix: string; const Arr: array of string);
+  var
+    J: Integer;
+    DS: TDataSet;
+  begin
+    if Prefix = ActivePrefix then Exit;
+
+    for J := Low(Arr) to High(Arr) do
+    begin
+      C := FindComponent(Prefix + '_' + Arr[J] + IntToStr(FAktifHafta));
+      if (C is TcxDBCheckBox) then
+      begin
+        DS := TcxDBCheckBox(C).DataBinding.DataSource.DataSet;
+
+        if Assigned(DS) and DS.Active then
+        begin
+          if not (DS.State in dsEditModes) then
+            DS.Edit;   //  EN KRİTİK SATIR
+
+          TcxDBCheckBox(C).Checked := False;
+        end;
+      end;
+    end;
+  end;
+
+begin
+  ClearGroup('YR', YR_FIELDS);
+  ClearGroup('OR', OR_FIELDS);
+  ClearGroup('DR', DR_FIELDS);
+end;
+
 
 procedure TForm2.RiskCheckBoxPropertiesChange(Sender: TObject);
 var
   C: TcxDBCheckBox;
+  Prefix: string;
 begin
   if not (Sender is TcxDBCheckBox) then Exit;
   C := TcxDBCheckBox(Sender);
 
+  // dataset edit garantisi
   if Assigned(C.DataBinding.DataSource)
      and Assigned(C.DataBinding.DataSource.DataSet)
      and not (C.DataBinding.DataSource.DataSet.State in dsEditModes) then
     C.DataBinding.DataSource.DataSet.Edit;
 
+  // checkbox adı: YR_C28G1 → prefix = YR
+  Prefix := Copy(C.Name, 1, 2);
+
+  // ✔ işaretlendiyse diğer grupları temizle
+  if C.Checked then
+    ClearOtherRiskGroups(Prefix);
+
   RefreshRiskCheckBox(C);
 end;
+
 
 
 end.

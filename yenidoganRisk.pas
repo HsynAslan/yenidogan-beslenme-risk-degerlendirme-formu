@@ -330,9 +330,10 @@ type
     procedure OpenHafta(Q: TOraQuery; AHafta: Integer);
     procedure CopyFixedFieldsFromFirstWeek(Q: TOraQuery);
     function IsFirstFormFirstWeek: Boolean;
-
+    procedure ClearOtherRiskGroups(const ActivePrefix: string);
     function CalcRiskSeviye: string;
     function GetActiveRiskValue(const Prefix: string): Boolean;
+    procedure ClearAllRiskCheckBoxesExcept(const ExceptCheck: TcxDBCheckBox);
   private
     { Private declarations }
 
@@ -698,21 +699,101 @@ begin
   end;
 end;
 
+procedure TForm2.ClearOtherRiskGroups(const ActivePrefix: string);
+const
+  YR_FIELDS: array[0..3] of string = ('C28G', 'C1000G', 'CNEKG', 'CGISG');
+  OR_FIELDS: array[0..3] of string = ('C28G', 'CIUGRG', 'C1000G', 'CKONJENITALG');
+  DR_FIELDS: array[0..2] of string = ('C32G', 'CIUGRG', 'C37G');
+var
+  C: TComponent;
+
+  procedure ClearGroup(const Prefix: string; const Arr: array of string);
+  var
+    J: Integer;
+    DS: TDataSet;
+  begin
+    if Prefix = ActivePrefix then Exit;
+
+    for J := Low(Arr) to High(Arr) do
+    begin
+      C := FindComponent(Prefix + '_' + Arr[J] + IntToStr(FAktifHafta));
+      if (C is TcxDBCheckBox) then
+      begin
+        DS := TcxDBCheckBox(C).DataBinding.DataSource.DataSet;
+
+        if Assigned(DS) and DS.Active then
+        begin
+          if not (DS.State in dsEditModes) then
+            DS.Edit;   //  EN KRİTİK SATIR
+
+          TcxDBCheckBox(C).Checked := False;
+        end;
+      end;
+    end;
+  end;
+
+begin
+  ClearGroup('YR', YR_FIELDS);
+  ClearGroup('OR', OR_FIELDS);
+  ClearGroup('DR', DR_FIELDS);
+end;
+
+procedure TForm2.ClearAllRiskCheckBoxesExcept(const ExceptCheck: TcxDBCheckBox);
+const
+  // tüm risk prefix + alan kombinasyonları
+  RISK_FIELDS: array[0..10] of string = (
+    'YR_C28G', 'YR_C1000G', 'YR_CNEKG', 'YR_CGISG',
+    'OR_C28G', 'OR_CIUGRG', 'OR_C1000G', 'OR_CKONJENITALG',
+    'DR_C32G', 'DR_CIUGRG', 'DR_C37G'
+  );
+var
+  I: Integer;
+  C: TComponent;
+  DS: TDataSet;
+begin
+  for I := Low(RISK_FIELDS) to High(RISK_FIELDS) do
+  begin
+    C := FindComponent(RISK_FIELDS[I] + IntToStr(FAktifHafta));
+
+    if (C is TcxDBCheckBox) and (C <> ExceptCheck) then
+    begin
+      DS := TcxDBCheckBox(C).DataBinding.DataSource.DataSet;
+
+      if Assigned(DS) and DS.Active then
+      begin
+        if not (DS.State in dsEditModes) then
+          DS.Edit;
+
+        TcxDBCheckBox(C).Checked := False;
+      end;
+    end;
+  end;
+end;
 
 procedure TForm2.RiskCheckBoxPropertiesChange(Sender: TObject);
 var
   C: TcxDBCheckBox;
+  DS: TDataSet;
 begin
   if not (Sender is TcxDBCheckBox) then Exit;
   C := TcxDBCheckBox(Sender);
 
-  if Assigned(C.DataBinding.DataSource)
-     and Assigned(C.DataBinding.DataSource.DataSet)
-     and not (C.DataBinding.DataSource.DataSet.State in dsEditModes) then
-    C.DataBinding.DataSource.DataSet.Edit;
+  DS := C.DataBinding.DataSource.DataSet;
+  if Assigned(DS) and DS.Active then
+  begin
+    if not (DS.State in dsEditModes) then
+      DS.Edit;
+  end
+  else
+    Exit;
+
+  // ✔ sadece işaretlenirken müdahale ediyoruz
+  if C.Checked then
+    ClearAllRiskCheckBoxesExcept(C);
 
   RefreshRiskCheckBox(C);
 end;
+
 
 
 end.
