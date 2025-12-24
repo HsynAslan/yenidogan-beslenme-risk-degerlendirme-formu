@@ -27,7 +27,10 @@
       Top = 0
       Align = alTop
       PanelStyle.Active = True
+      ParentBackground = False
+      ParentColor = False
       Style.BorderStyle = ebsNone
+      Style.Color = clLightgray
       TabOrder = 0
       Height = 17
       Width = 1075
@@ -56,7 +59,10 @@
       Top = 17
       Align = alTop
       PanelStyle.Active = True
+      ParentBackground = False
+      ParentColor = False
       Style.BorderStyle = ebsNone
+      Style.Color = clLightgray
       TabOrder = 1
       Height = 80
       Width = 1075
@@ -66,6 +72,7 @@
         Width = 1071
         Height = 76
         Align = alClient
+        Color = clLightgray
         ColumnCollection = <
           item
             Value = 55.560000000000000000
@@ -84,6 +91,7 @@
             Control = grdpnl32
             Row = 0
           end>
+        ParentBackground = False
         RowCollection = <
           item
             Value = 100.000000000000000000
@@ -95,6 +103,7 @@
           Width = 475
           Height = 74
           Align = alClient
+          Color = clLightgray
           ColumnCollection = <
             item
               Value = 50.000000000000000000
@@ -143,6 +152,7 @@
               Control = edtDBas
               Row = 3
             end>
+          ParentBackground = False
           RowCollection = <
             item
               Value = 25.519099711222400000
@@ -204,6 +214,7 @@
             DataBinding.DataField = 'GESTASYON_HAFTASI'
             DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
+            Style.Color = clLightgray
             TabOrder = 4
             Width = 237
           end
@@ -214,6 +225,7 @@
             DataBinding.DataField = 'DOGUM_KILOSU_GR'
             DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
+            Style.Color = clLightgray
             TabOrder = 5
             Width = 237
           end
@@ -224,6 +236,7 @@
             DataBinding.DataField = 'DOGUM_BOYU_CM'
             DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
+            Style.Color = clLightgray
             TabOrder = 6
             Width = 237
           end
@@ -234,6 +247,7 @@
             DataBinding.DataField = 'DOGUM_BAS_CEVRESI'
             DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
+            Style.Color = clLightgray
             TabOrder = 7
             Width = 237
           end
@@ -244,6 +258,7 @@
           Width = 594
           Height = 74
           Align = alClient
+          Color = clLightgray
           ColumnCollection = <
             item
               Value = 40.000000000000000000
@@ -302,6 +317,7 @@
               Control = lblHastaTani
               Row = 4
             end>
+          ParentBackground = False
           RowCollection = <
             item
               Value = 20.000000000000000000
@@ -838,10 +854,8 @@
             Height = 306
             Align = alClient
             OnPaint = PaintBoxYuksekRiskPaint
-            ExplicitLeft = 0
-            ExplicitTop = 6
-            ExplicitWidth = 54
-            ExplicitHeight = 220
+            ExplicitLeft = -4
+            ExplicitTop = -4
           end
           object grdpnl5: TGridPanel
             Left = 31

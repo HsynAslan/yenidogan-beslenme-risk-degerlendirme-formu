@@ -22,13 +22,15 @@
     Height = 750
     Align = alClient
     TabOrder = 0
-    ExplicitHeight = 746
     object grpBaslik: TcxGroupBox
       Left = 0
       Top = 0
       Align = alTop
       PanelStyle.Active = True
+      ParentBackground = False
+      ParentColor = False
       Style.BorderStyle = ebsNone
+      Style.Color = clLightgray
       TabOrder = 0
       Height = 17
       Width = 1075
@@ -57,7 +59,10 @@
       Top = 17
       Align = alTop
       PanelStyle.Active = True
+      ParentBackground = False
+      ParentColor = False
       Style.BorderStyle = ebsNone
+      Style.Color = clLightgray
       TabOrder = 1
       Height = 80
       Width = 1075
@@ -67,50 +72,43 @@
         Width = 1071
         Height = 76
         Align = alClient
+        Color = clLightgray
         ColumnCollection = <
           item
-            Value = 50.000000000000000000
+            Value = 55.560000000000000000
           end
           item
-            Value = 50.000000000000000000
+            Value = 44.440000000000000000
           end>
         ControlCollection = <
-          item
-            Column = 0
-            Control = grpAna3
-            Row = 0
-          end
           item
             Column = 1
             Control = grdpnl2
             Row = 0
+          end
+          item
+            Column = 0
+            Control = grdpnl32
+            Row = 0
           end>
+        ParentBackground = False
         RowCollection = <
           item
             Value = 100.000000000000000000
           end>
         TabOrder = 0
-        object grpAna3: TcxGroupBox
-          Left = 1
-          Top = 1
-          Align = alClient
-          TabOrder = 0
-          ExplicitWidth = 321
-          Height = 74
-          Width = 534
-        end
         object grdpnl2: TGridPanel
-          Left = 535
+          Left = 595
           Top = 1
-          Width = 535
+          Width = 475
           Height = 74
           Align = alClient
           ColumnCollection = <
             item
-              Value = 40.000000000000000000
+              Value = 50.000000000000000000
             end
             item
-              Value = 60.000000000000000000
+              Value = 50.000000000000000000
             end>
           ControlCollection = <
             item
@@ -166,9 +164,7 @@
             item
               Value = 24.659364173467800000
             end>
-          TabOrder = 1
-          ExplicitLeft = 322
-          ExplicitWidth = 748
+          TabOrder = 0
           object cxlbl1: TcxLabel
             Left = 1
             Top = 1
@@ -183,7 +179,6 @@
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taLeftJustify
             Properties.Alignment.Vert = taVCenter
-            ExplicitWidth = 298
             AnchorY = 10
           end
           object cxlbl2: TcxLabel
@@ -192,7 +187,6 @@
             Align = alClient
             Caption = 'Do'#287'um Tart'#305's'#305' (Persantil): '
             Properties.Alignment.Vert = taVCenter
-            ExplicitWidth = 298
             AnchorY = 28
           end
           object cxlbl3: TcxLabel
@@ -201,7 +195,6 @@
             Align = alClient
             Caption = 'Do'#287'um Boyu (Persantil): '
             Properties.Alignment.Vert = taVCenter
-            ExplicitWidth = 298
             AnchorY = 46
           end
           object cxlbl4: TcxLabel
@@ -210,56 +203,216 @@
             Align = alClient
             Caption = 'Do'#287'um Ba'#351' '#199'evresi (Persantil): '
             Properties.Alignment.Vert = taVCenter
-            ExplicitWidth = 298
             AnchorY = 64
           end
           object edtDestasyon: TcxDBTextEdit
-            Left = 214
+            Left = 237
             Top = 1
             Align = alClient
             DataBinding.DataField = 'GESTASYON_HAFTASI'
             DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
             TabOrder = 4
-            ExplicitLeft = 299
-            ExplicitWidth = 448
-            Width = 320
+            Width = 237
           end
           object edtDTartisi: TcxDBTextEdit
-            Left = 214
+            Left = 237
             Top = 19
             Align = alClient
             DataBinding.DataField = 'DOGUM_KILOSU_GR'
             DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
             TabOrder = 5
-            ExplicitLeft = 299
-            ExplicitWidth = 448
-            Width = 320
+            Width = 237
           end
           object edtDBoyu: TcxDBTextEdit
-            Left = 214
+            Left = 237
             Top = 37
             Align = alClient
             DataBinding.DataField = 'DOGUM_BOYU_CM'
             DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
             TabOrder = 6
-            ExplicitLeft = 299
-            ExplicitWidth = 448
-            Width = 320
+            Width = 237
           end
           object edtDBas: TcxDBTextEdit
-            Left = 214
+            Left = 237
             Top = 55
             Align = alClient
             DataBinding.DataField = 'DOGUM_BAS_CEVRESI'
             DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
             TabOrder = 7
-            ExplicitLeft = 299
-            ExplicitWidth = 448
-            Width = 320
+            Width = 237
+          end
+        end
+        object grdpnl32: TGridPanel
+          Left = 1
+          Top = 1
+          Width = 594
+          Height = 74
+          Align = alClient
+          Color = clLightgray
+          ColumnCollection = <
+            item
+              Value = 40.000000000000000000
+            end
+            item
+              Value = 60.000000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = cxlbl7
+              Row = 0
+            end
+            item
+              Column = 1
+              Control = lblHastaAdiSoyadi
+              Row = 0
+            end
+            item
+              Column = 0
+              Control = cxlbl29
+              Row = 1
+            end
+            item
+              Column = 1
+              Control = lblHastaDosyaNo
+              Row = 1
+            end
+            item
+              Column = 0
+              Control = cxlbl36
+              Row = 2
+            end
+            item
+              Column = 1
+              Control = lblHastaProtokolNo
+              Row = 2
+            end
+            item
+              Column = 0
+              Control = cxlbl37
+              Row = 3
+            end
+            item
+              Column = 1
+              Control = lblHastaBolum
+              Row = 3
+            end
+            item
+              Column = 0
+              Control = cxlbl38
+              Row = 4
+            end
+            item
+              Column = 1
+              Control = lblHastaTani
+              Row = 4
+            end>
+          ParentBackground = False
+          RowCollection = <
+            item
+              Value = 20.000000000000000000
+            end
+            item
+              Value = 20.000000000000000000
+            end
+            item
+              Value = 20.000000000000000000
+            end
+            item
+              Value = 20.000000000000000000
+            end
+            item
+              Value = 20.000000000000000000
+            end>
+          TabOrder = 1
+          object cxlbl7: TcxLabel
+            Left = 1
+            Top = 1
+            Align = alClient
+            Caption = 'ADI SOYADI: '
+            Properties.Alignment.Vert = taVCenter
+            AnchorY = 8
+          end
+          object lblHastaAdiSoyadi: TcxDBLabel
+            Left = 238
+            Top = 1
+            Align = alClient
+            Properties.Alignment.Vert = taVCenter
+            Height = 14
+            Width = 355
+            AnchorY = 8
+          end
+          object cxlbl29: TcxLabel
+            Left = 1
+            Top = 15
+            Align = alClient
+            Caption = 'DOSYA_NO: '
+            Properties.Alignment.Vert = taVCenter
+            AnchorY = 23
+          end
+          object lblHastaDosyaNo: TcxDBLabel
+            Left = 238
+            Top = 15
+            Align = alClient
+            Properties.Alignment.Vert = taVCenter
+            Height = 15
+            Width = 355
+            AnchorY = 23
+          end
+          object cxlbl36: TcxLabel
+            Left = 1
+            Top = 30
+            Align = alClient
+            Caption = 'PROTOKOL_NO: '
+            Properties.Alignment.Vert = taVCenter
+            AnchorY = 37
+          end
+          object lblHastaProtokolNo: TcxDBLabel
+            Left = 238
+            Top = 30
+            Align = alClient
+            Properties.Alignment.Vert = taVCenter
+            Height = 14
+            Width = 355
+            AnchorY = 37
+          end
+          object cxlbl37: TcxLabel
+            Left = 1
+            Top = 44
+            Align = alClient
+            Caption = 'B'#214'L'#220'M: '
+            Properties.Alignment.Vert = taVCenter
+            AnchorY = 52
+          end
+          object lblHastaBolum: TcxDBLabel
+            Left = 238
+            Top = 44
+            Align = alClient
+            Properties.Alignment.Vert = taVCenter
+            Height = 15
+            Width = 355
+            AnchorY = 52
+          end
+          object cxlbl38: TcxLabel
+            Left = 1
+            Top = 59
+            Align = alClient
+            Caption = 'TANI: '
+            Properties.Alignment.Vert = taVCenter
+            AnchorY = 66
+          end
+          object lblHastaTani: TcxDBLabel
+            Left = 238
+            Top = 59
+            Align = alClient
+            Properties.Alignment.Vert = taVCenter
+            Height = 14
+            Width = 355
+            AnchorY = 66
           end
         end
       end
@@ -695,10 +848,8 @@
             Height = 306
             Align = alClient
             OnPaint = PaintBoxYuksekRiskPaint
-            ExplicitLeft = 0
-            ExplicitTop = 6
-            ExplicitWidth = 54
-            ExplicitHeight = 220
+            ExplicitLeft = -4
+            ExplicitTop = -4
           end
           object grdpnl5: TGridPanel
             Left = 31
@@ -3737,26 +3888,26 @@
           Columns = <
             item
               Expanded = False
-              FieldName = 'AYLAR'
-              Width = 122
+              FieldName = 'FORM_NO'
+              Width = 114
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ILK_TARIH'
-              Width = 269
+              Width = 265
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'SON_TARIH'
-              Width = 256
+              Width = 258
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'RISK_SEVIYE'
-              Width = 203
+              Width = 180
               Visible = True
             end>
         end
@@ -4781,8 +4932,8 @@
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
       '  AND FORM_NO     = :FORM_NO'
       '  AND HAFTA_NO    = :HAFTA_NO')
-    Left = 728
-    Top = 72
+    Left = 744
+    Top = 24
     ParamData = <
       item
         DataType = ftUnknown
@@ -4821,7 +4972,7 @@
     Session = orsn1
     SQL.Strings = (
       'SELECT'
-      '  FORM_NO as AYLAR,'
+      '  FORM_NO,'
       '  MIN(IZLEM_TARIHI)   AS ILK_TARIH,'
       '  MAX(IZLEM_TARIHI)   AS SON_TARIH,'
       '  MAX(RISK_SEVIYE)    AS RISK_SEVIYE'
@@ -4830,8 +4981,8 @@
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
       'GROUP BY FORM_NO'
       'ORDER BY FORM_NO DESC')
-    Left = 537
-    Top = 664
+    Left = 721
+    Top = 672
     ParamData = <
       item
         DataType = ftUnknown
@@ -4843,8 +4994,8 @@
         Name = 'PROTOKOL_NO'
         Value = nil
       end>
-    object intgrfldFormHistoryAYLAR: TIntegerField
-      FieldName = 'AYLAR'
+    object intgrfldFormHistoryFORM_NO: TIntegerField
+      FieldName = 'FORM_NO'
     end
     object dtmfldFormHistoryILK_TARIH: TDateTimeField
       FieldName = 'ILK_TARIH'
@@ -4859,7 +5010,7 @@
   end
   object dsFormHistory: TOraDataSource
     DataSet = qryFormHistory
-    Left = 641
+    Left = 809
     Top = 672
   end
 end
