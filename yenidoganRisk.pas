@@ -600,13 +600,36 @@ end;
 
 procedure TForm2.dbgrdFormHistoryCellClick(Column: TColumn);
 var
-  SelectedForm: Integer;
+  SelFormNo: Integer;
 begin
   if qryFormHistory.IsEmpty then Exit;
 
-  SelectedForm := qryFormHistory.FieldByName('FORM_NO').AsInteger;
+  // 1️⃣ Seçilen FORM_NO
+  SelFormNo := qryFormHistory.FieldByName('FORM_NO').AsInteger;
 
-  LoadFormReadOnly(SelectedForm);
+  // 2️⃣ Aktif formu değiştir
+  FAktifForm  := SelFormNo;
+  FAktifHafta := 0; // geçmişte hafta aktif olmayacak
+
+  // 3️⃣ Haftalık datasetleri KAPAT
+  qrHafta1.Close;
+  qrHafta2.Close;
+  qrHafta3.Close;
+  qrHafta4.Close;
+
+  // 4️⃣ Seçilen form için haftaları AÇ
+  OpenHafta(qrHafta1, 1);
+  OpenHafta(qrHafta2, 2);
+  OpenHafta(qrHafta3, 3);
+  OpenHafta(qrHafta4, 4);
+
+  // 5️⃣ TÜM FORMU SADECE OKUNUR YAP
+  SetHaftaAktif(0);        // hiçbir hafta aktif değil
+  ApplyFixedFieldRules;    // doğum alanları kilit
+  ApplyDoctorFieldRules;   // doktor alanları kilit
+  ApplyTGFieldRules;       // gözden geçirme kilit
+
+  
 end;
 
 
@@ -654,36 +677,74 @@ var
   end;
 
 begin
+  // 🔴 GEÇMİŞ FORM (SADECE GÖRÜNTÜLEME)
+  if AHafta = 0 then
+  begin
+    for I := 1 to 4 do
+    begin
+      En('edtKiloGun' + IntToStr(I), False);
+      En('edtBoyGun'  + IntToStr(I), False);
+      En('edtBasGun'  + IntToStr(I), False);
+
+      En('YR_C28G' + IntToStr(I), False);
+      En('YR_C1000G' + IntToStr(I), False);
+      En('YR_CNEKG' + IntToStr(I), False);
+      En('YR_CGISG' + IntToStr(I), False);
+
+      En('OR_C28G' + IntToStr(I), False);
+      En('OR_CIUGRG' + IntToStr(I), False);
+      En('OR_C1000G' + IntToStr(I), False);
+      En('OR_CKONJENITALG' + IntToStr(I), False);
+
+      En('DR_C32G' + IntToStr(I), False);
+      En('DR_CIUGRG' + IntToStr(I), False);
+      En('DR_C37G' + IntToStr(I), False);
+    end;
+
+    // sabit alanlar da kilitli
+    En('edtDestasyon', False);
+    En('edtDTartisi',  False);
+    En('edtDBoyu',     False);
+    En('edtDBas',      False);
+
+    ApplyDoctorFieldRules;
+    ApplyTGFieldRules;
+    Exit;
+  end;
+
+  // 🟢 NORMAL AKTİF HAFTA (1–4)
   for I := 1 to 4 do
   begin
-  En('edtKiloGun' + IntToStr(I), I = AHafta);
-  En('edtBoyGun'  + IntToStr(I), I = AHafta);
-  En('edtBasGun'  + IntToStr(I), I = AHafta);
+    En('edtKiloGun' + IntToStr(I), I = AHafta);
+    En('edtBoyGun'  + IntToStr(I), I = AHafta);
+    En('edtBasGun'  + IntToStr(I), I = AHafta);
 
-  En('YR_C28G' + IntToStr(I), I = AHafta);
-  En('YR_C1000G' + IntToStr(I), I = AHafta);
-  En('YR_CNEKG' + IntToStr(I), I = AHafta);
-  En('YR_CGISG' + IntToStr(I), I = AHafta);
+    En('YR_C28G' + IntToStr(I), I = AHafta);
+    En('YR_C1000G' + IntToStr(I), I = AHafta);
+    En('YR_CNEKG' + IntToStr(I), I = AHafta);
+    En('YR_CGISG' + IntToStr(I), I = AHafta);
 
-  En('OR_C28G' + IntToStr(I), I = AHafta);
-  En('OR_CIUGRG' + IntToStr(I), I = AHafta);
-  En('OR_C1000G' + IntToStr(I), I = AHafta);
-  En('OR_CKONJENITALG' + IntToStr(I), I = AHafta);
+    En('OR_C28G' + IntToStr(I), I = AHafta);
+    En('OR_CIUGRG' + IntToStr(I), I = AHafta);
+    En('OR_C1000G' + IntToStr(I), I = AHafta);
+    En('OR_CKONJENITALG' + IntToStr(I), I = AHafta);
 
-  En('DR_C32G' + IntToStr(I), I = AHafta);
-  En('DR_CIUGRG' + IntToStr(I), I = AHafta);
-  En('DR_C37G' + IntToStr(I), I = AHafta);
-end;
+    En('DR_C32G' + IntToStr(I), I = AHafta);
+    En('DR_CIUGRG' + IntToStr(I), I = AHafta);
+    En('DR_C37G' + IntToStr(I), I = AHafta);
+  end;
 
   // 🔒 SABİT ALANLAR: sadece 1. haftada aktif
   En('edtDestasyon', AHafta = 1);
   En('edtDTartisi',  AHafta = 1);
   En('edtDBoyu',     AHafta = 1);
   En('edtDBas',      AHafta = 1);
-  ApplyFixedFieldRules;
-ApplyDoctorFieldRules;
 
+  ApplyFixedFieldRules;
+  ApplyDoctorFieldRules;
+  ApplyTGFieldRules;
 end;
+
 
 
 function TForm2.GetActiveRiskValue(const Prefix: string): Boolean;

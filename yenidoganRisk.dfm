@@ -3887,13 +3887,13 @@
             item
               Expanded = False
               FieldName = 'ILK_TARIH'
-              Width = 280
+              Width = 265
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'SON_TARIH'
-              Width = 265
+              Width = 258
               Visible = True
             end
             item
@@ -4924,8 +4924,8 @@
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
       '  AND FORM_NO     = :FORM_NO'
       '  AND HAFTA_NO    = :HAFTA_NO')
-    Left = 728
-    Top = 72
+    Left = 744
+    Top = 24
     ParamData = <
       item
         DataType = ftUnknown
@@ -4973,8 +4973,8 @@
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
       'GROUP BY FORM_NO'
       'ORDER BY FORM_NO DESC')
-    Left = 537
-    Top = 664
+    Left = 721
+    Top = 672
     ParamData = <
       item
         DataType = ftUnknown
@@ -5002,7 +5002,7 @@
   end
   object dsFormHistory: TOraDataSource
     DataSet = qryFormHistory
-    Left = 641
+    Left = 809
     Top = 672
   end
 end

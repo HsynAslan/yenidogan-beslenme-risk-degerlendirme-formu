@@ -32,7 +32,6 @@ type
     grpBaslik: TcxGroupBox;
     grpDogumBilgileri: TcxGroupBox;
     grdpnl1: TGridPanel;
-    grpAna3: TcxGroupBox;
     grdpnl2: TGridPanel;
     cxlbl1: TcxLabel;
     cxlbl2: TcxLabel;
@@ -156,10 +155,7 @@ type
     DR_C37G4: TcxDBCheckBox;
     cxlbl27: TcxLabel;
     grdpnl29: TGridPanel;
-    lbl16: TLabel;
     cxlbl28: TcxLabel;
-    cxlbl29: TcxLabel;
-    lbl17: TLabel;
     scorGun1: TcxDBLabel;
     scorGun2: TcxDBLabel;
     scorGun3: TcxDBLabel;
@@ -318,7 +314,6 @@ type
     fltfldFirstWeekDOGUM_BAS_CEVRESI: TFloatField;
     grpGözdenGecirme: TcxGroupBox;
     grdpnl19: TGridPanel;
-    cxlbl7: TcxLabel;
     grdpnl22: TGridPanel;
     grdpnl25: TGridPanel;
     cxlbl30: TcxLabel;
@@ -373,14 +368,40 @@ type
     strngfldHafta4TG_KILO_KAZANIM_10: TStringField;
     strngfldHafta4TG_NEK_CERRAHI: TStringField;
     qryFormHistory: TOraQuery;
-    intgrfldFormHistoryFORM_NO: TIntegerField;
-    dtmfldFormHistoryILK_TARIH: TDateTimeField;
-    dtmfldFormHistorySON_TARIH: TDateTimeField;
-    strngfldFormHistoryRISK_SEVIYE: TStringField;
     dsFormHistory: TOraDataSource;
     grpGridListe: TcxGroupBox;
     dbgrdFormHistory: TDBGrid;
     btnYeni: TButton;
+    grdpnl30: TGridPanel;
+    grdpnl31: TGridPanel;
+    lbl13: TLabel;
+    lbl14: TLabel;
+    lbl15: TLabel;
+    lbl16: TLabel;
+    lbl17: TLabel;
+    lbl18: TLabel;
+    lbl19: TLabel;
+    lbl20: TLabel;
+    lbl21: TLabel;
+    lbl22: TLabel;
+    lbl23: TLabel;
+    btnYazdir: TButton;
+    lbl24: TLabel;
+    grdpnl32: TGridPanel;
+    cxlbl7: TcxLabel;
+    lblHastaAdiSoyadi: TcxDBLabel;
+    cxlbl29: TcxLabel;
+    lblHastaDosyaNo: TcxDBLabel;
+    cxlbl36: TcxLabel;
+    lblHastaProtokolNo: TcxDBLabel;
+    cxlbl37: TcxLabel;
+    lblHastaBolum: TcxDBLabel;
+    cxlbl38: TcxLabel;
+    lblHastaTani: TcxDBLabel;
+    intgrfldFormHistoryFORM_NO: TIntegerField;
+    dtmfldFormHistoryILK_TARIH: TDateTimeField;
+    dtmfldFormHistorySON_TARIH: TDateTimeField;
+    strngfldFormHistoryRISK_SEVIYE: TStringField;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -579,42 +600,38 @@ end;
 
 procedure TForm2.dbgrdFormHistoryCellClick(Column: TColumn);
 var
-  SelectedForm: Integer;
+  SelFormNo: Integer;
 begin
   if qryFormHistory.IsEmpty then Exit;
 
-  SelectedForm := qryFormHistory.FieldByName('FORM_NO').AsInteger;
+  // 1️⃣ Seçilen FORM_NO
+  SelFormNo := qryFormHistory.FieldByName('FORM_NO').AsInteger;
 
-  LoadFormReadOnly(SelectedForm);
-end;
+  // 2️⃣ Aktif formu değiştir
+  FAktifForm  := SelFormNo;
+  FAktifHafta := 0; // geçmişte hafta aktif olmayacak
 
+  // 3️⃣ Haftalık datasetleri KAPAT
+  qrHafta1.Close;
+  qrHafta2.Close;
+  qrHafta3.Close;
+  qrHafta4.Close;
 
-procedure TForm2.CalcAktifFormHafta;
-var
-  HaftaSayisi: Integer;
-begin
-  qryMaxHafta.Close;
-  qryMaxHafta.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
-  qryMaxHafta.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
-  qryMaxHafta.Open;
+  // 4️⃣ Seçilen form için haftaları AÇ
+  OpenHafta(qrHafta1, 1);
+  OpenHafta(qrHafta2, 2);
+  OpenHafta(qrHafta3, 3);
+  OpenHafta(qrHafta4, 4);
 
-  if qryMaxHafta.FieldByName('FORM_NO').AsInteger = 0 then
-  begin
-    FAktifForm  := 1;
-    FAktifHafta := 1;
-    Exit;
-  end;
+  // 5️⃣ TÜM FORMU SADECE OKUNUR YAP
+  SetHaftaAktif(0);        // hiçbir hafta aktif değil
+  ApplyFixedFieldRules;    // doğum alanları kilit
+  ApplyDoctorFieldRules;   // doktor alanları kilit
+  ApplyTGFieldRules;       // gözden geçirme kilit
 
-  FAktifForm  := qryMaxHafta.FieldByName('FORM_NO').AsInteger;
-  HaftaSayisi := qryMaxHafta.FieldByName('HAFTA_SAYISI').AsInteger;
-
-  if HaftaSayisi < 4 then
-    FAktifHafta := HaftaSayisi + 1
-  else
-  begin
-    Inc(FAktifForm);
-    FAktifHafta := 1;
-  end;
+  ShowMessage(
+    Format('Geçmiş form görüntüleniyor (Form No: %d)', [SelFormNo])
+  );
 end;
 
 
