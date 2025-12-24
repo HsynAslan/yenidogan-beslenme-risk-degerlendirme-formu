@@ -2909,7 +2909,7 @@
     end
     object btnKaydet: TButton
       Left = 989
-      Top = 812
+      Top = 957
       Width = 75
       Height = 25
       Caption = 'Kaydet'
@@ -3742,6 +3742,39 @@
         end
       end
     end
+    object grpGridListe: TcxGroupBox
+      Left = 0
+      Top = 785
+      Align = alTop
+      Caption = 'grpGridListe'
+      TabOrder = 5
+      Height = 168
+      Width = 1092
+      object dbgrdFormHistory: TDBGrid
+        Left = 2
+        Top = 20
+        Width = 1088
+        Height = 146
+        Align = alClient
+        DataSource = dsFormHistory
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -12
+        TitleFont.Name = 'Segoe UI'
+        TitleFont.Style = []
+        OnCellClick = dbgrdFormHistoryCellClick
+      end
+    end
+    object btnYeni: TButton
+      Left = 891
+      Top = 957
+      Width = 75
+      Height = 25
+      Caption = 'Yeni'
+      TabOrder = 6
+      OnClick = btnYeniFormClick
+    end
   end
   object orsn1: TOraSession
     Username = 'HASTANE'
@@ -4546,5 +4579,50 @@
     object fltfldFirstWeekDOGUM_BAS_CEVRESI: TFloatField
       FieldName = 'DOGUM_BAS_CEVRESI'
     end
+  end
+  object qryFormHistory: TOraQuery
+    Session = orsn1
+    SQL.Strings = (
+      'SELECT'
+      '  FORM_NO,'
+      '  MIN(IZLEM_TARIHI)   AS ILK_TARIH,'
+      '  MAX(IZLEM_TARIHI)   AS SON_TARIH,'
+      '  MAX(RISK_SEVIYE)    AS RISK_SEVIYE'
+      'FROM HASTANE.YD_RISK_IZLEM'
+      'WHERE DOSYA_NO    = :DOSYA_NO'
+      '  AND PROTOKOL_NO = :PROTOKOL_NO'
+      'GROUP BY FORM_NO'
+      'ORDER BY FORM_NO DESC')
+    Left = 353
+    Top = 64
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DOSYA_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PROTOKOL_NO'
+        Value = nil
+      end>
+    object intgrfldFormHistoryFORM_NO: TIntegerField
+      FieldName = 'FORM_NO'
+    end
+    object dtmfldFormHistoryILK_TARIH: TDateTimeField
+      FieldName = 'ILK_TARIH'
+    end
+    object dtmfldFormHistorySON_TARIH: TDateTimeField
+      FieldName = 'SON_TARIH'
+    end
+    object strngfldFormHistoryRISK_SEVIYE: TStringField
+      FieldName = 'RISK_SEVIYE'
+      Size = 10
+    end
+  end
+  object dsFormHistory: TOraDataSource
+    DataSet = qryFormHistory
+    Left = 441
+    Top = 72
   end
 end

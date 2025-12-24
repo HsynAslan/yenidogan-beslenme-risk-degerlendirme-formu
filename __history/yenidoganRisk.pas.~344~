@@ -24,7 +24,7 @@ uses
   dxSkinXmas2008Blue, cxScrollBox, cxContainer, cxEdit, cxDBLabel, cxLabel,
   Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox, Data.DB, cxTextEdit, cxDBEdit,
   cxMaskEdit, cxButtonEdit, MemDS, DBAccess, Ora, OraCall, cxCheckBox, Vcl.Mask, StrUtils,
-  Vcl.DBCtrls;
+  Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids;
 
 type
   TForm2 = class(TForm)
@@ -372,6 +372,14 @@ type
     strngfldHafta4TG_KILO_KAYIP_15: TStringField;
     strngfldHafta4TG_KILO_KAZANIM_10: TStringField;
     strngfldHafta4TG_NEK_CERRAHI: TStringField;
+    qryFormHistory: TOraQuery;
+    intgrfldFormHistoryFORM_NO: TIntegerField;
+    dtmfldFormHistoryILK_TARIH: TDateTimeField;
+    dtmfldFormHistorySON_TARIH: TDateTimeField;
+    strngfldFormHistoryRISK_SEVIYE: TStringField;
+    dsFormHistory: TOraDataSource;
+    grpGridListe: TcxGroupBox;
+    dbgrdFormHistory: TDBGrid;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -392,10 +400,13 @@ type
 
     procedure TGCheckBoxPropertiesChange(Sender: TObject);
     procedure ApplyTGFieldRules;
-    procedure ClearRiskFieldsInDataset(DS: TDataSet);
+     procedure LoadFormReadOnly(AFormNo: Integer);
+   procedure ClearRiskFieldsInDatasetExcept(DS: TDataSet; const ExceptField: string );
+    procedure dbgrdFormHistoryCellClick(Column: TColumn);
+    procedure ApplyReadOnlyMode;
   private
     { Private declarations }
-
+   FReadOnlyMode: Boolean;
   FDosyaNo    : Integer;
   FProtokolNo : Integer;
   FAktifForm  : Integer;
@@ -425,7 +436,45 @@ begin
   edtDBoyu.Enabled     := E;
   edtDBas.Enabled      := E;
 end;
+procedure TForm2.ApplyReadOnlyMode;
+var
+  I: Integer;
+begin
+  if not FReadOnlyMode then Exit;
 
+  // haftalar
+  for I := 1 to 4 do
+  begin
+    qrHafta1.ReadOnly := True;
+    qrHafta2.ReadOnly := True;
+    qrHafta3.ReadOnly := True;
+    qrHafta4.ReadOnly := True;
+  end;
+
+  // tüm inputları kilitle
+  scrMain.Enabled := False;
+
+  // grid açık kalsın
+  dbgrdFormHistory.Enabled := True;
+
+  // kaydet kapalı
+  btnKaydet.Enabled := False;
+end;
+
+ procedure TForm2.LoadFormReadOnly(AFormNo: Integer);
+begin
+  FReadOnlyMode := True;
+
+  FAktifForm  := AFormNo;
+  FAktifHafta := 1; // fark etmez, hepsi açılacak
+
+  OpenHafta(qrHafta1, 1);
+  OpenHafta(qrHafta2, 2);
+  OpenHafta(qrHafta3, 3);
+  OpenHafta(qrHafta4, 4);
+
+  ApplyReadOnlyMode;
+end;
 
  procedure TForm2.ApplyTGFieldRules;
 var
@@ -523,6 +572,18 @@ begin
     Q.FieldByName('DOGUM_BAS_CEVRESI').Value :=
       qryFirstWeek.FieldByName('DOGUM_BAS_CEVRESI').Value;
   end;
+end;
+
+
+procedure TForm2.dbgrdFormHistoryCellClick(Column: TColumn);
+var
+  SelectedForm: Integer;
+begin
+  if qryFormHistory.IsEmpty then Exit;
+
+  SelectedForm := qryFormHistory.FieldByName('FORM_NO').AsInteger;
+
+  LoadFormReadOnly(SelectedForm);
 end;
 
 
@@ -735,7 +796,11 @@ procedure TForm2.lblGunTarihClick(Sender: TObject);
 begin
   // TODO
 end;
- procedure TForm2.ClearRiskFieldsInDataset(DS: TDataSet);
+
+procedure TForm2.ClearRiskFieldsInDatasetExcept(
+  DS: TDataSet;
+  const ExceptField: string
+);
 const
   RISK_DB_FIELDS: array[0..10] of string = (
     'YR_28_HAFTA',
@@ -752,16 +817,22 @@ const
   );
 var
   I: Integer;
+  F: string;
 begin
   if not Assigned(DS) or not DS.Active then Exit;
 
-  if not (DS.State in dsEditModes) then
-    DS.Edit;
-
   for I := Low(RISK_DB_FIELDS) to High(RISK_DB_FIELDS) do
-    if DS.FindField(RISK_DB_FIELDS[I]) <> nil then
-      DS.FieldByName(RISK_DB_FIELDS[I]).AsString := 'F';
+  begin
+    F := RISK_DB_FIELDS[I];
+
+    if SameText(F, ExceptField) then
+      Continue;
+
+    if DS.FindField(F) <> nil then
+      DS.FieldByName(F).AsString := 'F';
+  end;
 end;
+
 
 
 procedure TForm2.PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -882,26 +953,39 @@ procedure TForm2.RiskCheckBoxPropertiesChange(Sender: TObject);
 var
   C: TcxDBCheckBox;
   DS: TDataSet;
+  FieldName: string;
 begin
   if not (Sender is TcxDBCheckBox) then Exit;
   C := TcxDBCheckBox(Sender);
 
+  if (C.DataBinding.DataSource = nil) or
+     (C.DataBinding.DataSource.DataSet = nil) then Exit;
+
   DS := C.DataBinding.DataSource.DataSet;
-  if Assigned(DS) and DS.Active then
+  if not DS.Active then Exit;
+
+  if not (DS.State in dsEditModes) then
+    DS.Edit;
+
+  FieldName := C.DataBinding.DataField;
+
+  if C.Checked then
   begin
-    if not (DS.State in dsEditModes) then
-      DS.Edit;
+    // ✅ 1) ÖNCE bu alanı TRUE yap
+    DS.FieldByName(FieldName).AsString := 'T';
+
+    // ✅ 2) SONRA diğer tüm riskleri temizle
+    ClearRiskFieldsInDatasetExcept(DS, FieldName);
+
   end
   else
-    Exit;
-
-  // ✔ sadece işaretlenirken müdahale ediyoruz
-  if C.Checked then
-    ClearAllRiskCheckBoxesExcept(C);
+  begin
+    // kullanıcı geri aldıysa
+    DS.FieldByName(FieldName).AsString := 'F';
+  end;
 
   RefreshRiskCheckBox(C);
 end;
-
 
 
 end.

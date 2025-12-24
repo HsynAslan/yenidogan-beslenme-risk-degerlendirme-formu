@@ -372,6 +372,12 @@ type
     strngfldHafta4TG_KILO_KAYIP_15: TStringField;
     strngfldHafta4TG_KILO_KAZANIM_10: TStringField;
     strngfldHafta4TG_NEK_CERRAHI: TStringField;
+    qryFormHistory: TOraQuery;
+    intgrfldFormHistoryFORM_NO: TIntegerField;
+    dtmfldFormHistoryILK_TARIH: TDateTimeField;
+    dtmfldFormHistorySON_TARIH: TDateTimeField;
+    strngfldFormHistoryRISK_SEVIYE: TStringField;
+    dsFormHistory: TOraDataSource;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -392,7 +398,8 @@ type
 
     procedure TGCheckBoxPropertiesChange(Sender: TObject);
     procedure ApplyTGFieldRules;
-    procedure ClearRiskFieldsInDataset(DS: TDataSet);
+
+   procedure ClearRiskFieldsInDatasetExcept(DS: TDataSet; const ExceptField: string );
   private
     { Private declarations }
 
@@ -735,7 +742,11 @@ procedure TForm2.lblGunTarihClick(Sender: TObject);
 begin
   // TODO
 end;
- procedure TForm2.ClearRiskFieldsInDataset(DS: TDataSet);
+
+procedure TForm2.ClearRiskFieldsInDatasetExcept(
+  DS: TDataSet;
+  const ExceptField: string
+);
 const
   RISK_DB_FIELDS: array[0..10] of string = (
     'YR_28_HAFTA',
@@ -752,16 +763,22 @@ const
   );
 var
   I: Integer;
+  F: string;
 begin
   if not Assigned(DS) or not DS.Active then Exit;
 
-  if not (DS.State in dsEditModes) then
-    DS.Edit;
-
   for I := Low(RISK_DB_FIELDS) to High(RISK_DB_FIELDS) do
-    if DS.FindField(RISK_DB_FIELDS[I]) <> nil then
-      DS.FieldByName(RISK_DB_FIELDS[I]).AsString := 'F';
+  begin
+    F := RISK_DB_FIELDS[I];
+
+    if SameText(F, ExceptField) then
+      Continue;
+
+    if DS.FindField(F) <> nil then
+      DS.FieldByName(F).AsString := 'F';
+  end;
 end;
+
 
 
 procedure TForm2.PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -905,6 +922,7 @@ begin
 
     // ✅ 2) SONRA diğer tüm riskleri temizle
     ClearRiskFieldsInDatasetExcept(DS, FieldName);
+
   end
   else
   begin
