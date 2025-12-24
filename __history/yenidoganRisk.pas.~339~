@@ -389,9 +389,11 @@ type
     procedure ClearOtherRiskGroups(const ActivePrefix: string);
     function CalcRiskSeviye: string;
     function GetActiveRiskValue(const Prefix: string): Boolean;
-    procedure ClearAllRiskCheckBoxesExcept(const ExceptCheck: TcxDBCheckBox);
+
     procedure TGCheckBoxPropertiesChange(Sender: TObject);
     procedure ApplyTGFieldRules;
+
+   procedure ClearRiskFieldsInDatasetExcept(DS: TDataSet; const ExceptField: string );
   private
     { Private declarations }
 
@@ -411,7 +413,7 @@ implementation
 
 const
   TEST_DOSYA_NO    = 12;
-  TEST_PROTOKOL_NO = 400;
+  TEST_PROTOKOL_NO = 303;
 {$R *.dfm}
 procedure TForm2.ApplyFixedFieldRules;
 var
@@ -735,6 +737,43 @@ begin
   // TODO
 end;
 
+procedure TForm2.ClearRiskFieldsInDatasetExcept(
+  DS: TDataSet;
+  const ExceptField: string
+);
+const
+  RISK_DB_FIELDS: array[0..10] of string = (
+    'YR_28_HAFTA',
+    'YR_1000_GR',
+    'YR_NEK_GIS',
+    'YR_KONJ_GIS',
+    'OR_28_31_HAFTA',
+    'OR_IUGR',
+    'OR_1000_1500_GR',
+    'OR_KONJ_BESLENME',
+    'DR_32_35_HAFTA',
+    'DR_IUGR_35',
+    'DR_TERM'
+  );
+var
+  I: Integer;
+  F: string;
+begin
+  if not Assigned(DS) or not DS.Active then Exit;
+
+  for I := Low(RISK_DB_FIELDS) to High(RISK_DB_FIELDS) do
+  begin
+    F := RISK_DB_FIELDS[I];
+
+    if SameText(F, ExceptField) then
+      Continue;
+
+    if DS.FindField(F) <> nil then
+      DS.FieldByName(F).AsString := 'F';
+  end;
+end;
+
+
 
 procedure TForm2.PaintBoxYuksekRiskPaint(Sender: TObject);
 var
@@ -848,62 +887,45 @@ begin
   RefreshRiskCheckBox(C);
 end;
 
-procedure TForm2.ClearAllRiskCheckBoxesExcept(const ExceptCheck: TcxDBCheckBox);
-const
-  // tüm risk prefix + alan kombinasyonları
-  RISK_FIELDS: array[0..10] of string = (
-    'YR_C28G', 'YR_C1000G', 'YR_CNEKG', 'YR_CGISG',
-    'OR_C28G', 'OR_CIUGRG', 'OR_C1000G', 'OR_CKONJENITALG',
-    'DR_C32G', 'DR_CIUGRG', 'DR_C37G'
-  );
-var
-  I: Integer;
-  C: TComponent;
-  DS: TDataSet;
-begin
-  for I := Low(RISK_FIELDS) to High(RISK_FIELDS) do
-  begin
-    C := FindComponent(RISK_FIELDS[I] + IntToStr(FAktifHafta));
 
-    if (C is TcxDBCheckBox) and (C <> ExceptCheck) then
-    begin
-      DS := TcxDBCheckBox(C).DataBinding.DataSource.DataSet;
-
-      if Assigned(DS) and DS.Active then
-      begin
-        if not (DS.State in dsEditModes) then
-          DS.Edit;
-
-        TcxDBCheckBox(C).Checked := False;
-      end;
-    end;
-  end;
-end;
 
 procedure TForm2.RiskCheckBoxPropertiesChange(Sender: TObject);
 var
   C: TcxDBCheckBox;
   DS: TDataSet;
+  FieldName: string;
 begin
   if not (Sender is TcxDBCheckBox) then Exit;
   C := TcxDBCheckBox(Sender);
 
+  if (C.DataBinding.DataSource = nil) or
+     (C.DataBinding.DataSource.DataSet = nil) then Exit;
+
   DS := C.DataBinding.DataSource.DataSet;
-  if Assigned(DS) and DS.Active then
+  if not DS.Active then Exit;
+
+  if not (DS.State in dsEditModes) then
+    DS.Edit;
+
+  FieldName := C.DataBinding.DataField;
+
+  if C.Checked then
   begin
-    if not (DS.State in dsEditModes) then
-      DS.Edit;
+    // ✅ 1) ÖNCE bu alanı TRUE yap
+    DS.FieldByName(FieldName).AsString := 'T';
+
+    // ✅ 2) SONRA diğer tüm riskleri temizle
+    ClearRiskFieldsInDatasetExcept(DS, FieldName);
+
   end
   else
-    Exit;
-
-  // ✔ sadece işaretlenirken müdahale ediyoruz
-  if C.Checked then
-    ClearAllRiskCheckBoxesExcept(C);
+  begin
+    // kullanıcı geri aldıysa
+    DS.FieldByName(FieldName).AsString := 'F';
+  end;
 
   RefreshRiskCheckBox(C);
 end;
-
 
 
 end.
