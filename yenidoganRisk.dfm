@@ -3654,11 +3654,17 @@ object Form2: TForm2
     Session = orsn1
     SQL.Strings = (
       'SELECT'
-      '  NVL(MAX(FORM_NO), 1)  AS FORM_NO,'
-      '  NVL(MAX(HAFTA_NO), 0) AS HAFTA_NO'
+      '  NVL(MAX(FORM_NO), 0) AS FORM_NO,'
+      '  COUNT(*) AS HAFTA_SAYISI'
       'FROM HASTANE.YD_RISK_IZLEM'
-      'WHERE DOSYA_NO    = :DOSYA_NO'
-      '  AND PROTOKOL_NO = :PROTOKOL_NO')
+      'WHERE DOSYA_NO = :DOSYA_NO'
+      '  AND PROTOKOL_NO = :PROTOKOL_NO'
+      '  AND FORM_NO = ('
+      '    SELECT NVL(MAX(FORM_NO), 0)'
+      '    FROM HASTANE.YD_RISK_IZLEM'
+      '    WHERE DOSYA_NO = :DOSYA_NO'
+      '      AND PROTOKOL_NO = :PROTOKOL_NO'
+      '  )')
     Left = 291
     Top = 72
     ParamData = <
@@ -3675,8 +3681,8 @@ object Form2: TForm2
     object fltfldMaxHaftaFORM_NO: TFloatField
       FieldName = 'FORM_NO'
     end
-    object fltfldMaxHaftaHAFTA_NO: TFloatField
-      FieldName = 'HAFTA_NO'
+    object fltfldMaxHaftaHAFTA_SAYISI: TFloatField
+      FieldName = 'HAFTA_SAYISI'
     end
   end
 end

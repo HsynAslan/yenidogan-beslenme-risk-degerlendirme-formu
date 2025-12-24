@@ -308,6 +308,9 @@ type
     fltfldHafta4BOY_CM: TFloatField;
     fltfldHafta4BAS_CEVRESI_CM: TFloatField;
     intgrfldHafta4FORM_NO: TIntegerField;
+    qryMaxHafta: TOraQuery;
+    fltfldMaxHaftaFORM_NO: TFloatField;
+    fltfldMaxHaftaHAFTA_SAYISI: TFloatField;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -318,14 +321,17 @@ type
     procedure RefreshRiskCheckBox(ACheck: TcxDBCheckBox);
 
     procedure SetHaftaAktif(AHafta: Integer);
-
-
+    procedure CalcAktifFormHafta;
+    procedure OpenHafta(Q: TOraQuery; AHafta: Integer);
     
 
   private
     { Private declarations }
 
- 
+  FDosyaNo    : Integer;
+  FProtokolNo : Integer;
+  FAktifForm  : Integer;
+  FAktifHafta : Integer;
 
   public
     { Public declarations }
@@ -341,7 +347,60 @@ const
   TEST_PROTOKOL_NO = 400;
 {$R *.dfm}
 
+procedure TForm2.OpenHafta(Q: TOraQuery; AHafta: Integer);
+begin
+  Q.Close;
+  Q.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
+  Q.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+  Q.ParamByName('FORM_NO').AsInteger := FAktifForm;
+  Q.ParamByName('HAFTA_NO').AsInteger := AHafta;
+  Q.Open;
 
+  if Q.IsEmpty then
+  begin
+    Q.Append;
+    Q.FieldByName('DOSYA_NO').AsInteger := FDosyaNo;
+    Q.FieldByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+    Q.FieldByName('FORM_NO').AsInteger := FAktifForm;
+    Q.FieldByName('HAFTA_NO').AsInteger := AHafta;
+    Q.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
+  end;
+end;
+
+
+procedure TForm2.CalcAktifFormHafta;
+var
+  HaftaSayisi: Integer;
+begin
+  qryMaxHafta.Close;
+  qryMaxHafta.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
+  qryMaxHafta.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+  qryMaxHafta.Open;
+
+  //  Güvenlik
+  if qryMaxHafta.IsEmpty then
+  begin
+    FAktifForm := 1;
+    FAktifHafta := 1;
+    Exit;
+  end;
+
+  FAktifForm := qryMaxHafta.FieldByName('FORM_NO').AsInteger;
+  HaftaSayisi := qryMaxHafta.FieldByName('HAFTA_SAYISI').AsInteger;
+
+  if FAktifForm = 0 then
+  begin
+    FAktifForm := 1;
+    FAktifHafta := 1;
+  end
+  else if HaftaSayisi < 4 then
+    FAktifHafta := HaftaSayisi   //  +1 YOK
+  else
+  begin
+    Inc(FAktifForm);
+    FAktifHafta := 1;
+  end;
+end;
 
 
 
@@ -359,27 +418,26 @@ var
   end;
 
 begin
-  for I := 1 to 5 do
+  for I := 1 to 4 do
   begin
-    // sadece aktif hafta açık
-    En('edtKiloGun' + IntToStr(I), I = AHafta);
-    En('edtBoyGun'  + IntToStr(I), I = AHafta);
-    En('edtBasGun'  + IntToStr(I), I = AHafta);
+  En('edtKiloGun' + IntToStr(I), I = AHafta);
+  En('edtBoyGun'  + IntToStr(I), I = AHafta);
+  En('edtBasGun'  + IntToStr(I), I = AHafta);
 
-    En('YR_C28G' + IntToStr(I), I = AHafta);
-    En('YR_C1000G' + IntToStr(I), I = AHafta);
-    En('YR_CNEKG' + IntToStr(I), I = AHafta);
-    En('YR_CGISG' + IntToStr(I), I = AHafta);
+  En('YR_C28G' + IntToStr(I), I = AHafta);
+  En('YR_C1000G' + IntToStr(I), I = AHafta);
+  En('YR_CNEKG' + IntToStr(I), I = AHafta);
+  En('YR_CGISG' + IntToStr(I), I = AHafta);
 
-    En('OR_C28G' + IntToStr(I), I = AHafta);
-    En('OR_CIUGRG' + IntToStr(I), I = AHafta);
-    En('OR_C1000G' + IntToStr(I), I = AHafta);
-    En('OR_CKONJENITALG' + IntToStr(I), I = AHafta);
+  En('OR_C28G' + IntToStr(I), I = AHafta);
+  En('OR_CIUGRG' + IntToStr(I), I = AHafta);
+  En('OR_C1000G' + IntToStr(I), I = AHafta);
+  En('OR_CKONJENITALG' + IntToStr(I), I = AHafta);
 
-    En('DR_C32G' + IntToStr(I), I = AHafta);
-    En('DR_CIUGRG' + IntToStr(I), I = AHafta);
-    En('DR_C37G' + IntToStr(I), I = AHafta);
-  end;
+  En('DR_C32G' + IntToStr(I), I = AHafta);
+  En('DR_CIUGRG' + IntToStr(I), I = AHafta);
+  En('DR_C37G' + IntToStr(I), I = AHafta);
+end;
 
   // 🔒 SABİT ALANLAR: sadece 1. haftada aktif
   En('edtDestasyon', AHafta = 1);
@@ -390,69 +448,43 @@ end;
 
 
 
-
 procedure TForm2.btnKaydetClick(Sender: TObject);
-var
-  Risk: string;
 begin
-  if not (qrrastgeleHasta.State in dsEditModes) then
-    qrrastgeleHasta.Edit;
-
-  Risk := CalcRiskSeviye;
-  qrrastgeleHasta.FieldByName('RISK_SEVIYE').AsString := Risk;
-
-  qrrastgeleHasta.Post;
+  case FAktifHafta of
+    1: if qrHafta1.State in dsEditModes then qrHafta1.Post;
+    2: if qrHafta2.State in dsEditModes then qrHafta2.Post;
+    3: if qrHafta3.State in dsEditModes then qrHafta3.Post;
+    4: if qrHafta4.State in dsEditModes then qrHafta4.Post;
+  end;
 
   ShowMessage(
-    'Kayıt alındı' + sLineBreak +
-    'Hafta: ' + qrrastgeleHasta.FieldByName('HAFTA_NO').AsString + sLineBreak +
-    'Risk: ' + Risk
+    Format('Form %d - Hafta %d kaydedildi.',
+      [FAktifForm, FAktifHafta])
   );
 
-  SetHaftaAktif(GetAktifHafta);
+  Close; // şimdilik kapatalım, sonra otomatik geçiş yaparız
 end;
 
 
 
 
 procedure TForm2.FormShow(Sender: TObject);
-var
-  AktifHafta: Integer;
 begin
   if not Orsn1.Connected then
     Orsn1.Connected := True;
 
-  qrrastgeleHasta.Close;
-  qrrastgeleHasta.ParamByName('DOSYA_NO').AsInteger := TEST_DOSYA_NO;
-  qrrastgeleHasta.ParamByName('PROTOKOL_NO').AsInteger := TEST_PROTOKOL_NO;
-  qrrastgeleHasta.Open;
+  // test için tek yerden
+  FDosyaNo    := TEST_DOSYA_NO;
+  FProtokolNo := TEST_PROTOKOL_NO;
 
-  AktifHafta := GetAktifHafta;
+  CalcAktifFormHafta;
 
-  // Eğer hiç kayıt yoksa → 1. hafta oluştur
-  if qrrastgeleHasta.IsEmpty then
-  begin
-    qrrastgeleHasta.Append;
-    qrrastgeleHasta.FieldByName('DOSYA_NO').AsInteger := TEST_DOSYA_NO;
-    qrrastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := TEST_PROTOKOL_NO;
-    qrrastgeleHasta.FieldByName('HAFTA_NO').AsInteger := 1;
-    qrrastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
-  end
-  else
-  begin
-    // Aktif haftaya git
-    if not qrrastgeleHasta.Locate('HAFTA_NO', AktifHafta, []) then
-    begin
-      // DB'de yoksa yeni kayıt aç
-      qrrastgeleHasta.Append;
-      qrrastgeleHasta.FieldByName('DOSYA_NO').AsInteger := TEST_DOSYA_NO;
-      qrrastgeleHasta.FieldByName('PROTOKOL_NO').AsInteger := TEST_PROTOKOL_NO;
-      qrrastgeleHasta.FieldByName('HAFTA_NO').AsInteger := AktifHafta;
-      qrrastgeleHasta.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
-    end;
-  end;
+  OpenHafta(qrHafta1, 1);
+  OpenHafta(qrHafta2, 2);
+  OpenHafta(qrHafta3, 3);
+  OpenHafta(qrHafta4, 4);
 
-  SetHaftaAktif(AktifHafta);
+  SetHaftaAktif(FAktifHafta);
 end;
 
 

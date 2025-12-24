@@ -310,7 +310,7 @@ type
     intgrfldHafta4FORM_NO: TIntegerField;
     qryMaxHafta: TOraQuery;
     fltfldMaxHaftaFORM_NO: TFloatField;
-    fltfldMaxHaftaHAFTA_NO: TFloatField;
+    fltfldMaxHaftaHAFTA_SAYISI: TFloatField;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -369,24 +369,39 @@ end;
 
 
 procedure TForm2.CalcAktifFormHafta;
+var
+  HaftaSayisi: Integer;
 begin
   qryMaxHafta.Close;
   qryMaxHafta.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
   qryMaxHafta.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
   qryMaxHafta.Open;
 
-  FAktifForm  := qryMaxHafta.FieldByName('FORM_NO').AsInteger;
-  FAktifHafta := qryMaxHafta.FieldByName('HAFTA_NO').AsInteger + 1;
-
-  if FAktifHafta > 4 then
+  //  Güvenlik
+  if qryMaxHafta.IsEmpty then
   begin
+    FAktifForm := 1;
     FAktifHafta := 1;
-    Inc(FAktifForm);
+    Exit;
   end;
 
+  FAktifForm := qryMaxHafta.FieldByName('FORM_NO').AsInteger;
+  HaftaSayisi := qryMaxHafta.FieldByName('HAFTA_SAYISI').AsInteger;
+
   if FAktifForm = 0 then
+  begin
     FAktifForm := 1;
+    FAktifHafta := 1;
+  end
+  else if HaftaSayisi < 4 then
+    FAktifHafta := HaftaSayisi + 1   //  +1 YOK
+  else
+  begin
+    Inc(FAktifForm);
+    FAktifHafta := 1;
+  end;
 end;
+
 
 
 procedure TForm2.SetHaftaAktif(AHafta: Integer);
@@ -470,6 +485,11 @@ begin
   OpenHafta(qrHafta4, 4);
 
   SetHaftaAktif(FAktifHafta);
+  ShowMessage(
+  Format('Form=%d  Hafta=%d',
+    [FAktifForm, FAktifHafta])
+);
+
 end;
 
 
