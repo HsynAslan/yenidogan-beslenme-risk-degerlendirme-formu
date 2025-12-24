@@ -526,7 +526,7 @@ var
 begin
   Result := False;
 
-  // 🔴 YÜKSEK RİSK
+  //  YÜKSEK RİSK
   if Prefix = 'YR' then
   begin
     if IsChecked('YR_C28G'    + IntToStr(FAktifHafta)) then Exit(True);
@@ -535,7 +535,7 @@ begin
     if IsChecked('YR_CGISG'   + IntToStr(FAktifHafta)) then Exit(True);
   end;
 
-  // 🟡 ORTA RİSK
+  //  ORTA RİSK
   if Prefix = 'OR' then
   begin
     if IsChecked('OR_C28G'           + IntToStr(FAktifHafta)) then Exit(True);
@@ -544,7 +544,7 @@ begin
     if IsChecked('OR_CKONJENITALG'   + IntToStr(FAktifHafta)) then Exit(True);
   end;
 
-  // 🟢 DÜŞÜK RİSK
+  //  DÜŞÜK RİSK
   if Prefix = 'DR' then
   begin
     if IsChecked('DR_C32G'   + IntToStr(FAktifHafta)) then Exit(True);
