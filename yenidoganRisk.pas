@@ -309,9 +309,9 @@ type
     fltfldHafta4BAS_CEVRESI_CM: TFloatField;
     intgrfldHafta4FORM_NO: TIntegerField;
     qryMaxHafta: TOraQuery;
+    qryFirstWeek: TOraQuery;
     fltfldMaxHaftaFORM_NO: TFloatField;
     fltfldMaxHaftaHAFTA_SAYISI: TFloatField;
-    qryFirstWeek: TOraQuery;
     fltfldFirstWeekGESTASYON_HAFTASI: TFloatField;
     fltfldFirstWeekDOGUM_KILOSU_GR: TFloatField;
     fltfldFirstWeekDOGUM_BOYU_CM: TFloatField;
@@ -322,14 +322,14 @@ type
     procedure FormShow(Sender: TObject);
     procedure btnKaydetClick(Sender: TObject);
     procedure RiskCheckBoxPropertiesChange(Sender: TObject);
-
+    procedure ApplyDoctorFieldRules;
     procedure RefreshRiskCheckBox(ACheck: TcxDBCheckBox);
-
+    procedure ApplyFixedFieldRules;
     procedure SetHaftaAktif(AHafta: Integer);
     procedure CalcAktifFormHafta;
     procedure OpenHafta(Q: TOraQuery; AHafta: Integer);
     procedure CopyFixedFieldsFromFirstWeek(Q: TOraQuery);
-
+    function IsFirstFormFirstWeek: Boolean;
   private
     { Private declarations }
 
@@ -351,6 +351,35 @@ const
   TEST_DOSYA_NO    = 12;
   TEST_PROTOKOL_NO = 400;
 {$R *.dfm}
+procedure TForm2.ApplyFixedFieldRules;
+var
+  E: Boolean;
+begin
+  E := IsFirstFormFirstWeek;
+
+  edtDestasyon.Enabled := E;
+  edtDTartisi.Enabled  := E;
+  edtDBoyu.Enabled     := E;
+  edtDBas.Enabled      := E;
+end;
+
+ procedure TForm2.ApplyDoctorFieldRules;
+var
+  I: Integer;
+  C: TComponent;
+begin
+  for I := 1 to 4 do
+  begin
+    C := FindComponent('edtDRGun' + IntToStr(I));
+    if C is TcxDBTextEdit then
+      TcxDBTextEdit(C).Enabled := (I = FAktifHafta);
+  end;
+end;
+
+ function TForm2.IsFirstFormFirstWeek: Boolean;
+begin
+  Result := (FAktifForm = 1) and (FAktifHafta = 1);
+end;
 
 procedure TForm2.OpenHafta(Q: TOraQuery; AHafta: Integer);
 begin
@@ -370,8 +399,8 @@ begin
   Q.FieldByName('HAFTA_NO').AsInteger := AHafta;
   Q.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
 
-  //  1. form 1. hafta HARİÇ hepsine kopyala
-  if not ((FAktifForm = 1) and (AHafta = 1)) then
+   //  SABİT ALANLARI KOPYALA
+  if not IsFirstFormFirstWeek then
     CopyFixedFieldsFromFirstWeek(Q);
 end;
 
@@ -382,22 +411,24 @@ begin
   qryFirstWeek.Close;
   qryFirstWeek.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
   qryFirstWeek.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+  qryFirstWeek.ParamByName('FORM_NO').AsInteger := 1;
+  qryFirstWeek.ParamByName('HAFTA_NO').AsInteger := 1;
   qryFirstWeek.Open;
 
-  if qryFirstWeek.IsEmpty then
-    Exit;
+  if not qryFirstWeek.IsEmpty then
+  begin
+    Q.FieldByName('GESTASYON_HAFTASI').Value :=
+      qryFirstWeek.FieldByName('GESTASYON_HAFTASI').Value;
 
-  Q.FieldByName('GESTASYON_HAFTASI').Value :=
-    qryFirstWeek.FieldByName('GESTASYON_HAFTASI').Value;
+    Q.FieldByName('DOGUM_KILOSU_GR').Value :=
+      qryFirstWeek.FieldByName('DOGUM_KILOSU_GR').Value;
 
-  Q.FieldByName('DOGUM_KILOSU_GR').Value :=
-    qryFirstWeek.FieldByName('DOGUM_KILOSU_GR').Value;
+    Q.FieldByName('DOGUM_BOYU_CM').Value :=
+      qryFirstWeek.FieldByName('DOGUM_BOYU_CM').Value;
 
-  Q.FieldByName('DOGUM_BOYU_CM').Value :=
-    qryFirstWeek.FieldByName('DOGUM_BOYU_CM').Value;
-
-  Q.FieldByName('DOGUM_BAS_CEVRESI').Value :=
-    qryFirstWeek.FieldByName('DOGUM_BAS_CEVRESI').Value;
+    Q.FieldByName('DOGUM_BAS_CEVRESI').Value :=
+      qryFirstWeek.FieldByName('DOGUM_BAS_CEVRESI').Value;
+  end;
 end;
 
 
@@ -410,24 +441,18 @@ begin
   qryMaxHafta.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
   qryMaxHafta.Open;
 
-  //  Güvenlik
-  if qryMaxHafta.IsEmpty then
+  if qryMaxHafta.FieldByName('FORM_NO').AsInteger = 0 then
   begin
-    FAktifForm := 1;
+    FAktifForm  := 1;
     FAktifHafta := 1;
     Exit;
   end;
 
-  FAktifForm := qryMaxHafta.FieldByName('FORM_NO').AsInteger;
+  FAktifForm  := qryMaxHafta.FieldByName('FORM_NO').AsInteger;
   HaftaSayisi := qryMaxHafta.FieldByName('HAFTA_SAYISI').AsInteger;
 
-  if FAktifForm = 0 then
-  begin
-    FAktifForm := 1;
-    FAktifHafta := 1;
-  end
-  else if HaftaSayisi < 4 then
-    FAktifHafta := HaftaSayisi + 1   //  +1 YOK
+  if HaftaSayisi < 4 then
+    FAktifHafta := HaftaSayisi + 1
   else
   begin
     Inc(FAktifForm);
@@ -477,6 +502,9 @@ end;
   En('edtDTartisi',  AHafta = 1);
   En('edtDBoyu',     AHafta = 1);
   En('edtDBas',      AHafta = 1);
+  ApplyFixedFieldRules;
+ApplyDoctorFieldRules;
+
 end;
 
 
@@ -518,6 +546,7 @@ begin
   OpenHafta(qrHafta4, 4);
 
   SetHaftaAktif(FAktifHafta);
+  ApplyFixedFieldRules;
   ShowMessage(
   Format('Form=%d  Hafta=%d',
     [FAktifForm, FAktifHafta])

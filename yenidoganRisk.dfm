@@ -3696,8 +3696,8 @@ object Form2: TForm2
       'FROM HASTANE.YD_RISK_IZLEM'
       'WHERE DOSYA_NO    = :DOSYA_NO'
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
-      '  AND FORM_NO     = 1'
-      '  AND HAFTA_NO    = 1')
+      '  AND FORM_NO     = :FORM_NO'
+      '  AND HAFTA_NO    = :HAFTA_NO')
     Left = 352
     Top = 8
     ParamData = <
@@ -3709,6 +3709,16 @@ object Form2: TForm2
       item
         DataType = ftUnknown
         Name = 'PROTOKOL_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'FORM_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'HAFTA_NO'
         Value = nil
       end>
     object fltfldFirstWeekGESTASYON_HAFTASI: TFloatField
