@@ -311,6 +311,11 @@ type
     qryMaxHafta: TOraQuery;
     fltfldMaxHaftaFORM_NO: TFloatField;
     fltfldMaxHaftaHAFTA_SAYISI: TFloatField;
+    qryFirstWeek: TOraQuery;
+    fltfldFirstWeekGESTASYON_HAFTASI: TFloatField;
+    fltfldFirstWeekDOGUM_KILOSU_GR: TFloatField;
+    fltfldFirstWeekDOGUM_BOYU_CM: TFloatField;
+    fltfldFirstWeekDOGUM_BAS_CEVRESI: TFloatField;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -323,7 +328,7 @@ type
     procedure SetHaftaAktif(AHafta: Integer);
     procedure CalcAktifFormHafta;
     procedure OpenHafta(Q: TOraQuery; AHafta: Integer);
-    
+    procedure CopyFixedFieldsFromFirstWeek(Q: TOraQuery);
 
   private
     { Private declarations }
@@ -356,15 +361,43 @@ begin
   Q.ParamByName('HAFTA_NO').AsInteger := AHafta;
   Q.Open;
 
-  if Q.IsEmpty then
-  begin
-    Q.Append;
-    Q.FieldByName('DOSYA_NO').AsInteger := FDosyaNo;
-    Q.FieldByName('PROTOKOL_NO').AsInteger := FProtokolNo;
-    Q.FieldByName('FORM_NO').AsInteger := FAktifForm;
-    Q.FieldByName('HAFTA_NO').AsInteger := AHafta;
-    Q.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
-  end;
+if Q.IsEmpty then
+begin
+  Q.Append;
+  Q.FieldByName('DOSYA_NO').AsInteger := FDosyaNo;
+  Q.FieldByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+  Q.FieldByName('FORM_NO').AsInteger := FAktifForm;
+  Q.FieldByName('HAFTA_NO').AsInteger := AHafta;
+  Q.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
+
+  //  1. form 1. hafta HARİÇ hepsine kopyala
+  if not ((FAktifForm = 1) and (AHafta = 1)) then
+    CopyFixedFieldsFromFirstWeek(Q);
+end;
+
+end;
+
+procedure TForm2.CopyFixedFieldsFromFirstWeek(Q: TOraQuery);
+begin
+  qryFirstWeek.Close;
+  qryFirstWeek.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
+  qryFirstWeek.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+  qryFirstWeek.Open;
+
+  if qryFirstWeek.IsEmpty then
+    Exit;
+
+  Q.FieldByName('GESTASYON_HAFTASI').Value :=
+    qryFirstWeek.FieldByName('GESTASYON_HAFTASI').Value;
+
+  Q.FieldByName('DOGUM_KILOSU_GR').Value :=
+    qryFirstWeek.FieldByName('DOGUM_KILOSU_GR').Value;
+
+  Q.FieldByName('DOGUM_BOYU_CM').Value :=
+    qryFirstWeek.FieldByName('DOGUM_BOYU_CM').Value;
+
+  Q.FieldByName('DOGUM_BAS_CEVRESI').Value :=
+    qryFirstWeek.FieldByName('DOGUM_BAS_CEVRESI').Value;
 end;
 
 

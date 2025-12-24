@@ -308,6 +308,14 @@ type
     fltfldHafta4BOY_CM: TFloatField;
     fltfldHafta4BAS_CEVRESI_CM: TFloatField;
     intgrfldHafta4FORM_NO: TIntegerField;
+    qryMaxHafta: TOraQuery;
+    fltfldMaxHaftaFORM_NO: TFloatField;
+    fltfldMaxHaftaHAFTA_SAYISI: TFloatField;
+    qryFirstWeek: TOraQuery;
+    fltfldFirstWeekGESTASYON_HAFTASI: TFloatField;
+    fltfldFirstWeekDOGUM_KILOSU_GR: TFloatField;
+    fltfldFirstWeekDOGUM_BOYU_CM: TFloatField;
+    fltfldFirstWeekDOGUM_BAS_CEVRESI: TFloatField;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -320,7 +328,7 @@ type
     procedure SetHaftaAktif(AHafta: Integer);
     procedure CalcAktifFormHafta;
     procedure OpenHafta(Q: TOraQuery; AHafta: Integer);
-    
+    procedure CopyFixedFieldsFromFirstWeek(Q: TOraQuery);
 
   private
     { Private declarations }
@@ -361,29 +369,71 @@ begin
     Q.FieldByName('FORM_NO').AsInteger := FAktifForm;
     Q.FieldByName('HAFTA_NO').AsInteger := AHafta;
     Q.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
+
+      //  SABİT ALANLARI KOPYALA   mesela gestasyon ve doğum bilgileri
+  if not ((FAktifForm = 1) and (AHafta = 1)) then
+    CopyFixedFieldsFromFirstWeek(Q);
   end;
+end;
+
+procedure TForm2.CopyFixedFieldsFromFirstWeek(Q: TOraQuery);
+begin
+  qryFirstWeek.Close;
+  qryFirstWeek.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
+  qryFirstWeek.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+  qryFirstWeek.Open;
+
+  if qryFirstWeek.IsEmpty then
+    Exit;
+
+  Q.FieldByName('GESTASYON_HAFTASI').Value :=
+    qryFirstWeek.FieldByName('GESTASYON_HAFTASI').Value;
+
+  Q.FieldByName('DOGUM_KILOSU_GR').Value :=
+    qryFirstWeek.FieldByName('DOGUM_KILOSU_GR').Value;
+
+  Q.FieldByName('DOGUM_BOYU_CM').Value :=
+    qryFirstWeek.FieldByName('DOGUM_BOYU_CM').Value;
+
+  Q.FieldByName('DOGUM_BAS_CEVRESI').Value :=
+    qryFirstWeek.FieldByName('DOGUM_BAS_CEVRESI').Value;
 end;
 
 
 procedure TForm2.CalcAktifFormHafta;
+var
+  HaftaSayisi: Integer;
 begin
   qryMaxHafta.Close;
   qryMaxHafta.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
   qryMaxHafta.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
   qryMaxHafta.Open;
 
-  FAktifForm  := qryMaxHafta.FieldByName('FORM_NO').AsInteger;
-  FAktifHafta := qryMaxHafta.FieldByName('HAFTA_NO').AsInteger + 1;
-
-  if FAktifHafta > 4 then
+  //  Güvenlik
+  if qryMaxHafta.IsEmpty then
   begin
+    FAktifForm := 1;
     FAktifHafta := 1;
-    Inc(FAktifForm);
+    Exit;
   end;
 
+  FAktifForm := qryMaxHafta.FieldByName('FORM_NO').AsInteger;
+  HaftaSayisi := qryMaxHafta.FieldByName('HAFTA_SAYISI').AsInteger;
+
   if FAktifForm = 0 then
+  begin
     FAktifForm := 1;
+    FAktifHafta := 1;
+  end
+  else if HaftaSayisi < 4 then
+    FAktifHafta := HaftaSayisi + 1   //  +1 YOK
+  else
+  begin
+    Inc(FAktifForm);
+    FAktifHafta := 1;
+  end;
 end;
+
 
 
 procedure TForm2.SetHaftaAktif(AHafta: Integer);
@@ -430,26 +480,21 @@ end;
 
 
 
-
 procedure TForm2.btnKaydetClick(Sender: TObject);
-var
-  Risk: string;
 begin
-  if not (qrrastgeleHasta.State in dsEditModes) then
-    qrrastgeleHasta.Edit;
-
-  Risk := CalcRiskSeviye;
-  qrrastgeleHasta.FieldByName('RISK_SEVIYE').AsString := Risk;
-
-  qrrastgeleHasta.Post;
+  case FAktifHafta of
+    1: if qrHafta1.State in dsEditModes then qrHafta1.Post;
+    2: if qrHafta2.State in dsEditModes then qrHafta2.Post;
+    3: if qrHafta3.State in dsEditModes then qrHafta3.Post;
+    4: if qrHafta4.State in dsEditModes then qrHafta4.Post;
+  end;
 
   ShowMessage(
-    'Kayıt alındı' + sLineBreak +
-    'Hafta: ' + qrrastgeleHasta.FieldByName('HAFTA_NO').AsString + sLineBreak +
-    'Risk: ' + Risk
+    Format('Form %d - Hafta %d kaydedildi.',
+      [FAktifForm, FAktifHafta])
   );
 
-  SetHaftaAktif(GetAktifHafta);
+  Close; // şimdilik kapatalım, sonra otomatik geçiş yaparız
 end;
 
 
@@ -472,6 +517,11 @@ begin
   OpenHafta(qrHafta4, 4);
 
   SetHaftaAktif(FAktifHafta);
+  ShowMessage(
+  Format('Form=%d  Hafta=%d',
+    [FAktifForm, FAktifHafta])
+);
+
 end;
 
 

@@ -3685,4 +3685,43 @@ object Form2: TForm2
       FieldName = 'HAFTA_SAYISI'
     end
   end
+  object qryFirstWeek: TOraQuery
+    Session = orsn1
+    SQL.Strings = (
+      'SELECT'
+      '  GESTASYON_HAFTASI,'
+      '  DOGUM_KILOSU_GR,'
+      '  DOGUM_BOYU_CM,'
+      '  DOGUM_BAS_CEVRESI'
+      'FROM HASTANE.YD_RISK_IZLEM'
+      'WHERE DOSYA_NO    = :DOSYA_NO'
+      '  AND PROTOKOL_NO = :PROTOKOL_NO'
+      '  AND FORM_NO     = 1'
+      '  AND HAFTA_NO    = 1')
+    Left = 352
+    Top = 8
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'DOSYA_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'PROTOKOL_NO'
+        Value = nil
+      end>
+    object fltfldFirstWeekGESTASYON_HAFTASI: TFloatField
+      FieldName = 'GESTASYON_HAFTASI'
+    end
+    object fltfldFirstWeekDOGUM_KILOSU_GR: TFloatField
+      FieldName = 'DOGUM_KILOSU_GR'
+    end
+    object fltfldFirstWeekDOGUM_BOYU_CM: TFloatField
+      FieldName = 'DOGUM_BOYU_CM'
+    end
+    object fltfldFirstWeekDOGUM_BAS_CEVRESI: TFloatField
+      FieldName = 'DOGUM_BAS_CEVRESI'
+    end
+  end
 end
