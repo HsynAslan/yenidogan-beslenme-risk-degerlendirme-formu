@@ -1,10 +1,10 @@
-object Form2: TForm2
+﻿object Form2: TForm2
   Left = 0
   Top = 0
   Caption = 
     'YEN'#304'DO'#286'AN BESLENME (NUTR'#304'SYON) R'#304'SK DE'#286'ERLEND'#304'RME (GOMEZ SKALASI' +
     ') FORMU'
-  ClientHeight = 694
+  ClientHeight = 1061
   ClientWidth = 1094
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,7 +19,7 @@ object Form2: TForm2
     Left = 0
     Top = 0
     Width = 1094
-    Height = 694
+    Height = 1061
     Align = alClient
     TabOrder = 0
     object grpAna1: TcxGroupBox
@@ -266,7 +266,7 @@ object Form2: TForm2
             Value = 11.111111111111110000
           end
           item
-            Value = 11.111111111111110000
+            Value = 11.111111111111100000
           end>
         ControlCollection = <
           item
@@ -484,7 +484,6 @@ object Form2: TForm2
           Style.IsFontAssigned = True
           Properties.Alignment.Horz = taLeftJustify
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 543
           AnchorY = 18
         end
         object cxlbl8: TcxLabel
@@ -493,7 +492,6 @@ object Form2: TForm2
           Align = alClient
           Caption = 'Kilo / Persantil'
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 543
           AnchorY = 46
         end
         object edtKiloGun1: TcxDBTextEdit
@@ -504,8 +502,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta1
           Properties.Alignment.Horz = taCenter
           TabOrder = 2
-          ExplicitLeft = 544
-          ExplicitWidth = 109
           Width = 121
         end
         object edtKiloGun2: TcxDBTextEdit
@@ -516,8 +512,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta2
           Properties.Alignment.Horz = taCenter
           TabOrder = 3
-          ExplicitLeft = 653
-          ExplicitWidth = 108
           Width = 121
         end
         object edtKiloGun3: TcxDBTextEdit
@@ -528,8 +522,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta3
           Properties.Alignment.Horz = taCenter
           TabOrder = 4
-          ExplicitLeft = 761
-          ExplicitWidth = 109
           Width = 120
         end
         object edtKiloGun4: TcxDBTextEdit
@@ -540,8 +532,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta4
           Properties.Alignment.Horz = taCenter
           TabOrder = 5
-          ExplicitLeft = 870
-          ExplicitWidth = 108
           Width = 121
         end
         object cxlbl9: TcxLabel
@@ -550,7 +540,6 @@ object Form2: TForm2
           Align = alClient
           Caption = 'Boy / Persantil'
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 543
           AnchorY = 70
         end
         object edtBoyGun1: TcxDBTextEdit
@@ -561,8 +550,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta1
           Properties.Alignment.Horz = taCenter
           TabOrder = 7
-          ExplicitLeft = 544
-          ExplicitWidth = 109
           Width = 121
         end
         object edtBoyGun2: TcxDBTextEdit
@@ -573,8 +560,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta2
           Properties.Alignment.Horz = taCenter
           TabOrder = 8
-          ExplicitLeft = 653
-          ExplicitWidth = 108
           Width = 121
         end
         object edtBoyGun3: TcxDBTextEdit
@@ -585,8 +570,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta3
           Properties.Alignment.Horz = taCenter
           TabOrder = 9
-          ExplicitLeft = 761
-          ExplicitWidth = 109
           Width = 120
         end
         object edtBoyGun4: TcxDBTextEdit
@@ -597,8 +580,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta4
           Properties.Alignment.Horz = taCenter
           TabOrder = 10
-          ExplicitLeft = 870
-          ExplicitWidth = 108
           Width = 121
         end
         object cxLabel1: TcxLabel
@@ -610,7 +591,6 @@ object Form2: TForm2
           Style.Color = clBtnFace
           Properties.Alignment.Horz = taLeftJustify
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 543
           AnchorY = 94
         end
         object edtBasGun1: TcxDBTextEdit
@@ -621,9 +601,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta1
           Properties.Alignment.Horz = taCenter
           TabOrder = 12
-          ExplicitLeft = 540
-          ExplicitTop = 79
-          ExplicitWidth = 109
           Width = 121
         end
         object edtBasGun2: TcxDBTextEdit
@@ -634,8 +611,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta2
           Properties.Alignment.Horz = taCenter
           TabOrder = 13
-          ExplicitLeft = 653
-          ExplicitWidth = 108
           Width = 121
         end
         object edtBasGun3: TcxDBTextEdit
@@ -646,8 +621,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta3
           Properties.Alignment.Horz = taCenter
           TabOrder = 14
-          ExplicitLeft = 761
-          ExplicitWidth = 109
           Width = 120
         end
         object edtBasGun4: TcxDBTextEdit
@@ -658,8 +631,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta4
           Properties.Alignment.Horz = taCenter
           TabOrder = 15
-          ExplicitLeft = 870
-          ExplicitWidth = 108
           Width = 121
         end
         object grdpnl4: TGridPanel
@@ -691,7 +662,6 @@ object Form2: TForm2
               Value = 100.000000000000000000
             end>
           TabOrder = 16
-          ExplicitWidth = 543
           object PaintBoxYuksekRisk: TPaintBox
             Left = 1
             Top = 1
@@ -759,8 +729,6 @@ object Form2: TForm2
                 Value = 30.008141647426720000
               end>
             TabOrder = 0
-            ExplicitLeft = 28
-            ExplicitWidth = 514
             object cxlbl10: TcxLabel
               Left = 1
               Top = 1
@@ -779,7 +747,6 @@ object Form2: TForm2
               StyleDisabled.BorderColor = clBtnText
               Properties.Alignment.Horz = taCenter
               Properties.Alignment.Vert = taVCenter
-              ExplicitWidth = 77
               AnchorX = 44
               AnchorY = 43
             end
@@ -799,7 +766,6 @@ object Form2: TForm2
               Style.IsFontAssigned = True
               Properties.Alignment.Horz = taCenter
               Properties.Alignment.Vert = taVCenter
-              ExplicitWidth = 77
               AnchorX = 44
               AnchorY = 142
             end
@@ -819,7 +785,6 @@ object Form2: TForm2
               Style.IsFontAssigned = True
               Properties.Alignment.Horz = taCenter
               Properties.Alignment.Vert = taVCenter
-              ExplicitWidth = 77
               AnchorX = 44
               AnchorY = 240
             end
@@ -876,15 +841,12 @@ object Form2: TForm2
                   Value = 20.000000000000000000
                 end>
               TabOrder = 3
-              ExplicitLeft = 78
-              ExplicitWidth = 435
               object cxlbl12: TcxLabel
                 Left = 1
                 Top = 1
                 Align = alClient
                 Caption = 'HERHANG'#304' B'#304'R'#304
                 Properties.Alignment.Vert = taBottomJustify
-                ExplicitWidth = 433
                 AnchorY = 17
               end
               object cxlbl14: TcxLabel
@@ -893,7 +855,6 @@ object Form2: TForm2
                 Align = alClient
                 Caption = '< 28 Hafta'
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 433
                 AnchorY = 26
               end
               object cxlbl15: TcxLabel
@@ -902,7 +863,6 @@ object Form2: TForm2
                 Align = alClient
                 Caption = '< 1000 gr / Do'#287'um'
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 433
                 AnchorY = 42
               end
               object cxlbl16: TcxLabel
@@ -911,7 +871,6 @@ object Form2: TForm2
                 Align = alClient
                 Caption = 'NEK / G'#304'S Perforasyonu sonras'#305' beslenme'
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 433
                 AnchorY = 59
               end
               object cxlbl17: TcxLabel
@@ -920,7 +879,6 @@ object Form2: TForm2
                 Align = alClient
                 Caption = #350'iddetli Konjenital G'#304'S anomalili bebek'
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 433
                 AnchorY = 75
               end
             end
@@ -977,15 +935,12 @@ object Form2: TForm2
                   Value = 18.000000000000000000
                 end>
               TabOrder = 4
-              ExplicitLeft = 78
-              ExplicitWidth = 435
               object cxlbl18: TcxLabel
                 Left = 1
                 Top = 1
                 Align = alClient
                 Caption = 'Herhangi biri'
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 433
                 AnchorY = 11
               end
               object cxlbl19: TcxLabel
@@ -995,7 +950,6 @@ object Form2: TForm2
                 Caption = '28 - 31 hafta genel olarak iyi bebek'
                 Properties.Alignment.Horz = taLeftJustify
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 433
                 AnchorY = 31
               end
               object cxlbl20: TcxLabel
@@ -1006,7 +960,6 @@ object Form2: TForm2
                   #304'UGR(kilo < 10 persantilpersantil) ve endend-diastolik ak'#305'm kayb' +
                   #305' < 35 hafta'
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 433
                 AnchorY = 57
               end
               object cxlbl21: TcxLabel
@@ -1015,7 +968,6 @@ object Form2: TForm2
                 Align = alClient
                 Caption = '1000 - 1500 gr. / Do'#287'um'
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 433
                 AnchorY = 82
               end
               object cxlbl22: TcxLabel
@@ -1024,7 +976,6 @@ object Form2: TForm2
                 Align = alClient
                 Caption = 'Hastal'#305'k veya konjenital anomaliye ba'#287'l'#305' beslenememe'
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 433
                 AnchorY = 102
               end
             end
@@ -1073,15 +1024,12 @@ object Form2: TForm2
                   Value = 20.000000000000000000
                 end>
               TabOrder = 5
-              ExplicitLeft = 78
-              ExplicitWidth = 435
               object cxlbl23: TcxLabel
                 Left = 1
                 Top = 1
                 Align = alClient
                 Caption = 'Herhangi biri'
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 433
                 AnchorY = 9
               end
               object cxlbl24: TcxLabel
@@ -1090,7 +1038,6 @@ object Form2: TForm2
                 Align = alClient
                 Caption = '32 - 35. hafta, genel olarak iyi bebek'
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 433
                 AnchorY = 26
               end
               object cxlbl25: TcxLabel
@@ -1101,7 +1048,6 @@ object Form2: TForm2
                   #304'UGR (kilo < 10 persantil) ve endend-diastolik ak'#305'm kayb'#305' > 35 h' +
                   'afta'
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 433
                 AnchorY = 51
               end
               object cxlbl26: TcxLabel
@@ -1110,7 +1056,6 @@ object Form2: TForm2
                 Align = alClient
                 Caption = #304'yi g'#246'r'#252'nen term bebek > 37 hafta'
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 433
                 AnchorY = 75
               end
             end
@@ -1153,8 +1098,6 @@ object Form2: TForm2
               Value = 30.010000000000000000
             end>
           TabOrder = 17
-          ExplicitLeft = 544
-          ExplicitWidth = 109
           object grdpnl10: TGridPanel
             Left = 1
             Top = 1
@@ -1211,11 +1154,10 @@ object Form2: TForm2
                 SizeStyle = ssAuto
               end>
             TabOrder = 0
-            ExplicitWidth = 107
             object lbl1: TLabel
               Left = 1
               Top = 1
-              Width = 105
+              Width = 117
               Height = 17
               Align = alClient
               ExplicitWidth = 3
@@ -1236,9 +1178,7 @@ object Form2: TForm2
               Style.BorderStyle = ebsSingle
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitLeft = 2
-              ExplicitTop = 13
-              Width = 105
+              Width = 117
             end
             object YR_C1000G1: TcxDBCheckBox
               Left = 1
@@ -1253,7 +1193,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 105
+              Width = 117
             end
             object YR_CNEKG1: TcxDBCheckBox
               Left = 1
@@ -1269,7 +1209,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 105
+              Width = 117
             end
             object YR_CGISG1: TcxDBCheckBox
               Left = 1
@@ -1285,7 +1225,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
-              Width = 105
+              Width = 117
             end
           end
           object grdpnl11: TGridPanel
@@ -1341,11 +1281,10 @@ object Form2: TForm2
                 Value = 18.000000000000000000
               end>
             TabOrder = 1
-            ExplicitWidth = 107
             object lbl2: TLabel
               Left = 1
               Top = 1
-              Width = 105
+              Width = 117
               Height = 20
               Align = alClient
               ExplicitWidth = 3
@@ -1364,7 +1303,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 105
+              Width = 117
             end
             object OR_CIUGRG1: TcxDBCheckBox
               Left = 1
@@ -1379,7 +1318,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 105
+              Width = 117
             end
             object OR_C1000G1: TcxDBCheckBox
               Left = 1
@@ -1394,7 +1333,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 105
+              Width = 117
             end
             object OR_CKONJENITALG1: TcxDBCheckBox
               Left = 1
@@ -1409,7 +1348,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
-              Width = 105
+              Width = 117
             end
           end
           object grdpnl12: TGridPanel
@@ -1457,12 +1396,11 @@ object Form2: TForm2
                 Value = 20.000000000000000000
               end>
             TabOrder = 2
-            ExplicitWidth = 107
             DesignSize = (
               119
               85)
             object lbl3: TLabel
-              Left = 52
+              Left = 58
               Top = 2
               Width = 3
               Height = 15
@@ -1482,7 +1420,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 105
+              Width = 117
             end
             object DR_CIUGRG1: TcxDBCheckBox
               Left = 1
@@ -1497,7 +1435,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 105
+              Width = 117
             end
             object DR_C37G1: TcxDBCheckBox
               Left = 1
@@ -1512,7 +1450,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 105
+              Width = 117
             end
           end
         end
@@ -1554,8 +1492,6 @@ object Form2: TForm2
               Value = 30.010000000000000000
             end>
           TabOrder = 18
-          ExplicitLeft = 653
-          ExplicitWidth = 108
           object grdpnl14: TGridPanel
             Left = 1
             Top = 1
@@ -1609,11 +1545,10 @@ object Form2: TForm2
                 Value = 20.000000000000000000
               end>
             TabOrder = 0
-            ExplicitWidth = 106
             object lbl4: TLabel
               Left = 1
               Top = 1
-              Width = 104
+              Width = 117
               Height = 17
               Align = alClient
               ExplicitWidth = 3
@@ -1632,7 +1567,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 104
+              Width = 117
             end
             object YR_C1000G2: TcxDBCheckBox
               Left = 1
@@ -1647,7 +1582,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 104
+              Width = 117
             end
             object YR_CNEKG2: TcxDBCheckBox
               Left = 1
@@ -1662,9 +1597,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitLeft = -1
-              ExplicitTop = 45
-              Width = 104
+              Width = 117
             end
             object YR_CGISG2: TcxDBCheckBox
               Left = 1
@@ -1679,7 +1612,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
-              Width = 104
+              Width = 117
             end
           end
           object grdpnl15: TGridPanel
@@ -1735,11 +1668,10 @@ object Form2: TForm2
                 Value = 18.000000000000000000
               end>
             TabOrder = 1
-            ExplicitWidth = 106
             object lbl5: TLabel
               Left = 1
               Top = 1
-              Width = 104
+              Width = 117
               Height = 20
               Align = alClient
               ExplicitWidth = 3
@@ -1758,7 +1690,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 104
+              Width = 117
             end
             object OR_CIUGRG2: TcxDBCheckBox
               Left = 1
@@ -1773,7 +1705,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 104
+              Width = 117
             end
             object OR_C1000G2: TcxDBCheckBox
               Left = 1
@@ -1788,9 +1720,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitLeft = -1
-              ExplicitTop = 66
-              Width = 104
+              Width = 117
             end
             object OR_CKONJENITALG2: TcxDBCheckBox
               Left = 1
@@ -1805,7 +1735,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
-              Width = 104
+              Width = 117
             end
           end
           object grdpnl16: TGridPanel
@@ -1853,12 +1783,11 @@ object Form2: TForm2
                 Value = 20.000000000000000000
               end>
             TabOrder = 2
-            ExplicitWidth = 106
             DesignSize = (
               119
               85)
             object lbl6: TLabel
-              Left = 51
+              Left = 58
               Top = 2
               Width = 3
               Height = 15
@@ -1878,7 +1807,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 104
+              Width = 117
             end
             object DR_CIUGRG2: TcxDBCheckBox
               Left = 1
@@ -1893,7 +1822,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 104
+              Width = 117
             end
             object DR_C37G2: TcxDBCheckBox
               Left = 1
@@ -1908,7 +1837,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 104
+              Width = 117
             end
           end
         end
@@ -1949,8 +1878,6 @@ object Form2: TForm2
               Value = 30.010000000000000000
             end>
           TabOrder = 19
-          ExplicitLeft = 761
-          ExplicitWidth = 109
           object grdpnl20: TGridPanel
             Left = 1
             Top = 1
@@ -2004,12 +1931,11 @@ object Form2: TForm2
                 Value = 20.000000000000000000
               end>
             TabOrder = 0
-            ExplicitWidth = 107
             DesignSize = (
               118
               85)
             object lbl7: TLabel
-              Left = 52
+              Left = 57
               Top = 2
               Width = 3
               Height = 15
@@ -2029,9 +1955,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitLeft = -1
-              ExplicitTop = 23
-              Width = 105
+              Width = 116
             end
             object YR_C1000G3: TcxDBCheckBox
               Left = 1
@@ -2046,7 +1970,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 105
+              Width = 116
             end
             object YR_CNEKG3: TcxDBCheckBox
               Left = 1
@@ -2061,7 +1985,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 105
+              Width = 116
             end
             object YR_CGISG3: TcxDBCheckBox
               Left = 1
@@ -2076,7 +2000,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
-              Width = 105
+              Width = 116
             end
           end
           object grdpnl23: TGridPanel
@@ -2132,12 +2056,11 @@ object Form2: TForm2
                 Value = 18.000000000000000000
               end>
             TabOrder = 1
-            ExplicitWidth = 107
             DesignSize = (
               118
               113)
             object lbl8: TLabel
-              Left = 52
+              Left = 57
               Top = 3
               Width = 3
               Height = 15
@@ -2157,7 +2080,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 105
+              Width = 116
             end
             object OR_CIUGRG3: TcxDBCheckBox
               Left = 1
@@ -2172,7 +2095,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 105
+              Width = 116
             end
             object OR_C1000G3: TcxDBCheckBox
               Left = 1
@@ -2187,7 +2110,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 105
+              Width = 116
             end
             object OR_CKONJENITALG3: TcxDBCheckBox
               Left = 1
@@ -2202,7 +2125,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
-              Width = 105
+              Width = 116
             end
           end
           object grdpnl26: TGridPanel
@@ -2250,12 +2173,11 @@ object Form2: TForm2
                 Value = 20.000000000000000000
               end>
             TabOrder = 2
-            ExplicitWidth = 107
             DesignSize = (
               118
               85)
             object lbl9: TLabel
-              Left = 52
+              Left = 57
               Top = 2
               Width = 3
               Height = 15
@@ -2275,7 +2197,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 105
+              Width = 116
             end
             object DR_CIUGRG3: TcxDBCheckBox
               Left = 1
@@ -2290,7 +2212,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 105
+              Width = 116
             end
             object DR_C37G3: TcxDBCheckBox
               Left = 1
@@ -2306,7 +2228,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 105
+              Width = 116
             end
           end
         end
@@ -2348,8 +2270,6 @@ object Form2: TForm2
               Value = 30.010000000000000000
             end>
           TabOrder = 20
-          ExplicitLeft = 870
-          ExplicitWidth = 108
           object grdpnl21: TGridPanel
             Left = 1
             Top = 1
@@ -2403,12 +2323,11 @@ object Form2: TForm2
                 Value = 20.000000000000000000
               end>
             TabOrder = 0
-            ExplicitWidth = 106
             DesignSize = (
               119
               85)
             object lbl10: TLabel
-              Left = 51
+              Left = 58
               Top = 2
               Width = 3
               Height = 15
@@ -2428,7 +2347,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 104
+              Width = 117
             end
             object YR_C1000G4: TcxDBCheckBox
               Left = 1
@@ -2443,7 +2362,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 104
+              Width = 117
             end
             object YR_CNEKG4: TcxDBCheckBox
               Left = 1
@@ -2458,7 +2377,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 104
+              Width = 117
             end
             object YR_CGISG4: TcxDBCheckBox
               Left = 1
@@ -2473,7 +2392,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
-              Width = 104
+              Width = 117
             end
           end
           object grdpnl24: TGridPanel
@@ -2529,12 +2448,11 @@ object Form2: TForm2
                 Value = 18.000000000000000000
               end>
             TabOrder = 1
-            ExplicitWidth = 106
             DesignSize = (
               119
               113)
             object lbl11: TLabel
-              Left = 51
+              Left = 58
               Top = 3
               Width = 3
               Height = 15
@@ -2554,7 +2472,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 104
+              Width = 117
             end
             object OR_CIUGRG4: TcxDBCheckBox
               Left = 1
@@ -2569,7 +2487,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 104
+              Width = 117
             end
             object OR_C1000G4: TcxDBCheckBox
               Left = 1
@@ -2584,7 +2502,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 104
+              Width = 117
             end
             object OR_CKONJENITALG4: TcxDBCheckBox
               Left = 1
@@ -2599,7 +2517,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 3
-              Width = 104
+              Width = 117
             end
           end
           object grdpnl27: TGridPanel
@@ -2647,12 +2565,11 @@ object Form2: TForm2
                 Value = 20.000000000000000000
               end>
             TabOrder = 2
-            ExplicitWidth = 106
             DesignSize = (
               119
               85)
             object lbl12: TLabel
-              Left = 51
+              Left = 58
               Top = 2
               Width = 3
               Height = 15
@@ -2672,9 +2589,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitLeft = -1
-              ExplicitTop = 23
-              Width = 104
+              Width = 117
             end
             object DR_CIUGRG4: TcxDBCheckBox
               Left = 1
@@ -2689,7 +2604,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 104
+              Width = 117
             end
             object DR_C37G4: TcxDBCheckBox
               Left = 1
@@ -2704,7 +2619,7 @@ object Form2: TForm2
               Properties.OnChange = RiskCheckBoxPropertiesChange
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 104
+              Width = 117
             end
           end
         end
@@ -2715,7 +2630,6 @@ object Form2: TForm2
           Caption = 'R'#304'SK SKORU (Orta veya Y'#252'ksek olarak yaz'#305'lacak)'
           Properties.Alignment.Horz = taRightJustify
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 543
           AnchorX = 604
           AnchorY = 407
         end
@@ -2764,7 +2678,6 @@ object Form2: TForm2
               Value = 10.000000000000000000
             end>
           TabOrder = 22
-          ExplicitWidth = 543
           DesignSize = (
             603
             52)
@@ -2790,7 +2703,6 @@ object Form2: TForm2
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
             Properties.Alignment.Vert = taVCenter
-            ExplicitWidth = 541
             AnchorX = 602
             AnchorY = 16
           end
@@ -2808,7 +2720,6 @@ object Form2: TForm2
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
             Properties.Alignment.Vert = taVCenter
-            ExplicitWidth = 541
             AnchorX = 602
             AnchorY = 36
           end
@@ -2829,8 +2740,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta1
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taVCenter
-          ExplicitLeft = 547
-          ExplicitWidth = 109
           Height = 33
           Width = 121
           AnchorX = 665
@@ -2844,8 +2753,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta2
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taVCenter
-          ExplicitLeft = 653
-          ExplicitWidth = 108
           Height = 33
           Width = 121
           AnchorX = 786
@@ -2859,8 +2766,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta3
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taVCenter
-          ExplicitLeft = 761
-          ExplicitWidth = 109
           Height = 33
           Width = 120
           AnchorX = 906
@@ -2874,8 +2779,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta4
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taVCenter
-          ExplicitLeft = 870
-          ExplicitWidth = 108
           Height = 33
           Width = 121
           AnchorX = 1027
@@ -2897,8 +2800,6 @@ object Form2: TForm2
           Style.Font.Style = [fsBold]
           Style.ReadOnly = False
           Style.IsFontAssigned = True
-          ExplicitLeft = 544
-          ExplicitWidth = 109
           Height = 33
           Width = 121
           AnchorX = 665
@@ -2919,8 +2820,6 @@ object Form2: TForm2
           Style.Font.Name = 'Segoe UI'
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
-          ExplicitLeft = 653
-          ExplicitWidth = 108
           Height = 33
           Width = 121
           AnchorX = 786
@@ -2941,8 +2840,6 @@ object Form2: TForm2
           Style.Font.Name = 'Segoe UI'
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
-          ExplicitLeft = 761
-          ExplicitWidth = 109
           Height = 33
           Width = 120
           AnchorX = 906
@@ -2963,8 +2860,6 @@ object Form2: TForm2
           Style.Font.Name = 'Segoe UI'
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
-          ExplicitLeft = 870
-          ExplicitWidth = 108
           Height = 33
           Width = 121
           AnchorX = 1027
@@ -2978,8 +2873,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta1
           Properties.Alignment.Horz = taCenter
           TabOrder = 31
-          ExplicitLeft = 544
-          ExplicitWidth = 109
           Width = 121
         end
         object edtDRGun2: TcxDBTextEdit
@@ -2990,8 +2883,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta2
           Properties.Alignment.Horz = taCenter
           TabOrder = 32
-          ExplicitLeft = 653
-          ExplicitWidth = 108
           Width = 121
         end
         object edtDRGun3: TcxDBTextEdit
@@ -3002,8 +2893,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta3
           Properties.Alignment.Horz = taCenter
           TabOrder = 33
-          ExplicitLeft = 761
-          ExplicitWidth = 109
           Width = 120
         end
         object edtDRgun4: TcxDBTextEdit
@@ -3014,8 +2903,6 @@ object Form2: TForm2
           DataBinding.DataSource = dsHafta4
           Properties.Alignment.Horz = taCenter
           TabOrder = 34
-          ExplicitLeft = 870
-          ExplicitWidth = 108
           Width = 121
         end
       end
@@ -3028,6 +2915,271 @@ object Form2: TForm2
       Caption = 'Kaydet'
       TabOrder = 3
       OnClick = btnKaydetClick
+    end
+    object grpGözdenGecirme: TcxGroupBox
+      Left = 0
+      Top = 633
+      Align = alTop
+      Caption = 'grpG'#246'zdenGecirme'
+      TabOrder = 4
+      Height = 152
+      Width = 1092
+      object grdpnl19: TGridPanel
+        Left = 2
+        Top = 20
+        Width = 1088
+        Height = 130
+        Align = alClient
+        ColumnCollection = <
+          item
+            Value = 100.000000000000000000
+          end>
+        ControlCollection = <
+          item
+            Column = 0
+            Control = cxlbl7
+            Row = 0
+          end
+          item
+            Column = 0
+            Control = grdpnl22
+            Row = 1
+          end>
+        RowCollection = <
+          item
+            Value = 16.000000000000000000
+          end
+          item
+            Value = 84.000000000000000000
+          end>
+        TabOrder = 0
+        ExplicitLeft = 3
+        ExplicitTop = 19
+        object cxlbl7: TcxLabel
+          Left = 1
+          Top = 1
+          Align = alClient
+          Caption = 'A'#351'a'#287#305'dakilerden herhangi biri olunca tekrar g'#246'zden ge'#231'irilmeli'
+          Properties.Alignment.Horz = taCenter
+          Properties.Alignment.Vert = taVCenter
+          AnchorX = 544
+          AnchorY = 11
+        end
+        object grdpnl22: TGridPanel
+          Left = 1
+          Top = 21
+          Width = 1086
+          Height = 108
+          Align = alClient
+          ColumnCollection = <
+            item
+              Value = 55.560000000000000000
+            end
+            item
+              Value = 44.440000000000000000
+            end>
+          ControlCollection = <
+            item
+              Column = 0
+              Control = grdpnl25
+              Row = 0
+            end
+            item
+              Column = 1
+              Control = grdpnl28
+              Row = 0
+            end>
+          RowCollection = <
+            item
+              Value = 100.000000000000000000
+            end>
+          TabOrder = 1
+          object grdpnl25: TGridPanel
+            Left = 1
+            Top = 1
+            Width = 602
+            Height = 106
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 100.000000000000000000
+              end>
+            ControlCollection = <
+              item
+                Column = 0
+                Control = cxlbl30
+                Row = 0
+              end
+              item
+                Column = 0
+                Control = cxlbl31
+                Row = 1
+              end
+              item
+                Column = 0
+                Control = cxlbl32
+                Row = 2
+              end
+              item
+                Column = 0
+                Control = cxlbl33
+                Row = 3
+              end
+              item
+                Column = 0
+                Control = cxlbl34
+                Row = 4
+              end
+              item
+                Column = 0
+                Control = cxlbl35
+                Row = 5
+              end>
+            RowCollection = <
+              item
+                Value = 20.000000000000000000
+              end
+              item
+                Value = 16.000000000000000000
+              end
+              item
+                Value = 16.000000000000000000
+              end
+              item
+                Value = 16.000000000000000000
+              end
+              item
+                Value = 16.000000000000000000
+              end
+              item
+                Value = 16.000000000000000000
+              end>
+            TabOrder = 0
+            object cxlbl30: TcxLabel
+              Left = 1
+              Top = 1
+              Align = alClient
+              Caption = '3. '#304'HT'#304'YACININ TESP'#304'T'#304' '#304#199#304'N G'#214'ZDEN GE'#199#304'RME'
+              Style.TextStyle = [fsBold]
+              Properties.Alignment.Vert = taVCenter
+              ExplicitTop = 5
+              AnchorY = 12
+            end
+            object cxlbl31: TcxLabel
+              AlignWithMargins = True
+              Left = 11
+              Top = 22
+              Margins.Left = 10
+              Margins.Top = 0
+              Margins.Right = 0
+              Margins.Bottom = 0
+              Align = alClient
+              Caption = #220'stteki kriterlere g'#246're y'#252'ksek risk'
+              Properties.Alignment.Vert = taVCenter
+              ExplicitLeft = 1
+              ExplicitWidth = 600
+              AnchorY = 30
+            end
+            object cxlbl32: TcxLabel
+              AlignWithMargins = True
+              Left = 11
+              Top = 38
+              Margins.Left = 10
+              Margins.Top = 0
+              Margins.Right = 0
+              Margins.Bottom = 0
+              Align = alClient
+              Caption = '2. haftada do'#287'um kilosunu yakalayamama'
+              Properties.Alignment.Vert = taVCenter
+              ExplicitLeft = 1
+              ExplicitWidth = 600
+              AnchorY = 47
+            end
+            object cxlbl33: TcxLabel
+              AlignWithMargins = True
+              Left = 11
+              Top = 55
+              Margins.Left = 10
+              Margins.Top = 0
+              Margins.Right = 0
+              Margins.Bottom = 0
+              Align = alClient
+              Caption = 'Herhangi bir zamanda >%15 kilo kayb'#305
+              Properties.Alignment.Vert = taVCenter
+              ExplicitLeft = 1
+              ExplicitWidth = 600
+              AnchorY = 64
+            end
+            object cxlbl34: TcxLabel
+              AlignWithMargins = True
+              Left = 11
+              Top = 72
+              Margins.Left = 10
+              Margins.Top = 0
+              Margins.Right = 0
+              Margins.Bottom = 0
+              Align = alClient
+              Caption = '2. haftadan sonra <10gr / kg / g'#252'n kilo kazan'#305'm'#305
+              Properties.Alignment.Vert = taVCenter
+              ExplicitLeft = 1
+              ExplicitWidth = 600
+              AnchorY = 80
+            end
+            object cxlbl35: TcxLabel
+              AlignWithMargins = True
+              Left = 11
+              Top = 88
+              Margins.Left = 10
+              Margins.Top = 0
+              Margins.Right = 0
+              Margins.Bottom = 0
+              Align = alClient
+              Caption = 'Herhangi bir zamanda NEK veya G'#304'S'#39'de cerrahi i'#351'lem'
+              Properties.Alignment.Vert = taVCenter
+              ExplicitLeft = 276
+              ExplicitWidth = 40
+              ExplicitHeight = 19
+              AnchorY = 97
+            end
+          end
+          object grdpnl28: TGridPanel
+            Left = 603
+            Top = 1
+            Width = 482
+            Height = 106
+            Align = alClient
+            ColumnCollection = <
+              item
+                Value = 21.059115610358180000
+              end
+              item
+                Value = 26.354693662149060000
+              end
+              item
+                Value = 18.945018829648520000
+              end
+              item
+                Value = 12.650252957831550000
+              end
+              item
+                Value = 20.990918940012710000
+              end>
+            ControlCollection = <>
+            RowCollection = <
+              item
+                Value = 50.000000000000000000
+              end
+              item
+                Value = 50.000000000000000000
+              end>
+            TabOrder = 1
+            ExplicitLeft = 808
+            ExplicitTop = 56
+            ExplicitWidth = 185
+            ExplicitHeight = 41
+          end
+        end
+      end
     end
   end
   object orsn1: TOraSession
@@ -3696,8 +3848,8 @@ object Form2: TForm2
       'FROM HASTANE.YD_RISK_IZLEM'
       'WHERE DOSYA_NO    = :DOSYA_NO'
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
-      '  AND FORM_NO     = 1'
-      '  AND HAFTA_NO    = 1')
+      '  AND FORM_NO     = :FORM_NO'
+      '  AND HAFTA_NO    = :HAFTA_NO')
     Left = 352
     Top = 8
     ParamData = <
@@ -3709,6 +3861,16 @@ object Form2: TForm2
       item
         DataType = ftUnknown
         Name = 'PROTOKOL_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'FORM_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'HAFTA_NO'
         Value = nil
       end>
     object fltfldFirstWeekGESTASYON_HAFTASI: TFloatField

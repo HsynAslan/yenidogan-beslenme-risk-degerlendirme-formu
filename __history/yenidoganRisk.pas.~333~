@@ -316,6 +316,62 @@ type
     fltfldFirstWeekDOGUM_KILOSU_GR: TFloatField;
     fltfldFirstWeekDOGUM_BOYU_CM: TFloatField;
     fltfldFirstWeekDOGUM_BAS_CEVRESI: TFloatField;
+    grpGözdenGecirme: TcxGroupBox;
+    grdpnl19: TGridPanel;
+    cxlbl7: TcxLabel;
+    grdpnl22: TGridPanel;
+    grdpnl25: TGridPanel;
+    cxlbl30: TcxLabel;
+    cxlbl31: TcxLabel;
+    cxlbl32: TcxLabel;
+    cxlbl33: TcxLabel;
+    cxlbl34: TcxLabel;
+    cxlbl35: TcxLabel;
+    grdpnl28: TGridPanel;
+    lblTarih1Tespit: TcxDBLabel;
+    lblTarih2Tespit: TcxDBLabel;
+    lblTarih3Tespit: TcxDBLabel;
+    lblTarih4Tespit: TcxDBLabel;
+    TG1YR: TcxDBCheckBox;
+    TG2YR: TcxDBCheckBox;
+    TG3YR: TcxDBCheckBox;
+    TG4YR: TcxDBCheckBox;
+    TG1KILOYAKALAYAMAMA: TcxDBCheckBox;
+    TG2KILOYAKALAYAMAMA: TcxDBCheckBox;
+    TG3KILOYAKALAYAMAMA: TcxDBCheckBox;
+    TG4KILOYAKALAYAMAMA: TcxDBCheckBox;
+    TG1KILOKAYIP: TcxDBCheckBox;
+    TG2KILOKAYIP: TcxDBCheckBox;
+    TG3KILOKAYIP: TcxDBCheckBox;
+    TG4KILOKAYIP: TcxDBCheckBox;
+    TG1KILOKAZAN: TcxDBCheckBox;
+    TG2KILOKAZAN: TcxDBCheckBox;
+    TG3KILOKAZAN: TcxDBCheckBox;
+    TG4KILOKAZAN: TcxDBCheckBox;
+    TG1NEK: TcxDBCheckBox;
+    TG2NEK: TcxDBCheckBox;
+    TG3NEK: TcxDBCheckBox;
+    TG4NEK: TcxDBCheckBox;
+    strngfldHafta1TG_YUKSEK_RISK: TStringField;
+    strngfldHafta1TG_KILO_YAKALAYAMAMA: TStringField;
+    strngfldHafta1TG_KILO_KAYIP_15: TStringField;
+    strngfldHafta1TG_KILO_KAZANIM_10: TStringField;
+    strngfldHafta1TG_NEK_CERRAHI: TStringField;
+    strngfldHafta2TG_YUKSEK_RISK: TStringField;
+    strngfldHafta2TG_KILO_YAKALAYAMAMA: TStringField;
+    strngfldHafta2TG_KILO_KAYIP_15: TStringField;
+    strngfldHafta2TG_KILO_KAZANIM_10: TStringField;
+    strngfldHafta2TG_NEK_CERRAHI: TStringField;
+    strngfldHafta3TG_YUKSEK_RISK: TStringField;
+    strngfldHafta3TG_KILO_YAKALAYAMAMA: TStringField;
+    strngfldHafta3TG_KILO_KAYIP_15: TStringField;
+    strngfldHafta3TG_KILO_KAZANIM_10: TStringField;
+    strngfldHafta3TG_NEK_CERRAHI: TStringField;
+    strngfldHafta4TG_YUKSEK_RISK: TStringField;
+    strngfldHafta4TG_KILO_YAKALAYAMAMA: TStringField;
+    strngfldHafta4TG_KILO_KAYIP_15: TStringField;
+    strngfldHafta4TG_KILO_KAZANIM_10: TStringField;
+    strngfldHafta4TG_NEK_CERRAHI: TStringField;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -333,6 +389,10 @@ type
     procedure ClearOtherRiskGroups(const ActivePrefix: string);
     function CalcRiskSeviye: string;
     function GetActiveRiskValue(const Prefix: string): Boolean;
+
+    procedure TGCheckBoxPropertiesChange(Sender: TObject);
+    procedure ApplyTGFieldRules;
+    procedure ClearRiskFieldsInDataset(DS: TDataSet);
   private
     { Private declarations }
 
@@ -365,6 +425,37 @@ begin
   edtDBoyu.Enabled     := E;
   edtDBas.Enabled      := E;
 end;
+
+
+ procedure TForm2.ApplyTGFieldRules;
+var
+  I: Integer;
+  C: TComponent;
+begin
+  for I := 1 to 4 do
+  begin
+    C := FindComponent('TG' + IntToStr(I) + 'YR');
+    if C is TcxDBCheckBox then
+      TcxDBCheckBox(C).Enabled := (I = FAktifHafta);
+
+    C := FindComponent('TG' + IntToStr(I) + 'KILOYAKALAYAMAMA');
+    if C is TcxDBCheckBox then
+      TcxDBCheckBox(C).Enabled := (I = FAktifHafta);
+
+    C := FindComponent('TG' + IntToStr(I) + 'KILOKAYIP');
+    if C is TcxDBCheckBox then
+      TcxDBCheckBox(C).Enabled := (I = FAktifHafta);
+
+    C := FindComponent('TG' + IntToStr(I) + 'KILOKAZAN');
+    if C is TcxDBCheckBox then
+      TcxDBCheckBox(C).Enabled := (I = FAktifHafta);
+
+    C := FindComponent('TG' + IntToStr(I) + 'NEK');
+    if C is TcxDBCheckBox then
+      TcxDBCheckBox(C).Enabled := (I = FAktifHafta);
+  end;
+end;
+
 
  procedure TForm2.ApplyDoctorFieldRules;
 var
@@ -626,6 +717,7 @@ begin
   OpenHafta(qrHafta4, 4);
 
   SetHaftaAktif(FAktifHafta);
+  ApplyTGFieldRules;
   ApplyFixedFieldRules;
   ShowMessage(
   Format('Form=%d  Hafta=%d',
@@ -642,6 +734,33 @@ end;
 procedure TForm2.lblGunTarihClick(Sender: TObject);
 begin
   // TODO
+end;
+ procedure TForm2.ClearRiskFieldsInDataset(DS: TDataSet);
+const
+  RISK_DB_FIELDS: array[0..10] of string = (
+    'YR_28_HAFTA',
+    'YR_1000_GR',
+    'YR_NEK_GIS',
+    'YR_KONJ_GIS',
+    'OR_28_31_HAFTA',
+    'OR_IUGR',
+    'OR_1000_1500_GR',
+    'OR_KONJ_BESLENME',
+    'DR_32_35_HAFTA',
+    'DR_IUGR_35',
+    'DR_TERM'
+  );
+var
+  I: Integer;
+begin
+  if not Assigned(DS) or not DS.Active then Exit;
+
+  if not (DS.State in dsEditModes) then
+    DS.Edit;
+
+  for I := Low(RISK_DB_FIELDS) to High(RISK_DB_FIELDS) do
+    if DS.FindField(RISK_DB_FIELDS[I]) <> nil then
+      DS.FieldByName(RISK_DB_FIELDS[I]).AsString := 'F';
 end;
 
 
@@ -736,33 +855,64 @@ begin
   ClearGroup('OR', OR_FIELDS);
   ClearGroup('DR', DR_FIELDS);
 end;
+ procedure TForm2.TGCheckBoxPropertiesChange(Sender: TObject);
+var
+  C: TcxDBCheckBox;
+  DS: TDataSet;
+begin
+  if not (Sender is TcxDBCheckBox) then Exit;
+  C := TcxDBCheckBox(Sender);
+
+  if (C.DataBinding.DataSource = nil) or
+     (C.DataBinding.DataSource.DataSet = nil) then Exit;
+
+  DS := C.DataBinding.DataSource.DataSet;
+  if not DS.Active then Exit;
+
+  if not (DS.State in dsEditModes) then
+    DS.Edit;
+
+  // sadece kendi rengini güncelle
+  RefreshRiskCheckBox(C);
+end;
+
 
 
 procedure TForm2.RiskCheckBoxPropertiesChange(Sender: TObject);
 var
   C: TcxDBCheckBox;
-  Prefix: string;
+  DS: TDataSet;
+  FieldName: string;
 begin
   if not (Sender is TcxDBCheckBox) then Exit;
   C := TcxDBCheckBox(Sender);
 
-  if Assigned(C.DataBinding.DataSource)
-     and Assigned(C.DataBinding.DataSource.DataSet)
-     and not (C.DataBinding.DataSource.DataSet.State in dsEditModes) then
-    C.DataBinding.DataSource.DataSet.Edit;
+  if (C.DataBinding.DataSource = nil) or
+     (C.DataBinding.DataSource.DataSet = nil) then Exit;
 
-  // 🔹 Prefix tespiti (YR / OR / DR)
-  if Pos('YR_', C.Name) = 1 then Prefix := 'YR'
-  else if Pos('OR_', C.Name) = 1 then Prefix := 'OR'
-  else if Pos('DR_', C.Name) = 1 then Prefix := 'DR'
-  else Exit;
+  DS := C.DataBinding.DataSource.DataSet;
+  if not DS.Active then Exit;
 
-  // 🔒 Diğer risk gruplarını temizle
-  ClearOtherRiskGroups(Prefix);
+  if not (DS.State in dsEditModes) then
+    DS.Edit;
+
+  FieldName := C.DataBinding.DataField;
+
+  if C.Checked then
+  begin
+    // ✅ 1) ÖNCE bu alanı TRUE yap
+    DS.FieldByName(FieldName).AsString := 'T';
+
+    // ✅ 2) SONRA diğer tüm riskleri temizle
+    ClearRiskFieldsInDatasetExcept(DS, FieldName);
+  end
+  else
+  begin
+    // kullanıcı geri aldıysa
+    DS.FieldByName(FieldName).AsString := 'F';
+  end;
 
   RefreshRiskCheckBox(C);
 end;
-
-
 
 end.
