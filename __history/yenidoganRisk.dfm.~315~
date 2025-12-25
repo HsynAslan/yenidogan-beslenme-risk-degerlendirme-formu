@@ -5074,7 +5074,7 @@
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 46016.451285995370000000
-    ReportOptions.LastChange = 46016.636954918980000000
+    ReportOptions.LastChange = 46016.611585231480000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -5120,7 +5120,7 @@
           Height = 35.995519730000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
-          Font.Height = -21
+          Font.Height = -19
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold, fsUnderline]
           Frame.Typ = []
@@ -5207,7 +5207,7 @@
         FillGap.Bottom = 0
         FillGap.Right = 0
         Frame.Typ = []
-        Height = 156.940489320000000000
+        Height = 99.347659530000000000
         Top = 306.141930000000000000
         Width = 718.110700000000000000
         DataSet = frxDB
@@ -5216,26 +5216,17 @@
         object Memo6: TfrxMemoView
           AllowVectorExport = True
           Width = 717.390795910000000000
-          Height = 153.160959320000000000
+          Height = 81.349889320000000000
           Frame.Typ = []
           Memo.UTF8W = (
             
-              '----------------------------------------------------------------' +
-              '--------------------------------------------'
-            
-              #55357#56524' Hafta [frxDBDataset1."HAFTA_NO"]   -   [frxDBDataset1."IZLEM_' +
-              'TARIHI"]'
-            ''
-            #55357#56524' '#214'zet:  [frxDBDataset1."RISK_OZET"]'
-            ''
-            #9878#65039' Kilo : [frxDBDataset1."KILO_KG"] gr '
-            #55357#56527' Boy : [frxDBDataset1."BOY_CM"] cm '
-            #55358#56800' Ba'#351' '#199'evresi : [frxDBDataset1."BAS_CEVRESI_CM"] cm'
-            ''
-            #55357#56524' De'#287'erlendirmeyi Yapan: [frxDBDataset1."DOKTOR_ADI"]')
+              'Hafta [frxDBDataset1."HAFTA_NO"]   -   [frxDBDataset1."IZLEM_TAR' +
+              'IHI"]'
+            #214'zet:  [frxDBDataset1."RISK_OZET"]'
+            'Kilo : [frxDBDataset1."KILO_KG"] gr'
+            'Boy  : [frxDBDataset1."BOY_CM"] cm'
+            'Ba'#351' '#199'evresi : [frxDBDataset1."BAS_CEVRESI_CM"] cm')
           Formats = <
-            item
-            end
             item
             end
             item
@@ -5258,7 +5249,7 @@
         FillGap.Right = 0
         Frame.Typ = []
         Height = 62.812185780000000000
-        Top = 525.354670000000000000
+        Top = 464.882190000000000000
         Width = 718.110700000000000000
         object Memo8: TfrxMemoView
           AllowVectorExport = True

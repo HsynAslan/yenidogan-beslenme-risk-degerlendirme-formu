@@ -3940,25 +3940,43 @@
             item
               Expanded = False
               FieldName = 'FORM_NO'
-              Width = 114
+              Width = 66
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ILK_TARIH'
-              Width = 265
+              Width = 103
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'SON_TARIH'
-              Width = 258
+              Width = 101
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'RISK_SEVIYE'
-              Width = 180
+              FieldName = 'GIRIS_BILGISI'
+              Width = 119
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'CIKIS_BILGISI'
+              Width = 122
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'TOPLAM_SURE'
+              Width = 113
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'GENEL_RISK'
+              Width = 99
               Visible = True
             end>
         end
@@ -5024,15 +5042,63 @@
     Session = orsn1
     SQL.Strings = (
       'SELECT'
-      '  FORM_NO,'
-      '  MIN(IZLEM_TARIHI)   AS ILK_TARIH,'
-      '  MAX(IZLEM_TARIHI)   AS SON_TARIH,'
-      '  MAX(RISK_SEVIYE)    AS RISK_SEVIYE'
+      '    FORM_NO,'
+      ''
+      '    /* ========================='
+      '       '#55357#56517' HAM TAR'#304'HLER'
+      '       ========================= */'
+      '    MIN(IZLEM_TARIHI) AS ILK_TARIH,'
+      '    MAX(IZLEM_TARIHI) AS SON_TARIH,'
+      ''
+      '    /* ========================='
+      '       '#55357#57314' G'#304'R'#304#350' METN'#304
+      '       ========================= */'
+      '   '
+      
+        '    TRIM(TO_CHAR(MIN(IZLEM_TARIHI), '#39'Month'#39', '#39'NLS_DATE_LANGUAGE=' +
+        'TURKISH'#39')) || '#39' '#39'||'
+      '    '
+      '    TO_CHAR(MIN(IZLEM_TARIHI), '#39'W'#39') ||'
+      '    '#39'. Hafta'#39' AS GIRIS_BILGISI,'
+      ''
+      '    /* ========================='
+      '       '#55357#56628' '#199'IKI'#350' METN'#304
+      '       ========================= */'
+      ' '
+      
+        '    TRIM(TO_CHAR(MAX(IZLEM_TARIHI), '#39'Month'#39', '#39'NLS_DATE_LANGUAGE=' +
+        'TURKISH'#39')) || '#39' '#39' ||'
+      '    '
+      '    TO_CHAR(MAX(IZLEM_TARIHI), '#39'W'#39') ||'
+      '    '#39'. Hafta'#39' AS CIKIS_BILGISI,'
+      ''
+      '    /* ========================='
+      '       '#9201#65039' KA'#199' HAFTA'
+      '       ========================= */'
+      '    COUNT(DISTINCT HAFTA_NO) || '#39' Hafta'#39' AS TOPLAM_SURE,'
+      ''
+      '    /* ========================='
+      '       '#9888#65039' GENEL R'#304'SK'
+      '       ========================= */'
+      '    CASE'
+      
+        '      WHEN MAX(CASE WHEN RISK_SEVIYE = '#39'Y'#252'ksek'#39' THEN 1 ELSE 0 EN' +
+        'D) = 1'
+      '        THEN '#39'Y'#252'ksek'#39
+      
+        '      WHEN MAX(CASE WHEN RISK_SEVIYE = '#39'Orta'#39' THEN 1 ELSE 0 END)' +
+        ' = 1'
+      '        THEN '#39'Orta'#39
+      '      ELSE '#39#8212#39
+      '    END AS GENEL_RISK'
+      ''
       'FROM HASTANE.YD_RISK_IZLEM'
+      ''
       'WHERE DOSYA_NO    = :DOSYA_NO'
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
+      ''
       'GROUP BY FORM_NO'
-      'ORDER BY FORM_NO DESC')
+      'ORDER BY FORM_NO DESC;')
     Left = 721
     Top = 672
     ParamData = <
@@ -5055,9 +5121,21 @@
     object dtmfldFormHistorySON_TARIH: TDateTimeField
       FieldName = 'SON_TARIH'
     end
-    object strngfldFormHistoryRISK_SEVIYE: TStringField
-      FieldName = 'RISK_SEVIYE'
-      Size = 10
+    object strngfldFormHistoryGIRIS_BILGISI: TStringField
+      FieldName = 'GIRIS_BILGISI'
+      Size = 16
+    end
+    object strngfldFormHistoryCIKIS_BILGISI: TStringField
+      FieldName = 'CIKIS_BILGISI'
+      Size = 16
+    end
+    object strngfldFormHistoryTOPLAM_SURE: TStringField
+      FieldName = 'TOPLAM_SURE'
+      Size = 46
+    end
+    object strngfldFormHistoryGENEL_RISK: TStringField
+      FieldName = 'GENEL_RISK'
+      Size = 6
     end
   end
   object dsFormHistory: TOraDataSource

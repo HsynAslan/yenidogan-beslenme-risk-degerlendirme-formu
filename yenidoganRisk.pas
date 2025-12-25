@@ -399,10 +399,6 @@ type
     lblHastaBolum: TcxDBLabel;
     cxlbl38: TcxLabel;
     lblHastaTani: TcxDBLabel;
-    intgrfldFormHistoryFORM_NO: TIntegerField;
-    dtmfldFormHistoryILK_TARIH: TDateTimeField;
-    dtmfldFormHistorySON_TARIH: TDateTimeField;
-    strngfldFormHistoryRISK_SEVIYE: TStringField;
     frxReportForm: TfrxReport;
     qryPrintForm: TOraQuery;
     frxDB: TfrxDBDataset;
@@ -449,6 +445,13 @@ type
     strngfldPrintFormTANI_ADI: TStringField;
     strngfldPrintFormBOLUM_ADI: TStringField;
     strngfldPrintFormRISK_OZET: TStringField;
+    intgrfldFormHistoryFORM_NO: TIntegerField;
+    dtmfldFormHistoryILK_TARIH: TDateTimeField;
+    dtmfldFormHistorySON_TARIH: TDateTimeField;
+    strngfldFormHistoryGIRIS_BILGISI: TStringField;
+    strngfldFormHistoryCIKIS_BILGISI: TStringField;
+    strngfldFormHistoryTOPLAM_SURE: TStringField;
+    strngfldFormHistoryGENEL_RISK: TStringField;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);

@@ -24,7 +24,8 @@ uses
   dxSkinXmas2008Blue, cxScrollBox, cxContainer, cxEdit, cxDBLabel, cxLabel,
   Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox, Data.DB, cxTextEdit, cxDBEdit,
   cxMaskEdit, cxButtonEdit, MemDS, DBAccess, Ora, OraCall, cxCheckBox, Vcl.Mask, StrUtils,
-  Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids;
+  Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, frxClass, frxExportBaseDialog,
+  frxExportPDF, frxDBSet, frCoreClasses;
 
 type
   TForm2 = class(TForm)
@@ -402,6 +403,52 @@ type
     dtmfldFormHistoryILK_TARIH: TDateTimeField;
     dtmfldFormHistorySON_TARIH: TDateTimeField;
     strngfldFormHistoryRISK_SEVIYE: TStringField;
+    frxReportForm: TfrxReport;
+    qryPrintForm: TOraQuery;
+    frxDB: TfrxDBDataset;
+    fltfldPrintFormHASTA_ID: TFloatField;
+    fltfldPrintFormHAFTA_NO: TFloatField;
+    fltfldPrintFormDOSYA_NO: TFloatField;
+    fltfldPrintFormPROTOKOL_NO: TFloatField;
+    dtmfldPrintFormIZLEM_TARIHI: TDateTimeField;
+    fltfldPrintFormGESTASYON_HAFTASI: TFloatField;
+    fltfldPrintFormDOGUM_KILOSU_GR: TFloatField;
+    fltfldPrintFormDOGUM_BOYU_CM: TFloatField;
+    fltfldPrintFormDOGUM_BAS_CEVRESI: TFloatField;
+    strngfldPrintFormYR_28_HAFTA: TStringField;
+    strngfldPrintFormYR_1000_GR: TStringField;
+    strngfldPrintFormYR_NEK_GIS: TStringField;
+    strngfldPrintFormYR_KONJ_GIS: TStringField;
+    strngfldPrintFormOR_28_31_HAFTA: TStringField;
+    strngfldPrintFormOR_IUGR: TStringField;
+    strngfldPrintFormOR_1000_1500_GR: TStringField;
+    strngfldPrintFormOR_KONJ_BESLENME: TStringField;
+    strngfldPrintFormDR_32_35_HAFTA: TStringField;
+    strngfldPrintFormDR_IUGR_35: TStringField;
+    strngfldPrintFormDR_TERM: TStringField;
+    strngfldPrintFormRISK_SEVIYE: TStringField;
+    strngfldPrintFormIHT_2_HAFTA_KILO: TStringField;
+    strngfldPrintFormIHT_15_KAYIP: TStringField;
+    strngfldPrintFormIHT_10G_KAZANIM: TStringField;
+    strngfldPrintFormIHT_NEK_CERRAHI: TStringField;
+    strngfldPrintFormDOKTOR_ADI: TStringField;
+    dtmfldPrintFormKAYIT_TARIHI: TDateTimeField;
+    fltfldPrintFormKILO_KG: TFloatField;
+    fltfldPrintFormBOY_CM: TFloatField;
+    fltfldPrintFormBAS_CEVRESI_CM: TFloatField;
+    intgrfldPrintFormFORM_NO: TIntegerField;
+    strngfldPrintFormTG_YUKSEK_RISK: TStringField;
+    strngfldPrintFormTG_KILO_YAKALAYAMAMA: TStringField;
+    strngfldPrintFormTG_KILO_KAYIP_15: TStringField;
+    strngfldPrintFormTG_KILO_KAZANIM_10: TStringField;
+    strngfldPrintFormTG_NEK_CERRAHI: TStringField;
+    strngfldPrintFormHASTA_ADI: TStringField;
+    dtmfldPrintFormHASTA_DOGUM_TARIHI: TDateTimeField;
+    fltfldPrintFormHASTA_YASI: TFloatField;
+    fltfldPrintFormPROTOKOL_NO_TXT: TFloatField;
+    strngfldPrintFormTANI_ADI: TStringField;
+    strngfldPrintFormBOLUM_ADI: TStringField;
+    strngfldPrintFormRISK_OZET: TStringField;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -432,6 +479,7 @@ type
     procedure RefreshAllRiskCheckBoxes;
     procedure LoadActiveForm;
     procedure ResetAllRiskCheckBoxStyles;
+    procedure btnYazdirClick(Sender: TObject);
   private
     { Private declarations }
    FReadOnlyMode: Boolean;
@@ -652,7 +700,6 @@ begin
   SelFormNo := qryFormHistory.FieldByName('FORM_NO').AsInteger;
 
   FReadOnlyMode := True;
-
   FAktifForm  := SelFormNo;
   FAktifHafta := 0;
 
@@ -665,6 +712,10 @@ begin
   OpenHafta(qrHafta2, 2);
   OpenHafta(qrHafta3, 3);
   OpenHafta(qrHafta4, 4);
+
+  // 🔴 MUTLAKA BU SIRA
+  ResetAllRiskCheckBoxStyles;
+  RefreshAllRiskCheckBoxes;
 
   ApplyReadOnlyMode;
 end;
@@ -850,23 +901,20 @@ begin
   OpenHafta(qrHafta3, 3);
   OpenHafta(qrHafta4, 4);
 
+  ResetAllRiskCheckBoxStyles;   // 🔥
+  RefreshAllRiskCheckBoxes;    // 🔥
+
   SetHaftaAktif(FAktifHafta);
   ApplyFixedFieldRules;
   ApplyDoctorFieldRules;
   ApplyTGFieldRules;
 
-  // 🔄 GEÇMİŞ FORM GRID
-  if Assigned(qryFormHistory) then
-  begin
-    qryFormHistory.Close;
-    qryFormHistory.ParamByName('DOSYA_NO').AsInteger    := FDosyaNo;
-    qryFormHistory.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
-    qryFormHistory.Open;
-  end;
-
-
-  RefreshAllRiskCheckBoxes;
+  qryFormHistory.Close;
+  qryFormHistory.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
+  qryFormHistory.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+  qryFormHistory.Open;
 end;
+
 
 procedure TForm2.btnKaydetClick(Sender: TObject);
 var
@@ -915,6 +963,36 @@ end;
 
 
 
+procedure TForm2.btnYazdirClick(Sender: TObject);
+var
+  FormNo: Integer;
+begin
+  // gridde seçim var mı?
+  if qryFormHistory.IsEmpty then
+  begin
+    ShowMessage('Lütfen yazdırılacak formu seçiniz.');
+    Exit;
+  end;
+
+  FormNo := qryFormHistory.FieldByName('FORM_NO').AsInteger;
+
+  // rapor datası
+  qryPrintForm.Close;
+  qryPrintForm.ParamByName('DOSYA_NO').AsInteger    := FDosyaNo;
+  qryPrintForm.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+  qryPrintForm.ParamByName('FORM_NO').AsInteger     := FormNo;
+  qryPrintForm.Open;
+
+  if qryPrintForm.IsEmpty then
+  begin
+    ShowMessage('Bu forma ait yazdırılacak veri yok.');
+    Exit;
+  end;
+
+  // PDF önizleme (FastReport kendi PDF butonunu gösterir)
+  frxReportForm.ShowReport;
+end;
+
 procedure TForm2.btnYeniClick(Sender: TObject);
 begin
   FReadOnlyMode := False;
@@ -926,11 +1004,12 @@ begin
   OpenHafta(qrHafta3, 3);
   OpenHafta(qrHafta4, 4);
 
-  btnKaydet.Enabled := True;
+  ResetAllRiskCheckBoxStyles;   // 🔥
+  RefreshAllRiskCheckBoxes;    // 🔥
 
+  btnKaydet.Enabled := True;
   SetHaftaAktif(FAktifHafta);
 end;
-
 
 procedure TForm2.FormShow(Sender: TObject);
 begin
