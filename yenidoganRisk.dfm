@@ -680,8 +680,10 @@
           Left = 1
           Top = 27
           Align = alClient
-          Caption = 'Kilo / Persantil'
+          Caption = 'Kilo / Persantil (gr)'
           Properties.Alignment.Vert = taVCenter
+          ExplicitLeft = -5
+          ExplicitTop = 21
           AnchorY = 36
         end
         object edtKiloGun1: TcxDBTextEdit
@@ -728,7 +730,7 @@
           Left = 1
           Top = 44
           Align = alClient
-          Caption = 'Boy / Persantil'
+          Caption = 'Boy / Persantil (cm)'
           Properties.Alignment.Vert = taVCenter
           AnchorY = 53
         end
@@ -776,7 +778,7 @@
           Left = 1
           Top = 61
           Align = alClient
-          Caption = 'Ba'#351' '#199'evresi / Persantil'
+          Caption = 'Ba'#351' '#199'evresi / Persantil (cm)'
           ParentColor = False
           Style.Color = clBtnFace
           Properties.Alignment.Horz = taLeftJustify
