@@ -1405,14 +1405,12 @@
               Align = alClient
               DataBinding.DataField = 'YR_KONJ_GIS'
               DataBinding.DataSource = dsHafta1
-              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
               Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
-              Style.Color = clBtnFace
               Style.TransparentBorder = False
               TabOrder = 3
               Width = 115
