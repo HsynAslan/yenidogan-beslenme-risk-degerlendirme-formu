@@ -1405,14 +1405,12 @@
               Align = alClient
               DataBinding.DataField = 'YR_KONJ_GIS'
               DataBinding.DataSource = dsHafta1
-              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
               Properties.ValueChecked = 'T'
               Properties.ValueUnchecked = 'F'
               Properties.OnChange = RiskCheckBoxPropertiesChange
-              Style.Color = clBtnFace
               Style.TransparentBorder = False
               TabOrder = 3
               Width = 115
@@ -3939,25 +3937,43 @@
             item
               Expanded = False
               FieldName = 'FORM_NO'
-              Width = 114
+              Width = 66
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ILK_TARIH'
-              Width = 265
+              Width = 103
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'SON_TARIH'
-              Width = 258
+              Width = 101
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'RISK_SEVIYE'
-              Width = 180
+              FieldName = 'GIRIS_BILGISI'
+              Width = 119
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'CIKIS_BILGISI'
+              Width = 122
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'TOPLAM_SURE'
+              Width = 113
+              Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'GENEL_RISK'
+              Width = 99
               Visible = True
             end>
         end
@@ -5023,15 +5039,63 @@
     Session = orsn1
     SQL.Strings = (
       'SELECT'
-      '  FORM_NO,'
-      '  MIN(IZLEM_TARIHI)   AS ILK_TARIH,'
-      '  MAX(IZLEM_TARIHI)   AS SON_TARIH,'
-      '  MAX(RISK_SEVIYE)    AS RISK_SEVIYE'
+      '    FORM_NO,'
+      ''
+      '    /* ========================='
+      '       '#55357#56517' HAM TAR'#304'HLER'
+      '       ========================= */'
+      '    MIN(IZLEM_TARIHI) AS ILK_TARIH,'
+      '    MAX(IZLEM_TARIHI) AS SON_TARIH,'
+      ''
+      '    /* ========================='
+      '       '#55357#57314' G'#304'R'#304#350' METN'#304
+      '       ========================= */'
+      '   '
+      
+        '    TRIM(TO_CHAR(MIN(IZLEM_TARIHI), '#39'Month'#39', '#39'NLS_DATE_LANGUAGE=' +
+        'TURKISH'#39')) || '#39' '#39'||'
+      '    '
+      '    TO_CHAR(MIN(IZLEM_TARIHI), '#39'W'#39') ||'
+      '    '#39'. Hafta'#39' AS GIRIS_BILGISI,'
+      ''
+      '    /* ========================='
+      '       '#55357#56628' '#199'IKI'#350' METN'#304
+      '       ========================= */'
+      ' '
+      
+        '    TRIM(TO_CHAR(MAX(IZLEM_TARIHI), '#39'Month'#39', '#39'NLS_DATE_LANGUAGE=' +
+        'TURKISH'#39')) || '#39' '#39' ||'
+      '    '
+      '    TO_CHAR(MAX(IZLEM_TARIHI), '#39'W'#39') ||'
+      '    '#39'. Hafta'#39' AS CIKIS_BILGISI,'
+      ''
+      '    /* ========================='
+      '       '#9201#65039' KA'#199' HAFTA'
+      '       ========================= */'
+      '    COUNT(DISTINCT HAFTA_NO) || '#39' Hafta'#39' AS TOPLAM_SURE,'
+      ''
+      '    /* ========================='
+      '       '#9888#65039' GENEL R'#304'SK'
+      '       ========================= */'
+      '    CASE'
+      
+        '      WHEN MAX(CASE WHEN RISK_SEVIYE = '#39'Y'#252'ksek'#39' THEN 1 ELSE 0 EN' +
+        'D) = 1'
+      '        THEN '#39'Y'#252'ksek'#39
+      
+        '      WHEN MAX(CASE WHEN RISK_SEVIYE = '#39'Orta'#39' THEN 1 ELSE 0 END)' +
+        ' = 1'
+      '        THEN '#39'Orta'#39
+      '      ELSE '#39#8212#39
+      '    END AS GENEL_RISK'
+      ''
       'FROM HASTANE.YD_RISK_IZLEM'
+      ''
       'WHERE DOSYA_NO    = :DOSYA_NO'
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
+      ''
       'GROUP BY FORM_NO'
-      'ORDER BY FORM_NO DESC')
+      'ORDER BY FORM_NO DESC;')
     Left = 721
     Top = 672
     ParamData = <
@@ -5054,9 +5118,21 @@
     object dtmfldFormHistorySON_TARIH: TDateTimeField
       FieldName = 'SON_TARIH'
     end
-    object strngfldFormHistoryRISK_SEVIYE: TStringField
-      FieldName = 'RISK_SEVIYE'
-      Size = 10
+    object strngfldFormHistoryGIRIS_BILGISI: TStringField
+      FieldName = 'GIRIS_BILGISI'
+      Size = 16
+    end
+    object strngfldFormHistoryCIKIS_BILGISI: TStringField
+      FieldName = 'CIKIS_BILGISI'
+      Size = 16
+    end
+    object strngfldFormHistoryTOPLAM_SURE: TStringField
+      FieldName = 'TOPLAM_SURE'
+      Size = 46
+    end
+    object strngfldFormHistoryGENEL_RISK: TStringField
+      FieldName = 'GENEL_RISK'
+      Size = 6
     end
   end
   object dsFormHistory: TOraDataSource
@@ -5073,7 +5149,7 @@
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 46016.451285995370000000
-    ReportOptions.LastChange = 46016.475328587960000000
+    ReportOptions.LastChange = 46016.611585231480000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -5109,18 +5185,94 @@
         FillGap.Bottom = 0
         FillGap.Right = 0
         Frame.Typ = []
-        Height = 42.294737170000000000
+        Height = 227.491707170000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
           AllowVectorExport = True
-          Left = 17.997761680966330000
-          Top = 6.299217443266368000
-          Width = 662.317644755045500000
-          Height = 35.995519728887650000
+          Left = 2.879641680000000000
+          Width = 707.672004760000000000
+          Height = 35.995519730000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -19
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold, fsUnderline]
           Frame.Typ = []
+          HAlign = haCenter
           Memo.UTF8W = (
             'Yenido'#287'an Risk '#304'zlem Formu')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo3: TfrxMemoView
+          AllowVectorExport = True
+          Top = 54.713195340000000000
+          Width = 337.817989000000000000
+          Height = 78.470240890000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Hasta Ad'#305'     : [frxDBDataset1."HASTA_ADI"]'
+            'Dosya No      : [frxDBDataset1."DOSYA_NO"]'
+            'Do'#287'um Tarihi  : [frxDBDataset1."HASTA_DOGUM_TARIHI"]'
+            'Ya'#351#305'          : [frxDBDataset1."HASTA_YASI"]')
+          ParentFont = False
+        end
+        object Memo4: TfrxMemoView
+          AllowVectorExport = True
+          Left = 340.337664240000000000
+          Top = 51.473599420000000000
+          Width = 352.216238160000000000
+          Height = 83.149661030000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Protokol No : [frxDBDataset1."PROTOKOL_NO_TXT"]'
+            'Tan'#305'        : [frxDBDataset1."TANI_ADI"]'
+            'B'#246'l'#252'm       : [frxDBDataset1."BOLUM_ADI"]')
+          ParentFont = False
+        end
+        object Memo5: TfrxMemoView
+          AllowVectorExport = True
+          Left = 1.439819280000000000
+          Top = 152.081083900000000000
+          Width = 711.991475590000000000
+          Height = 20.877409320000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            
+              'Form No : [frxDBDataset1."FORM_NO"]      Risk Seviyesi : [frxDBD' +
+              'ataset1."RISK_SEVIYE"]')
+          ParentFont = False
+        end
+        object Memo7: TfrxMemoView
+          AllowVectorExport = True
+          Left = 2.879641680000000000
+          Top = 174.938247890000000000
+          Width = 714.871084570000000000
+          Height = 49.673810580000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            
+              'Gestasyon Haftas'#305': [frxDBDataset1."GESTASYON_HAFTASI"] / Do'#287'um T' +
+              'art'#305's'#305': [frxDBDataset1."DOGUM_KILOSU_GR"]'
+            
+              'Do'#287'um Boyu: [frxDBDataset1."DOGUM_BOYU_CM"] / Do'#287'um Ba'#351' '#199'evresi:' +
+              ' [frxDBDataset1."DOGUM_BAS_CEVRESI"]')
         end
       end
       object MasterData1: TfrxMasterData
@@ -5130,22 +5282,59 @@
         FillGap.Bottom = 0
         FillGap.Right = 0
         Frame.Typ = []
-        Height = 60.472480000000000000
-        Top = 120.944960000000000000
+        Height = 99.347659530000000000
+        Top = 306.141930000000000000
         Width = 718.110700000000000000
         DataSet = frxDB
         DataSetName = 'frxDBDataset1'
         RowCount = 0
-        object Memo2: TfrxMemoView
+        object Memo6: TfrxMemoView
           AllowVectorExport = True
-          Left = 35.995523360000000000
-          Top = 7.919015780000000000
-          Width = 333.318565060000000000
-          Height = 40.135022650000000000
+          Width = 717.390795910000000000
+          Height = 81.349889320000000000
           Frame.Typ = []
           Memo.UTF8W = (
-            'Form No: [frxDBDataset1."FORM_NO"]'
-            'dr: [frxDBDataset1."DOKTOR_ADI"]')
+            
+              'Hafta [frxDBDataset1."HAFTA_NO"]   -   [frxDBDataset1."IZLEM_TAR' +
+              'IHI"]'
+            #214'zet:  [frxDBDataset1."RISK_OZET"]'
+            'Kilo : [frxDBDataset1."KILO_KG"] gr'
+            'Boy  : [frxDBDataset1."BOY_CM"] cm'
+            'Ba'#351' '#199'evresi : [frxDBDataset1."BAS_CEVRESI_CM"] cm')
+          Formats = <
+            item
+            end
+            item
+            end
+            item
+            end
+            item
+            end
+            item
+            end
+            item
+            end>
+        end
+      end
+      object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
+        FillGap.Top = 0
+        FillGap.Left = 0
+        FillGap.Bottom = 0
+        FillGap.Right = 0
+        Frame.Typ = []
+        Height = 62.812185780000000000
+        Top = 464.882190000000000000
+        Width = 718.110700000000000000
+        object Memo8: TfrxMemoView
+          AllowVectorExport = True
+          Left = 1.259844890000000000
+          Width = 714.331167120000000000
+          Height = 59.032655780000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'De'#287'erlendirmeyi Yapan'#305'n Ad'#305' Soyad'#305': [frxDBDataset1."DOKTOR_ADI"]'
+            #304'mza: ')
         end
       end
     end
@@ -5155,14 +5344,81 @@
     SQL.Strings = (
       'SELECT '
       '    R.*,'
-      '    K.ADI || '#39' '#39' || K.SOYADI      AS HASTA_ADI,'
-      '    K.DOGUM_TAR                  AS HASTA_DOGUM_TARIHI,'
+      ''
+      '    /* ========================='
+      '       '#55357#56633' HASTA'
+      '       ========================= */'
+      '    K.ADI || '#39' '#39' || K.SOYADI AS HASTA_ADI,'
+      '    K.DOGUM_TAR             AS HASTA_DOGUM_TARIHI,'
       
         '    TRUNC(MONTHS_BETWEEN(SYSDATE, K.DOGUM_TAR) / 12) AS HASTA_YA' +
         'SI,'
-      '    P.PROTOKOL_NO                AS PROTOKOL_NO_TXT,'
-      '    TA.TANI                      AS TANI_ADI,'
-      '    B.BOLUM_ADI                  AS BOLUM_ADI'
+      ''
+      '    /* ========================='
+      '       '#55357#56633' PROTOKOL / TANIMLAYICI'
+      '       ========================= */'
+      '    P.PROTOKOL_NO           AS PROTOKOL_NO_TXT,'
+      '    T1.TANI_ADI             AS TANI_ADI,'
+      '    B.BOLUM_ADI             AS BOLUM_ADI,'
+      ''
+      '    /* ========================='
+      '       '#55357#56628#55357#57313#55357#57314' R'#304'SK '#214'ZET'#304' (TEK MET'#304'N)'
+      '       ========================= */'
+      '    TRIM('
+      '      CASE'
+      '        WHEN R.YR_28_HAFTA = '#39'T'#39' THEN '#39'28 haftadan k'#252#231#252'k !'#39
+      '        WHEN R.YR_1000_GR  = '#39'T'#39' THEN '#39'1000gr alt'#305'/ Do'#287'um !'#39
+      
+        '        WHEN R.YR_NEK_GIS  = '#39'T'#39' THEN '#39'Nek / Gis perforasyonu so' +
+        'nras'#305' beslenme'#39
+      
+        '        WHEN R.YR_KONJ_GIS = '#39'T'#39' THEN '#39#350'iddetli konjenital Gis a' +
+        'nomalili bebek'#39
+      '        ELSE NULL'
+      '      END ||'
+      ''
+      '      CASE'
+      
+        '        WHEN R.OR_28_31_HAFTA = '#39'T'#39' THEN '#39'28 ile 31 hafta genel ' +
+        'olarak iyi bebek'#39
+      
+        '        WHEN R.OR_IUGR       = '#39'T'#39' THEN '#39#304'UGR(kilo 10dan k'#252'c'#252'k p' +
+        'ersantilpersantil) ve endend-diastolik ak'#305'm kayb'#305' 35 haftadan k'#252 +
+        'c'#252'k'#39
+      
+        '        WHEN R.OR_1000_1500_GR = '#39'T'#39' THEN '#39'1000 ile 1500 gr / do' +
+        'gum'#39
+      
+        '        WHEN R.OR_KONJ_BESLENME = '#39'T'#39' THEN '#39'Hastal'#305'k veya konjen' +
+        'ital anomaliye ba'#287'l'#305' beslenememe'#39
+      
+        '        WHEN R.DR_32_35_HAFTA = '#39'T'#39' THEN '#39'32 ile 35 hafta, genel' +
+        ' olarak iyi bebek'#39
+      
+        '        WHEN R.DR_IUGR_35     = '#39'T'#39' THEN '#39#304'UGR(kilo 10 dan k'#252#231#252'k' +
+        ' persantil ve endend-diastolik ak'#305'm kayb'#305' 35 haftadan b'#252'y'#252'k)'#39
+      
+        '        WHEN R.DR_TERM        = '#39'T'#39' THEN '#39#304'yi g'#246'r'#252'nen term bebek' +
+        ' 37 haftadan b'#252'y'#252'k'#39
+      '        ELSE NULL'
+      '      END ||'
+      ''
+      '      '
+      ''
+      '      CASE'
+      
+        '        WHEN R.TG_KILO_KAYIP_15 = '#39'T'#39' THEN '#39' | TG: >%15 kilo kay' +
+        'b'#305#39
+      
+        '        WHEN R.TG_KILO_YAKALAYAMAMA = '#39'T'#39' THEN '#39' | TG: Kilo yaka' +
+        'layamama'#39
+      
+        '        WHEN R.TG_KILO_KAZANIM_10 = '#39'T'#39' THEN '#39' | TG: <10g/kg/g'#252'n' +
+        #39
+      '        WHEN R.TG_NEK_CERRAHI = '#39'T'#39' THEN '#39' | TG: NEK cerrahi'#39
+      '        ELSE NULL'
+      '      END'
+      '    ) AS RISK_OZET'
       ''
       'FROM HASTANE.YD_RISK_IZLEM R'
       ''
@@ -5174,15 +5430,20 @@
       'JOIN HASTANE.PROTOKOL P'
       '  ON P.PROTOKOL_NO = R.PROTOKOL_NO'
       ''
-      '/* '#55357#56633' Ana tan'#305' */'
-      'LEFT JOIN HASTANE.TANI T'
-      '  ON T.PROTOKOL_NO = P.PROTOKOL_NO'
-      ' AND T.ANA_TANI = '#39'T'#39
+      '/* '#55357#56633' ANA TANI '#8594' TEK SATIR GARANT'#304' */'
+      'LEFT JOIN ('
+      '    SELECT'
+      '        T.PROTOKOL_NO,'
+      '        MAX(TA.TANI) AS TANI_ADI'
+      '    FROM HASTANE.TANI T'
+      '    JOIN HASTANE.TANILAR TA'
+      '      ON TA.ICD = T.ICD'
+      '    WHERE T.ANA_TANI = '#39'T'#39
+      '    GROUP BY T.PROTOKOL_NO'
+      ') T1'
+      '  ON T1.PROTOKOL_NO = P.PROTOKOL_NO'
       ''
-      'LEFT JOIN HASTANE.TANILAR TA'
-      '  ON TA.ICD = T.ICD'
-      ''
-      '/* '#55357#56633' B'#246'l'#252'm */'
+      '/* '#55357#56633' B'#246'l'#252'm (zaten tekil) */'
       'LEFT JOIN HASTANE.BOLUM B'
       '  ON B.BOLUM = P.BOLUM'
       ''
@@ -5369,6 +5630,10 @@
     object strngfldPrintFormBOLUM_ADI: TStringField
       FieldName = 'BOLUM_ADI'
       Size = 30
+    end
+    object strngfldPrintFormRISK_OZET: TStringField
+      FieldName = 'RISK_OZET'
+      Size = 153
     end
   end
   object frxDB: TfrxDBDataset

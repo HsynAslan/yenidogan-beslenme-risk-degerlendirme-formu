@@ -187,7 +187,7 @@
             Left = 1
             Top = 19
             Align = alClient
-            Caption = 'Do'#287'um Tart'#305's'#305' (Persantil): '
+            Caption = 'Do'#287'um Tart'#305's'#305' (Persantil) (gr): '
             Properties.Alignment.Vert = taVCenter
             AnchorY = 28
           end
@@ -195,7 +195,7 @@
             Left = 1
             Top = 37
             Align = alClient
-            Caption = 'Do'#287'um Boyu (Persantil): '
+            Caption = 'Do'#287'um Boyu (Persantil) (cm) : '
             Properties.Alignment.Vert = taVCenter
             AnchorY = 46
           end
@@ -203,7 +203,7 @@
             Left = 1
             Top = 55
             Align = alClient
-            Caption = 'Do'#287'um Ba'#351' '#199'evresi (Persantil): '
+            Caption = 'Do'#287'um Ba'#351' '#199'evresi (Persantil) (cm) : '
             Properties.Alignment.Vert = taVCenter
             AnchorY = 64
           end
