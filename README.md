@@ -1,5 +1,8 @@
 # Yeni Doğan Risk İzlem Masaüstü Uygulama Formu
 
+<img width="1090" height="777" alt="projeResmi" src="https://github.com/user-attachments/assets/5088d634-ee6c-4382-8501-04435da483f2" />
+
+
 Bu repository, yenidoğan hastalara ait **risk izlem süreçlerinin** yönetildiği
 şirket içi bir yazılım projesinin veritabanı kurulum scriptlerini içerir.
 
@@ -36,7 +39,7 @@ Bu repository içerisinde:
 
 bulunmaktadır.
 
----
+
 
 ## Kurulum
 
@@ -54,3 +57,4 @@ projesinin parçasıdır.
 
 Kaynak kodlar ve scriptler **kurum içi kullanım** içindir.
 Yetkisiz kopyalanması, paylaşılması veya dağıtılması uygun değildir.
+
