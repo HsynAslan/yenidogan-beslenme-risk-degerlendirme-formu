@@ -1,0 +1,1317 @@
+﻿unit yenidoganRisk;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, dxSkinsCore, dxSkinBasic, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkroom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinOffice2019Black, dxSkinOffice2019Colorful, dxSkinOffice2019DarkGray,
+  dxSkinOffice2019White, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringtime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinValentine,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint, dxSkinWXI,
+  dxSkinXmas2008Blue, cxScrollBox, cxContainer, cxEdit, cxDBLabel, cxLabel,
+  Vcl.ExtCtrls, Vcl.StdCtrls, cxGroupBox, Data.DB, cxTextEdit, cxDBEdit,
+  cxMaskEdit, cxButtonEdit, MemDS, DBAccess, Ora, OraCall, cxCheckBox, Vcl.Mask, StrUtils,
+  Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, frxClass, frxExportBaseDialog,
+  frxExportPDF, frxDBSet, frCoreClasses;
+
+type
+  TForm2 = class(TForm)
+    scrMain: TcxScrollBox;
+    grpBaslik: TcxGroupBox;
+    grpDogumBilgileri: TcxGroupBox;
+    grdpnl1: TGridPanel;
+    grdpnl2: TGridPanel;
+    cxlbl1: TcxLabel;
+    cxlbl2: TcxLabel;
+    cxlbl3: TcxLabel;
+    cxlbl4: TcxLabel;
+    grpOlcum: TcxGroupBox;
+    cxlbl5: TcxLabel;
+    grdpnl3: TGridPanel;
+    cxlbl6: TcxLabel;
+    cxlbl8: TcxLabel;
+    edtKiloGun1: TcxDBTextEdit;
+    edtKiloGun2: TcxDBTextEdit;
+    edtKiloGun3: TcxDBTextEdit;
+    edtKiloGun4: TcxDBTextEdit;
+    cxlbl9: TcxLabel;
+    edtBoyGun1: TcxDBTextEdit;
+    edtBoyGun2: TcxDBTextEdit;
+    edtBoyGun3: TcxDBTextEdit;
+    edtBoyGun4: TcxDBTextEdit;
+    cxLabel1: TcxLabel;
+    edtBasGun1: TcxDBTextEdit;
+    edtBasGun2: TcxDBTextEdit;
+    edtBasGun3: TcxDBTextEdit;
+    edtBasGun4: TcxDBTextEdit;
+    grdpnl4: TGridPanel;
+    PaintBoxYuksekRisk: TPaintBox;
+    grdpnl5: TGridPanel;
+    cxlbl10: TcxLabel;
+    cxlbl11: TcxLabel;
+    cxlbl13: TcxLabel;
+    grdpnl6: TGridPanel;
+    cxlbl12: TcxLabel;
+    cxlbl14: TcxLabel;
+    cxlbl15: TcxLabel;
+    cxlbl16: TcxLabel;
+    cxlbl17: TcxLabel;
+    grdpnl7: TGridPanel;
+    cxlbl18: TcxLabel;
+    cxlbl19: TcxLabel;
+    cxlbl20: TcxLabel;
+    cxlbl21: TcxLabel;
+    cxlbl22: TcxLabel;
+    grdpnl8: TGridPanel;
+    cxlbl23: TcxLabel;
+    cxlbl24: TcxLabel;
+    cxlbl25: TcxLabel;
+    cxlbl26: TcxLabel;
+    grdpnl9: TGridPanel;
+    grdpnl10: TGridPanel;
+    orsn1: TOraSession;
+    btnKaydet: TButton;
+    lbl1: TLabel;
+    grdpnl11: TGridPanel;
+    YR_C28G1: TcxDBCheckBox;
+    YR_C1000G1: TcxDBCheckBox;
+    YR_CNEKG1: TcxDBCheckBox;
+    YR_CGISG1: TcxDBCheckBox;
+    lbl2: TLabel;
+    OR_C28G1: TcxDBCheckBox;
+    OR_CIUGRG1: TcxDBCheckBox;
+    OR_C1000G1: TcxDBCheckBox;
+    OR_CKONJENITALG1: TcxDBCheckBox;
+    grdpnl12: TGridPanel;
+    lbl3: TLabel;
+    DR_C32G1: TcxDBCheckBox;
+    DR_CIUGRG1: TcxDBCheckBox;
+    DR_C37G1: TcxDBCheckBox;
+    grdpnl13: TGridPanel;
+    grdpnl14: TGridPanel;
+    lbl4: TLabel;
+    YR_C28G2: TcxDBCheckBox;
+    YR_C1000G2: TcxDBCheckBox;
+    YR_CNEKG2: TcxDBCheckBox;
+    YR_CGISG2: TcxDBCheckBox;
+    grdpnl15: TGridPanel;
+    lbl5: TLabel;
+    OR_C28G2: TcxDBCheckBox;
+    OR_CIUGRG2: TcxDBCheckBox;
+    OR_C1000G2: TcxDBCheckBox;
+    OR_CKONJENITALG2: TcxDBCheckBox;
+    grdpnl16: TGridPanel;
+    lbl6: TLabel;
+    DR_C32G2: TcxDBCheckBox;
+    DR_CIUGRG2: TcxDBCheckBox;
+    DR_C37G2: TcxDBCheckBox;
+    grdpnl17: TGridPanel;
+    grdpnl18: TGridPanel;
+    grdpnl20: TGridPanel;
+    grdpnl21: TGridPanel;
+    grdpnl23: TGridPanel;
+    grdpnl24: TGridPanel;
+    grdpnl26: TGridPanel;
+    grdpnl27: TGridPanel;
+    lbl7: TLabel;
+    YR_C28G3: TcxDBCheckBox;
+    YR_C1000G3: TcxDBCheckBox;
+    YR_CNEKG3: TcxDBCheckBox;
+    YR_CGISG3: TcxDBCheckBox;
+    lbl8: TLabel;
+    OR_C28G3: TcxDBCheckBox;
+    OR_CIUGRG3: TcxDBCheckBox;
+    OR_C1000G3: TcxDBCheckBox;
+    OR_CKONJENITALG3: TcxDBCheckBox;
+    lbl9: TLabel;
+    DR_C32G3: TcxDBCheckBox;
+    DR_CIUGRG3: TcxDBCheckBox;
+    DR_C37G3: TcxDBCheckBox;
+    lbl10: TLabel;
+    YR_C28G4: TcxDBCheckBox;
+    YR_C1000G4: TcxDBCheckBox;
+    YR_CNEKG4: TcxDBCheckBox;
+    YR_CGISG4: TcxDBCheckBox;
+    lbl11: TLabel;
+    OR_C28G4: TcxDBCheckBox;
+    OR_CIUGRG4: TcxDBCheckBox;
+    OR_C1000G4: TcxDBCheckBox;
+    OR_CKONJENITALG4: TcxDBCheckBox;
+    lbl12: TLabel;
+    DR_C32G4: TcxDBCheckBox;
+    DR_CIUGRG4: TcxDBCheckBox;
+    DR_C37G4: TcxDBCheckBox;
+    cxlbl27: TcxLabel;
+    grdpnl29: TGridPanel;
+    cxlbl28: TcxLabel;
+    scorGun1: TcxDBLabel;
+    scorGun2: TcxDBLabel;
+    scorGun3: TcxDBLabel;
+    scorGun4: TcxDBLabel;
+    lblTarih1: TcxDBLabel;
+    lblTarih2: TcxDBLabel;
+    lblTarih3: TcxDBLabel;
+    lblTarih4: TcxDBLabel;
+    edtDestasyon: TcxDBTextEdit;
+    edtDTartisi: TcxDBTextEdit;
+    edtDBoyu: TcxDBTextEdit;
+    edtDBas: TcxDBTextEdit;
+    edtDRGun1: TcxDBTextEdit;
+    edtDRGun2: TcxDBTextEdit;
+    edtDRGun3: TcxDBTextEdit;
+    edtDRgun4: TcxDBTextEdit;
+    qrHafta1: TOraQuery;
+    qrHafta2: TOraQuery;
+    qrHafta3: TOraQuery;
+    qrHafta4: TOraQuery;
+    dsHafta1: TOraDataSource;
+    dsHafta2: TOraDataSource;
+    dsHafta3: TOraDataSource;
+    dsHafta4: TOraDataSource;
+    fltfldHafta1HASTA_ID: TFloatField;
+    fltfldHafta1HAFTA_NO: TFloatField;
+    fltfldHafta1DOSYA_NO: TFloatField;
+    fltfldHafta1PROTOKOL_NO: TFloatField;
+    dtmfldHafta1IZLEM_TARIHI: TDateTimeField;
+    fltfldHafta1GESTASYON_HAFTASI: TFloatField;
+    fltfldHafta1DOGUM_KILOSU_GR: TFloatField;
+    fltfldHafta1DOGUM_BOYU_CM: TFloatField;
+    fltfldHafta1DOGUM_BAS_CEVRESI: TFloatField;
+    strngfldHafta1YR_28_HAFTA: TStringField;
+    strngfldHafta1YR_1000_GR: TStringField;
+    strngfldHafta1YR_NEK_GIS: TStringField;
+    strngfldHafta1YR_KONJ_GIS: TStringField;
+    strngfldHafta1OR_28_31_HAFTA: TStringField;
+    strngfldHafta1OR_IUGR: TStringField;
+    strngfldHafta1OR_1000_1500_GR: TStringField;
+    strngfldHafta1OR_KONJ_BESLENME: TStringField;
+    strngfldHafta1DR_32_35_HAFTA: TStringField;
+    strngfldHafta1DR_IUGR_35: TStringField;
+    strngfldHafta1DR_TERM: TStringField;
+    strngfldHafta1RISK_SEVIYE: TStringField;
+    strngfldHafta1IHT_2_HAFTA_KILO: TStringField;
+    strngfldHafta1IHT_15_KAYIP: TStringField;
+    strngfldHafta1IHT_10G_KAZANIM: TStringField;
+    strngfldHafta1IHT_NEK_CERRAHI: TStringField;
+    strngfldHafta1DOKTOR_ADI: TStringField;
+    dtmfldHafta1KAYIT_TARIHI: TDateTimeField;
+    fltfldHafta1KILO_KG: TFloatField;
+    fltfldHafta1BOY_CM: TFloatField;
+    fltfldHafta1BAS_CEVRESI_CM: TFloatField;
+    intgrfldHafta1FORM_NO: TIntegerField;
+    fltfldHafta2HASTA_ID: TFloatField;
+    fltfldHafta2HAFTA_NO: TFloatField;
+    fltfldHafta2DOSYA_NO: TFloatField;
+    fltfldHafta2PROTOKOL_NO: TFloatField;
+    dtmfldHafta2IZLEM_TARIHI: TDateTimeField;
+    fltfldHafta2GESTASYON_HAFTASI: TFloatField;
+    fltfldHafta2DOGUM_KILOSU_GR: TFloatField;
+    fltfldHafta2DOGUM_BOYU_CM: TFloatField;
+    fltfldHafta2DOGUM_BAS_CEVRESI: TFloatField;
+    strngfldHafta2YR_28_HAFTA: TStringField;
+    strngfldHafta2YR_1000_GR: TStringField;
+    strngfldHafta2YR_NEK_GIS: TStringField;
+    strngfldHafta2YR_KONJ_GIS: TStringField;
+    strngfldHafta2OR_28_31_HAFTA: TStringField;
+    strngfldHafta2OR_IUGR: TStringField;
+    strngfldHafta2OR_1000_1500_GR: TStringField;
+    strngfldHafta2OR_KONJ_BESLENME: TStringField;
+    strngfldHafta2DR_32_35_HAFTA: TStringField;
+    strngfldHafta2DR_IUGR_35: TStringField;
+    strngfldHafta2DR_TERM: TStringField;
+    strngfldHafta2RISK_SEVIYE: TStringField;
+    strngfldHafta2IHT_2_HAFTA_KILO: TStringField;
+    strngfldHafta2IHT_15_KAYIP: TStringField;
+    strngfldHafta2IHT_10G_KAZANIM: TStringField;
+    strngfldHafta2IHT_NEK_CERRAHI: TStringField;
+    strngfldHafta2DOKTOR_ADI: TStringField;
+    dtmfldHafta2KAYIT_TARIHI: TDateTimeField;
+    fltfldHafta2KILO_KG: TFloatField;
+    fltfldHafta2BOY_CM: TFloatField;
+    fltfldHafta2BAS_CEVRESI_CM: TFloatField;
+    intgrfldHafta2FORM_NO: TIntegerField;
+    fltfldHafta3HASTA_ID: TFloatField;
+    fltfldHafta3HAFTA_NO: TFloatField;
+    fltfldHafta3DOSYA_NO: TFloatField;
+    fltfldHafta3PROTOKOL_NO: TFloatField;
+    dtmfldHafta3IZLEM_TARIHI: TDateTimeField;
+    fltfldHafta3GESTASYON_HAFTASI: TFloatField;
+    fltfldHafta3DOGUM_KILOSU_GR: TFloatField;
+    fltfldHafta3DOGUM_BOYU_CM: TFloatField;
+    fltfldHafta3DOGUM_BAS_CEVRESI: TFloatField;
+    strngfldHafta3YR_28_HAFTA: TStringField;
+    strngfldHafta3YR_1000_GR: TStringField;
+    strngfldHafta3YR_NEK_GIS: TStringField;
+    strngfldHafta3YR_KONJ_GIS: TStringField;
+    strngfldHafta3OR_28_31_HAFTA: TStringField;
+    strngfldHafta3OR_IUGR: TStringField;
+    strngfldHafta3OR_1000_1500_GR: TStringField;
+    strngfldHafta3OR_KONJ_BESLENME: TStringField;
+    strngfldHafta3DR_32_35_HAFTA: TStringField;
+    strngfldHafta3DR_IUGR_35: TStringField;
+    strngfldHafta3DR_TERM: TStringField;
+    strngfldHafta3RISK_SEVIYE: TStringField;
+    strngfldHafta3IHT_2_HAFTA_KILO: TStringField;
+    strngfldHafta3IHT_15_KAYIP: TStringField;
+    strngfldHafta3IHT_10G_KAZANIM: TStringField;
+    strngfldHafta3IHT_NEK_CERRAHI: TStringField;
+    strngfldHafta3DOKTOR_ADI: TStringField;
+    dtmfldHafta3KAYIT_TARIHI: TDateTimeField;
+    fltfldHafta3KILO_KG: TFloatField;
+    fltfldHafta3BOY_CM: TFloatField;
+    fltfldHafta3BAS_CEVRESI_CM: TFloatField;
+    intgrfldHafta3FORM_NO: TIntegerField;
+    fltfldHafta4HASTA_ID: TFloatField;
+    fltfldHafta4HAFTA_NO: TFloatField;
+    fltfldHafta4DOSYA_NO: TFloatField;
+    fltfldHafta4PROTOKOL_NO: TFloatField;
+    dtmfldHafta4IZLEM_TARIHI: TDateTimeField;
+    fltfldHafta4GESTASYON_HAFTASI: TFloatField;
+    fltfldHafta4DOGUM_KILOSU_GR: TFloatField;
+    fltfldHafta4DOGUM_BOYU_CM: TFloatField;
+    fltfldHafta4DOGUM_BAS_CEVRESI: TFloatField;
+    strngfldHafta4YR_28_HAFTA: TStringField;
+    strngfldHafta4YR_1000_GR: TStringField;
+    strngfldHafta4YR_NEK_GIS: TStringField;
+    strngfldHafta4YR_KONJ_GIS: TStringField;
+    strngfldHafta4OR_28_31_HAFTA: TStringField;
+    strngfldHafta4OR_IUGR: TStringField;
+    strngfldHafta4OR_1000_1500_GR: TStringField;
+    strngfldHafta4OR_KONJ_BESLENME: TStringField;
+    strngfldHafta4DR_32_35_HAFTA: TStringField;
+    strngfldHafta4DR_IUGR_35: TStringField;
+    strngfldHafta4DR_TERM: TStringField;
+    strngfldHafta4RISK_SEVIYE: TStringField;
+    strngfldHafta4IHT_2_HAFTA_KILO: TStringField;
+    strngfldHafta4IHT_15_KAYIP: TStringField;
+    strngfldHafta4IHT_10G_KAZANIM: TStringField;
+    strngfldHafta4IHT_NEK_CERRAHI: TStringField;
+    strngfldHafta4DOKTOR_ADI: TStringField;
+    dtmfldHafta4KAYIT_TARIHI: TDateTimeField;
+    fltfldHafta4KILO_KG: TFloatField;
+    fltfldHafta4BOY_CM: TFloatField;
+    fltfldHafta4BAS_CEVRESI_CM: TFloatField;
+    intgrfldHafta4FORM_NO: TIntegerField;
+    qryMaxHafta: TOraQuery;
+    qryFirstWeek: TOraQuery;
+    fltfldMaxHaftaFORM_NO: TFloatField;
+    fltfldMaxHaftaHAFTA_SAYISI: TFloatField;
+    fltfldFirstWeekGESTASYON_HAFTASI: TFloatField;
+    fltfldFirstWeekDOGUM_KILOSU_GR: TFloatField;
+    fltfldFirstWeekDOGUM_BOYU_CM: TFloatField;
+    fltfldFirstWeekDOGUM_BAS_CEVRESI: TFloatField;
+    grpGözdenGecirme: TcxGroupBox;
+    grdpnl19: TGridPanel;
+    grdpnl22: TGridPanel;
+    grdpnl25: TGridPanel;
+    cxlbl30: TcxLabel;
+    cxlbl31: TcxLabel;
+    cxlbl32: TcxLabel;
+    cxlbl33: TcxLabel;
+    cxlbl34: TcxLabel;
+    cxlbl35: TcxLabel;
+    grdpnl28: TGridPanel;
+    lblTarih1Tespit: TcxDBLabel;
+    lblTarih2Tespit: TcxDBLabel;
+    lblTarih3Tespit: TcxDBLabel;
+    lblTarih4Tespit: TcxDBLabel;
+    TG1YR: TcxDBCheckBox;
+    TG2YR: TcxDBCheckBox;
+    TG3YR: TcxDBCheckBox;
+    TG4YR: TcxDBCheckBox;
+    TG1KILOYAKALAYAMAMA: TcxDBCheckBox;
+    TG2KILOYAKALAYAMAMA: TcxDBCheckBox;
+    TG3KILOYAKALAYAMAMA: TcxDBCheckBox;
+    TG4KILOYAKALAYAMAMA: TcxDBCheckBox;
+    TG1KILOKAYIP: TcxDBCheckBox;
+    TG2KILOKAYIP: TcxDBCheckBox;
+    TG3KILOKAYIP: TcxDBCheckBox;
+    TG4KILOKAYIP: TcxDBCheckBox;
+    TG1KILOKAZAN: TcxDBCheckBox;
+    TG2KILOKAZAN: TcxDBCheckBox;
+    TG3KILOKAZAN: TcxDBCheckBox;
+    TG4KILOKAZAN: TcxDBCheckBox;
+    TG1NEK: TcxDBCheckBox;
+    TG2NEK: TcxDBCheckBox;
+    TG3NEK: TcxDBCheckBox;
+    TG4NEK: TcxDBCheckBox;
+    strngfldHafta1TG_YUKSEK_RISK: TStringField;
+    strngfldHafta1TG_KILO_YAKALAYAMAMA: TStringField;
+    strngfldHafta1TG_KILO_KAYIP_15: TStringField;
+    strngfldHafta1TG_KILO_KAZANIM_10: TStringField;
+    strngfldHafta1TG_NEK_CERRAHI: TStringField;
+    strngfldHafta2TG_YUKSEK_RISK: TStringField;
+    strngfldHafta2TG_KILO_YAKALAYAMAMA: TStringField;
+    strngfldHafta2TG_KILO_KAYIP_15: TStringField;
+    strngfldHafta2TG_KILO_KAZANIM_10: TStringField;
+    strngfldHafta2TG_NEK_CERRAHI: TStringField;
+    strngfldHafta3TG_YUKSEK_RISK: TStringField;
+    strngfldHafta3TG_KILO_YAKALAYAMAMA: TStringField;
+    strngfldHafta3TG_KILO_KAYIP_15: TStringField;
+    strngfldHafta3TG_KILO_KAZANIM_10: TStringField;
+    strngfldHafta3TG_NEK_CERRAHI: TStringField;
+    strngfldHafta4TG_YUKSEK_RISK: TStringField;
+    strngfldHafta4TG_KILO_YAKALAYAMAMA: TStringField;
+    strngfldHafta4TG_KILO_KAYIP_15: TStringField;
+    strngfldHafta4TG_KILO_KAZANIM_10: TStringField;
+    strngfldHafta4TG_NEK_CERRAHI: TStringField;
+    qryFormHistory: TOraQuery;
+    dsFormHistory: TOraDataSource;
+    grpGridListe: TcxGroupBox;
+    dbgrdFormHistory: TDBGrid;
+    btnYeni: TButton;
+    grdpnl30: TGridPanel;
+    grdpnl31: TGridPanel;
+    lbl13: TLabel;
+    lbl14: TLabel;
+    lbl15: TLabel;
+    lbl16: TLabel;
+    lbl17: TLabel;
+    lbl18: TLabel;
+    lbl19: TLabel;
+    lbl20: TLabel;
+    lbl21: TLabel;
+    lbl22: TLabel;
+    lbl23: TLabel;
+    btnYazdir: TButton;
+    lbl24: TLabel;
+    grdpnl32: TGridPanel;
+    cxlbl7: TcxLabel;
+    lblHastaAdiSoyadi: TcxDBLabel;
+    cxlbl29: TcxLabel;
+    lblHastaDosyaNo: TcxDBLabel;
+    cxlbl36: TcxLabel;
+    lblHastaProtokolNo: TcxDBLabel;
+    cxlbl37: TcxLabel;
+    lblHastaBolum: TcxDBLabel;
+    cxlbl38: TcxLabel;
+    lblHastaTani: TcxDBLabel;
+    intgrfldFormHistoryFORM_NO: TIntegerField;
+    dtmfldFormHistoryILK_TARIH: TDateTimeField;
+    dtmfldFormHistorySON_TARIH: TDateTimeField;
+    strngfldFormHistoryRISK_SEVIYE: TStringField;
+    frxReportForm: TfrxReport;
+    qryPrintForm: TOraQuery;
+    frxDB: TfrxDBDataset;
+    fltfldPrintFormHASTA_ID: TFloatField;
+    fltfldPrintFormHAFTA_NO: TFloatField;
+    fltfldPrintFormDOSYA_NO: TFloatField;
+    fltfldPrintFormPROTOKOL_NO: TFloatField;
+    dtmfldPrintFormIZLEM_TARIHI: TDateTimeField;
+    fltfldPrintFormGESTASYON_HAFTASI: TFloatField;
+    fltfldPrintFormDOGUM_KILOSU_GR: TFloatField;
+    fltfldPrintFormDOGUM_BOYU_CM: TFloatField;
+    fltfldPrintFormDOGUM_BAS_CEVRESI: TFloatField;
+    strngfldPrintFormYR_28_HAFTA: TStringField;
+    strngfldPrintFormYR_1000_GR: TStringField;
+    strngfldPrintFormYR_NEK_GIS: TStringField;
+    strngfldPrintFormYR_KONJ_GIS: TStringField;
+    strngfldPrintFormOR_28_31_HAFTA: TStringField;
+    strngfldPrintFormOR_IUGR: TStringField;
+    strngfldPrintFormOR_1000_1500_GR: TStringField;
+    strngfldPrintFormOR_KONJ_BESLENME: TStringField;
+    strngfldPrintFormDR_32_35_HAFTA: TStringField;
+    strngfldPrintFormDR_IUGR_35: TStringField;
+    strngfldPrintFormDR_TERM: TStringField;
+    strngfldPrintFormRISK_SEVIYE: TStringField;
+    strngfldPrintFormIHT_2_HAFTA_KILO: TStringField;
+    strngfldPrintFormIHT_15_KAYIP: TStringField;
+    strngfldPrintFormIHT_10G_KAZANIM: TStringField;
+    strngfldPrintFormIHT_NEK_CERRAHI: TStringField;
+    strngfldPrintFormDOKTOR_ADI: TStringField;
+    dtmfldPrintFormKAYIT_TARIHI: TDateTimeField;
+    fltfldPrintFormKILO_KG: TFloatField;
+    fltfldPrintFormBOY_CM: TFloatField;
+    fltfldPrintFormBAS_CEVRESI_CM: TFloatField;
+    intgrfldPrintFormFORM_NO: TIntegerField;
+    strngfldPrintFormTG_YUKSEK_RISK: TStringField;
+    strngfldPrintFormTG_KILO_YAKALAYAMAMA: TStringField;
+    strngfldPrintFormTG_KILO_KAYIP_15: TStringField;
+    strngfldPrintFormTG_KILO_KAZANIM_10: TStringField;
+    strngfldPrintFormTG_NEK_CERRAHI: TStringField;
+    strngfldPrintFormHASTA_ADI: TStringField;
+    dtmfldPrintFormHASTA_DOGUM_TARIHI: TDateTimeField;
+    fltfldPrintFormHASTA_YASI: TFloatField;
+    fltfldPrintFormPROTOKOL_NO_TXT: TFloatField;
+    strngfldPrintFormTANI_ADI: TStringField;
+    strngfldPrintFormBOLUM_ADI: TStringField;
+    strngfldPrintFormRISK_OZET: TStringField;
+
+    procedure lblGunTarihClick(Sender: TObject);
+    procedure PaintBoxYuksekRiskPaint(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btnKaydetClick(Sender: TObject);
+    procedure RiskCheckBoxPropertiesChange(Sender: TObject);
+    procedure ApplyDoctorFieldRules;
+    procedure RefreshRiskCheckBox(ACheck: TcxDBCheckBox);
+    procedure ApplyFixedFieldRules;
+    procedure SetHaftaAktif(AHafta: Integer);
+    procedure CalcAktifFormHafta;
+    procedure OpenHafta( Q: TOraQuery; AHafta: Integer);
+
+    procedure CopyFixedFieldsFromFirstWeek(Q: TOraQuery);
+    function IsFirstFormFirstWeek: Boolean;
+    procedure ClearOtherRiskGroups(const ActivePrefix: string);
+    function CalcRiskSeviye: string;
+    function GetActiveRiskValue(const Prefix: string): Boolean;
+
+    procedure TGCheckBoxPropertiesChange(Sender: TObject);
+    procedure ApplyTGFieldRules;
+     procedure LoadFormReadOnly(AFormNo: Integer);
+   procedure ClearRiskFieldsInDatasetExcept(DS: TDataSet; const ExceptField: string );
+    procedure dbgrdFormHistoryCellClick(Column: TColumn);
+    procedure ApplyReadOnlyMode;
+    procedure btnYeniClick(Sender: TObject);
+    procedure ReloadFormData;
+    procedure RefreshAllRiskCheckBoxes;
+    procedure LoadActiveForm;
+    procedure ResetAllRiskCheckBoxStyles;
+    procedure btnYazdirClick(Sender: TObject);
+  private
+    { Private declarations }
+   FReadOnlyMode: Boolean;
+  FDosyaNo    : Integer;
+  FProtokolNo : Integer;
+  FAktifForm  : Integer;
+  FAktifHafta : Integer;
+
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+const
+  TEST_DOSYA_NO    = 12;
+  TEST_PROTOKOL_NO = 400;
+{$R *.dfm}
+procedure TForm2.ApplyFixedFieldRules;
+var
+  E: Boolean;
+begin
+  E := IsFirstFormFirstWeek;
+
+  edtDestasyon.Enabled := E;
+  edtDTartisi.Enabled  := E;
+  edtDBoyu.Enabled     := E;
+  edtDBas.Enabled      := E;
+end;
+procedure TForm2.ApplyReadOnlyMode;
+begin
+  if not FReadOnlyMode then Exit;
+
+  // sadece inputlar kilitlenecek
+  SetHaftaAktif(0);
+  ApplyFixedFieldRules;
+  ApplyDoctorFieldRules;
+  ApplyTGFieldRules;
+
+  // grid açık
+  dbgrdFormHistory.Enabled := True;
+
+  btnKaydet.Enabled := False;
+end;
+
+
+ procedure TForm2.LoadFormReadOnly(AFormNo: Integer);
+begin
+  FReadOnlyMode := True;
+
+  FAktifForm  := AFormNo;
+  FAktifHafta := 1; // fark etmez, hepsi açılacak
+
+OpenHafta(qrHafta1, 1);
+OpenHafta(qrHafta2, 2);
+OpenHafta(qrHafta3, 3);
+OpenHafta(qrHafta4, 4);
+
+
+  ApplyReadOnlyMode;
+end;
+
+ procedure TForm2.ApplyTGFieldRules;
+var
+  I: Integer;
+  C: TComponent;
+begin
+  for I := 1 to 4 do
+  begin
+    C := FindComponent('TG' + IntToStr(I) + 'YR');
+    if C is TcxDBCheckBox then
+      TcxDBCheckBox(C).Enabled := (I = FAktifHafta);
+
+    C := FindComponent('TG' + IntToStr(I) + 'KILOYAKALAYAMAMA');
+    if C is TcxDBCheckBox then
+      TcxDBCheckBox(C).Enabled := (I = FAktifHafta);
+
+    C := FindComponent('TG' + IntToStr(I) + 'KILOKAYIP');
+    if C is TcxDBCheckBox then
+      TcxDBCheckBox(C).Enabled := (I = FAktifHafta);
+
+    C := FindComponent('TG' + IntToStr(I) + 'KILOKAZAN');
+    if C is TcxDBCheckBox then
+      TcxDBCheckBox(C).Enabled := (I = FAktifHafta);
+
+    C := FindComponent('TG' + IntToStr(I) + 'NEK');
+    if C is TcxDBCheckBox then
+      TcxDBCheckBox(C).Enabled := (I = FAktifHafta);
+  end;
+end;
+
+
+ procedure TForm2.ApplyDoctorFieldRules;
+var
+  I: Integer;
+  C: TComponent;
+begin
+  for I := 1 to 4 do
+  begin
+    C := FindComponent('edtDRGun' + IntToStr(I));
+    if C is TcxDBTextEdit then
+      TcxDBTextEdit(C).Enabled := (I = FAktifHafta);
+  end;
+end;
+
+ function TForm2.IsFirstFormFirstWeek: Boolean;
+begin
+  Result := (FAktifForm = 1) and (FAktifHafta = 1);
+end;
+
+procedure TForm2.LoadActiveForm;
+begin
+  FReadOnlyMode := False;
+
+  qrHafta1.ReadOnly := False;
+  qrHafta2.ReadOnly := False;
+  qrHafta3.ReadOnly := False;
+  qrHafta4.ReadOnly := False;
+
+  ReloadFormData;   // senin yazdığın sağlam fonk
+end;
+
+
+procedure TForm2.OpenHafta(Q: TOraQuery; AHafta: Integer);
+begin
+  Q.Close;
+  Q.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
+  Q.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+  Q.ParamByName('FORM_NO').AsInteger := FAktifForm;
+  Q.ParamByName('HAFTA_NO').AsInteger := AHafta;
+  Q.Open;
+
+  if Q.IsEmpty then
+  begin
+    Q.Append;
+    Q.FieldByName('DOSYA_NO').AsInteger := FDosyaNo;
+    Q.FieldByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+    Q.FieldByName('FORM_NO').AsInteger := FAktifForm;
+    Q.FieldByName('HAFTA_NO').AsInteger := AHafta;
+    Q.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
+
+    if not IsFirstFormFirstWeek then
+      CopyFixedFieldsFromFirstWeek(Q);
+  end;
+end;
+
+
+
+procedure TForm2.CopyFixedFieldsFromFirstWeek(Q: TOraQuery);
+begin
+  qryFirstWeek.Close;
+  qryFirstWeek.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
+  qryFirstWeek.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+  qryFirstWeek.ParamByName('FORM_NO').AsInteger := 1;
+  qryFirstWeek.ParamByName('HAFTA_NO').AsInteger := 1;
+  qryFirstWeek.Open;
+
+  if not qryFirstWeek.IsEmpty then
+  begin
+    Q.FieldByName('GESTASYON_HAFTASI').Value :=
+      qryFirstWeek.FieldByName('GESTASYON_HAFTASI').Value;
+
+    Q.FieldByName('DOGUM_KILOSU_GR').Value :=
+      qryFirstWeek.FieldByName('DOGUM_KILOSU_GR').Value;
+
+    Q.FieldByName('DOGUM_BOYU_CM').Value :=
+      qryFirstWeek.FieldByName('DOGUM_BOYU_CM').Value;
+
+    Q.FieldByName('DOGUM_BAS_CEVRESI').Value :=
+      qryFirstWeek.FieldByName('DOGUM_BAS_CEVRESI').Value;
+  end;
+end;
+
+ {*
+procedure TForm2.dbgrdFormHistoryCellClick(Column: TColumn);
+var
+  SelFormNo: Integer;
+begin
+  if qryFormHistory.IsEmpty then Exit;
+
+  // 1️⃣ seçilen form
+  SelFormNo := qryFormHistory.FieldByName('FORM_NO').AsInteger;
+
+  FAktifForm  := SelFormNo;
+  FAktifHafta := 0; // geçmiş → aktif hafta yok
+
+  // 2️⃣ haftaları kapat
+  qrHafta1.Close;
+  qrHafta2.Close;
+  qrHafta3.Close;
+  qrHafta4.Close;
+
+  // 3️⃣ geçmiş formu SADECE OKU
+  OpenHafta(qrHafta1, 1, True);
+  OpenHafta(qrHafta2, 2, True);
+  OpenHafta(qrHafta3, 3, True);
+  OpenHafta(qrHafta4, 4, True);
+
+  // 4️⃣ ekran kilitleri
+  SetHaftaAktif(0);
+  ApplyFixedFieldRules;
+  ApplyDoctorFieldRules;
+  ApplyTGFieldRules;
+
+  // 5️⃣ 🔥 RENKLERİ MUTLAKA YENİLE
+  RefreshAllRiskCheckBoxes;
+end;               *}
+
+procedure TForm2.dbgrdFormHistoryCellClick(Column: TColumn);
+var
+  SelFormNo: Integer;
+begin
+  if qryFormHistory.IsEmpty then Exit;
+
+  SelFormNo := qryFormHistory.FieldByName('FORM_NO').AsInteger;
+
+  FReadOnlyMode := True;
+  FAktifForm  := SelFormNo;
+  FAktifHafta := 0;
+
+  qrHafta1.Close;
+  qrHafta2.Close;
+  qrHafta3.Close;
+  qrHafta4.Close;
+
+  OpenHafta(qrHafta1, 1);
+  OpenHafta(qrHafta2, 2);
+  OpenHafta(qrHafta3, 3);
+  OpenHafta(qrHafta4, 4);
+
+  // 🔴 MUTLAKA BU SIRA
+  ResetAllRiskCheckBoxStyles;
+  RefreshAllRiskCheckBoxes;
+
+  ApplyReadOnlyMode;
+end;
+
+
+
+procedure TForm2.CalcAktifFormHafta;
+var
+  HaftaSayisi: Integer;
+begin
+  qryMaxHafta.Close;
+  qryMaxHafta.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
+  qryMaxHafta.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+  qryMaxHafta.Open;
+
+  if qryMaxHafta.FieldByName('FORM_NO').AsInteger = 0 then
+  begin
+    FAktifForm  := 1;
+    FAktifHafta := 1;
+    Exit;
+  end;
+
+  FAktifForm  := qryMaxHafta.FieldByName('FORM_NO').AsInteger;
+  HaftaSayisi := qryMaxHafta.FieldByName('HAFTA_SAYISI').AsInteger;
+
+  if HaftaSayisi < 4 then
+    FAktifHafta := HaftaSayisi + 1
+  else
+  begin
+    Inc(FAktifForm);
+    FAktifHafta := 1;
+  end;
+end;
+
+
+
+procedure TForm2.SetHaftaAktif(AHafta: Integer);
+var
+  I: Integer;
+
+  procedure En(const N: string; E: Boolean);
+  var
+    C: TComponent;
+  begin
+    C := FindComponent(N);
+    if (C is TControl) then
+      TControl(C).Enabled := E;
+  end;
+
+begin
+  // 🔴 GEÇMİŞ FORM (SADECE GÖRÜNTÜLEME)
+  if AHafta = 0 then
+  begin
+    for I := 1 to 4 do
+    begin
+      En('edtKiloGun' + IntToStr(I), False);
+      En('edtBoyGun'  + IntToStr(I), False);
+      En('edtBasGun'  + IntToStr(I), False);
+
+      En('YR_C28G' + IntToStr(I), False);
+      En('YR_C1000G' + IntToStr(I), False);
+      En('YR_CNEKG' + IntToStr(I), False);
+      En('YR_CGISG' + IntToStr(I), False);
+
+      En('OR_C28G' + IntToStr(I), False);
+      En('OR_CIUGRG' + IntToStr(I), False);
+      En('OR_C1000G' + IntToStr(I), False);
+      En('OR_CKONJENITALG' + IntToStr(I), False);
+
+      En('DR_C32G' + IntToStr(I), False);
+      En('DR_CIUGRG' + IntToStr(I), False);
+      En('DR_C37G' + IntToStr(I), False);
+    end;
+
+    // sabit alanlar da kilitli
+    En('edtDestasyon', False);
+    En('edtDTartisi',  False);
+    En('edtDBoyu',     False);
+    En('edtDBas',      False);
+
+    ApplyDoctorFieldRules;
+    ApplyTGFieldRules;
+    Exit;
+  end;
+
+  // 🟢 NORMAL AKTİF HAFTA (1–4)
+  for I := 1 to 4 do
+  begin
+    En('edtKiloGun' + IntToStr(I), I = AHafta);
+    En('edtBoyGun'  + IntToStr(I), I = AHafta);
+    En('edtBasGun'  + IntToStr(I), I = AHafta);
+
+    En('YR_C28G' + IntToStr(I), I = AHafta);
+    En('YR_C1000G' + IntToStr(I), I = AHafta);
+    En('YR_CNEKG' + IntToStr(I), I = AHafta);
+    En('YR_CGISG' + IntToStr(I), I = AHafta);
+
+    En('OR_C28G' + IntToStr(I), I = AHafta);
+    En('OR_CIUGRG' + IntToStr(I), I = AHafta);
+    En('OR_C1000G' + IntToStr(I), I = AHafta);
+    En('OR_CKONJENITALG' + IntToStr(I), I = AHafta);
+
+    En('DR_C32G' + IntToStr(I), I = AHafta);
+    En('DR_CIUGRG' + IntToStr(I), I = AHafta);
+    En('DR_C37G' + IntToStr(I), I = AHafta);
+  end;
+
+  // 🔒 SABİT ALANLAR: sadece 1. haftada aktif
+  En('edtDestasyon', AHafta = 1);
+  En('edtDTartisi',  AHafta = 1);
+  En('edtDBoyu',     AHafta = 1);
+  En('edtDBas',      AHafta = 1);
+
+  ApplyFixedFieldRules;
+  ApplyDoctorFieldRules;
+  ApplyTGFieldRules;
+end;
+
+
+
+function TForm2.GetActiveRiskValue(const Prefix: string): Boolean;
+var
+  C: TComponent;
+
+  function IsChecked(const Name: string): Boolean;
+  begin
+    Result := False;
+    C := FindComponent(Name);
+    if (C is TcxDBCheckBox) then
+      Result := TcxDBCheckBox(C).Checked;
+  end;
+
+begin
+  Result := False;
+
+  //  YÜKSEK RİSK
+  if Prefix = 'YR' then
+  begin
+    if IsChecked('YR_C28G'    + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('YR_C1000G'  + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('YR_CNEKG'   + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('YR_CGISG'   + IntToStr(FAktifHafta)) then Exit(True);
+  end;
+
+  //  ORTA RİSK
+  if Prefix = 'OR' then
+  begin
+    if IsChecked('OR_C28G'           + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('OR_CIUGRG'         + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('OR_C1000G'         + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('OR_CKONJENITALG'   + IntToStr(FAktifHafta)) then Exit(True);
+  end;
+
+  //  DÜŞÜK RİSK
+  if Prefix = 'DR' then
+  begin
+    if IsChecked('DR_C32G'   + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('DR_CIUGRG' + IntToStr(FAktifHafta)) then Exit(True);
+    if IsChecked('DR_C37G'   + IntToStr(FAktifHafta)) then Exit(True);
+  end;
+end;
+
+
+function TForm2.CalcRiskSeviye: string;
+begin
+  // Öncelik sırası: Yüksek > Orta > Düşük
+
+  if GetActiveRiskValue('YR') then
+    Exit('Yüksek');
+
+  if GetActiveRiskValue('OR') or GetActiveRiskValue('DR') then
+    Exit('Orta');
+
+  Result := ''; // hiçbiri yok
+end;
+
+procedure TForm2.ReloadFormData;
+begin
+  CalcAktifFormHafta;
+
+  OpenHafta(qrHafta1, 1);
+  OpenHafta(qrHafta2, 2);
+  OpenHafta(qrHafta3, 3);
+  OpenHafta(qrHafta4, 4);
+
+  ResetAllRiskCheckBoxStyles;   // 🔥
+  RefreshAllRiskCheckBoxes;    // 🔥
+
+  SetHaftaAktif(FAktifHafta);
+  ApplyFixedFieldRules;
+  ApplyDoctorFieldRules;
+  ApplyTGFieldRules;
+
+  qryFormHistory.Close;
+  qryFormHistory.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
+  qryFormHistory.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+  qryFormHistory.Open;
+end;
+
+
+procedure TForm2.btnKaydetClick(Sender: TObject);
+var
+  Q: TOraQuery;
+  DBRisk: string;
+begin
+  case FAktifHafta of
+    1: Q := qrHafta1;
+    2: Q := qrHafta2;
+    3: Q := qrHafta3;
+    4: Q := qrHafta4;
+  else
+    Exit;
+  end;
+
+  if (Q = nil) or (not Q.Active) then Exit;
+
+  if not (Q.State in dsEditModes) then
+    Q.Edit;
+
+  // 🔹 otomatik risk hesapla
+  DBRisk := CalcRiskSeviye;
+
+  // 🔹 risk seviyesi yaz
+  Q.FieldByName('RISK_SEVIYE').AsString := DBRisk;
+
+  Q.Post;
+
+  // 🔄 FORMU KAPATMA → YENİDEN YÜKLE
+  ReloadFormData;
+
+  ShowMessage(
+    Format(
+      'Kayıt alındı.%sForm %d - Hafta %d%sRisk: %s',
+      [
+        sLineBreak,
+        FAktifForm,
+        FAktifHafta,
+        sLineBreak,
+        IfThen(DBRisk = '', '(yok)', DBRisk)
+      ]
+    )
+  );
+end;
+
+
+
+
+procedure TForm2.btnYazdirClick(Sender: TObject);
+var
+  FormNo: Integer;
+begin
+  // gridde seçim var mı?
+  if qryFormHistory.IsEmpty then
+  begin
+    ShowMessage('Lütfen yazdırılacak formu seçiniz.');
+    Exit;
+  end;
+
+  FormNo := qryFormHistory.FieldByName('FORM_NO').AsInteger;
+
+  // rapor datası
+  qryPrintForm.Close;
+  qryPrintForm.ParamByName('DOSYA_NO').AsInteger    := FDosyaNo;
+  qryPrintForm.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+  qryPrintForm.ParamByName('FORM_NO').AsInteger     := FormNo;
+  qryPrintForm.Open;
+
+  if qryPrintForm.IsEmpty then
+  begin
+    ShowMessage('Bu forma ait yazdırılacak veri yok.');
+    Exit;
+  end;
+
+  // PDF önizleme (FastReport kendi PDF butonunu gösterir)
+  frxReportForm.ShowReport;
+end;
+
+procedure TForm2.btnYeniClick(Sender: TObject);
+begin
+  FReadOnlyMode := False;
+
+  CalcAktifFormHafta;
+
+  OpenHafta(qrHafta1, 1);
+  OpenHafta(qrHafta2, 2);
+  OpenHafta(qrHafta3, 3);
+  OpenHafta(qrHafta4, 4);
+
+  ResetAllRiskCheckBoxStyles;   // 🔥
+  RefreshAllRiskCheckBoxes;    // 🔥
+
+  btnKaydet.Enabled := True;
+  SetHaftaAktif(FAktifHafta);
+end;
+
+procedure TForm2.FormShow(Sender: TObject);
+begin
+  // 1️⃣ DB bağlantısı
+  if not Orsn1.Connected then
+    Orsn1.Connected := True;
+
+  // 2️⃣ Hasta bilgisi (ÖNCE)
+  FDosyaNo    := TEST_DOSYA_NO;
+  FProtokolNo := TEST_PROTOKOL_NO;
+
+  // 3️⃣ 🔹 GEÇMİŞ FORM LİSTESİ (DBGrid için)
+  qryFormHistory.Close;
+  qryFormHistory.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
+  qryFormHistory.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+  qryFormHistory.Open;
+
+  // 4️⃣ Aktif form / hafta hesapla
+  CalcAktifFormHafta;
+
+  // 5️⃣ Haftalık datasetleri aç
+  OpenHafta(qrHafta1, 1);
+  OpenHafta(qrHafta2, 2);
+  OpenHafta(qrHafta3, 3);
+  OpenHafta(qrHafta4, 4);
+
+  // 6️⃣ Ekran kuralları
+  SetHaftaAktif(FAktifHafta);
+  ApplyTGFieldRules;
+  ApplyFixedFieldRules;
+
+  // (debug – sonra silebilirsin)
+  ShowMessage(
+    Format(
+      'Form=%d  Hafta=%d%sGeçmiş kayıt sayısı=%d',
+      [FAktifForm, FAktifHafta, sLineBreak, qryFormHistory.RecordCount]
+    )
+  );
+end;
+
+
+
+
+
+
+procedure TForm2.lblGunTarihClick(Sender: TObject);
+begin
+  // TODO
+end;
+
+procedure TForm2.ClearRiskFieldsInDatasetExcept(
+  DS: TDataSet;
+  const ExceptField: string
+);
+const
+  RISK_DB_FIELDS: array[0..10] of string = (
+    'YR_28_HAFTA',
+    'YR_1000_GR',
+    'YR_NEK_GIS',
+    'YR_KONJ_GIS',
+    'OR_28_31_HAFTA',
+    'OR_IUGR',
+    'OR_1000_1500_GR',
+    'OR_KONJ_BESLENME',
+    'DR_32_35_HAFTA',
+    'DR_IUGR_35',
+    'DR_TERM'
+  );
+var
+  I: Integer;
+  F: string;
+begin
+  if not Assigned(DS) or not DS.Active then Exit;
+
+  for I := Low(RISK_DB_FIELDS) to High(RISK_DB_FIELDS) do
+  begin
+    F := RISK_DB_FIELDS[I];
+
+    if SameText(F, ExceptField) then
+      Continue;
+
+    if DS.FindField(F) <> nil then
+      DS.FieldByName(F).AsString := 'F';
+  end;
+end;
+
+
+procedure TForm2.RefreshAllRiskCheckBoxes;
+var
+  I: Integer;
+  C: TComponent;
+begin
+  for I := 0 to ComponentCount - 1 do
+  begin
+    C := Components[I];
+
+    if (C is TcxDBCheckBox) then
+    begin
+      // SADECE risk + TG checkbox'ları
+      if (Copy(C.Name, 1, 2) = 'YR') or
+         (Copy(C.Name, 1, 2) = 'OR') or
+         (Copy(C.Name, 1, 2) = 'DR') or
+         (Copy(C.Name, 1, 2) = 'TG') then
+      begin
+        RefreshRiskCheckBox(TcxDBCheckBox(C));
+      end;
+    end;
+  end;
+end;
+
+
+procedure TForm2.PaintBoxYuksekRiskPaint(Sender: TObject);
+var
+  R: TRect;
+  LF: TLogFont;
+  Txt: string;
+  X, Y: Integer;
+begin
+  Txt := '2.RİSK BELİRLEME';
+
+  with PaintBoxYuksekRisk.Canvas do
+  begin
+    Brush.Color := clBtnFace;
+    FillRect(PaintBoxYuksekRisk.ClientRect);
+
+    Font.Name := 'Segoe UI';
+    Font.Size := 9;
+    Font.Style := [fsBold];
+
+    SetGraphicsMode(Handle, GM_ADVANCED);
+
+    GetObject(Font.Handle, SizeOf(LF), @LF);
+    LF.lfEscapement  := 900;
+    LF.lfOrientation := 900;
+    Font.Handle := CreateFontIndirect(LF);
+
+    R := PaintBoxYuksekRisk.ClientRect;
+
+    X := (R.Right - TextHeight(Txt)) div 2;
+    Y := (R.Bottom + TextWidth(Txt)) div 2;
+
+    TextOut(X, Y, Txt);
+  end;
+end;
+
+procedure TForm2.ResetAllRiskCheckBoxStyles;
+var
+  I: Integer;
+  C: TComponent;
+begin
+  for I := 0 to ComponentCount - 1 do
+  begin
+    C := Components[I];
+
+    if (C is TcxDBCheckBox) then
+    begin
+      if (Copy(C.Name, 1, 2) = 'YR') or
+         (Copy(C.Name, 1, 2) = 'OR') or
+         (Copy(C.Name, 1, 2) = 'DR') or
+         (Copy(C.Name, 1, 2) = 'TG') then
+      begin
+        with TcxDBCheckBox(C) do
+        begin
+          ParentBackground := False;
+          Style.Color := clBtnFace;
+          Style.Font.Style := [];
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TForm2.RefreshRiskCheckBox(ACheck: TcxDBCheckBox);
+var
+  Prefix: string;
+begin
+  if not Assigned(ACheck) then Exit;
+
+  Prefix := Copy(ACheck.Name, 1, 2); // YR / OR / DR / TG
+
+  // 🔄 HER ZAMAN ÖNCE RESET
+  ACheck.ParentBackground := False;
+  ACheck.Style.Font.Style := [];
+  ACheck.Style.Color := clBtnFace;   // 🔥 EN KRİTİK SATIR
+
+  if not ACheck.Checked then
+    Exit;
+
+  // ✔ SADECE CHECKED İSE RENK VER
+  ACheck.Style.Font.Style := [fsBold];
+
+  if Prefix = 'YR' then
+    ACheck.Style.Color := clRed          // 🔴 yüksek
+  else if Prefix = 'OR' then
+    ACheck.Style.Color := clGray         // ⚫ orta
+  else if Prefix = 'DR' then
+    ACheck.Style.Color := clGreen        // 🟢 düşük
+  else if Prefix = 'TG' then
+    ACheck.Style.Color := clRed;         // 🔴 gözden geçirme
+end;
+
+
+
+
+procedure TForm2.ClearOtherRiskGroups(const ActivePrefix: string);
+const
+  YR_FIELDS: array[0..3] of string = ('C28G', 'C1000G', 'CNEKG', 'CGISG');
+  OR_FIELDS: array[0..3] of string = ('C28G', 'CIUGRG', 'C1000G', 'CKONJENITALG');
+  DR_FIELDS: array[0..2] of string = ('C32G', 'CIUGRG', 'C37G');
+var
+  C: TComponent;
+
+  procedure ClearGroup(const Prefix: string; const Arr: array of string);
+  var
+    J: Integer;
+    DS: TDataSet;
+  begin
+    if Prefix = ActivePrefix then Exit;
+
+    for J := Low(Arr) to High(Arr) do
+    begin
+      C := FindComponent(Prefix + '_' + Arr[J] + IntToStr(FAktifHafta));
+      if (C is TcxDBCheckBox) then
+      begin
+        DS := TcxDBCheckBox(C).DataBinding.DataSource.DataSet;
+
+        if Assigned(DS) and DS.Active then
+        begin
+          if not (DS.State in dsEditModes) then
+            DS.Edit;   //  EN KRİTİK SATIR
+
+          TcxDBCheckBox(C).Checked := False;
+        end;
+      end;
+    end;
+  end;
+
+begin
+  ClearGroup('YR', YR_FIELDS);
+  ClearGroup('OR', OR_FIELDS);
+  ClearGroup('DR', DR_FIELDS);
+end;
+ procedure TForm2.TGCheckBoxPropertiesChange(Sender: TObject);
+var
+  C: TcxDBCheckBox;
+  DS: TDataSet;
+begin
+  if not (Sender is TcxDBCheckBox) then Exit;
+  C := TcxDBCheckBox(Sender);
+
+  if (C.DataBinding.DataSource = nil) or
+     (C.DataBinding.DataSource.DataSet = nil) then Exit;
+
+  DS := C.DataBinding.DataSource.DataSet;
+  if not DS.Active then Exit;
+
+  if not (DS.State in dsEditModes) then
+    DS.Edit;
+
+  // sadece kendi rengini güncelle
+  RefreshRiskCheckBox(C);
+end;
+
+
+
+procedure TForm2.RiskCheckBoxPropertiesChange(Sender: TObject);
+var
+  C: TcxDBCheckBox;
+  DS: TDataSet;
+  FieldName: string;
+begin
+  if not (Sender is TcxDBCheckBox) then Exit;
+  C := TcxDBCheckBox(Sender);
+
+  if (C.DataBinding.DataSource = nil) or
+     (C.DataBinding.DataSource.DataSet = nil) then Exit;
+
+  DS := C.DataBinding.DataSource.DataSet;
+  if not DS.Active then Exit;
+
+  if not (DS.State in dsEditModes) then
+    DS.Edit;
+
+  FieldName := C.DataBinding.DataField;
+
+  if C.Checked then
+  begin
+    // ✅ 1) ÖNCE bu alanı TRUE yap
+    DS.FieldByName(FieldName).AsString := 'T';
+
+    // ✅ 2) SONRA diğer tüm riskleri temizle
+    ClearRiskFieldsInDatasetExcept(DS, FieldName);
+
+  end
+  else
+  begin
+    // kullanıcı geri aldıysa
+    DS.FieldByName(FieldName).AsString := 'F';
+  end;
+
+  RefreshRiskCheckBox(C);
+end;
+
+
+end.
