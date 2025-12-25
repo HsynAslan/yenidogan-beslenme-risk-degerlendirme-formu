@@ -22,10 +22,9 @@
     Height = 750
     Align = alClient
     TabOrder = 0
-    VertScrollBar.Position = 10
     object grpBaslik: TcxGroupBox
       Left = 0
-      Top = -10
+      Top = 0
       Align = alTop
       PanelStyle.Active = True
       ParentBackground = False
@@ -57,7 +56,7 @@
     end
     object grpDogumBilgileri: TcxGroupBox
       Left = 0
-      Top = 7
+      Top = 17
       Align = alTop
       PanelStyle.Active = True
       ParentBackground = False
@@ -426,7 +425,7 @@
     end
     object grpOlcum: TcxGroupBox
       Left = 0
-      Top = 87
+      Top = 97
       Align = alTop
       PanelStyle.Active = True
       ParentBackground = False
@@ -3078,7 +3077,7 @@
     end
     object grpGözdenGecirme: TcxGroupBox
       Left = 0
-      Top = 521
+      Top = 531
       Align = alTop
       PanelStyle.Active = True
       ParentBackground = False
@@ -3887,7 +3886,7 @@
     end
     object grpGridListe: TcxGroupBox
       Left = 0
-      Top = 636
+      Top = 646
       Align = alTop
       PanelStyle.Active = True
       TabOrder = 4

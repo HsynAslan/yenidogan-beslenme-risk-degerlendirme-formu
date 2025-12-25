@@ -949,18 +949,7 @@ begin
   // 🔄 FORMU KAPATMA → YENİDEN YÜKLE
   ReloadFormData;
 
-  ShowMessage(
-    Format(
-      'Kayıt alındı.%sForm %d - Hafta %d%sRisk: %s',
-      [
-        sLineBreak,
-        FAktifForm,
-        FAktifHafta,
-        sLineBreak,
-        IfThen(DBRisk = '', '(yok)', DBRisk)
-      ]
-    )
-  );
+ 
 end;
 
 
@@ -1044,13 +1033,7 @@ begin
   ApplyTGFieldRules;
   ApplyFixedFieldRules;
 
-  // (debug – sonra silebilirsin)
-  ShowMessage(
-    Format(
-      'Form=%d  Hafta=%d%sGeçmiş kayıt sayısı=%d',
-      [FAktifForm, FAktifHafta, sLineBreak, qryFormHistory.RecordCount]
-    )
-  );
+  
 end;
 
 
