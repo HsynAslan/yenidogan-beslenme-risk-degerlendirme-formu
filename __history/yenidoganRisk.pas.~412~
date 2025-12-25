@@ -399,10 +399,6 @@ type
     lblHastaBolum: TcxDBLabel;
     cxlbl38: TcxLabel;
     lblHastaTani: TcxDBLabel;
-    intgrfldFormHistoryFORM_NO: TIntegerField;
-    dtmfldFormHistoryILK_TARIH: TDateTimeField;
-    dtmfldFormHistorySON_TARIH: TDateTimeField;
-    strngfldFormHistoryRISK_SEVIYE: TStringField;
     frxReportForm: TfrxReport;
     qryPrintForm: TOraQuery;
     frxDB: TfrxDBDataset;
@@ -442,6 +438,20 @@ type
     strngfldPrintFormTG_KILO_KAYIP_15: TStringField;
     strngfldPrintFormTG_KILO_KAZANIM_10: TStringField;
     strngfldPrintFormTG_NEK_CERRAHI: TStringField;
+    strngfldPrintFormHASTA_ADI: TStringField;
+    dtmfldPrintFormHASTA_DOGUM_TARIHI: TDateTimeField;
+    fltfldPrintFormHASTA_YASI: TFloatField;
+    fltfldPrintFormPROTOKOL_NO_TXT: TFloatField;
+    strngfldPrintFormTANI_ADI: TStringField;
+    strngfldPrintFormBOLUM_ADI: TStringField;
+    strngfldPrintFormRISK_OZET: TStringField;
+    intgrfldFormHistoryFORM_NO: TIntegerField;
+    dtmfldFormHistoryILK_TARIH: TDateTimeField;
+    dtmfldFormHistorySON_TARIH: TDateTimeField;
+    strngfldFormHistoryGIRIS_BILGISI: TStringField;
+    strngfldFormHistoryCIKIS_BILGISI: TStringField;
+    strngfldFormHistoryTOPLAM_SURE: TStringField;
+    strngfldFormHistoryGENEL_RISK: TStringField;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -491,8 +501,8 @@ var
 implementation
 
 const
-  TEST_DOSYA_NO    = 12;
-  TEST_PROTOKOL_NO = 400;
+  TEST_DOSYA_NO    = 12;    // meddatadan gelen hasta bilgilerinin burada değişmesi yeterli
+  TEST_PROTOKOL_NO = 400;   // meddatadan gelen hasta bilgilerinin burada değişmesi yeterli
 {$R *.dfm}
 procedure TForm2.ApplyFixedFieldRules;
 var
@@ -939,18 +949,7 @@ begin
   // 🔄 FORMU KAPATMA → YENİDEN YÜKLE
   ReloadFormData;
 
-  ShowMessage(
-    Format(
-      'Kayıt alındı.%sForm %d - Hafta %d%sRisk: %s',
-      [
-        sLineBreak,
-        FAktifForm,
-        FAktifHafta,
-        sLineBreak,
-        IfThen(DBRisk = '', '(yok)', DBRisk)
-      ]
-    )
-  );
+ 
 end;
 
 
@@ -1034,13 +1033,7 @@ begin
   ApplyTGFieldRules;
   ApplyFixedFieldRules;
 
-  // (debug – sonra silebilirsin)
-  ShowMessage(
-    Format(
-      'Form=%d  Hafta=%d%sGeçmiş kayıt sayısı=%d',
-      [FAktifForm, FAktifHafta, sLineBreak, qryFormHistory.RecordCount]
-    )
-  );
+  
 end;
 
 

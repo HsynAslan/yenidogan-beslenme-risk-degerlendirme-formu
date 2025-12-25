@@ -399,13 +399,59 @@ type
     lblHastaBolum: TcxDBLabel;
     cxlbl38: TcxLabel;
     lblHastaTani: TcxDBLabel;
-    intgrfldFormHistoryFORM_NO: TIntegerField;
-    dtmfldFormHistoryILK_TARIH: TDateTimeField;
-    dtmfldFormHistorySON_TARIH: TDateTimeField;
-    strngfldFormHistoryRISK_SEVIYE: TStringField;
     frxReportForm: TfrxReport;
     qryPrintForm: TOraQuery;
     frxDB: TfrxDBDataset;
+    fltfldPrintFormHASTA_ID: TFloatField;
+    fltfldPrintFormHAFTA_NO: TFloatField;
+    fltfldPrintFormDOSYA_NO: TFloatField;
+    fltfldPrintFormPROTOKOL_NO: TFloatField;
+    dtmfldPrintFormIZLEM_TARIHI: TDateTimeField;
+    fltfldPrintFormGESTASYON_HAFTASI: TFloatField;
+    fltfldPrintFormDOGUM_KILOSU_GR: TFloatField;
+    fltfldPrintFormDOGUM_BOYU_CM: TFloatField;
+    fltfldPrintFormDOGUM_BAS_CEVRESI: TFloatField;
+    strngfldPrintFormYR_28_HAFTA: TStringField;
+    strngfldPrintFormYR_1000_GR: TStringField;
+    strngfldPrintFormYR_NEK_GIS: TStringField;
+    strngfldPrintFormYR_KONJ_GIS: TStringField;
+    strngfldPrintFormOR_28_31_HAFTA: TStringField;
+    strngfldPrintFormOR_IUGR: TStringField;
+    strngfldPrintFormOR_1000_1500_GR: TStringField;
+    strngfldPrintFormOR_KONJ_BESLENME: TStringField;
+    strngfldPrintFormDR_32_35_HAFTA: TStringField;
+    strngfldPrintFormDR_IUGR_35: TStringField;
+    strngfldPrintFormDR_TERM: TStringField;
+    strngfldPrintFormRISK_SEVIYE: TStringField;
+    strngfldPrintFormIHT_2_HAFTA_KILO: TStringField;
+    strngfldPrintFormIHT_15_KAYIP: TStringField;
+    strngfldPrintFormIHT_10G_KAZANIM: TStringField;
+    strngfldPrintFormIHT_NEK_CERRAHI: TStringField;
+    strngfldPrintFormDOKTOR_ADI: TStringField;
+    dtmfldPrintFormKAYIT_TARIHI: TDateTimeField;
+    fltfldPrintFormKILO_KG: TFloatField;
+    fltfldPrintFormBOY_CM: TFloatField;
+    fltfldPrintFormBAS_CEVRESI_CM: TFloatField;
+    intgrfldPrintFormFORM_NO: TIntegerField;
+    strngfldPrintFormTG_YUKSEK_RISK: TStringField;
+    strngfldPrintFormTG_KILO_YAKALAYAMAMA: TStringField;
+    strngfldPrintFormTG_KILO_KAYIP_15: TStringField;
+    strngfldPrintFormTG_KILO_KAZANIM_10: TStringField;
+    strngfldPrintFormTG_NEK_CERRAHI: TStringField;
+    strngfldPrintFormHASTA_ADI: TStringField;
+    dtmfldPrintFormHASTA_DOGUM_TARIHI: TDateTimeField;
+    fltfldPrintFormHASTA_YASI: TFloatField;
+    fltfldPrintFormPROTOKOL_NO_TXT: TFloatField;
+    strngfldPrintFormTANI_ADI: TStringField;
+    strngfldPrintFormBOLUM_ADI: TStringField;
+    strngfldPrintFormRISK_OZET: TStringField;
+    intgrfldFormHistoryFORM_NO: TIntegerField;
+    dtmfldFormHistoryILK_TARIH: TDateTimeField;
+    dtmfldFormHistorySON_TARIH: TDateTimeField;
+    strngfldFormHistoryGIRIS_BILGISI: TStringField;
+    strngfldFormHistoryCIKIS_BILGISI: TStringField;
+    strngfldFormHistoryTOPLAM_SURE: TStringField;
+    strngfldFormHistoryGENEL_RISK: TStringField;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -436,6 +482,7 @@ type
     procedure RefreshAllRiskCheckBoxes;
     procedure LoadActiveForm;
     procedure ResetAllRiskCheckBoxStyles;
+    procedure btnYazdirClick(Sender: TObject);
   private
     { Private declarations }
    FReadOnlyMode: Boolean;
@@ -454,10 +501,13 @@ var
 implementation
 
 const
-  TEST_DOSYA_NO    = 12;
-  TEST_PROTOKOL_NO = 400;
+  TEST_DOSYA_NO    = 12;    // meddatadan gelen hasta bilgilerinin burada değişmesi yeterli
+  TEST_PROTOKOL_NO = 400;   // meddatadan gelen hasta bilgilerinin burada değişmesi yeterli
 {$R *.dfm}
-procedure TForm2.ApplyFixedFieldRules;
+
+
+
+procedure TForm2.ApplyFixedFieldRules;   // ilk haftanın yapabildiği doğum bilgilerinin girişine izin verilmesi
 var
   E: Boolean;
 begin
@@ -468,7 +518,8 @@ begin
   edtDBoyu.Enabled     := E;
   edtDBas.Enabled      := E;
 end;
-procedure TForm2.ApplyReadOnlyMode;
+
+procedure TForm2.ApplyReadOnlyMode;  // geçmiş kayıtları incelerken girişleri engelleme için
 begin
   if not FReadOnlyMode then Exit;
 
@@ -485,7 +536,7 @@ begin
 end;
 
 
- procedure TForm2.LoadFormReadOnly(AFormNo: Integer);
+ procedure TForm2.LoadFormReadOnly(AFormNo: Integer); // geçmiş kayıtları düzenleme yapmadan yükleme için
 begin
   FReadOnlyMode := True;
 
@@ -501,7 +552,7 @@ OpenHafta(qrHafta4, 4);
   ApplyReadOnlyMode;
 end;
 
- procedure TForm2.ApplyTGFieldRules;
+ procedure TForm2.ApplyTGFieldRules; // checkboxları kitleme için name'lerinden parse etme işlemi
 var
   I: Integer;
   C: TComponent;
@@ -531,7 +582,7 @@ begin
 end;
 
 
- procedure TForm2.ApplyDoctorFieldRules;
+ procedure TForm2.ApplyDoctorFieldRules;  // doktor alanlarını kitleme
 var
   I: Integer;
   C: TComponent;
@@ -544,7 +595,7 @@ begin
   end;
 end;
 
- function TForm2.IsFirstFormFirstWeek: Boolean;
+ function TForm2.IsFirstFormFirstWeek: Boolean;   // ilk kayıt mı ?
 begin
   Result := (FAktifForm = 1) and (FAktifHafta = 1);
 end;
@@ -558,11 +609,11 @@ begin
   qrHafta3.ReadOnly := False;
   qrHafta4.ReadOnly := False;
 
-  ReloadFormData;   // senin yazdığın sağlam fonk
+  ReloadFormData;
 end;
 
 
-procedure TForm2.OpenHafta(Q: TOraQuery; AHafta: Integer);
+procedure TForm2.OpenHafta(Q: TOraQuery; AHafta: Integer); // hafta bilgisinin açılması
 begin
   Q.Close;
   Q.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
@@ -587,7 +638,7 @@ end;
 
 
 
-procedure TForm2.CopyFixedFieldsFromFirstWeek(Q: TOraQuery);
+procedure TForm2.CopyFixedFieldsFromFirstWeek(Q: TOraQuery); // ilk hafta hariç diğer haftalarda doğum bilgilerini ilk haftadan kopyalayarak çekiyoruz
 begin
   qryFirstWeek.Close;
   qryFirstWeek.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
@@ -612,42 +663,9 @@ begin
   end;
 end;
 
- {*
-procedure TForm2.dbgrdFormHistoryCellClick(Column: TColumn);
-var
-  SelFormNo: Integer;
-begin
-  if qryFormHistory.IsEmpty then Exit;
 
-  // 1️⃣ seçilen form
-  SelFormNo := qryFormHistory.FieldByName('FORM_NO').AsInteger;
 
-  FAktifForm  := SelFormNo;
-  FAktifHafta := 0; // geçmiş → aktif hafta yok
-
-  // 2️⃣ haftaları kapat
-  qrHafta1.Close;
-  qrHafta2.Close;
-  qrHafta3.Close;
-  qrHafta4.Close;
-
-  // 3️⃣ geçmiş formu SADECE OKU
-  OpenHafta(qrHafta1, 1, True);
-  OpenHafta(qrHafta2, 2, True);
-  OpenHafta(qrHafta3, 3, True);
-  OpenHafta(qrHafta4, 4, True);
-
-  // 4️⃣ ekran kilitleri
-  SetHaftaAktif(0);
-  ApplyFixedFieldRules;
-  ApplyDoctorFieldRules;
-  ApplyTGFieldRules;
-
-  // 5️⃣ 🔥 RENKLERİ MUTLAKA YENİLE
-  RefreshAllRiskCheckBoxes;
-end;               *}
-
-procedure TForm2.dbgrdFormHistoryCellClick(Column: TColumn);
+procedure TForm2.dbgrdFormHistoryCellClick(Column: TColumn);    //grid üzerinde geçmiş kayıtara geçiş
 var
   SelFormNo: Integer;
 begin
@@ -669,7 +687,7 @@ begin
   OpenHafta(qrHafta3, 3);
   OpenHafta(qrHafta4, 4);
 
-  // 🔴 MUTLAKA BU SIRA
+
   ResetAllRiskCheckBoxStyles;
   RefreshAllRiskCheckBoxes;
 
@@ -678,7 +696,7 @@ end;
 
 
 
-procedure TForm2.CalcAktifFormHafta;
+procedure TForm2.CalcAktifFormHafta;  //  aktif haftayı bulma
 var
   HaftaSayisi: Integer;
 begin
@@ -708,7 +726,7 @@ end;
 
 
 
-procedure TForm2.SetHaftaAktif(AHafta: Integer);
+procedure TForm2.SetHaftaAktif(AHafta: Integer);  // aktif haftayı editlenebilir yapma
 var
   I: Integer;
 
@@ -722,7 +740,7 @@ var
   end;
 
 begin
-  // 🔴 GEÇMİŞ FORM (SADECE GÖRÜNTÜLEME)
+  //  GEÇMİŞ FORM (SADECE GÖRÜNTÜLEME)
   if AHafta = 0 then
   begin
     for I := 1 to 4 do
@@ -757,7 +775,7 @@ begin
     Exit;
   end;
 
-  // 🟢 NORMAL AKTİF HAFTA (1–4)
+  //  NORMAL AKTİF HAFTA (1–4)
   for I := 1 to 4 do
   begin
     En('edtKiloGun' + IntToStr(I), I = AHafta);
@@ -792,7 +810,7 @@ end;
 
 
 
-function TForm2.GetActiveRiskValue(const Prefix: string): Boolean;
+function TForm2.GetActiveRiskValue(const Prefix: string): Boolean;     // risk hesaplama
 var
   C: TComponent;
 
@@ -835,7 +853,7 @@ begin
 end;
 
 
-function TForm2.CalcRiskSeviye: string;
+function TForm2.CalcRiskSeviye: string;   // yüksek harici orta yazan func
 begin
   // Öncelik sırası: Yüksek > Orta > Düşük
 
@@ -848,7 +866,7 @@ begin
   Result := ''; // hiçbiri yok
 end;
 
-procedure TForm2.ReloadFormData;
+procedure TForm2.ReloadFormData;     // formu reload eder
 begin
   CalcAktifFormHafta;
 
@@ -857,8 +875,8 @@ begin
   OpenHafta(qrHafta3, 3);
   OpenHafta(qrHafta4, 4);
 
-  ResetAllRiskCheckBoxStyles;   // 🔥
-  RefreshAllRiskCheckBoxes;    // 🔥
+  ResetAllRiskCheckBoxStyles;
+  RefreshAllRiskCheckBoxes;
 
   SetHaftaAktif(FAktifHafta);
   ApplyFixedFieldRules;
@@ -872,7 +890,7 @@ begin
 end;
 
 
-procedure TForm2.btnKaydetClick(Sender: TObject);
+procedure TForm2.btnKaydetClick(Sender: TObject);  // kaydetme butonu
 var
   Q: TOraQuery;
   DBRisk: string;
@@ -899,27 +917,46 @@ begin
 
   Q.Post;
 
-  // 🔄 FORMU KAPATMA → YENİDEN YÜKLE
+  //  FORMU KAPATMA → YENİDEN YÜKLE
   ReloadFormData;
 
-  ShowMessage(
-    Format(
-      'Kayıt alındı.%sForm %d - Hafta %d%sRisk: %s',
-      [
-        sLineBreak,
-        FAktifForm,
-        FAktifHafta,
-        sLineBreak,
-        IfThen(DBRisk = '', '(yok)', DBRisk)
-      ]
-    )
-  );
+ 
 end;
 
 
 
 
-procedure TForm2.btnYeniClick(Sender: TObject);
+procedure TForm2.btnYazdirClick(Sender: TObject);       // yazdırma butonu func
+var
+  FormNo: Integer;
+begin
+  // gridde seçim var mı?
+  if qryFormHistory.IsEmpty then
+  begin
+    ShowMessage('Lütfen yazdırılacak formu seçiniz.');
+    Exit;
+  end;
+
+  FormNo := qryFormHistory.FieldByName('FORM_NO').AsInteger;
+
+  // rapor datası
+  qryPrintForm.Close;
+  qryPrintForm.ParamByName('DOSYA_NO').AsInteger    := FDosyaNo;
+  qryPrintForm.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+  qryPrintForm.ParamByName('FORM_NO').AsInteger     := FormNo;
+  qryPrintForm.Open;
+
+  if qryPrintForm.IsEmpty then
+  begin
+    ShowMessage('Bu forma ait yazdırılacak veri yok.');
+    Exit;
+  end;
+
+  // PDF önizleme (FastReport kendi PDF butonunu gösterir)
+  frxReportForm.ShowReport;
+end;
+
+procedure TForm2.btnYeniClick(Sender: TObject);   // yeni yada eskide kalan son yerden devam eden buton func
 begin
   FReadOnlyMode := False;
 
@@ -930,30 +967,30 @@ begin
   OpenHafta(qrHafta3, 3);
   OpenHafta(qrHafta4, 4);
 
-  ResetAllRiskCheckBoxStyles;   // 🔥
-  RefreshAllRiskCheckBoxes;    // 🔥
+  ResetAllRiskCheckBoxStyles;
+  RefreshAllRiskCheckBoxes;
 
   btnKaydet.Enabled := True;
   SetHaftaAktif(FAktifHafta);
 end;
 
-procedure TForm2.FormShow(Sender: TObject);
+procedure TForm2.FormShow(Sender: TObject);  // formu gösterme
 begin
-  // 1️⃣ DB bağlantısı
+  // 1️DB bağlantısı
   if not Orsn1.Connected then
     Orsn1.Connected := True;
 
-  // 2️⃣ Hasta bilgisi (ÖNCE)
+  // 2️Hasta bilgisi (ÖNCE)
   FDosyaNo    := TEST_DOSYA_NO;
   FProtokolNo := TEST_PROTOKOL_NO;
 
-  // 3️⃣ 🔹 GEÇMİŞ FORM LİSTESİ (DBGrid için)
+  // 3️ GEÇMİŞ FORM LİSTESİ (DBGrid için)
   qryFormHistory.Close;
   qryFormHistory.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
   qryFormHistory.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
   qryFormHistory.Open;
 
-  // 4️⃣ Aktif form / hafta hesapla
+  // 4️Aktif form / hafta hesapla
   CalcAktifFormHafta;
 
   // 5️⃣ Haftalık datasetleri aç
@@ -962,18 +999,12 @@ begin
   OpenHafta(qrHafta3, 3);
   OpenHafta(qrHafta4, 4);
 
-  // 6️⃣ Ekran kuralları
+  // 6️Ekran kuralları
   SetHaftaAktif(FAktifHafta);
   ApplyTGFieldRules;
   ApplyFixedFieldRules;
 
-  // (debug – sonra silebilirsin)
-  ShowMessage(
-    Format(
-      'Form=%d  Hafta=%d%sGeçmiş kayıt sayısı=%d',
-      [FAktifForm, FAktifHafta, sLineBreak, qryFormHistory.RecordCount]
-    )
-  );
+  
 end;
 
 

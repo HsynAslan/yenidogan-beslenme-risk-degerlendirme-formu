@@ -399,14 +399,59 @@ type
     lblHastaBolum: TcxDBLabel;
     cxlbl38: TcxLabel;
     lblHastaTani: TcxDBLabel;
+    frxReportForm: TfrxReport;
+    qryPrintForm: TOraQuery;
+    frxDB: TfrxDBDataset;
+    fltfldPrintFormHASTA_ID: TFloatField;
+    fltfldPrintFormHAFTA_NO: TFloatField;
+    fltfldPrintFormDOSYA_NO: TFloatField;
+    fltfldPrintFormPROTOKOL_NO: TFloatField;
+    dtmfldPrintFormIZLEM_TARIHI: TDateTimeField;
+    fltfldPrintFormGESTASYON_HAFTASI: TFloatField;
+    fltfldPrintFormDOGUM_KILOSU_GR: TFloatField;
+    fltfldPrintFormDOGUM_BOYU_CM: TFloatField;
+    fltfldPrintFormDOGUM_BAS_CEVRESI: TFloatField;
+    strngfldPrintFormYR_28_HAFTA: TStringField;
+    strngfldPrintFormYR_1000_GR: TStringField;
+    strngfldPrintFormYR_NEK_GIS: TStringField;
+    strngfldPrintFormYR_KONJ_GIS: TStringField;
+    strngfldPrintFormOR_28_31_HAFTA: TStringField;
+    strngfldPrintFormOR_IUGR: TStringField;
+    strngfldPrintFormOR_1000_1500_GR: TStringField;
+    strngfldPrintFormOR_KONJ_BESLENME: TStringField;
+    strngfldPrintFormDR_32_35_HAFTA: TStringField;
+    strngfldPrintFormDR_IUGR_35: TStringField;
+    strngfldPrintFormDR_TERM: TStringField;
+    strngfldPrintFormRISK_SEVIYE: TStringField;
+    strngfldPrintFormIHT_2_HAFTA_KILO: TStringField;
+    strngfldPrintFormIHT_15_KAYIP: TStringField;
+    strngfldPrintFormIHT_10G_KAZANIM: TStringField;
+    strngfldPrintFormIHT_NEK_CERRAHI: TStringField;
+    strngfldPrintFormDOKTOR_ADI: TStringField;
+    dtmfldPrintFormKAYIT_TARIHI: TDateTimeField;
+    fltfldPrintFormKILO_KG: TFloatField;
+    fltfldPrintFormBOY_CM: TFloatField;
+    fltfldPrintFormBAS_CEVRESI_CM: TFloatField;
+    intgrfldPrintFormFORM_NO: TIntegerField;
+    strngfldPrintFormTG_YUKSEK_RISK: TStringField;
+    strngfldPrintFormTG_KILO_YAKALAYAMAMA: TStringField;
+    strngfldPrintFormTG_KILO_KAYIP_15: TStringField;
+    strngfldPrintFormTG_KILO_KAZANIM_10: TStringField;
+    strngfldPrintFormTG_NEK_CERRAHI: TStringField;
+    strngfldPrintFormHASTA_ADI: TStringField;
+    dtmfldPrintFormHASTA_DOGUM_TARIHI: TDateTimeField;
+    fltfldPrintFormHASTA_YASI: TFloatField;
+    fltfldPrintFormPROTOKOL_NO_TXT: TFloatField;
+    strngfldPrintFormTANI_ADI: TStringField;
+    strngfldPrintFormBOLUM_ADI: TStringField;
+    strngfldPrintFormRISK_OZET: TStringField;
     intgrfldFormHistoryFORM_NO: TIntegerField;
     dtmfldFormHistoryILK_TARIH: TDateTimeField;
     dtmfldFormHistorySON_TARIH: TDateTimeField;
-    strngfldFormHistoryRISK_SEVIYE: TStringField;
-    frxFormReport: TfrxReport;
-    frxDBIzlem: TfrxDBDataset;
-    frxPDFExport: TfrxPDFExport;
-    qryPrintForm: TOraQuery;
+    strngfldFormHistoryGIRIS_BILGISI: TStringField;
+    strngfldFormHistoryCIKIS_BILGISI: TStringField;
+    strngfldFormHistoryTOPLAM_SURE: TStringField;
+    strngfldFormHistoryGENEL_RISK: TStringField;
 
     procedure lblGunTarihClick(Sender: TObject);
     procedure PaintBoxYuksekRiskPaint(Sender: TObject);
@@ -437,6 +482,7 @@ type
     procedure RefreshAllRiskCheckBoxes;
     procedure LoadActiveForm;
     procedure ResetAllRiskCheckBoxStyles;
+    procedure btnYazdirClick(Sender: TObject);
   private
     { Private declarations }
    FReadOnlyMode: Boolean;
@@ -903,22 +949,41 @@ begin
   // 🔄 FORMU KAPATMA → YENİDEN YÜKLE
   ReloadFormData;
 
-  ShowMessage(
-    Format(
-      'Kayıt alındı.%sForm %d - Hafta %d%sRisk: %s',
-      [
-        sLineBreak,
-        FAktifForm,
-        FAktifHafta,
-        sLineBreak,
-        IfThen(DBRisk = '', '(yok)', DBRisk)
-      ]
-    )
-  );
+ 
 end;
 
 
 
+
+procedure TForm2.btnYazdirClick(Sender: TObject);
+var
+  FormNo: Integer;
+begin
+  // gridde seçim var mı?
+  if qryFormHistory.IsEmpty then
+  begin
+    ShowMessage('Lütfen yazdırılacak formu seçiniz.');
+    Exit;
+  end;
+
+  FormNo := qryFormHistory.FieldByName('FORM_NO').AsInteger;
+
+  // rapor datası
+  qryPrintForm.Close;
+  qryPrintForm.ParamByName('DOSYA_NO').AsInteger    := FDosyaNo;
+  qryPrintForm.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+  qryPrintForm.ParamByName('FORM_NO').AsInteger     := FormNo;
+  qryPrintForm.Open;
+
+  if qryPrintForm.IsEmpty then
+  begin
+    ShowMessage('Bu forma ait yazdırılacak veri yok.');
+    Exit;
+  end;
+
+  // PDF önizleme (FastReport kendi PDF butonunu gösterir)
+  frxReportForm.ShowReport;
+end;
 
 procedure TForm2.btnYeniClick(Sender: TObject);
 begin
@@ -968,13 +1033,7 @@ begin
   ApplyTGFieldRules;
   ApplyFixedFieldRules;
 
-  // (debug – sonra silebilirsin)
-  ShowMessage(
-    Format(
-      'Form=%d  Hafta=%d%sGeçmiş kayıt sayısı=%d',
-      [FAktifForm, FAktifHafta, sLineBreak, qryFormHistory.RecordCount]
-    )
-  );
+  
 end;
 
 
