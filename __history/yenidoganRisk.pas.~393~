@@ -413,7 +413,7 @@ type
     procedure ApplyFixedFieldRules;
     procedure SetHaftaAktif(AHafta: Integer);
     procedure CalcAktifFormHafta;
-    procedure OpenHafta( Q: TOraQuery; AHafta: Integer; AReadOnly: Boolean );
+    procedure OpenHafta( Q: TOraQuery; AHafta: Integer);
 
     procedure CopyFixedFieldsFromFirstWeek(Q: TOraQuery);
     function IsFirstFormFirstWeek: Boolean;
@@ -464,38 +464,21 @@ begin
   edtDBas.Enabled      := E;
 end;
 procedure TForm2.ApplyReadOnlyMode;
-var
-  I: Integer;
-  C: TComponent;
 begin
   if not FReadOnlyMode then Exit;
 
-  // 🔒 datasetler
-  qrHafta1.ReadOnly := True;
-  qrHafta2.ReadOnly := True;
-  qrHafta3.ReadOnly := True;
-  qrHafta4.ReadOnly := True;
+  // sadece inputlar kilitlenecek
+  SetHaftaAktif(0);
+  ApplyFixedFieldRules;
+  ApplyDoctorFieldRules;
+  ApplyTGFieldRules;
 
-  // 🔒 input kontrolleri (tek tek!)
-  for I := 0 to ComponentCount - 1 do
-  begin
-    C := Components[I];
-
-    // editler
-    if C is TcxDBTextEdit then
-      TcxDBTextEdit(C).Properties.ReadOnly := True;
-
-    // checkboxlar
-    if C is TcxDBCheckBox then
-      TcxDBCheckBox(C).Enabled := False;
-  end;
-
-  // ✅ grid açık
+  // grid açık
   dbgrdFormHistory.Enabled := True;
 
-  // ❌ kaydet kapalı
   btnKaydet.Enabled := False;
 end;
+
 
  procedure TForm2.LoadFormReadOnly(AFormNo: Integer);
 begin
@@ -504,10 +487,10 @@ begin
   FAktifForm  := AFormNo;
   FAktifHafta := 1; // fark etmez, hepsi açılacak
 
-OpenHafta(qrHafta1, 1, True);
-OpenHafta(qrHafta2, 2, True);
-OpenHafta(qrHafta3, 3, True);
-OpenHafta(qrHafta4, 4, True);
+OpenHafta(qrHafta1, 1);
+OpenHafta(qrHafta2, 2);
+OpenHafta(qrHafta3, 3);
+OpenHafta(qrHafta4, 4);
 
 
   ApplyReadOnlyMode;
@@ -574,35 +557,22 @@ begin
 end;
 
 
-procedure TForm2.OpenHafta(Q: TOraQuery; AHafta: Integer; AReadOnly: Boolean);
+procedure TForm2.OpenHafta(Q: TOraQuery; AHafta: Integer);
 begin
   Q.Close;
-
-  // 🔑 EN KRİTİK SATIR
-  Q.ReadOnly := AReadOnly;
-
-  Q.ParamByName('DOSYA_NO').AsInteger    := FDosyaNo;
+  Q.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
   Q.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
-  Q.ParamByName('FORM_NO').AsInteger     := FAktifForm;
-  Q.ParamByName('HAFTA_NO').AsInteger    := AHafta;
-
+  Q.ParamByName('FORM_NO').AsInteger := FAktifForm;
+  Q.ParamByName('HAFTA_NO').AsInteger := AHafta;
   Q.Open;
 
-  // 🔒 geçmiş form → ASLA kayıt oluşturma
-  if AReadOnly then
-    Exit;
-
-  // 🟢 aktif form → gerekiyorsa kayıt aç
   if Q.IsEmpty then
   begin
-    // ekstra emniyet
-    if Q.ReadOnly then Exit;
-
     Q.Append;
-    Q.FieldByName('DOSYA_NO').AsInteger    := FDosyaNo;
+    Q.FieldByName('DOSYA_NO').AsInteger := FDosyaNo;
     Q.FieldByName('PROTOKOL_NO').AsInteger := FProtokolNo;
-    Q.FieldByName('FORM_NO').AsInteger     := FAktifForm;
-    Q.FieldByName('HAFTA_NO').AsInteger    := AHafta;
+    Q.FieldByName('FORM_NO').AsInteger := FAktifForm;
+    Q.FieldByName('HAFTA_NO').AsInteger := AHafta;
     Q.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
 
     if not IsFirstFormFirstWeek then
@@ -680,31 +650,24 @@ begin
 
   SelFormNo := qryFormHistory.FieldByName('FORM_NO').AsInteger;
 
-  // 🔄 1) ÖNCE TÜM DATASETLERİ TEMİZ KAPAT
+  FReadOnlyMode := True;
+
+  FAktifForm  := SelFormNo;
+  FAktifHafta := 0;
+
   qrHafta1.Close;
   qrHafta2.Close;
   qrHafta3.Close;
   qrHafta4.Close;
 
-  // 🔒 2) geçmiş form moduna geç
-  FAktifForm  := SelFormNo;
-  FAktifHafta := 0;
+  OpenHafta(qrHafta1, 1);
+  OpenHafta(qrHafta2, 2);
+  OpenHafta(qrHafta3, 3);
+  OpenHafta(qrHafta4, 4);
 
-  // 👁️ 3) SADECE OKUMA MODUNDA AÇ
-  OpenHafta(qrHafta1, 1, True);
-  OpenHafta(qrHafta2, 2, True);
-  OpenHafta(qrHafta3, 3, True);
-  OpenHafta(qrHafta4, 4, True);
-
-  // 🔐 4) SADECE KONTROLLERİ KİLİTLE
-  SetHaftaAktif(0);
-  ApplyFixedFieldRules;
-  ApplyDoctorFieldRules;
-  ApplyTGFieldRules;
-
-  // ❌ Kaydet kapalı
-  btnKaydet.Enabled := False;
+  ApplyReadOnlyMode;
 end;
+
 
 
 procedure TForm2.CalcAktifFormHafta;
@@ -881,10 +844,10 @@ procedure TForm2.ReloadFormData;
 begin
   CalcAktifFormHafta;
 
-  OpenHafta(qrHafta1, 1, False);
-  OpenHafta(qrHafta2, 2, False);
-  OpenHafta(qrHafta3, 3, False);
-  OpenHafta(qrHafta4, 4, False);
+  OpenHafta(qrHafta1, 1);
+  OpenHafta(qrHafta2, 2);
+  OpenHafta(qrHafta3, 3);
+  OpenHafta(qrHafta4, 4);
 
   SetHaftaAktif(FAktifHafta);
   ApplyFixedFieldRules;
@@ -953,7 +916,18 @@ end;
 
 procedure TForm2.btnYeniClick(Sender: TObject);
 begin
-  ReloadFormData;
+  FReadOnlyMode := False;
+
+  CalcAktifFormHafta;
+
+  OpenHafta(qrHafta1, 1);
+  OpenHafta(qrHafta2, 2);
+  OpenHafta(qrHafta3, 3);
+  OpenHafta(qrHafta4, 4);
+
+  btnKaydet.Enabled := True;
+
+  SetHaftaAktif(FAktifHafta);
 end;
 
 
@@ -977,10 +951,10 @@ begin
   CalcAktifFormHafta;
 
   // 5️⃣ Haftalık datasetleri aç
-  OpenHafta(qrHafta1, 1, False);
-  OpenHafta(qrHafta2, 2, False);
-  OpenHafta(qrHafta3, 3, False);
-  OpenHafta(qrHafta4, 4, False);
+  OpenHafta(qrHafta1, 1);
+  OpenHafta(qrHafta2, 2);
+  OpenHafta(qrHafta3, 3);
+  OpenHafta(qrHafta4, 4);
 
   // 6️⃣ Ekran kuralları
   SetHaftaAktif(FAktifHafta);

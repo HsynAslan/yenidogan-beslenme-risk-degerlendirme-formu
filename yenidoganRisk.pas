@@ -431,6 +431,7 @@ type
     procedure ReloadFormData;
     procedure RefreshAllRiskCheckBoxes;
     procedure LoadActiveForm;
+    procedure ResetAllRiskCheckBoxStyles;
   private
     { Private declarations }
    FReadOnlyMode: Boolean;
@@ -651,7 +652,6 @@ begin
   SelFormNo := qryFormHistory.FieldByName('FORM_NO').AsInteger;
 
   FReadOnlyMode := True;
-
   FAktifForm  := SelFormNo;
   FAktifHafta := 0;
 
@@ -664,6 +664,10 @@ begin
   OpenHafta(qrHafta2, 2);
   OpenHafta(qrHafta3, 3);
   OpenHafta(qrHafta4, 4);
+
+  // 🔴 MUTLAKA BU SIRA
+  ResetAllRiskCheckBoxStyles;
+  RefreshAllRiskCheckBoxes;
 
   ApplyReadOnlyMode;
 end;
@@ -849,23 +853,20 @@ begin
   OpenHafta(qrHafta3, 3);
   OpenHafta(qrHafta4, 4);
 
+  ResetAllRiskCheckBoxStyles;   // 🔥
+  RefreshAllRiskCheckBoxes;    // 🔥
+
   SetHaftaAktif(FAktifHafta);
   ApplyFixedFieldRules;
   ApplyDoctorFieldRules;
   ApplyTGFieldRules;
 
-  // 🔄 GEÇMİŞ FORM GRID
-  if Assigned(qryFormHistory) then
-  begin
-    qryFormHistory.Close;
-    qryFormHistory.ParamByName('DOSYA_NO').AsInteger    := FDosyaNo;
-    qryFormHistory.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
-    qryFormHistory.Open;
-  end;
-
-
-  RefreshAllRiskCheckBoxes;
+  qryFormHistory.Close;
+  qryFormHistory.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
+  qryFormHistory.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+  qryFormHistory.Open;
 end;
+
 
 procedure TForm2.btnKaydetClick(Sender: TObject);
 var
@@ -925,11 +926,12 @@ begin
   OpenHafta(qrHafta3, 3);
   OpenHafta(qrHafta4, 4);
 
-  btnKaydet.Enabled := True;
+  ResetAllRiskCheckBoxStyles;   // 🔥
+  RefreshAllRiskCheckBoxes;    // 🔥
 
+  btnKaydet.Enabled := True;
   SetHaftaAktif(FAktifHafta);
 end;
-
 
 procedure TForm2.FormShow(Sender: TObject);
 begin
@@ -1075,6 +1077,32 @@ begin
   end;
 end;
 
+procedure TForm2.ResetAllRiskCheckBoxStyles;
+var
+  I: Integer;
+  C: TComponent;
+begin
+  for I := 0 to ComponentCount - 1 do
+  begin
+    C := Components[I];
+
+    if (C is TcxDBCheckBox) then
+    begin
+      if (Copy(C.Name, 1, 2) = 'YR') or
+         (Copy(C.Name, 1, 2) = 'OR') or
+         (Copy(C.Name, 1, 2) = 'DR') or
+         (Copy(C.Name, 1, 2) = 'TG') then
+      begin
+        with TcxDBCheckBox(C) do
+        begin
+          ParentBackground := False;
+          Style.Color := clBtnFace;
+          Style.Font.Style := [];
+        end;
+      end;
+    end;
+  end;
+end;
 
 procedure TForm2.RefreshRiskCheckBox(ACheck: TcxDBCheckBox);
 var
@@ -1082,41 +1110,29 @@ var
 begin
   if not Assigned(ACheck) then Exit;
 
-  // Checkbox adının ilk 2 harfi: YR / OR / DR / TG
-  Prefix := Copy(ACheck.Name, 1, 2);
+  Prefix := Copy(ACheck.Name, 1, 2); // YR / OR / DR / TG
 
-  if ACheck.Checked then
-  begin
-    ACheck.ParentBackground := False;
-    ACheck.Style.Font.Style := [fsBold];
+  // 🔄 HER ZAMAN ÖNCE RESET
+  ACheck.ParentBackground := False;
+  ACheck.Style.Font.Style := [];
+  ACheck.Style.Color := clBtnFace;   // 🔥 EN KRİTİK SATIR
 
-    // 🔴 Yüksek Risk
-    if Prefix = 'YR' then
-      ACheck.Style.Color := clRed
+  if not ACheck.Checked then
+    Exit;
 
-    // ⚫ Orta Risk
-    else if Prefix = 'OR' then
-      ACheck.Style.Color := clGray
+  // ✔ SADECE CHECKED İSE RENK VER
+  ACheck.Style.Font.Style := [fsBold];
 
-    // 🟢 Düşük Risk
-    else if Prefix = 'DR' then
-      ACheck.Style.Color := clGreen
-
-    // 🔴 Gözden Geçirme (risk kabul)
-    else if Prefix = 'TG' then
-      ACheck.Style.Color := clRed
-
-    else
-      ACheck.Style.Color := clBtnFace;
-  end
-  else
-  begin
-    // ❌ seçili değil → arka plan BOZULMASIN
-    ACheck.ParentBackground := True;
-    ACheck.Style.Font.Style := [];
-    ACheck.Style.Color := clNone;
-  end;
+  if Prefix = 'YR' then
+    ACheck.Style.Color := clRed          // 🔴 yüksek
+  else if Prefix = 'OR' then
+    ACheck.Style.Color := clGray         // ⚫ orta
+  else if Prefix = 'DR' then
+    ACheck.Style.Color := clGreen        // 🟢 düşük
+  else if Prefix = 'TG' then
+    ACheck.Style.Color := clRed;         // 🔴 gözden geçirme
 end;
+
 
 
 
