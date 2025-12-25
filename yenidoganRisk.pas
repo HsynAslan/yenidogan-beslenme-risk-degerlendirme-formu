@@ -413,7 +413,8 @@ type
     procedure ApplyFixedFieldRules;
     procedure SetHaftaAktif(AHafta: Integer);
     procedure CalcAktifFormHafta;
-    procedure OpenHafta(Q: TOraQuery; AHafta: Integer);
+    procedure OpenHafta( Q: TOraQuery; AHafta: Integer);
+
     procedure CopyFixedFieldsFromFirstWeek(Q: TOraQuery);
     function IsFirstFormFirstWeek: Boolean;
     procedure ClearOtherRiskGroups(const ActivePrefix: string);
@@ -426,7 +427,10 @@ type
    procedure ClearRiskFieldsInDatasetExcept(DS: TDataSet; const ExceptField: string );
     procedure dbgrdFormHistoryCellClick(Column: TColumn);
     procedure ApplyReadOnlyMode;
-    procedure btnYeniFormClick(Sender: TObject);
+    procedure btnYeniClick(Sender: TObject);
+    procedure ReloadFormData;
+    procedure RefreshAllRiskCheckBoxes;
+    procedure LoadActiveForm;
   private
     { Private declarations }
    FReadOnlyMode: Boolean;
@@ -460,29 +464,21 @@ begin
   edtDBas.Enabled      := E;
 end;
 procedure TForm2.ApplyReadOnlyMode;
-var
-  I: Integer;
 begin
   if not FReadOnlyMode then Exit;
 
-  // haftalar
-  for I := 1 to 4 do
-  begin
-    qrHafta1.ReadOnly := True;
-    qrHafta2.ReadOnly := True;
-    qrHafta3.ReadOnly := True;
-    qrHafta4.ReadOnly := True;
-  end;
+  // sadece inputlar kilitlenecek
+  SetHaftaAktif(0);
+  ApplyFixedFieldRules;
+  ApplyDoctorFieldRules;
+  ApplyTGFieldRules;
 
-  // tüm inputları kilitle
-  scrMain.Enabled := False;
-
-  // grid açık kalsın
+  // grid açık
   dbgrdFormHistory.Enabled := True;
 
-  // kaydet kapalı
   btnKaydet.Enabled := False;
 end;
+
 
  procedure TForm2.LoadFormReadOnly(AFormNo: Integer);
 begin
@@ -491,10 +487,11 @@ begin
   FAktifForm  := AFormNo;
   FAktifHafta := 1; // fark etmez, hepsi açılacak
 
-  OpenHafta(qrHafta1, 1);
-  OpenHafta(qrHafta2, 2);
-  OpenHafta(qrHafta3, 3);
-  OpenHafta(qrHafta4, 4);
+OpenHafta(qrHafta1, 1);
+OpenHafta(qrHafta2, 2);
+OpenHafta(qrHafta3, 3);
+OpenHafta(qrHafta4, 4);
+
 
   ApplyReadOnlyMode;
 end;
@@ -547,6 +544,19 @@ begin
   Result := (FAktifForm = 1) and (FAktifHafta = 1);
 end;
 
+procedure TForm2.LoadActiveForm;
+begin
+  FReadOnlyMode := False;
+
+  qrHafta1.ReadOnly := False;
+  qrHafta2.ReadOnly := False;
+  qrHafta3.ReadOnly := False;
+  qrHafta4.ReadOnly := False;
+
+  ReloadFormData;   // senin yazdığın sağlam fonk
+end;
+
+
 procedure TForm2.OpenHafta(Q: TOraQuery; AHafta: Integer);
 begin
   Q.Close;
@@ -556,21 +566,21 @@ begin
   Q.ParamByName('HAFTA_NO').AsInteger := AHafta;
   Q.Open;
 
-if Q.IsEmpty then
-begin
-  Q.Append;
-  Q.FieldByName('DOSYA_NO').AsInteger := FDosyaNo;
-  Q.FieldByName('PROTOKOL_NO').AsInteger := FProtokolNo;
-  Q.FieldByName('FORM_NO').AsInteger := FAktifForm;
-  Q.FieldByName('HAFTA_NO').AsInteger := AHafta;
-  Q.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
+  if Q.IsEmpty then
+  begin
+    Q.Append;
+    Q.FieldByName('DOSYA_NO').AsInteger := FDosyaNo;
+    Q.FieldByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+    Q.FieldByName('FORM_NO').AsInteger := FAktifForm;
+    Q.FieldByName('HAFTA_NO').AsInteger := AHafta;
+    Q.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
 
-   //  SABİT ALANLARI KOPYALA
-  if not IsFirstFormFirstWeek then
-    CopyFixedFieldsFromFirstWeek(Q);
+    if not IsFirstFormFirstWeek then
+      CopyFixedFieldsFromFirstWeek(Q);
+  end;
 end;
 
-end;
+
 
 procedure TForm2.CopyFixedFieldsFromFirstWeek(Q: TOraQuery);
 begin
@@ -597,6 +607,40 @@ begin
   end;
 end;
 
+ {*
+procedure TForm2.dbgrdFormHistoryCellClick(Column: TColumn);
+var
+  SelFormNo: Integer;
+begin
+  if qryFormHistory.IsEmpty then Exit;
+
+  // 1️⃣ seçilen form
+  SelFormNo := qryFormHistory.FieldByName('FORM_NO').AsInteger;
+
+  FAktifForm  := SelFormNo;
+  FAktifHafta := 0; // geçmiş → aktif hafta yok
+
+  // 2️⃣ haftaları kapat
+  qrHafta1.Close;
+  qrHafta2.Close;
+  qrHafta3.Close;
+  qrHafta4.Close;
+
+  // 3️⃣ geçmiş formu SADECE OKU
+  OpenHafta(qrHafta1, 1, True);
+  OpenHafta(qrHafta2, 2, True);
+  OpenHafta(qrHafta3, 3, True);
+  OpenHafta(qrHafta4, 4, True);
+
+  // 4️⃣ ekran kilitleri
+  SetHaftaAktif(0);
+  ApplyFixedFieldRules;
+  ApplyDoctorFieldRules;
+  ApplyTGFieldRules;
+
+  // 5️⃣ 🔥 RENKLERİ MUTLAKA YENİLE
+  RefreshAllRiskCheckBoxes;
+end;               *}
 
 procedure TForm2.dbgrdFormHistoryCellClick(Column: TColumn);
 var
@@ -604,33 +648,26 @@ var
 begin
   if qryFormHistory.IsEmpty then Exit;
 
-  // 1️⃣ Seçilen FORM_NO
   SelFormNo := qryFormHistory.FieldByName('FORM_NO').AsInteger;
 
-  // 2️⃣ Aktif formu değiştir
-  FAktifForm  := SelFormNo;
-  FAktifHafta := 0; // geçmişte hafta aktif olmayacak
+  FReadOnlyMode := True;
 
-  // 3️⃣ Haftalık datasetleri KAPAT
+  FAktifForm  := SelFormNo;
+  FAktifHafta := 0;
+
   qrHafta1.Close;
   qrHafta2.Close;
   qrHafta3.Close;
   qrHafta4.Close;
 
-  // 4️⃣ Seçilen form için haftaları AÇ
   OpenHafta(qrHafta1, 1);
   OpenHafta(qrHafta2, 2);
   OpenHafta(qrHafta3, 3);
   OpenHafta(qrHafta4, 4);
 
-  // 5️⃣ TÜM FORMU SADECE OKUNUR YAP
-  SetHaftaAktif(0);        // hiçbir hafta aktif değil
-  ApplyFixedFieldRules;    // doğum alanları kilit
-  ApplyDoctorFieldRules;   // doktor alanları kilit
-  ApplyTGFieldRules;       // gözden geçirme kilit
-
-  
+  ApplyReadOnlyMode;
 end;
+
 
 
 procedure TForm2.CalcAktifFormHafta;
@@ -803,6 +840,32 @@ begin
   Result := ''; // hiçbiri yok
 end;
 
+procedure TForm2.ReloadFormData;
+begin
+  CalcAktifFormHafta;
+
+  OpenHafta(qrHafta1, 1);
+  OpenHafta(qrHafta2, 2);
+  OpenHafta(qrHafta3, 3);
+  OpenHafta(qrHafta4, 4);
+
+  SetHaftaAktif(FAktifHafta);
+  ApplyFixedFieldRules;
+  ApplyDoctorFieldRules;
+  ApplyTGFieldRules;
+
+  // 🔄 GEÇMİŞ FORM GRID
+  if Assigned(qryFormHistory) then
+  begin
+    qryFormHistory.Close;
+    qryFormHistory.ParamByName('DOSYA_NO').AsInteger    := FDosyaNo;
+    qryFormHistory.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+    qryFormHistory.Open;
+  end;
+
+
+  RefreshAllRiskCheckBoxes;
+end;
 
 procedure TForm2.btnKaydetClick(Sender: TObject);
 var
@@ -826,26 +889,32 @@ begin
   // 🔹 otomatik risk hesapla
   DBRisk := CalcRiskSeviye;
 
-  // 🔹 boş da olabilir, sorun yok
+  // 🔹 risk seviyesi yaz
   Q.FieldByName('RISK_SEVIYE').AsString := DBRisk;
 
   Q.Post;
 
+  // 🔄 FORMU KAPATMA → YENİDEN YÜKLE
+  ReloadFormData;
+
   ShowMessage(
     Format(
-      'Form %d - Hafta %d kaydedildi.%sRisk: %s',
-      [FAktifForm, FAktifHafta, sLineBreak,
-       IfThen(DBRisk = '', '(yok)', DBRisk)]
+      'Kayıt alındı.%sForm %d - Hafta %d%sRisk: %s',
+      [
+        sLineBreak,
+        FAktifForm,
+        FAktifHafta,
+        sLineBreak,
+        IfThen(DBRisk = '', '(yok)', DBRisk)
+      ]
     )
   );
-
-  Close;
 end;
 
 
 
 
-procedure TForm2.btnYeniFormClick(Sender: TObject);
+procedure TForm2.btnYeniClick(Sender: TObject);
 begin
   FReadOnlyMode := False;
 
@@ -856,7 +925,6 @@ begin
   OpenHafta(qrHafta3, 3);
   OpenHafta(qrHafta4, 4);
 
-  scrMain.Enabled := True;
   btnKaydet.Enabled := True;
 
   SetHaftaAktif(FAktifHafta);
@@ -949,6 +1017,29 @@ begin
 end;
 
 
+procedure TForm2.RefreshAllRiskCheckBoxes;
+var
+  I: Integer;
+  C: TComponent;
+begin
+  for I := 0 to ComponentCount - 1 do
+  begin
+    C := Components[I];
+
+    if (C is TcxDBCheckBox) then
+    begin
+      // SADECE risk + TG checkbox'ları
+      if (Copy(C.Name, 1, 2) = 'YR') or
+         (Copy(C.Name, 1, 2) = 'OR') or
+         (Copy(C.Name, 1, 2) = 'DR') or
+         (Copy(C.Name, 1, 2) = 'TG') then
+      begin
+        RefreshRiskCheckBox(TcxDBCheckBox(C));
+      end;
+    end;
+  end;
+end;
+
 
 procedure TForm2.PaintBoxYuksekRiskPaint(Sender: TObject);
 var
@@ -986,22 +1077,48 @@ end;
 
 
 procedure TForm2.RefreshRiskCheckBox(ACheck: TcxDBCheckBox);
+var
+  Prefix: string;
 begin
   if not Assigned(ACheck) then Exit;
 
-  ACheck.ParentBackground := False;
+  // Checkbox adının ilk 2 harfi: YR / OR / DR / TG
+  Prefix := Copy(ACheck.Name, 1, 2);
 
   if ACheck.Checked then
   begin
-    ACheck.Style.Color := clRed;
+    ACheck.ParentBackground := False;
     ACheck.Style.Font.Style := [fsBold];
+
+    // 🔴 Yüksek Risk
+    if Prefix = 'YR' then
+      ACheck.Style.Color := clRed
+
+    // ⚫ Orta Risk
+    else if Prefix = 'OR' then
+      ACheck.Style.Color := clGray
+
+    // 🟢 Düşük Risk
+    else if Prefix = 'DR' then
+      ACheck.Style.Color := clGreen
+
+    // 🔴 Gözden Geçirme (risk kabul)
+    else if Prefix = 'TG' then
+      ACheck.Style.Color := clRed
+
+    else
+      ACheck.Style.Color := clBtnFace;
   end
   else
   begin
-    ACheck.Style.Color := clWindow;
+    // ❌ seçili değil → arka plan BOZULMASIN
+    ACheck.ParentBackground := True;
     ACheck.Style.Font.Style := [];
+    ACheck.Style.Color := clNone;
   end;
 end;
+
+
 
 procedure TForm2.ClearOtherRiskGroups(const ActivePrefix: string);
 const

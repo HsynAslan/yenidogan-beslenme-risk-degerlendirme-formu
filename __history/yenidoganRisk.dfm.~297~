@@ -27,7 +27,10 @@
       Top = 0
       Align = alTop
       PanelStyle.Active = True
+      ParentBackground = False
+      ParentColor = False
       Style.BorderStyle = ebsNone
+      Style.Color = clLightgray
       TabOrder = 0
       Height = 17
       Width = 1075
@@ -56,7 +59,10 @@
       Top = 17
       Align = alTop
       PanelStyle.Active = True
+      ParentBackground = False
+      ParentColor = False
       Style.BorderStyle = ebsNone
+      Style.Color = clLightgray
       TabOrder = 1
       Height = 80
       Width = 1075
@@ -66,6 +72,7 @@
         Width = 1071
         Height = 76
         Align = alClient
+        Color = clLightgray
         ColumnCollection = <
           item
             Value = 55.560000000000000000
@@ -84,6 +91,7 @@
             Control = grdpnl32
             Row = 0
           end>
+        ParentBackground = False
         RowCollection = <
           item
             Value = 100.000000000000000000
@@ -95,6 +103,7 @@
           Width = 475
           Height = 74
           Align = alClient
+          Color = clLightgray
           ColumnCollection = <
             item
               Value = 50.000000000000000000
@@ -143,6 +152,7 @@
               Control = edtDBas
               Row = 3
             end>
+          ParentBackground = False
           RowCollection = <
             item
               Value = 25.519099711222400000
@@ -204,6 +214,7 @@
             DataBinding.DataField = 'GESTASYON_HAFTASI'
             DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
+            Style.Color = clLightgray
             TabOrder = 4
             Width = 237
           end
@@ -214,6 +225,7 @@
             DataBinding.DataField = 'DOGUM_KILOSU_GR'
             DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
+            Style.Color = clLightgray
             TabOrder = 5
             Width = 237
           end
@@ -224,6 +236,7 @@
             DataBinding.DataField = 'DOGUM_BOYU_CM'
             DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
+            Style.Color = clLightgray
             TabOrder = 6
             Width = 237
           end
@@ -234,6 +247,7 @@
             DataBinding.DataField = 'DOGUM_BAS_CEVRESI'
             DataBinding.DataSource = dsHafta1
             Properties.Alignment.Horz = taLeftJustify
+            Style.Color = clLightgray
             TabOrder = 7
             Width = 237
           end
@@ -244,6 +258,7 @@
           Width = 594
           Height = 74
           Align = alClient
+          Color = clLightgray
           ColumnCollection = <
             item
               Value = 40.000000000000000000
@@ -302,6 +317,7 @@
               Control = lblHastaTani
               Row = 4
             end>
+          ParentBackground = False
           RowCollection = <
             item
               Value = 20.000000000000000000
@@ -412,6 +428,9 @@
       Top = 97
       Align = alTop
       PanelStyle.Active = True
+      ParentBackground = False
+      ParentColor = False
+      Style.Color = clLightgray
       TabOrder = 2
       Height = 434
       Width = 1075
@@ -644,7 +663,9 @@
           Top = 1
           Align = alClient
           Caption = '1. B'#220'Y'#220'MEN'#304'N R'#304'SK DE'#286'ERLEND'#304'RMES'#304
+          ParentColor = False
           ParentFont = False
+          Style.Color = clLightgray
           Style.Font.Charset = DEFAULT_CHARSET
           Style.Font.Color = clWindowText
           Style.Font.Height = -13
@@ -838,10 +859,8 @@
             Height = 306
             Align = alClient
             OnPaint = PaintBoxYuksekRiskPaint
-            ExplicitLeft = 0
-            ExplicitTop = 6
-            ExplicitWidth = 54
-            ExplicitHeight = 220
+            ExplicitLeft = -4
+            ExplicitTop = -4
           end
           object grdpnl5: TGridPanel
             Left = 31
@@ -1384,7 +1403,7 @@
               Left = 1
               Top = 73
               Align = alClient
-              DataBinding.DataField = 'YR_NEK_GIS'
+              DataBinding.DataField = 'YR_KONJ_GIS'
               DataBinding.DataSource = dsHafta1
               ParentBackground = False
               Properties.Alignment = taCenter
@@ -2929,9 +2948,11 @@
           Align = alClient
           DataBinding.DataField = 'IZLEM_TARIHI'
           DataBinding.DataSource = dsHafta1
+          ParentColor = False
           ParentFont = False
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taBottomJustify
+          Style.Color = clLightgray
           Style.Font.Charset = DEFAULT_CHARSET
           Style.Font.Color = clWindowText
           Style.Font.Height = -12
@@ -2950,9 +2971,11 @@
           Align = alClient
           DataBinding.DataField = 'IZLEM_TARIHI'
           DataBinding.DataSource = dsHafta2
+          ParentColor = False
           ParentFont = False
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taBottomJustify
+          Style.Color = clLightgray
           Style.Font.Charset = DEFAULT_CHARSET
           Style.Font.Color = clWindowText
           Style.Font.Height = -12
@@ -2970,9 +2993,11 @@
           Align = alClient
           DataBinding.DataField = 'IZLEM_TARIHI'
           DataBinding.DataSource = dsHafta3
+          ParentColor = False
           ParentFont = False
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taBottomJustify
+          Style.Color = clLightgray
           Style.Font.Charset = DEFAULT_CHARSET
           Style.Font.Color = clWindowText
           Style.Font.Height = -12
@@ -2990,9 +3015,11 @@
           Align = alClient
           DataBinding.DataField = 'IZLEM_TARIHI'
           DataBinding.DataSource = dsHafta4
+          ParentColor = False
           ParentFont = False
           Properties.Alignment.Horz = taCenter
           Properties.Alignment.Vert = taBottomJustify
+          Style.Color = clLightgray
           Style.Font.Charset = DEFAULT_CHARSET
           Style.Font.Color = clWindowText
           Style.Font.Height = -12
@@ -3051,6 +3078,9 @@
       Top = 531
       Align = alTop
       PanelStyle.Active = True
+      ParentBackground = False
+      ParentColor = False
+      Style.Color = clLightgray
       TabOrder = 3
       Height = 115
       Width = 1075
@@ -3081,6 +3111,7 @@
           Width = 1069
           Height = 109
           Align = alClient
+          Color = clLightgray
           ColumnCollection = <
             item
               Value = 55.560000000000000000
@@ -3099,6 +3130,7 @@
               Control = grdpnl28
               Row = 0
             end>
+          ParentBackground = False
           RowCollection = <
             item
               Value = 100.000000000000000000
@@ -3110,6 +3142,7 @@
             Width = 593
             Height = 107
             Align = alClient
+            Color = clLightgray
             ColumnCollection = <
               item
                 Value = 100.000000000000000000
@@ -3145,6 +3178,7 @@
                 Control = cxlbl35
                 Row = 5
               end>
+            ParentBackground = False
             RowCollection = <
               item
                 Value = 20.000000000000000000
@@ -3246,6 +3280,7 @@
             Width = 474
             Height = 107
             Align = alClient
+            Color = clLightgray
             ColumnCollection = <
               item
                 Value = 25.000000000000000000
@@ -3380,6 +3415,7 @@
                 Control = TG4NEK
                 Row = 5
               end>
+            ParentBackground = False
             RowCollection = <
               item
                 Value = 20.000000000000000000
@@ -3487,6 +3523,7 @@
               Align = alClient
               DataBinding.DataField = 'TG_YUKSEK_RISK'
               DataBinding.DataSource = dsHafta1
+              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -3505,6 +3542,7 @@
               Caption = 'object YR_C28G1: TcxDBCheckBox'
               DataBinding.DataField = 'TG_YUKSEK_RISK'
               DataBinding.DataSource = dsHafta2
+              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -3522,6 +3560,7 @@
               Align = alClient
               DataBinding.DataField = 'TG_YUKSEK_RISK'
               DataBinding.DataSource = dsHafta3
+              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -3539,6 +3578,7 @@
               Align = alClient
               DataBinding.DataField = 'TG_YUKSEK_RISK'
               DataBinding.DataSource = dsHafta4
+              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -3556,6 +3596,7 @@
               Align = alClient
               DataBinding.DataField = 'TG_KILO_YAKALAYAMAMA'
               DataBinding.DataSource = dsHafta1
+              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -3573,6 +3614,7 @@
               Align = alClient
               DataBinding.DataField = 'TG_KILO_YAKALAYAMAMA'
               DataBinding.DataSource = dsHafta2
+              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -3590,6 +3632,7 @@
               Align = alClient
               DataBinding.DataField = 'TG_KILO_YAKALAYAMAMA'
               DataBinding.DataSource = dsHafta3
+              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -3607,6 +3650,7 @@
               Align = alClient
               DataBinding.DataField = 'TG_KILO_YAKALAYAMAMA'
               DataBinding.DataSource = dsHafta4
+              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -3624,6 +3668,7 @@
               Align = alClient
               DataBinding.DataField = 'TG_KILO_KAYIP_15'
               DataBinding.DataSource = dsHafta1
+              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -3641,6 +3686,7 @@
               Align = alClient
               DataBinding.DataField = 'TG_KILO_KAYIP_15'
               DataBinding.DataSource = dsHafta2
+              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -3658,6 +3704,7 @@
               Align = alClient
               DataBinding.DataField = 'TG_KILO_KAYIP_15'
               DataBinding.DataSource = dsHafta3
+              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -3675,6 +3722,7 @@
               Align = alClient
               DataBinding.DataField = 'TG_KILO_KAYIP_15'
               DataBinding.DataSource = dsHafta4
+              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -3692,6 +3740,7 @@
               Align = alClient
               DataBinding.DataField = 'TG_KILO_KAZANIM_10'
               DataBinding.DataSource = dsHafta1
+              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -3709,6 +3758,7 @@
               Align = alClient
               DataBinding.DataField = 'TG_KILO_KAZANIM_10'
               DataBinding.DataSource = dsHafta2
+              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -3726,6 +3776,7 @@
               Align = alClient
               DataBinding.DataField = 'TG_KILO_KAZANIM_10'
               DataBinding.DataSource = dsHafta3
+              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -3743,6 +3794,7 @@
               Align = alClient
               DataBinding.DataField = 'TG_KILO_KAZANIM_10'
               DataBinding.DataSource = dsHafta4
+              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -3760,6 +3812,7 @@
               Align = alClient
               DataBinding.DataField = 'TG_NEK_CERRAHI'
               DataBinding.DataSource = dsHafta1
+              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -3777,6 +3830,7 @@
               Align = alClient
               DataBinding.DataField = 'TG_NEK_CERRAHI'
               DataBinding.DataSource = dsHafta2
+              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -3794,6 +3848,7 @@
               Align = alClient
               DataBinding.DataField = 'TG_NEK_CERRAHI'
               DataBinding.DataSource = dsHafta3
+              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -3811,6 +3866,7 @@
               Align = alClient
               DataBinding.DataField = 'TG_NEK_CERRAHI'
               DataBinding.DataSource = dsHafta4
+              ParentBackground = False
               ParentColor = False
               Properties.Alignment = taCenter
               Properties.NullStyle = nssUnchecked
@@ -3887,13 +3943,13 @@
             item
               Expanded = False
               FieldName = 'ILK_TARIH'
-              Width = 280
+              Width = 265
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'SON_TARIH'
-              Width = 265
+              Width = 258
               Visible = True
             end
             item
