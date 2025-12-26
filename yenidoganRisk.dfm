@@ -30,7 +30,7 @@
       ParentBackground = False
       ParentColor = False
       Style.BorderStyle = ebsNone
-      Style.Color = clLightgray
+      Style.Color = clWhitesmoke
       TabOrder = 0
       Height = 17
       Width = 1075
@@ -41,7 +41,9 @@
         Caption = 
           '----------  Hastan'#305'n Servise Kabul'#252'nde ve Her Pazartesi Doldurul' +
           'acak  ----------'
+        ParentColor = False
         ParentFont = False
+        Style.Color = clWhitesmoke
         Style.Font.Charset = DEFAULT_CHARSET
         Style.Font.Color = clWindowText
         Style.Font.Height = -11
@@ -3276,7 +3278,6 @@
               Caption = 'Herhangi bir zamanda NEK veya G'#304'S'#39'de cerrahi i'#351'lem'
               Style.BorderStyle = ebsThick
               Properties.Alignment.Vert = taVCenter
-              ExplicitLeft = 10
               AnchorY = 98
             end
           end
@@ -3931,6 +3932,7 @@
           Width = 854
           Height = 106
           Align = alClient
+          Color = clBtnFace
           DataSource = dsFormHistory
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET

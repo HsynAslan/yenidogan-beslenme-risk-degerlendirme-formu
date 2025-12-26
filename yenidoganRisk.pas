@@ -483,6 +483,8 @@ type
     procedure LoadActiveForm;
     procedure ResetAllRiskCheckBoxStyles;
     procedure btnYazdirClick(Sender: TObject);
+    function ValidateBirthFields(Q: TOraQuery): Boolean;
+    function ValidateCommonFields(Q: TOraQuery): Boolean;
   private
     { Private declarations }
    FReadOnlyMode: Boolean;
@@ -504,6 +506,57 @@ const
   TEST_DOSYA_NO    = 12;    // meddatadan gelen hasta bilgilerinin burada değişmesi yeterli
   TEST_PROTOKOL_NO = 400;   // meddatadan gelen hasta bilgilerinin burada değişmesi yeterli
 {$R *.dfm}
+
+function TForm2.ValidateBirthFields(Q: TOraQuery): Boolean;
+begin
+  Result := True;
+
+  // sadece 1. form + 1. hafta
+  if not ((FAktifForm = 1) and (FAktifHafta = 1)) then
+    Exit;
+
+  if Q.FieldByName('GESTASYON_HAFTASI').IsNull then
+    Exit(MessageDlg('Gestasyon haftası girilmelidir.', mtWarning, [mbOK], 0) = mrNone);
+
+  if Q.FieldByName('DOGUM_KILOSU_GR').IsNull then
+    Exit(MessageDlg('Doğum kilosu girilmelidir.', mtWarning, [mbOK], 0) = mrNone);
+
+  if Q.FieldByName('DOGUM_BOYU_CM').IsNull then
+    Exit(MessageDlg('Doğum boyu girilmelidir.', mtWarning, [mbOK], 0) = mrNone);
+
+  if Q.FieldByName('DOGUM_BAS_CEVRESI').IsNull then
+    Exit(MessageDlg('Doğum baş çevresi girilmelidir.', mtWarning, [mbOK], 0) = mrNone);
+end;
+
+
+function TForm2.ValidateCommonFields(Q: TOraQuery): Boolean;
+begin
+  Result := True;
+
+  // 🔹 Günlük ölçümler (aktif haftaya ait)
+  if Q.FieldByName('KILO_KG').IsNull then
+    Exit(MessageDlg('Kilo bilgisi girilmelidir.', mtWarning, [mbOK], 0) = mrNone);
+
+  if Q.FieldByName('BOY_CM').IsNull then
+    Exit(MessageDlg('Boy bilgisi girilmelidir.', mtWarning, [mbOK], 0) = mrNone);
+
+  if Q.FieldByName('BAS_CEVRESI_CM').IsNull then
+    Exit(MessageDlg('Baş çevresi bilgisi girilmelidir.', mtWarning, [mbOK], 0) = mrNone);
+
+  // 🔹 Risk seçimi (en az biri)
+  if not (
+       GetActiveRiskValue('YR') or
+       GetActiveRiskValue('OR') or
+       GetActiveRiskValue('DR')
+     ) then
+    Exit(MessageDlg(
+      'Yüksek, Orta veya Düşük risk gruplarından en az biri seçilmelidir.',
+      mtWarning, [mbOK], 0) = mrNone);
+
+  // 🔹 Doktor adı
+  if Trim(Q.FieldByName('DOKTOR_ADI').AsString) = '' then
+    Exit(MessageDlg('Değerlendirmeyi yapanın adı soyadı girilmelidir.', mtWarning, [mbOK], 0) = mrNone);
+end;
 
 
 
@@ -909,6 +962,8 @@ begin
   if not (Q.State in dsEditModes) then
     Q.Edit;
 
+    if not ValidateCommonFields(Q) then Exit;
+    if not ValidateBirthFields(Q) then Exit;
   // 🔹 otomatik risk hesapla
   DBRisk := CalcRiskSeviye;
 
