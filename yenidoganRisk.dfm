@@ -682,8 +682,6 @@
           Align = alClient
           Caption = 'Kilo / Persantil (gr)'
           Properties.Alignment.Vert = taVCenter
-          ExplicitLeft = -5
-          ExplicitTop = 21
           AnchorY = 36
         end
         object edtKiloGun1: TcxDBTextEdit
@@ -5151,7 +5149,7 @@
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 46016.451285995370000000
-    ReportOptions.LastChange = 46016.611585231480000000
+    ReportOptions.LastChange = 46017.410806805560000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -5187,7 +5185,7 @@
         FillGap.Bottom = 0
         FillGap.Right = 0
         Frame.Typ = []
-        Height = 227.491707170000000000
+        Height = 353.116078470000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
@@ -5228,7 +5226,7 @@
         object Memo4: TfrxMemoView
           AllowVectorExport = True
           Left = 340.337664240000000000
-          Top = 51.473599420000000000
+          Top = 55.253129420000000000
           Width = 352.216238160000000000
           Height = 83.149661030000000000
           Font.Charset = DEFAULT_CHARSET
@@ -5246,7 +5244,7 @@
         object Memo5: TfrxMemoView
           AllowVectorExport = True
           Left = 1.439819280000000000
-          Top = 152.081083900000000000
+          Top = 163.419673900000000000
           Width = 711.991475590000000000
           Height = 20.877409320000000000
           Font.Charset = DEFAULT_CHARSET
@@ -5264,17 +5262,24 @@
         object Memo7: TfrxMemoView
           AllowVectorExport = True
           Left = 2.879641680000000000
-          Top = 174.938247890000000000
+          Top = 227.851667890000000000
           Width = 714.871084570000000000
-          Height = 49.673810580000000000
+          Height = 64.791930580000000000
           Frame.Typ = []
           Memo.UTF8W = (
-            
-              'Gestasyon Haftas'#305': [frxDBDataset1."GESTASYON_HAFTASI"] / Do'#287'um T' +
-              'art'#305's'#305': [frxDBDataset1."DOGUM_KILOSU_GR"]'
-            
-              'Do'#287'um Boyu: [frxDBDataset1."DOGUM_BOYU_CM"] / Do'#287'um Ba'#351' '#199'evresi:' +
-              ' [frxDBDataset1."DOGUM_BAS_CEVRESI"]')
+            'Gestasyon Haftas'#305': [frxDBDataset1."GESTASYON_HAFTASI"] '
+            'Do'#287'um Tart'#305's'#305': [frxDBDataset1."DOGUM_KILOSU_GR"]'
+            'Do'#287'um Boyu: [frxDBDataset1."DOGUM_BOYU_CM"] '
+            'Do'#287'um Ba'#351' '#199'evresi: [frxDBDataset1."DOGUM_BAS_CEVRESI"]')
+          Formats = <
+            item
+            end
+            item
+            end
+            item
+            end
+            item
+            end>
         end
       end
       object MasterData1: TfrxMasterData
@@ -5284,8 +5289,8 @@
         FillGap.Bottom = 0
         FillGap.Right = 0
         Frame.Typ = []
-        Height = 99.347659530000000000
-        Top = 306.141930000000000000
+        Height = 122.024839530000000000
+        Top = 430.866420000000000000
         Width = 718.110700000000000000
         DataSet = frxDB
         DataSetName = 'frxDBDataset1'
@@ -5293,12 +5298,13 @@
         object Memo6: TfrxMemoView
           AllowVectorExport = True
           Width = 717.390795910000000000
-          Height = 81.349889320000000000
+          Height = 96.468009320000000000
           Frame.Typ = []
           Memo.UTF8W = (
             
-              'Hafta [frxDBDataset1."HAFTA_NO"]   -   [frxDBDataset1."IZLEM_TAR' +
-              'IHI"]'
+              '[frxDBDataset1."HAFTA_NO"]. Hafta   -   [frxDBDataset1."IZLEM_TA' +
+              'RIHI"]'
+            ''
             #214'zet:  [frxDBDataset1."RISK_OZET"]'
             'Kilo : [frxDBDataset1."KILO_KG"] gr'
             'Boy  : [frxDBDataset1."BOY_CM"] cm'
@@ -5326,7 +5332,7 @@
         FillGap.Right = 0
         Frame.Typ = []
         Height = 62.812185780000000000
-        Top = 464.882190000000000000
+        Top = 612.283860000000000000
         Width = 718.110700000000000000
         object Memo8: TfrxMemoView
           AllowVectorExport = True
@@ -5408,16 +5414,19 @@
       '      '
       ''
       '      CASE'
+      '        WHEN R.TG_YUKSEK_RISK = '#39'T'#39' THEN '#39' | Y'#252'ksek Riskli'#39
       
-        '        WHEN R.TG_KILO_KAYIP_15 = '#39'T'#39' THEN '#39' | TG: >%15 kilo kay' +
-        'b'#305#39
+        '        WHEN R.TG_KILO_KAYIP_15 = '#39'T'#39' THEN '#39' | Herhangi bir zama' +
+        'nda >%15 kilo kayb'#305#39
       
-        '        WHEN R.TG_KILO_YAKALAYAMAMA = '#39'T'#39' THEN '#39' | TG: Kilo yaka' +
-        'layamama'#39
+        '        WHEN R.TG_KILO_YAKALAYAMAMA = '#39'T'#39' THEN '#39' | 2. haftada do' +
+        #287'um kilosunu yakalayamama'#39
       
-        '        WHEN R.TG_KILO_KAZANIM_10 = '#39'T'#39' THEN '#39' | TG: <10g/kg/g'#252'n' +
-        #39
-      '        WHEN R.TG_NEK_CERRAHI = '#39'T'#39' THEN '#39' | TG: NEK cerrahi'#39
+        '        WHEN R.TG_KILO_KAZANIM_10 = '#39'T'#39' THEN '#39' | 2. haftadan son' +
+        'ra <10gr / kg / g'#252'n kilo kazan'#305'm'#305#39
+      
+        '        WHEN R.TG_NEK_CERRAHI = '#39'T'#39' THEN '#39' | Herhangi bir zamand' +
+        'a NEK veya G'#304'S de cerrahi i'#351'lem'#39
       '        ELSE NULL'
       '      END'
       '    ) AS RISK_OZET'
