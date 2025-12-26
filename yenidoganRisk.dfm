@@ -3937,43 +3937,42 @@
             item
               Expanded = False
               FieldName = 'FORM_NO'
-              Width = 66
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ILK_TARIH'
-              Width = 103
+              Width = 128
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'SON_TARIH'
-              Width = 101
+              Width = 135
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'GIRIS_BILGISI'
-              Width = 119
+              Width = 136
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'CIKIS_BILGISI'
-              Width = 122
+              Width = 141
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'TOPLAM_SURE'
-              Width = 113
+              Width = 136
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'GENEL_RISK'
-              Width = 99
+              Width = 89
               Visible = True
             end>
         end
@@ -5042,40 +5041,44 @@
       '    FORM_NO,'
       ''
       '    /* ========================='
-      '       '#55357#56517' HAM TAR'#304'HLER'
+      '        HAM TAR'#304'HLER'
       '       ========================= */'
       '    MIN(IZLEM_TARIHI) AS ILK_TARIH,'
       '    MAX(IZLEM_TARIHI) AS SON_TARIH,'
       ''
       '    /* ========================='
-      '       '#55357#57314' G'#304'R'#304#350' METN'#304
+      '        G'#304'R'#304#350' METN'#304
       '       ========================= */'
-      '   '
-      
-        '    TRIM(TO_CHAR(MIN(IZLEM_TARIHI), '#39'Month'#39', '#39'NLS_DATE_LANGUAGE=' +
-        'TURKISH'#39')) || '#39' '#39'||'
-      '    '
+      '    TRIM('
+      '      TO_CHAR('
+      '        MIN(IZLEM_TARIHI),'
+      '        '#39'FMMonth'#39','
+      '        '#39'NLS_DATE_LANGUAGE=TURKISH'#39
+      '      )'
+      '    ) || '#39' Ay'#305' '#183' '#39' ||'
       '    TO_CHAR(MIN(IZLEM_TARIHI), '#39'W'#39') ||'
       '    '#39'. Hafta'#39' AS GIRIS_BILGISI,'
       ''
       '    /* ========================='
-      '       '#55357#56628' '#199'IKI'#350' METN'#304
+      '        '#199'IKI'#350' METN'#304
       '       ========================= */'
-      ' '
-      
-        '    TRIM(TO_CHAR(MAX(IZLEM_TARIHI), '#39'Month'#39', '#39'NLS_DATE_LANGUAGE=' +
-        'TURKISH'#39')) || '#39' '#39' ||'
-      '    '
+      '    TRIM('
+      '      TO_CHAR('
+      '        MAX(IZLEM_TARIHI),'
+      '        '#39'FMMonth'#39','
+      '        '#39'NLS_DATE_LANGUAGE=TURKISH'#39
+      '      )'
+      '    ) || '#39' Ay'#305' '#183' '#39' ||'
       '    TO_CHAR(MAX(IZLEM_TARIHI), '#39'W'#39') ||'
       '    '#39'. Hafta'#39' AS CIKIS_BILGISI,'
       ''
       '    /* ========================='
-      '       '#9201#65039' KA'#199' HAFTA'
+      '        TOPLAM S'#220'RE'
       '       ========================= */'
       '    COUNT(DISTINCT HAFTA_NO) || '#39' Hafta'#39' AS TOPLAM_SURE,'
       ''
       '    /* ========================='
-      '       '#9888#65039' GENEL R'#304'SK'
+      '        GENEL R'#304'SK'
       '       ========================= */'
       '    CASE'
       
