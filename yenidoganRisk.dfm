@@ -3218,6 +3218,7 @@
               Margins.Bottom = 0
               Align = alClient
               Caption = #220'stteki kriterlere g'#246're y'#252'ksek risk'
+              Style.BorderStyle = ebsThick
               Properties.Alignment.Vert = taVCenter
               AnchorY = 31
             end
@@ -3231,6 +3232,7 @@
               Margins.Bottom = 0
               Align = alClient
               Caption = '2. haftada do'#287'um kilosunu yakalayamama'
+              Style.BorderStyle = ebsThick
               Properties.Alignment.Vert = taVCenter
               AnchorY = 48
             end
@@ -3244,6 +3246,7 @@
               Margins.Bottom = 0
               Align = alClient
               Caption = 'Herhangi bir zamanda >%15 kilo kayb'#305
+              Style.BorderStyle = ebsThick
               Properties.Alignment.Vert = taVCenter
               AnchorY = 64
             end
@@ -3257,6 +3260,7 @@
               Margins.Bottom = 0
               Align = alClient
               Caption = '2. haftadan sonra <10gr / kg / g'#252'n kilo kazan'#305'm'#305
+              Style.BorderStyle = ebsThick
               Properties.Alignment.Vert = taVCenter
               AnchorY = 81
             end
@@ -3270,7 +3274,9 @@
               Margins.Bottom = 0
               Align = alClient
               Caption = 'Herhangi bir zamanda NEK veya G'#304'S'#39'de cerrahi i'#351'lem'
+              Style.BorderStyle = ebsThick
               Properties.Alignment.Vert = taVCenter
+              ExplicitLeft = 10
               AnchorY = 98
             end
           end
