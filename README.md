@@ -52,9 +52,7 @@ Mevcut nesneler varsa güvenli şekilde kaldırılır ve yeniden oluşturulur.
 
 ## Proje Bilgisi
 
-Bu çalışma **şirket bünyesinde geliştirilen bir hastane bilgi yönetim sistemi**
-projesinin parçasıdır.
+> Bu çalışma **şirket bünyesinde geliştirilen bir hastane bilgi yönetim sistemi** projesinin parçasıdır.
 
-Kaynak kodlar ve scriptler **kurum içi kullanım** içindir.
-Yetkisiz kopyalanması, paylaşılması veya dağıtılması uygun değildir.
+> Kaynak kodlar ve scriptler **kurum içi kullanım** içindir. Yetkisiz kopyalanması, paylaşılması veya dağıtılması uygun değildir.
 
