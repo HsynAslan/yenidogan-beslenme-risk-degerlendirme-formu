@@ -485,6 +485,7 @@ type
     procedure btnYazdirClick(Sender: TObject);
     function ValidateBirthFields(Q: TOraQuery): Boolean;
     function ValidateCommonFields(Q: TOraQuery): Boolean;
+   
   private
     { Private declarations }
    FReadOnlyMode: Boolean;
@@ -506,6 +507,9 @@ const
   TEST_DOSYA_NO    = 12;    // meddatadan gelen hasta bilgilerinin burada değişmesi yeterli
   TEST_PROTOKOL_NO = 400;   // meddatadan gelen hasta bilgilerinin burada değişmesi yeterli
 {$R *.dfm}
+
+
+
 
 function TForm2.ValidateBirthFields(Q: TOraQuery): Boolean;
 begin
@@ -1144,7 +1148,7 @@ begin
 
   with PaintBoxYuksekRisk.Canvas do
   begin
-    Brush.Color := clBtnFace;
+
     FillRect(PaintBoxYuksekRisk.ClientRect);
 
     Font.Name := 'Segoe UI';

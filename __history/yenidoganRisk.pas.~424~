@@ -485,6 +485,8 @@ type
     procedure btnYazdirClick(Sender: TObject);
     function ValidateBirthFields(Q: TOraQuery): Boolean;
     function ValidateCommonFields(Q: TOraQuery): Boolean;
+    procedure dbgrdFormHistoryDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     { Private declarations }
    FReadOnlyMode: Boolean;
@@ -504,8 +506,11 @@ implementation
 
 const
   TEST_DOSYA_NO    = 12;    // meddatadan gelen hasta bilgilerinin burada değişmesi yeterli
-  TEST_PROTOKOL_NO = 303;   // meddatadan gelen hasta bilgilerinin burada değişmesi yeterli
+  TEST_PROTOKOL_NO = 400;   // meddatadan gelen hasta bilgilerinin burada değişmesi yeterli
 {$R *.dfm}
+
+
+
 
 function TForm2.ValidateBirthFields(Q: TOraQuery): Boolean;
 begin
@@ -747,6 +752,41 @@ begin
   ApplyReadOnlyMode;
 end;
 
+
+
+procedure TForm2.dbgrdFormHistoryDrawColumnCell(
+  Sender: TObject;
+  const Rect: TRect;
+  DataCol: Integer;
+  Column: TColumn;
+  State: TGridDrawState);
+var
+  Grid: TDBGrid;
+begin
+  Grid := Sender as TDBGrid;
+
+  // Seçili satır → default çiz
+  if gdSelected in State then
+  begin
+    Grid.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+    Exit;
+  end;
+
+  // Normal satırlar
+  Grid.Canvas.Brush.Color := clLtGray;
+  Grid.Canvas.FillRect(Rect);
+
+  // Yazı rengi
+  Grid.Canvas.Font.Color := clBlack;
+
+  // Hücre içeriğini yaz
+  Grid.Canvas.TextRect(
+    Rect,
+    Rect.Left + 6,
+    Rect.Top + 2,
+    Column.Field.AsString
+  );
+end;
 
 
 procedure TForm2.CalcAktifFormHafta;  //  aktif haftayı bulma
@@ -1144,7 +1184,7 @@ begin
 
   with PaintBoxYuksekRisk.Canvas do
   begin
-    Brush.Color := clBtnFace;
+
     FillRect(PaintBoxYuksekRisk.ClientRect);
 
     Font.Name := 'Segoe UI';

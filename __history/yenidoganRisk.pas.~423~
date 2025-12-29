@@ -483,6 +483,10 @@ type
     procedure LoadActiveForm;
     procedure ResetAllRiskCheckBoxStyles;
     procedure btnYazdirClick(Sender: TObject);
+    function ValidateBirthFields(Q: TOraQuery): Boolean;
+    function ValidateCommonFields(Q: TOraQuery): Boolean;
+    procedure dbgrdFormHistoryDrawColumnCell(Sender: TObject; const Rect: TRect;
+    procedure dbgrdFormHistoryDrawColumnTitle( Sender: TObject;const Rect: TRect; Column: TColumn; const Text: string; State: TGridDrawState); DataCol: Integer; Column: TColumn; State: TGridDrawState);
   private
     { Private declarations }
    FReadOnlyMode: Boolean;
@@ -504,7 +508,89 @@ const
   TEST_DOSYA_NO    = 12;    // meddatadan gelen hasta bilgilerinin burada değişmesi yeterli
   TEST_PROTOKOL_NO = 400;   // meddatadan gelen hasta bilgilerinin burada değişmesi yeterli
 {$R *.dfm}
-procedure TForm2.ApplyFixedFieldRules;
+
+procedure TForm2.dbgrdFormHistoryDrawColumnTitle(
+  Sender: TObject;
+  const Rect: TRect;
+  Column: TColumn;
+  const Text: string;
+  State: TGridDrawState);
+var
+  Grid: TDBGrid;
+begin
+  Grid := Sender as TDBGrid;
+
+  // Başlık arka planı
+  Grid.Canvas.Brush.Color := clLtGray;
+  Grid.Canvas.FillRect(Rect);
+
+  // Başlık yazısı
+  Grid.Canvas.Font.Color := clBlack;
+  Grid.Canvas.Font.Style := [fsBold];
+
+  Grid.Canvas.TextRect(
+    Rect,
+    Rect.Left + 6,
+    Rect.Top + (Rect.Height div 2) - (Grid.Canvas.TextHeight(Text) div 2),
+    Text
+  );
+end;
+
+
+function TForm2.ValidateBirthFields(Q: TOraQuery): Boolean;
+begin
+  Result := True;
+
+  // sadece 1. form + 1. hafta
+  if not ((FAktifForm = 1) and (FAktifHafta = 1)) then
+    Exit;
+
+  if Q.FieldByName('GESTASYON_HAFTASI').IsNull then
+    Exit(MessageDlg('Gestasyon haftası girilmelidir.', mtWarning, [mbOK], 0) = mrNone);
+
+  if Q.FieldByName('DOGUM_KILOSU_GR').IsNull then
+    Exit(MessageDlg('Doğum kilosu girilmelidir.', mtWarning, [mbOK], 0) = mrNone);
+
+  if Q.FieldByName('DOGUM_BOYU_CM').IsNull then
+    Exit(MessageDlg('Doğum boyu girilmelidir.', mtWarning, [mbOK], 0) = mrNone);
+
+  if Q.FieldByName('DOGUM_BAS_CEVRESI').IsNull then
+    Exit(MessageDlg('Doğum baş çevresi girilmelidir.', mtWarning, [mbOK], 0) = mrNone);
+end;
+
+
+function TForm2.ValidateCommonFields(Q: TOraQuery): Boolean;
+begin
+  Result := True;
+
+  // 🔹 Günlük ölçümler (aktif haftaya ait)
+  if Q.FieldByName('KILO_KG').IsNull then
+    Exit(MessageDlg('Kilo bilgisi girilmelidir.', mtWarning, [mbOK], 0) = mrNone);
+
+  if Q.FieldByName('BOY_CM').IsNull then
+    Exit(MessageDlg('Boy bilgisi girilmelidir.', mtWarning, [mbOK], 0) = mrNone);
+
+  if Q.FieldByName('BAS_CEVRESI_CM').IsNull then
+    Exit(MessageDlg('Baş çevresi bilgisi girilmelidir.', mtWarning, [mbOK], 0) = mrNone);
+
+  // 🔹 Risk seçimi (en az biri)
+  if not (
+       GetActiveRiskValue('YR') or
+       GetActiveRiskValue('OR') or
+       GetActiveRiskValue('DR')
+     ) then
+    Exit(MessageDlg(
+      'Yüksek, Orta veya Düşük risk gruplarından en az biri seçilmelidir.',
+      mtWarning, [mbOK], 0) = mrNone);
+
+  // 🔹 Doktor adı
+  if Trim(Q.FieldByName('DOKTOR_ADI').AsString) = '' then
+    Exit(MessageDlg('Değerlendirmeyi yapanın adı soyadı girilmelidir.', mtWarning, [mbOK], 0) = mrNone);
+end;
+
+
+
+procedure TForm2.ApplyFixedFieldRules;   // ilk haftanın yapabildiği doğum bilgilerinin girişine izin verilmesi
 var
   E: Boolean;
 begin
@@ -515,7 +601,8 @@ begin
   edtDBoyu.Enabled     := E;
   edtDBas.Enabled      := E;
 end;
-procedure TForm2.ApplyReadOnlyMode;
+
+procedure TForm2.ApplyReadOnlyMode;  // geçmiş kayıtları incelerken girişleri engelleme için
 begin
   if not FReadOnlyMode then Exit;
 
@@ -532,7 +619,7 @@ begin
 end;
 
 
- procedure TForm2.LoadFormReadOnly(AFormNo: Integer);
+ procedure TForm2.LoadFormReadOnly(AFormNo: Integer); // geçmiş kayıtları düzenleme yapmadan yükleme için
 begin
   FReadOnlyMode := True;
 
@@ -548,7 +635,7 @@ OpenHafta(qrHafta4, 4);
   ApplyReadOnlyMode;
 end;
 
- procedure TForm2.ApplyTGFieldRules;
+ procedure TForm2.ApplyTGFieldRules; // checkboxları kitleme için name'lerinden parse etme işlemi
 var
   I: Integer;
   C: TComponent;
@@ -578,7 +665,7 @@ begin
 end;
 
 
- procedure TForm2.ApplyDoctorFieldRules;
+ procedure TForm2.ApplyDoctorFieldRules;  // doktor alanlarını kitleme
 var
   I: Integer;
   C: TComponent;
@@ -591,7 +678,7 @@ begin
   end;
 end;
 
- function TForm2.IsFirstFormFirstWeek: Boolean;
+ function TForm2.IsFirstFormFirstWeek: Boolean;   // ilk kayıt mı ?
 begin
   Result := (FAktifForm = 1) and (FAktifHafta = 1);
 end;
@@ -605,11 +692,11 @@ begin
   qrHafta3.ReadOnly := False;
   qrHafta4.ReadOnly := False;
 
-  ReloadFormData;   // senin yazdığın sağlam fonk
+  ReloadFormData;
 end;
 
 
-procedure TForm2.OpenHafta(Q: TOraQuery; AHafta: Integer);
+procedure TForm2.OpenHafta(Q: TOraQuery; AHafta: Integer); // hafta bilgisinin açılması
 begin
   Q.Close;
   Q.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
@@ -634,7 +721,7 @@ end;
 
 
 
-procedure TForm2.CopyFixedFieldsFromFirstWeek(Q: TOraQuery);
+procedure TForm2.CopyFixedFieldsFromFirstWeek(Q: TOraQuery); // ilk hafta hariç diğer haftalarda doğum bilgilerini ilk haftadan kopyalayarak çekiyoruz
 begin
   qryFirstWeek.Close;
   qryFirstWeek.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
@@ -659,42 +746,9 @@ begin
   end;
 end;
 
- {*
-procedure TForm2.dbgrdFormHistoryCellClick(Column: TColumn);
-var
-  SelFormNo: Integer;
-begin
-  if qryFormHistory.IsEmpty then Exit;
 
-  // 1️⃣ seçilen form
-  SelFormNo := qryFormHistory.FieldByName('FORM_NO').AsInteger;
 
-  FAktifForm  := SelFormNo;
-  FAktifHafta := 0; // geçmiş → aktif hafta yok
-
-  // 2️⃣ haftaları kapat
-  qrHafta1.Close;
-  qrHafta2.Close;
-  qrHafta3.Close;
-  qrHafta4.Close;
-
-  // 3️⃣ geçmiş formu SADECE OKU
-  OpenHafta(qrHafta1, 1, True);
-  OpenHafta(qrHafta2, 2, True);
-  OpenHafta(qrHafta3, 3, True);
-  OpenHafta(qrHafta4, 4, True);
-
-  // 4️⃣ ekran kilitleri
-  SetHaftaAktif(0);
-  ApplyFixedFieldRules;
-  ApplyDoctorFieldRules;
-  ApplyTGFieldRules;
-
-  // 5️⃣ 🔥 RENKLERİ MUTLAKA YENİLE
-  RefreshAllRiskCheckBoxes;
-end;               *}
-
-procedure TForm2.dbgrdFormHistoryCellClick(Column: TColumn);
+procedure TForm2.dbgrdFormHistoryCellClick(Column: TColumn);    //grid üzerinde geçmiş kayıtara geçiş
 var
   SelFormNo: Integer;
 begin
@@ -716,7 +770,7 @@ begin
   OpenHafta(qrHafta3, 3);
   OpenHafta(qrHafta4, 4);
 
-  // 🔴 MUTLAKA BU SIRA
+
   ResetAllRiskCheckBoxStyles;
   RefreshAllRiskCheckBoxes;
 
@@ -725,7 +779,42 @@ end;
 
 
 
-procedure TForm2.CalcAktifFormHafta;
+procedure TForm2.dbgrdFormHistoryDrawColumnCell(
+  Sender: TObject;
+  const Rect: TRect;
+  DataCol: Integer;
+  Column: TColumn;
+  State: TGridDrawState);
+var
+  Grid: TDBGrid;
+begin
+  Grid := Sender as TDBGrid;
+
+  // Seçili satır → default çiz
+  if gdSelected in State then
+  begin
+    Grid.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+    Exit;
+  end;
+
+  // Normal satırlar
+  Grid.Canvas.Brush.Color := clLtGray;
+  Grid.Canvas.FillRect(Rect);
+
+  // Yazı rengi
+  Grid.Canvas.Font.Color := clBlack;
+
+  // Hücre içeriğini yaz
+  Grid.Canvas.TextRect(
+    Rect,
+    Rect.Left + 6,
+    Rect.Top + 2,
+    Column.Field.AsString
+  );
+end;
+
+
+procedure TForm2.CalcAktifFormHafta;  //  aktif haftayı bulma
 var
   HaftaSayisi: Integer;
 begin
@@ -755,7 +844,7 @@ end;
 
 
 
-procedure TForm2.SetHaftaAktif(AHafta: Integer);
+procedure TForm2.SetHaftaAktif(AHafta: Integer);  // aktif haftayı editlenebilir yapma
 var
   I: Integer;
 
@@ -769,7 +858,7 @@ var
   end;
 
 begin
-  // 🔴 GEÇMİŞ FORM (SADECE GÖRÜNTÜLEME)
+  //  GEÇMİŞ FORM (SADECE GÖRÜNTÜLEME)
   if AHafta = 0 then
   begin
     for I := 1 to 4 do
@@ -804,7 +893,7 @@ begin
     Exit;
   end;
 
-  // 🟢 NORMAL AKTİF HAFTA (1–4)
+  //  NORMAL AKTİF HAFTA (1–4)
   for I := 1 to 4 do
   begin
     En('edtKiloGun' + IntToStr(I), I = AHafta);
@@ -839,7 +928,7 @@ end;
 
 
 
-function TForm2.GetActiveRiskValue(const Prefix: string): Boolean;
+function TForm2.GetActiveRiskValue(const Prefix: string): Boolean;     // risk hesaplama
 var
   C: TComponent;
 
@@ -882,7 +971,7 @@ begin
 end;
 
 
-function TForm2.CalcRiskSeviye: string;
+function TForm2.CalcRiskSeviye: string;   // yüksek harici orta yazan func
 begin
   // Öncelik sırası: Yüksek > Orta > Düşük
 
@@ -895,7 +984,7 @@ begin
   Result := ''; // hiçbiri yok
 end;
 
-procedure TForm2.ReloadFormData;
+procedure TForm2.ReloadFormData;     // formu reload eder
 begin
   CalcAktifFormHafta;
 
@@ -904,8 +993,8 @@ begin
   OpenHafta(qrHafta3, 3);
   OpenHafta(qrHafta4, 4);
 
-  ResetAllRiskCheckBoxStyles;   // 🔥
-  RefreshAllRiskCheckBoxes;    // 🔥
+  ResetAllRiskCheckBoxStyles;
+  RefreshAllRiskCheckBoxes;
 
   SetHaftaAktif(FAktifHafta);
   ApplyFixedFieldRules;
@@ -919,7 +1008,7 @@ begin
 end;
 
 
-procedure TForm2.btnKaydetClick(Sender: TObject);
+procedure TForm2.btnKaydetClick(Sender: TObject);  // kaydetme butonu
 var
   Q: TOraQuery;
   DBRisk: string;
@@ -938,6 +1027,8 @@ begin
   if not (Q.State in dsEditModes) then
     Q.Edit;
 
+    if not ValidateCommonFields(Q) then Exit;
+    if not ValidateBirthFields(Q) then Exit;
   // 🔹 otomatik risk hesapla
   DBRisk := CalcRiskSeviye;
 
@@ -946,7 +1037,7 @@ begin
 
   Q.Post;
 
-  // 🔄 FORMU KAPATMA → YENİDEN YÜKLE
+  //  FORMU KAPATMA → YENİDEN YÜKLE
   ReloadFormData;
 
  
@@ -955,7 +1046,7 @@ end;
 
 
 
-procedure TForm2.btnYazdirClick(Sender: TObject);
+procedure TForm2.btnYazdirClick(Sender: TObject);       // yazdırma butonu func
 var
   FormNo: Integer;
 begin
@@ -985,7 +1076,7 @@ begin
   frxReportForm.ShowReport;
 end;
 
-procedure TForm2.btnYeniClick(Sender: TObject);
+procedure TForm2.btnYeniClick(Sender: TObject);   // yeni yada eskide kalan son yerden devam eden buton func
 begin
   FReadOnlyMode := False;
 
@@ -996,30 +1087,30 @@ begin
   OpenHafta(qrHafta3, 3);
   OpenHafta(qrHafta4, 4);
 
-  ResetAllRiskCheckBoxStyles;   // 🔥
-  RefreshAllRiskCheckBoxes;    // 🔥
+  ResetAllRiskCheckBoxStyles;
+  RefreshAllRiskCheckBoxes;
 
   btnKaydet.Enabled := True;
   SetHaftaAktif(FAktifHafta);
 end;
 
-procedure TForm2.FormShow(Sender: TObject);
+procedure TForm2.FormShow(Sender: TObject);  // formu gösterme
 begin
-  // 1️⃣ DB bağlantısı
+  // 1️DB bağlantısı
   if not Orsn1.Connected then
     Orsn1.Connected := True;
 
-  // 2️⃣ Hasta bilgisi (ÖNCE)
+  // 2️Hasta bilgisi (ÖNCE)
   FDosyaNo    := TEST_DOSYA_NO;
   FProtokolNo := TEST_PROTOKOL_NO;
 
-  // 3️⃣ 🔹 GEÇMİŞ FORM LİSTESİ (DBGrid için)
+  // 3️ GEÇMİŞ FORM LİSTESİ (DBGrid için)
   qryFormHistory.Close;
   qryFormHistory.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
   qryFormHistory.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
   qryFormHistory.Open;
 
-  // 4️⃣ Aktif form / hafta hesapla
+  // 4️Aktif form / hafta hesapla
   CalcAktifFormHafta;
 
   // 5️⃣ Haftalık datasetleri aç
@@ -1028,7 +1119,7 @@ begin
   OpenHafta(qrHafta3, 3);
   OpenHafta(qrHafta4, 4);
 
-  // 6️⃣ Ekran kuralları
+  // 6️Ekran kuralları
   SetHaftaAktif(FAktifHafta);
   ApplyTGFieldRules;
   ApplyFixedFieldRules;
@@ -1046,7 +1137,7 @@ begin
   // TODO
 end;
 
-procedure TForm2.ClearRiskFieldsInDatasetExcept(
+procedure TForm2.ClearRiskFieldsInDatasetExcept( // risk hesaplama helper
   DS: TDataSet;
   const ExceptField: string
 );
@@ -1083,7 +1174,7 @@ begin
 end;
 
 
-procedure TForm2.RefreshAllRiskCheckBoxes;
+procedure TForm2.RefreshAllRiskCheckBoxes;    // tüm checkboxları güncelleme
 var
   I: Integer;
   C: TComponent;
@@ -1107,7 +1198,7 @@ begin
 end;
 
 
-procedure TForm2.PaintBoxYuksekRiskPaint(Sender: TObject);
+procedure TForm2.PaintBoxYuksekRiskPaint(Sender: TObject);    // 2.risk belirleme yazısını yatay döndürme, properties de bulamadım :)
 var
   R: TRect;
   LF: TLogFont;
@@ -1118,7 +1209,7 @@ begin
 
   with PaintBoxYuksekRisk.Canvas do
   begin
-    Brush.Color := clBtnFace;
+
     FillRect(PaintBoxYuksekRisk.ClientRect);
 
     Font.Name := 'Segoe UI';
@@ -1141,7 +1232,7 @@ begin
   end;
 end;
 
-procedure TForm2.ResetAllRiskCheckBoxStyles;
+procedure TForm2.ResetAllRiskCheckBoxStyles;  // checkboxlardan gözden geçirme alanları ile risk belirleme alanı karışıyordu güncelleme attım
 var
   I: Integer;
   C: TComponent;
@@ -1168,7 +1259,7 @@ begin
   end;
 end;
 
-procedure TForm2.RefreshRiskCheckBox(ACheck: TcxDBCheckBox);
+procedure TForm2.RefreshRiskCheckBox(ACheck: TcxDBCheckBox);  // checkboxların işaretlendiiğinde arka plan rengini ayarlayan func
 var
   Prefix: string;
 begin
@@ -1179,7 +1270,7 @@ begin
   // 🔄 HER ZAMAN ÖNCE RESET
   ACheck.ParentBackground := False;
   ACheck.Style.Font.Style := [];
-  ACheck.Style.Color := clBtnFace;   // 🔥 EN KRİTİK SATIR
+  ACheck.Style.Color := clBtnFace;   //  EN KRİTİK SATIR
 
   if not ACheck.Checked then
     Exit;
@@ -1188,19 +1279,19 @@ begin
   ACheck.Style.Font.Style := [fsBold];
 
   if Prefix = 'YR' then
-    ACheck.Style.Color := clRed          // 🔴 yüksek
+    ACheck.Style.Color := clRed          //  yüksek
   else if Prefix = 'OR' then
-    ACheck.Style.Color := clGray         // ⚫ orta
+    ACheck.Style.Color := clGray         //  orta
   else if Prefix = 'DR' then
-    ACheck.Style.Color := clGreen        // 🟢 düşük
+    ACheck.Style.Color := clGreen        // düşük
   else if Prefix = 'TG' then
-    ACheck.Style.Color := clRed;         // 🔴 gözden geçirme
+    ACheck.Style.Color := clRed;         //  gözden geçirme
 end;
 
 
 
 
-procedure TForm2.ClearOtherRiskGroups(const ActivePrefix: string);
+procedure TForm2.ClearOtherRiskGroups(const ActivePrefix: string);  // yeni sayfada kalan checkboxların temizlenmesi helper func
 const
   YR_FIELDS: array[0..3] of string = ('C28G', 'C1000G', 'CNEKG', 'CGISG');
   OR_FIELDS: array[0..3] of string = ('C28G', 'CIUGRG', 'C1000G', 'CKONJENITALG');
@@ -1261,7 +1352,7 @@ end;
 
 
 
-procedure TForm2.RiskCheckBoxPropertiesChange(Sender: TObject);
+procedure TForm2.RiskCheckBoxPropertiesChange(Sender: TObject);  //   tek bir checkbox işaretleme ve db ye de tek yazma func
 var
   C: TcxDBCheckBox;
   DS: TDataSet;
@@ -1283,10 +1374,10 @@ begin
 
   if C.Checked then
   begin
-    // ✅ 1) ÖNCE bu alanı TRUE yap
+    //  1) ÖNCE bu alanı TRUE yap
     DS.FieldByName(FieldName).AsString := 'T';
 
-    // ✅ 2) SONRA diğer tüm riskleri temizle
+    //  2) SONRA diğer tüm riskleri temizle
     ClearRiskFieldsInDatasetExcept(DS, FieldName);
 
   end

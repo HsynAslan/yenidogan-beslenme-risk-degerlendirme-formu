@@ -555,7 +555,7 @@ begin
 
   // 🔹 Doktor adı
   if Trim(Q.FieldByName('DOKTOR_ADI').AsString) = '' then
-    Exit(MessageDlg('Doktor adı girilmelidir.', mtWarning, [mbOK], 0) = mrNone);
+    Exit(MessageDlg('Değerlendirmeyi yapanın adı soyadı girilmelidir.', mtWarning, [mbOK], 0) = mrNone);
 end;
 
 
@@ -962,6 +962,8 @@ begin
   if not (Q.State in dsEditModes) then
     Q.Edit;
 
+    if not ValidateCommonFields(Q) then Exit;
+    if not ValidateBirthFields(Q) then Exit;
   // 🔹 otomatik risk hesapla
   DBRisk := CalcRiskSeviye;
 
@@ -1142,7 +1144,7 @@ begin
 
   with PaintBoxYuksekRisk.Canvas do
   begin
-    Brush.Color := clBtnFace;
+
     FillRect(PaintBoxYuksekRisk.ClientRect);
 
     Font.Name := 'Segoe UI';
