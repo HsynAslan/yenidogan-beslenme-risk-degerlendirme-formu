@@ -32,7 +32,6 @@
       Style.BorderStyle = ebsNone
       Style.Color = clWhitesmoke
       TabOrder = 0
-      ExplicitWidth = 1071
       Height = 17
       Width = 1088
       object cxlbl5: TcxLabel
@@ -53,7 +52,6 @@
         Style.IsFontAssigned = True
         Properties.Alignment.Horz = taCenter
         Properties.Alignment.Vert = taVCenter
-        ExplicitWidth = 1067
         AnchorX = 544
         AnchorY = 9
       end
@@ -68,7 +66,6 @@
       Style.BorderStyle = ebsNone
       Style.Color = clLightgray
       TabOrder = 1
-      ExplicitWidth = 1071
       Height = 80
       Width = 1088
       object grdpnl1: TGridPanel
@@ -102,7 +99,6 @@
             Value = 100.000000000000000000
           end>
         TabOrder = 0
-        ExplicitWidth = 1067
         object grdpnl2: TGridPanel
           Left = 602
           Top = 1
@@ -173,8 +169,6 @@
               Value = 24.659364173467800000
             end>
           TabOrder = 0
-          ExplicitLeft = 593
-          ExplicitWidth = 473
           object cxlbl1: TcxLabel
             Left = 1
             Top = 1
@@ -189,7 +183,6 @@
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taLeftJustify
             Properties.Alignment.Vert = taVCenter
-            ExplicitWidth = 236
             AnchorY = 10
           end
           object cxlbl2: TcxLabel
@@ -198,7 +191,6 @@
             Align = alClient
             Caption = 'Do'#287'um Tart'#305's'#305' (Persantil) (gr): '
             Properties.Alignment.Vert = taVCenter
-            ExplicitWidth = 236
             AnchorY = 28
           end
           object cxlbl3: TcxLabel
@@ -207,7 +199,6 @@
             Align = alClient
             Caption = 'Do'#287'um Boyu (Persantil) (cm) : '
             Properties.Alignment.Vert = taVCenter
-            ExplicitWidth = 236
             AnchorY = 46
           end
           object cxlbl4: TcxLabel
@@ -216,7 +207,6 @@
             Align = alClient
             Caption = 'Do'#287'um Ba'#351' '#199'evresi (Persantil) (cm) : '
             Properties.Alignment.Vert = taVCenter
-            ExplicitWidth = 236
             AnchorY = 64
           end
           object edtDestasyon: TcxDBTextEdit
@@ -228,8 +218,6 @@
             Properties.Alignment.Horz = taLeftJustify
             Style.Color = clWhitesmoke
             TabOrder = 4
-            ExplicitLeft = 237
-            ExplicitWidth = 235
             Width = 239
           end
           object edtDTartisi: TcxDBTextEdit
@@ -241,8 +229,6 @@
             Properties.Alignment.Horz = taLeftJustify
             Style.Color = clWhitesmoke
             TabOrder = 5
-            ExplicitLeft = 237
-            ExplicitWidth = 235
             Width = 239
           end
           object edtDBoyu: TcxDBTextEdit
@@ -254,8 +240,6 @@
             Properties.Alignment.Horz = taLeftJustify
             Style.Color = clWhitesmoke
             TabOrder = 6
-            ExplicitLeft = 237
-            ExplicitWidth = 235
             Width = 239
           end
           object edtDBas: TcxDBTextEdit
@@ -267,8 +251,6 @@
             Properties.Alignment.Horz = taLeftJustify
             Style.Color = clWhitesmoke
             TabOrder = 7
-            ExplicitLeft = 237
-            ExplicitWidth = 235
             Width = 239
           end
         end
@@ -355,14 +337,12 @@
               Value = 20.000000000000000000
             end>
           TabOrder = 1
-          ExplicitWidth = 592
           object cxlbl7: TcxLabel
             Left = 1
             Top = 1
             Align = alClient
             Caption = 'ADI SOYADI: '
             Properties.Alignment.Vert = taVCenter
-            ExplicitWidth = 236
             AnchorY = 8
           end
           object lblHastaAdiSoyadi: TcxDBLabel
@@ -370,8 +350,6 @@
             Top = 1
             Align = alClient
             Properties.Alignment.Vert = taVCenter
-            ExplicitLeft = 237
-            ExplicitWidth = 354
             Height = 14
             Width = 359
             AnchorY = 8
@@ -382,7 +360,6 @@
             Align = alClient
             Caption = 'DOSYA_NO: '
             Properties.Alignment.Vert = taVCenter
-            ExplicitWidth = 236
             AnchorY = 23
           end
           object lblHastaDosyaNo: TcxDBLabel
@@ -390,8 +367,6 @@
             Top = 15
             Align = alClient
             Properties.Alignment.Vert = taVCenter
-            ExplicitLeft = 237
-            ExplicitWidth = 354
             Height = 15
             Width = 359
             AnchorY = 23
@@ -402,7 +377,6 @@
             Align = alClient
             Caption = 'PROTOKOL_NO: '
             Properties.Alignment.Vert = taVCenter
-            ExplicitWidth = 236
             AnchorY = 37
           end
           object lblHastaProtokolNo: TcxDBLabel
@@ -410,8 +384,6 @@
             Top = 30
             Align = alClient
             Properties.Alignment.Vert = taVCenter
-            ExplicitLeft = 237
-            ExplicitWidth = 354
             Height = 14
             Width = 359
             AnchorY = 37
@@ -422,7 +394,6 @@
             Align = alClient
             Caption = 'B'#214'L'#220'M: '
             Properties.Alignment.Vert = taVCenter
-            ExplicitWidth = 236
             AnchorY = 52
           end
           object lblHastaBolum: TcxDBLabel
@@ -430,8 +401,6 @@
             Top = 44
             Align = alClient
             Properties.Alignment.Vert = taVCenter
-            ExplicitLeft = 237
-            ExplicitWidth = 354
             Height = 15
             Width = 359
             AnchorY = 52
@@ -442,7 +411,6 @@
             Align = alClient
             Caption = 'TANI: '
             Properties.Alignment.Vert = taVCenter
-            ExplicitWidth = 236
             AnchorY = 66
           end
           object lblHastaTani: TcxDBLabel
@@ -450,8 +418,6 @@
             Top = 59
             Align = alClient
             Properties.Alignment.Vert = taVCenter
-            ExplicitLeft = 237
-            ExplicitWidth = 354
             Height = 14
             Width = 359
             AnchorY = 66
@@ -468,7 +434,6 @@
       ParentColor = False
       Style.Color = clLightgray
       TabOrder = 2
-      ExplicitWidth = 1071
       Height = 434
       Width = 1088
       object grdpnl3: TGridPanel
@@ -695,7 +660,6 @@
             SizeStyle = ssAuto
           end>
         TabOrder = 0
-        ExplicitWidth = 1067
         object cxlbl6: TcxLabel
           Left = 1
           Top = 1
@@ -712,7 +676,6 @@
           Style.IsFontAssigned = True
           Properties.Alignment.Horz = taLeftJustify
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 592
           AnchorY = 14
         end
         object cxlbl8: TcxLabel
@@ -723,7 +686,6 @@
           ParentColor = False
           Style.Color = clLightgray
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 592
           AnchorY = 36
         end
         object edtKiloGun1: TcxDBTextEdit
@@ -735,8 +697,6 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 2
-          ExplicitLeft = 593
-          ExplicitWidth = 118
           Width = 120
         end
         object edtKiloGun2: TcxDBTextEdit
@@ -748,8 +708,6 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 3
-          ExplicitLeft = 711
-          ExplicitWidth = 118
           Width = 121
         end
         object edtKiloGun3: TcxDBTextEdit
@@ -761,8 +719,6 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 4
-          ExplicitLeft = 829
-          ExplicitWidth = 119
           Width = 120
         end
         object edtKiloGun4: TcxDBTextEdit
@@ -774,8 +730,6 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 5
-          ExplicitLeft = 948
-          ExplicitWidth = 118
           Width = 120
         end
         object cxlbl9: TcxLabel
@@ -786,7 +740,6 @@
           ParentColor = False
           Style.Color = clLightgray
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 592
           AnchorY = 53
         end
         object edtBoyGun1: TcxDBTextEdit
@@ -798,8 +751,6 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 7
-          ExplicitLeft = 593
-          ExplicitWidth = 118
           Width = 120
         end
         object edtBoyGun2: TcxDBTextEdit
@@ -811,8 +762,6 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 8
-          ExplicitLeft = 711
-          ExplicitWidth = 118
           Width = 121
         end
         object edtBoyGun3: TcxDBTextEdit
@@ -824,8 +773,6 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 9
-          ExplicitLeft = 829
-          ExplicitWidth = 119
           Width = 120
         end
         object edtBoyGun4: TcxDBTextEdit
@@ -837,8 +784,6 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 10
-          ExplicitLeft = 948
-          ExplicitWidth = 118
           Width = 120
         end
         object cxLabel1: TcxLabel
@@ -850,7 +795,6 @@
           Style.Color = clLightgray
           Properties.Alignment.Horz = taLeftJustify
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 592
           AnchorY = 70
         end
         object edtBasGun1: TcxDBTextEdit
@@ -862,8 +806,6 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 12
-          ExplicitLeft = 593
-          ExplicitWidth = 118
           Width = 120
         end
         object edtBasGun2: TcxDBTextEdit
@@ -875,8 +817,6 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 13
-          ExplicitLeft = 711
-          ExplicitWidth = 118
           Width = 121
         end
         object edtBasGun3: TcxDBTextEdit
@@ -888,8 +828,6 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 14
-          ExplicitLeft = 829
-          ExplicitWidth = 119
           Width = 120
         end
         object edtBasGun4: TcxDBTextEdit
@@ -901,8 +839,6 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 15
-          ExplicitLeft = 948
-          ExplicitWidth = 118
           Width = 120
         end
         object grdpnl4: TGridPanel
@@ -934,7 +870,6 @@
               Value = 100.000000000000000000
             end>
           TabOrder = 16
-          ExplicitWidth = 592
           object PaintBoxYuksekRisk: TPaintBox
             Left = 1
             Top = 1
@@ -1002,7 +937,6 @@
                 Value = 30.008141647426720000
               end>
             TabOrder = 0
-            ExplicitWidth = 560
             object cxlbl10: TcxLabel
               Left = 1
               Top = 1
@@ -1021,7 +955,6 @@
               StyleDisabled.BorderColor = clBtnText
               Properties.Alignment.Horz = taCenter
               Properties.Alignment.Vert = taVCenter
-              ExplicitWidth = 84
               AnchorX = 44
               AnchorY = 47
             end
@@ -1041,7 +974,6 @@
               Style.IsFontAssigned = True
               Properties.Alignment.Horz = taCenter
               Properties.Alignment.Vert = taVCenter
-              ExplicitWidth = 84
               AnchorX = 44
               AnchorY = 153
             end
@@ -1061,7 +993,6 @@
               Style.IsFontAssigned = True
               Properties.Alignment.Horz = taCenter
               Properties.Alignment.Vert = taVCenter
-              ExplicitWidth = 84
               AnchorX = 44
               AnchorY = 260
             end
@@ -1118,8 +1049,6 @@
                   Value = 20.000000000000000000
                 end>
               TabOrder = 3
-              ExplicitLeft = 85
-              ExplicitWidth = 474
               object cxlbl12: TcxLabel
                 Left = 1
                 Top = 1
@@ -1128,7 +1057,6 @@
                 ParentColor = False
                 Style.Color = clLightgray
                 Properties.Alignment.Vert = taBottomJustify
-                ExplicitWidth = 472
                 AnchorY = 19
               end
               object cxlbl14: TcxLabel
@@ -1139,7 +1067,6 @@
                 ParentColor = False
                 Style.Color = clLightgray
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 472
                 AnchorY = 28
               end
               object cxlbl15: TcxLabel
@@ -1150,7 +1077,6 @@
                 ParentColor = False
                 Style.Color = clLightgray
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 472
                 AnchorY = 46
               end
               object cxlbl16: TcxLabel
@@ -1161,7 +1087,6 @@
                 ParentColor = False
                 Style.Color = clLightgray
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 472
                 AnchorY = 63
               end
               object cxlbl17: TcxLabel
@@ -1172,7 +1097,6 @@
                 ParentColor = False
                 Style.Color = clLightgray
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 472
                 AnchorY = 81
               end
             end
@@ -1229,8 +1153,6 @@
                   Value = 18.000000000000000000
                 end>
               TabOrder = 4
-              ExplicitLeft = 85
-              ExplicitWidth = 474
               object cxlbl18: TcxLabel
                 Left = 1
                 Top = 1
@@ -1239,7 +1161,6 @@
                 ParentColor = False
                 Style.Color = clLightgray
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 472
                 AnchorY = 12
               end
               object cxlbl19: TcxLabel
@@ -1251,7 +1172,6 @@
                 Style.Color = clLightgray
                 Properties.Alignment.Horz = taLeftJustify
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 472
                 AnchorY = 34
               end
               object cxlbl20: TcxLabel
@@ -1264,7 +1184,6 @@
                 ParentColor = False
                 Style.Color = clLightgray
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 472
                 AnchorY = 61
               end
               object cxlbl21: TcxLabel
@@ -1275,7 +1194,6 @@
                 ParentColor = False
                 Style.Color = clLightgray
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 472
                 AnchorY = 89
               end
               object cxlbl22: TcxLabel
@@ -1286,7 +1204,6 @@
                 ParentColor = False
                 Style.Color = clLightgray
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 472
                 AnchorY = 110
               end
             end
@@ -1335,8 +1252,6 @@
                   Value = 20.000000000000000000
                 end>
               TabOrder = 5
-              ExplicitLeft = 85
-              ExplicitWidth = 474
               object cxlbl23: TcxLabel
                 Left = 1
                 Top = 1
@@ -1345,7 +1260,6 @@
                 ParentColor = False
                 Style.Color = clLightgray
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 472
                 AnchorY = 10
               end
               object cxlbl24: TcxLabel
@@ -1356,7 +1270,6 @@
                 ParentColor = False
                 Style.Color = clLightgray
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 472
                 AnchorY = 28
               end
               object cxlbl25: TcxLabel
@@ -1369,7 +1282,6 @@
                 ParentColor = False
                 Style.Color = clLightgray
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 472
                 AnchorY = 55
               end
               object cxlbl26: TcxLabel
@@ -1380,7 +1292,6 @@
                 ParentColor = False
                 Style.Color = clLightgray
                 Properties.Alignment.Vert = taVCenter
-                ExplicitWidth = 472
                 AnchorY = 81
               end
             end
@@ -1423,8 +1334,6 @@
               Value = 30.010000000000000000
             end>
           TabOrder = 17
-          ExplicitLeft = 593
-          ExplicitWidth = 118
           object grdpnl10: TGridPanel
             Left = 1
             Top = 1
@@ -1481,7 +1390,6 @@
                 SizeStyle = ssAuto
               end>
             TabOrder = 0
-            ExplicitWidth = 116
             object lbl1: TLabel
               Left = 1
               Top = 1
@@ -1508,7 +1416,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitWidth = 114
               Width = 116
             end
             object YR_C1000G1: TcxDBCheckBox
@@ -1527,7 +1434,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitWidth = 114
               Width = 116
             end
             object YR_CNEKG1: TcxDBCheckBox
@@ -1546,7 +1452,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitWidth = 114
               Width = 116
             end
             object YR_CGISG1: TcxDBCheckBox
@@ -1565,7 +1470,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 3
-              ExplicitWidth = 114
               Width = 116
             end
           end
@@ -1622,7 +1526,6 @@
                 Value = 18.000000000000000000
               end>
             TabOrder = 1
-            ExplicitWidth = 116
             object lbl2: TLabel
               Left = 1
               Top = 1
@@ -1648,7 +1551,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitWidth = 114
               Width = 116
             end
             object OR_CIUGRG1: TcxDBCheckBox
@@ -1667,7 +1569,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitWidth = 114
               Width = 116
             end
             object OR_C1000G1: TcxDBCheckBox
@@ -1686,7 +1587,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitWidth = 114
               Width = 116
             end
             object OR_CKONJENITALG1: TcxDBCheckBox
@@ -1705,7 +1605,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 3
-              ExplicitWidth = 114
               Width = 116
             end
           end
@@ -1754,7 +1653,6 @@
                 Value = 20.000000000000000000
               end>
             TabOrder = 2
-            ExplicitWidth = 116
             DesignSize = (
               118
               92)
@@ -1782,7 +1680,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitWidth = 114
               Width = 116
             end
             object DR_CIUGRG1: TcxDBCheckBox
@@ -1801,7 +1698,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitWidth = 114
               Width = 116
             end
             object DR_C37G1: TcxDBCheckBox
@@ -1820,7 +1716,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitWidth = 114
               Width = 116
             end
           end
@@ -1863,8 +1758,6 @@
               Value = 30.010000000000000000
             end>
           TabOrder = 18
-          ExplicitLeft = 711
-          ExplicitWidth = 118
           object grdpnl14: TGridPanel
             Left = 1
             Top = 1
@@ -1918,7 +1811,6 @@
                 Value = 20.000000000000000000
               end>
             TabOrder = 0
-            ExplicitWidth = 116
             object lbl4: TLabel
               Left = 1
               Top = 1
@@ -1944,7 +1836,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitWidth = 114
               Width = 117
             end
             object YR_C1000G2: TcxDBCheckBox
@@ -1963,7 +1854,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitWidth = 114
               Width = 117
             end
             object YR_CNEKG2: TcxDBCheckBox
@@ -1982,7 +1872,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitWidth = 114
               Width = 117
             end
             object YR_CGISG2: TcxDBCheckBox
@@ -2001,7 +1890,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 3
-              ExplicitWidth = 114
               Width = 117
             end
           end
@@ -2058,7 +1946,6 @@
                 Value = 18.000000000000000000
               end>
             TabOrder = 1
-            ExplicitWidth = 116
             object lbl5: TLabel
               Left = 1
               Top = 1
@@ -2084,7 +1971,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitWidth = 114
               Width = 117
             end
             object OR_CIUGRG2: TcxDBCheckBox
@@ -2103,7 +1989,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitWidth = 114
               Width = 117
             end
             object OR_C1000G2: TcxDBCheckBox
@@ -2122,7 +2007,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitWidth = 114
               Width = 117
             end
             object OR_CKONJENITALG2: TcxDBCheckBox
@@ -2141,7 +2025,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 3
-              ExplicitWidth = 114
               Width = 117
             end
           end
@@ -2190,7 +2073,6 @@
                 Value = 20.000000000000000000
               end>
             TabOrder = 2
-            ExplicitWidth = 116
             DesignSize = (
               119
               92)
@@ -2218,7 +2100,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitWidth = 114
               Width = 117
             end
             object DR_CIUGRG2: TcxDBCheckBox
@@ -2237,7 +2118,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitWidth = 114
               Width = 117
             end
             object DR_C37G2: TcxDBCheckBox
@@ -2256,7 +2136,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitWidth = 114
               Width = 117
             end
           end
@@ -2298,8 +2177,6 @@
               Value = 30.010000000000000000
             end>
           TabOrder = 19
-          ExplicitLeft = 829
-          ExplicitWidth = 119
           object grdpnl20: TGridPanel
             Left = 1
             Top = 1
@@ -2353,7 +2230,6 @@
                 Value = 20.000000000000000000
               end>
             TabOrder = 0
-            ExplicitWidth = 117
             DesignSize = (
               118
               92)
@@ -2381,7 +2257,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitWidth = 115
               Width = 116
             end
             object YR_C1000G3: TcxDBCheckBox
@@ -2400,7 +2275,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitWidth = 115
               Width = 116
             end
             object YR_CNEKG3: TcxDBCheckBox
@@ -2419,7 +2293,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitWidth = 115
               Width = 116
             end
             object YR_CGISG3: TcxDBCheckBox
@@ -2438,7 +2311,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 3
-              ExplicitWidth = 115
               Width = 116
             end
           end
@@ -2495,7 +2367,6 @@
                 Value = 18.000000000000000000
               end>
             TabOrder = 1
-            ExplicitWidth = 117
             DesignSize = (
               118
               122)
@@ -2524,7 +2395,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitWidth = 115
               Width = 116
             end
             object OR_CIUGRG3: TcxDBCheckBox
@@ -2543,7 +2413,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitWidth = 115
               Width = 116
             end
             object OR_C1000G3: TcxDBCheckBox
@@ -2562,7 +2431,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitWidth = 115
               Width = 116
             end
             object OR_CKONJENITALG3: TcxDBCheckBox
@@ -2581,7 +2449,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 3
-              ExplicitWidth = 115
               Width = 116
             end
           end
@@ -2630,7 +2497,6 @@
                 Value = 20.000000000000000000
               end>
             TabOrder = 2
-            ExplicitWidth = 117
             DesignSize = (
               118
               92)
@@ -2658,7 +2524,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitWidth = 115
               Width = 116
             end
             object DR_CIUGRG3: TcxDBCheckBox
@@ -2677,7 +2542,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitWidth = 115
               Width = 116
             end
             object DR_C37G3: TcxDBCheckBox
@@ -2697,7 +2561,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitWidth = 115
               Width = 116
             end
           end
@@ -2740,8 +2603,6 @@
               Value = 30.010000000000000000
             end>
           TabOrder = 20
-          ExplicitLeft = 948
-          ExplicitWidth = 118
           object grdpnl21: TGridPanel
             Left = 1
             Top = 1
@@ -2795,7 +2656,6 @@
                 Value = 20.000000000000000000
               end>
             TabOrder = 0
-            ExplicitWidth = 116
             DesignSize = (
               118
               92)
@@ -2823,7 +2683,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitWidth = 114
               Width = 116
             end
             object YR_C1000G4: TcxDBCheckBox
@@ -2842,7 +2701,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitWidth = 114
               Width = 116
             end
             object YR_CNEKG4: TcxDBCheckBox
@@ -2861,7 +2719,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitWidth = 114
               Width = 116
             end
             object YR_CGISG4: TcxDBCheckBox
@@ -2880,7 +2737,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 3
-              ExplicitWidth = 114
               Width = 116
             end
           end
@@ -2937,7 +2793,6 @@
                 Value = 18.000000000000000000
               end>
             TabOrder = 1
-            ExplicitWidth = 116
             DesignSize = (
               118
               122)
@@ -2966,7 +2821,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitWidth = 114
               Width = 116
             end
             object OR_CIUGRG4: TcxDBCheckBox
@@ -2985,7 +2839,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitWidth = 114
               Width = 116
             end
             object OR_C1000G4: TcxDBCheckBox
@@ -3004,7 +2857,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitWidth = 114
               Width = 116
             end
             object OR_CKONJENITALG4: TcxDBCheckBox
@@ -3023,7 +2875,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 3
-              ExplicitWidth = 114
               Width = 116
             end
           end
@@ -3072,7 +2923,6 @@
                 Value = 20.000000000000000000
               end>
             TabOrder = 2
-            ExplicitWidth = 116
             DesignSize = (
               118
               92)
@@ -3100,7 +2950,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              ExplicitWidth = 114
               Width = 116
             end
             object DR_CIUGRG4: TcxDBCheckBox
@@ -3119,7 +2968,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              ExplicitWidth = 114
               Width = 116
             end
             object DR_C37G4: TcxDBCheckBox
@@ -3138,7 +2986,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              ExplicitWidth = 114
               Width = 116
             end
           end
@@ -3152,7 +2999,6 @@
           Style.Color = clLightgray
           Properties.Alignment.Horz = taRightJustify
           Properties.Alignment.Vert = taVCenter
-          ExplicitWidth = 592
           AnchorX = 602
           AnchorY = 397
         end
@@ -3177,7 +3023,6 @@
               Value = 100.000000000000000000
             end>
           TabOrder = 22
-          ExplicitWidth = 592
           object cxlbl28: TcxLabel
             Left = 1
             Top = 1
@@ -3194,7 +3039,6 @@
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
             Properties.Alignment.Vert = taVCenter
-            ExplicitWidth = 590
             AnchorX = 600
             AnchorY = 11
           end
@@ -3214,8 +3058,6 @@
           Style.Font.Name = 'Segoe UI'
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
-          ExplicitLeft = 593
-          ExplicitWidth = 118
           Height = 22
           Width = 120
           AnchorX = 662
@@ -3236,8 +3078,6 @@
           Style.Font.Name = 'Segoe UI'
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
-          ExplicitLeft = 711
-          ExplicitWidth = 118
           Height = 22
           Width = 121
           AnchorX = 783
@@ -3258,8 +3098,6 @@
           Style.Font.Name = 'Segoe UI'
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
-          ExplicitLeft = 829
-          ExplicitWidth = 119
           Height = 22
           Width = 120
           AnchorX = 903
@@ -3280,8 +3118,6 @@
           Style.Font.Name = 'Segoe UI'
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
-          ExplicitLeft = 948
-          ExplicitWidth = 118
           Height = 22
           Width = 120
           AnchorX = 1023
@@ -3305,8 +3141,6 @@
           Style.Font.Style = [fsBold]
           Style.ReadOnly = False
           Style.IsFontAssigned = True
-          ExplicitLeft = 593
-          ExplicitWidth = 118
           Height = 26
           Width = 120
           AnchorX = 662
@@ -3329,8 +3163,6 @@
           Style.Font.Name = 'Segoe UI'
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
-          ExplicitLeft = 711
-          ExplicitWidth = 118
           Height = 26
           Width = 121
           AnchorX = 783
@@ -3353,8 +3185,6 @@
           Style.Font.Name = 'Segoe UI'
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
-          ExplicitLeft = 829
-          ExplicitWidth = 119
           Height = 26
           Width = 120
           AnchorX = 903
@@ -3377,8 +3207,6 @@
           Style.Font.Name = 'Segoe UI'
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
-          ExplicitLeft = 948
-          ExplicitWidth = 118
           Height = 26
           Width = 120
           AnchorX = 1023
@@ -3392,8 +3220,6 @@
           DataBinding.DataSource = dsHafta1
           Properties.Alignment.Horz = taCenter
           TabOrder = 31
-          ExplicitLeft = 593
-          ExplicitWidth = 118
           Width = 120
         end
         object edtDRGun2: TcxDBTextEdit
@@ -3404,8 +3230,6 @@
           DataBinding.DataSource = dsHafta2
           Properties.Alignment.Horz = taCenter
           TabOrder = 32
-          ExplicitLeft = 711
-          ExplicitWidth = 118
           Width = 121
         end
         object edtDRGun3: TcxDBTextEdit
@@ -3416,8 +3240,6 @@
           DataBinding.DataSource = dsHafta3
           Properties.Alignment.Horz = taCenter
           TabOrder = 33
-          ExplicitLeft = 829
-          ExplicitWidth = 119
           Width = 120
         end
         object edtDRgun4: TcxDBTextEdit
@@ -3428,8 +3250,6 @@
           DataBinding.DataSource = dsHafta4
           Properties.Alignment.Horz = taCenter
           TabOrder = 34
-          ExplicitLeft = 948
-          ExplicitWidth = 118
           Width = 120
         end
       end
@@ -3443,7 +3263,6 @@
       ParentColor = False
       Style.Color = clLightgray
       TabOrder = 3
-      ExplicitWidth = 1071
       Height = 115
       Width = 1088
       object grdpnl19: TGridPanel
@@ -3467,7 +3286,6 @@
             Value = 100.000000000000000000
           end>
         TabOrder = 0
-        ExplicitWidth = 1067
         object grdpnl22: TGridPanel
           Left = 1
           Top = 1
@@ -3499,7 +3317,6 @@
               Value = 100.000000000000000000
             end>
           TabOrder = 0
-          ExplicitWidth = 1065
           object grdpnl25: TGridPanel
             Left = 1
             Top = 1
@@ -3563,7 +3380,6 @@
                 Value = 16.000000000000000000
               end>
             TabOrder = 0
-            ExplicitWidth = 591
             object cxlbl30: TcxLabel
               Left = 1
               Top = 1
@@ -3571,7 +3387,6 @@
               Caption = '3. '#304'HT'#304'YACININ TESP'#304'T'#304' '#304#199#304'N G'#214'ZDEN GE'#199#304'RME'
               Style.TextStyle = [fsBold]
               Properties.Alignment.Vert = taVCenter
-              ExplicitWidth = 589
               AnchorY = 12
             end
             object cxlbl31: TcxLabel
@@ -3586,7 +3401,6 @@
               Caption = #220'stteki kriterlere g'#246're y'#252'ksek risk'
               Style.BorderStyle = ebsThick
               Properties.Alignment.Vert = taVCenter
-              ExplicitWidth = 579
               AnchorY = 31
             end
             object cxlbl32: TcxLabel
@@ -3601,7 +3415,6 @@
               Caption = '2. haftada do'#287'um kilosunu yakalayamama'
               Style.BorderStyle = ebsThick
               Properties.Alignment.Vert = taVCenter
-              ExplicitWidth = 579
               AnchorY = 48
             end
             object cxlbl33: TcxLabel
@@ -3616,7 +3429,6 @@
               Caption = 'Herhangi bir zamanda >%15 kilo kayb'#305
               Style.BorderStyle = ebsThick
               Properties.Alignment.Vert = taVCenter
-              ExplicitWidth = 579
               AnchorY = 64
             end
             object cxlbl34: TcxLabel
@@ -3631,7 +3443,6 @@
               Caption = '2. haftadan sonra <10gr / kg / g'#252'n kilo kazan'#305'm'#305
               Style.BorderStyle = ebsThick
               Properties.Alignment.Vert = taVCenter
-              ExplicitWidth = 579
               AnchorY = 81
             end
             object cxlbl35: TcxLabel
@@ -3646,7 +3457,6 @@
               Caption = 'Herhangi bir zamanda NEK veya G'#304'S'#39'de cerrahi i'#351'lem'
               Style.BorderStyle = ebsThick
               Properties.Alignment.Vert = taVCenter
-              ExplicitWidth = 579
               AnchorY = 98
             end
           end
@@ -3812,8 +3622,6 @@
                 Value = 16.000000000000000000
               end>
             TabOrder = 1
-            ExplicitLeft = 592
-            ExplicitWidth = 472
             object lblTarih1Tespit: TcxDBLabel
               Left = 1
               Top = 1
@@ -3830,7 +3638,6 @@
               Style.Font.Style = [fsBold]
               Style.ReadOnly = False
               Style.IsFontAssigned = True
-              ExplicitWidth = 118
               Height = 21
               Width = 120
               AnchorX = 61
@@ -3851,8 +3658,6 @@
               Style.Font.Name = 'Segoe UI'
               Style.Font.Style = [fsBold]
               Style.IsFontAssigned = True
-              ExplicitLeft = 119
-              ExplicitWidth = 117
               Height = 21
               Width = 119
               AnchorX = 181
@@ -3873,8 +3678,6 @@
               Style.Font.Name = 'Segoe UI'
               Style.Font.Style = [fsBold]
               Style.IsFontAssigned = True
-              ExplicitLeft = 236
-              ExplicitWidth = 118
               Height = 21
               Width = 120
               AnchorX = 300
@@ -3895,8 +3698,6 @@
               Style.Font.Name = 'Segoe UI'
               Style.Font.Style = [fsBold]
               Style.IsFontAssigned = True
-              ExplicitLeft = 354
-              ExplicitWidth = 117
               Height = 21
               Width = 119
               AnchorX = 420
@@ -3919,7 +3720,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 4
-              ExplicitWidth = 118
               Width = 120
             end
             object TG2YR: TcxDBCheckBox
@@ -3940,8 +3740,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 5
-              ExplicitLeft = 119
-              ExplicitWidth = 117
               Width = 119
             end
             object TG3YR: TcxDBCheckBox
@@ -3961,8 +3759,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 6
-              ExplicitLeft = 236
-              ExplicitWidth = 118
               Width = 120
             end
             object TG4YR: TcxDBCheckBox
@@ -3982,8 +3778,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 7
-              ExplicitLeft = 354
-              ExplicitWidth = 117
               Width = 119
             end
             object TG1KILOYAKALAYAMAMA: TcxDBCheckBox
@@ -4003,7 +3797,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 8
-              ExplicitWidth = 118
               Width = 120
             end
             object TG2KILOYAKALAYAMAMA: TcxDBCheckBox
@@ -4023,8 +3816,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 9
-              ExplicitLeft = 119
-              ExplicitWidth = 117
               Width = 119
             end
             object TG3KILOYAKALAYAMAMA: TcxDBCheckBox
@@ -4044,8 +3835,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 10
-              ExplicitLeft = 236
-              ExplicitWidth = 118
               Width = 120
             end
             object TG4KILOYAKALAYAMAMA: TcxDBCheckBox
@@ -4065,8 +3854,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 11
-              ExplicitLeft = 354
-              ExplicitWidth = 117
               Width = 119
             end
             object TG1KILOKAYIP: TcxDBCheckBox
@@ -4086,7 +3873,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 12
-              ExplicitWidth = 118
               Width = 120
             end
             object TG2KILOKAYIP: TcxDBCheckBox
@@ -4106,8 +3892,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 13
-              ExplicitLeft = 119
-              ExplicitWidth = 117
               Width = 119
             end
             object TG3KILOKAYIP: TcxDBCheckBox
@@ -4127,8 +3911,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 14
-              ExplicitLeft = 236
-              ExplicitWidth = 118
               Width = 120
             end
             object TG4KILOKAYIP: TcxDBCheckBox
@@ -4148,8 +3930,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 15
-              ExplicitLeft = 354
-              ExplicitWidth = 117
               Width = 119
             end
             object TG1KILOKAZAN: TcxDBCheckBox
@@ -4169,7 +3949,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 16
-              ExplicitWidth = 118
               Width = 120
             end
             object TG2KILOKAZAN: TcxDBCheckBox
@@ -4189,8 +3968,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 17
-              ExplicitLeft = 119
-              ExplicitWidth = 117
               Width = 119
             end
             object TG3KILOKAZAN: TcxDBCheckBox
@@ -4210,8 +3987,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 18
-              ExplicitLeft = 236
-              ExplicitWidth = 118
               Width = 120
             end
             object TG4KILOKAZAN: TcxDBCheckBox
@@ -4231,8 +4006,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 19
-              ExplicitLeft = 354
-              ExplicitWidth = 117
               Width = 119
             end
             object TG1NEK: TcxDBCheckBox
@@ -4252,7 +4025,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 20
-              ExplicitWidth = 118
               Width = 120
             end
             object TG2NEK: TcxDBCheckBox
@@ -4272,8 +4044,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 21
-              ExplicitLeft = 119
-              ExplicitWidth = 117
               Width = 119
             end
             object TG3NEK: TcxDBCheckBox
@@ -4293,8 +4063,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 22
-              ExplicitLeft = 236
-              ExplicitWidth = 118
               Width = 120
             end
             object TG4NEK: TcxDBCheckBox
@@ -4314,8 +4082,6 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 23
-              ExplicitLeft = 354
-              ExplicitWidth = 117
               Width = 119
             end
           end
@@ -4328,7 +4094,6 @@
       Align = alTop
       PanelStyle.Active = True
       TabOrder = 4
-      ExplicitWidth = 1071
       Height = 112
       Width = 1088
       object grdpnl30: TGridPanel
@@ -4362,7 +4127,6 @@
             Value = 100.000000000000000000
           end>
         TabOrder = 0
-        ExplicitWidth = 1067
         object dbgrdFormHistory: TDBGrid
           Left = 1
           Top = 1
@@ -4381,47 +4145,40 @@
           TitleFont.Name = 'Segoe UI'
           TitleFont.Style = []
           OnCellClick = dbgrdFormHistoryCellClick
-          OnDrawColumnCell = dbgrdFormHistoryDrawColumnCell
           Columns = <
             item
               Expanded = False
               FieldName = 'FORM_NO'
+              Title.Caption = 'Ge'#231'mi'#351' Form Kay'#305'tlar'#305
+              Width = 125
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ILK_TARIH'
-              Width = 128
+              Title.Caption = 'Form Ba'#351'lang'#305#231' Tarihi'
+              Width = 146
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'SON_TARIH'
-              Width = 135
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'GIRIS_BILGISI'
-              Width = 136
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'CIKIS_BILGISI'
-              Width = 141
+              Title.Caption = 'Form Biti'#351' Tarihi'
+              Width = 162
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'TOPLAM_SURE'
+              Title.Caption = 'Hafta Say'#305's'#305
               Width = 136
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'GENEL_RISK'
-              Width = 89
+              Title.Caption = 'Risk Derecesi'
+              Width = 167
               Visible = True
             end>
         end
@@ -4534,8 +4291,6 @@
               Value = 24.000000000000000000
             end>
           TabOrder = 1
-          ExplicitLeft = 852
-          ExplicitWidth = 214
           DesignSize = (
             217
             106)
@@ -4557,7 +4312,6 @@
             Caption = 'Kaydet'
             TabOrder = 0
             OnClick = btnKaydetClick
-            ExplicitWidth = 84
           end
           object lbl14: TLabel
             Left = 182
@@ -4613,7 +4367,6 @@
             Caption = 'Yeni'
             TabOrder = 1
             OnClick = btnYeniClick
-            ExplicitWidth = 84
           end
           object lbl19: TLabel
             Left = 182
@@ -4669,7 +4422,6 @@
             Caption = 'Yazd'#305'r'
             TabOrder = 2
             OnClick = btnYazdirClick
-            ExplicitWidth = 84
           end
           object lbl24: TLabel
             Left = 182
@@ -4701,7 +4453,7 @@
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
       '  AND FORM_NO     = :FORM_NO'
       '  AND HAFTA_NO    = :HAFTA_NO')
-    Left = 608
+    Left = 624
     Top = 112
     ParamData = <
       item
@@ -5500,31 +5252,7 @@
       '    MIN(IZLEM_TARIHI) AS ILK_TARIH,'
       '    MAX(IZLEM_TARIHI) AS SON_TARIH,'
       ''
-      '    /* ========================='
-      '        G'#304'R'#304#350' METN'#304
-      '       ========================= */'
-      '    TRIM('
-      '      TO_CHAR('
-      '        MIN(IZLEM_TARIHI),'
-      '        '#39'FMMonth'#39','
-      '        '#39'NLS_DATE_LANGUAGE=TURKISH'#39
-      '      )'
-      '    ) || '#39' Ay'#305' '#183' '#39' ||'
-      '    TO_CHAR(MIN(IZLEM_TARIHI), '#39'W'#39') ||'
-      '    '#39'. Hafta'#39' AS GIRIS_BILGISI,'
-      ''
-      '    /* ========================='
-      '        '#199'IKI'#350' METN'#304
-      '       ========================= */'
-      '    TRIM('
-      '      TO_CHAR('
-      '        MAX(IZLEM_TARIHI),'
-      '        '#39'FMMonth'#39','
-      '        '#39'NLS_DATE_LANGUAGE=TURKISH'#39
-      '      )'
-      '    ) || '#39' Ay'#305' '#183' '#39' ||'
-      '    TO_CHAR(MAX(IZLEM_TARIHI), '#39'W'#39') ||'
-      '    '#39'. Hafta'#39' AS CIKIS_BILGISI,'
+      '  '
       ''
       '    /* ========================='
       '        TOPLAM S'#220'RE'
@@ -5574,14 +5302,6 @@
     end
     object dtmfldFormHistorySON_TARIH: TDateTimeField
       FieldName = 'SON_TARIH'
-    end
-    object strngfldFormHistoryGIRIS_BILGISI: TStringField
-      FieldName = 'GIRIS_BILGISI'
-      Size = 16
-    end
-    object strngfldFormHistoryCIKIS_BILGISI: TStringField
-      FieldName = 'CIKIS_BILGISI'
-      Size = 16
     end
     object strngfldFormHistoryTOPLAM_SURE: TStringField
       FieldName = 'TOPLAM_SURE'

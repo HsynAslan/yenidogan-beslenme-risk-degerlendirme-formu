@@ -4,7 +4,7 @@
   Caption = 
     'YEN'#304'DO'#286'AN BESLENME (NUTR'#304'SYON) R'#304'SK DE'#286'ERLEND'#304'RME (GOMEZ SKALASI' +
     ') FORMU'
-  ClientHeight = 750
+  ClientHeight = 761
   ClientWidth = 1090
   Color = clLightgray
   Font.Charset = DEFAULT_CHARSET
@@ -19,13 +19,12 @@
     Left = 0
     Top = 0
     Width = 1090
-    Height = 750
+    Height = 761
     Align = alClient
     TabOrder = 0
-    VertScrollBar.Position = 10
     object grpBaslik: TcxGroupBox
       Left = 0
-      Top = -10
+      Top = 0
       Align = alTop
       PanelStyle.Active = True
       ParentBackground = False
@@ -34,7 +33,7 @@
       Style.Color = clWhitesmoke
       TabOrder = 0
       Height = 17
-      Width = 1071
+      Width = 1088
       object cxlbl5: TcxLabel
         Left = 2
         Top = 2
@@ -53,13 +52,13 @@
         Style.IsFontAssigned = True
         Properties.Alignment.Horz = taCenter
         Properties.Alignment.Vert = taVCenter
-        AnchorX = 536
+        AnchorX = 544
         AnchorY = 9
       end
     end
     object grpDogumBilgileri: TcxGroupBox
       Left = 0
-      Top = 7
+      Top = 17
       Align = alTop
       PanelStyle.Active = True
       ParentBackground = False
@@ -68,11 +67,11 @@
       Style.Color = clLightgray
       TabOrder = 1
       Height = 80
-      Width = 1071
+      Width = 1088
       object grdpnl1: TGridPanel
         Left = 2
         Top = 2
-        Width = 1067
+        Width = 1084
         Height = 76
         Align = alClient
         Color = clLightgray
@@ -101,9 +100,9 @@
           end>
         TabOrder = 0
         object grdpnl2: TGridPanel
-          Left = 593
+          Left = 602
           Top = 1
-          Width = 473
+          Width = 481
           Height = 74
           Align = alClient
           Color = clLightgray
@@ -211,7 +210,7 @@
             AnchorY = 64
           end
           object edtDestasyon: TcxDBTextEdit
-            Left = 237
+            Left = 241
             Top = 1
             Align = alClient
             DataBinding.DataField = 'GESTASYON_HAFTASI'
@@ -219,10 +218,10 @@
             Properties.Alignment.Horz = taLeftJustify
             Style.Color = clWhitesmoke
             TabOrder = 4
-            Width = 235
+            Width = 239
           end
           object edtDTartisi: TcxDBTextEdit
-            Left = 237
+            Left = 241
             Top = 19
             Align = alClient
             DataBinding.DataField = 'DOGUM_KILOSU_GR'
@@ -230,10 +229,10 @@
             Properties.Alignment.Horz = taLeftJustify
             Style.Color = clWhitesmoke
             TabOrder = 5
-            Width = 235
+            Width = 239
           end
           object edtDBoyu: TcxDBTextEdit
-            Left = 237
+            Left = 241
             Top = 37
             Align = alClient
             DataBinding.DataField = 'DOGUM_BOYU_CM'
@@ -241,10 +240,10 @@
             Properties.Alignment.Horz = taLeftJustify
             Style.Color = clWhitesmoke
             TabOrder = 6
-            Width = 235
+            Width = 239
           end
           object edtDBas: TcxDBTextEdit
-            Left = 237
+            Left = 241
             Top = 55
             Align = alClient
             DataBinding.DataField = 'DOGUM_BAS_CEVRESI'
@@ -252,13 +251,13 @@
             Properties.Alignment.Horz = taLeftJustify
             Style.Color = clWhitesmoke
             TabOrder = 7
-            Width = 235
+            Width = 239
           end
         end
         object grdpnl32: TGridPanel
           Left = 1
           Top = 1
-          Width = 592
+          Width = 601
           Height = 74
           Align = alClient
           Color = clLightgray
@@ -347,12 +346,12 @@
             AnchorY = 8
           end
           object lblHastaAdiSoyadi: TcxDBLabel
-            Left = 237
+            Left = 241
             Top = 1
             Align = alClient
             Properties.Alignment.Vert = taVCenter
             Height = 14
-            Width = 354
+            Width = 359
             AnchorY = 8
           end
           object cxlbl29: TcxLabel
@@ -364,12 +363,12 @@
             AnchorY = 23
           end
           object lblHastaDosyaNo: TcxDBLabel
-            Left = 237
+            Left = 241
             Top = 15
             Align = alClient
             Properties.Alignment.Vert = taVCenter
             Height = 15
-            Width = 354
+            Width = 359
             AnchorY = 23
           end
           object cxlbl36: TcxLabel
@@ -381,12 +380,12 @@
             AnchorY = 37
           end
           object lblHastaProtokolNo: TcxDBLabel
-            Left = 237
+            Left = 241
             Top = 30
             Align = alClient
             Properties.Alignment.Vert = taVCenter
             Height = 14
-            Width = 354
+            Width = 359
             AnchorY = 37
           end
           object cxlbl37: TcxLabel
@@ -398,12 +397,12 @@
             AnchorY = 52
           end
           object lblHastaBolum: TcxDBLabel
-            Left = 237
+            Left = 241
             Top = 44
             Align = alClient
             Properties.Alignment.Vert = taVCenter
             Height = 15
-            Width = 354
+            Width = 359
             AnchorY = 52
           end
           object cxlbl38: TcxLabel
@@ -415,12 +414,12 @@
             AnchorY = 66
           end
           object lblHastaTani: TcxDBLabel
-            Left = 237
+            Left = 241
             Top = 59
             Align = alClient
             Properties.Alignment.Vert = taVCenter
             Height = 14
-            Width = 354
+            Width = 359
             AnchorY = 66
           end
         end
@@ -428,7 +427,7 @@
     end
     object grpOlcum: TcxGroupBox
       Left = 0
-      Top = 87
+      Top = 97
       Align = alTop
       PanelStyle.Active = True
       ParentBackground = False
@@ -436,11 +435,11 @@
       Style.Color = clLightgray
       TabOrder = 2
       Height = 434
-      Width = 1071
+      Width = 1088
       object grdpnl3: TGridPanel
         Left = 2
         Top = 2
-        Width = 1067
+        Width = 1084
         Height = 430
         Align = alClient
         ColumnCollection = <
@@ -690,7 +689,7 @@
           AnchorY = 36
         end
         object edtKiloGun1: TcxDBTextEdit
-          Left = 593
+          Left = 602
           Top = 27
           Align = alClient
           DataBinding.DataField = 'KILO_KG'
@@ -698,10 +697,10 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 2
-          Width = 118
+          Width = 120
         end
         object edtKiloGun2: TcxDBTextEdit
-          Left = 711
+          Left = 722
           Top = 27
           Align = alClient
           DataBinding.DataField = 'KILO_KG'
@@ -709,10 +708,10 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 3
-          Width = 118
+          Width = 121
         end
         object edtKiloGun3: TcxDBTextEdit
-          Left = 829
+          Left = 843
           Top = 27
           Align = alClient
           DataBinding.DataField = 'KILO_KG'
@@ -720,10 +719,10 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 4
-          Width = 119
+          Width = 120
         end
         object edtKiloGun4: TcxDBTextEdit
-          Left = 948
+          Left = 963
           Top = 27
           Align = alClient
           DataBinding.DataField = 'KILO_KG'
@@ -731,7 +730,7 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 5
-          Width = 118
+          Width = 120
         end
         object cxlbl9: TcxLabel
           Left = 1
@@ -744,7 +743,7 @@
           AnchorY = 53
         end
         object edtBoyGun1: TcxDBTextEdit
-          Left = 593
+          Left = 602
           Top = 44
           Align = alClient
           DataBinding.DataField = 'BOY_CM'
@@ -752,10 +751,10 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 7
-          Width = 118
+          Width = 120
         end
         object edtBoyGun2: TcxDBTextEdit
-          Left = 711
+          Left = 722
           Top = 44
           Align = alClient
           DataBinding.DataField = 'BOY_CM'
@@ -763,10 +762,10 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 8
-          Width = 118
+          Width = 121
         end
         object edtBoyGun3: TcxDBTextEdit
-          Left = 829
+          Left = 843
           Top = 44
           Align = alClient
           DataBinding.DataField = 'BOY_CM'
@@ -774,10 +773,10 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 9
-          Width = 119
+          Width = 120
         end
         object edtBoyGun4: TcxDBTextEdit
-          Left = 948
+          Left = 963
           Top = 44
           Align = alClient
           DataBinding.DataField = 'BOY_CM'
@@ -785,7 +784,7 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 10
-          Width = 118
+          Width = 120
         end
         object cxLabel1: TcxLabel
           Left = 1
@@ -799,7 +798,7 @@
           AnchorY = 70
         end
         object edtBasGun1: TcxDBTextEdit
-          Left = 593
+          Left = 602
           Top = 61
           Align = alClient
           DataBinding.DataField = 'BAS_CEVRESI_CM'
@@ -807,10 +806,10 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 12
-          Width = 118
+          Width = 120
         end
         object edtBasGun2: TcxDBTextEdit
-          Left = 711
+          Left = 722
           Top = 61
           Align = alClient
           DataBinding.DataField = 'BAS_CEVRESI_CM'
@@ -818,10 +817,10 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 13
-          Width = 118
+          Width = 121
         end
         object edtBasGun3: TcxDBTextEdit
-          Left = 829
+          Left = 843
           Top = 61
           Align = alClient
           DataBinding.DataField = 'BAS_CEVRESI_CM'
@@ -829,10 +828,10 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 14
-          Width = 119
+          Width = 120
         end
         object edtBasGun4: TcxDBTextEdit
-          Left = 948
+          Left = 963
           Top = 61
           Align = alClient
           DataBinding.DataField = 'BAS_CEVRESI_CM'
@@ -840,12 +839,12 @@
           Properties.Alignment.Horz = taCenter
           Style.Color = clWhite
           TabOrder = 15
-          Width = 118
+          Width = 120
         end
         object grdpnl4: TGridPanel
           Left = 1
           Top = 78
-          Width = 592
+          Width = 601
           Height = 308
           Align = alClient
           ColumnCollection = <
@@ -886,7 +885,7 @@
           object grdpnl5: TGridPanel
             Left = 31
             Top = 1
-            Width = 560
+            Width = 569
             Height = 306
             Align = alClient
             ColumnCollection = <
@@ -956,7 +955,7 @@
               StyleDisabled.BorderColor = clBtnText
               Properties.Alignment.Horz = taCenter
               Properties.Alignment.Vert = taVCenter
-              AnchorX = 43
+              AnchorX = 44
               AnchorY = 47
             end
             object cxlbl11: TcxLabel
@@ -975,7 +974,7 @@
               Style.IsFontAssigned = True
               Properties.Alignment.Horz = taCenter
               Properties.Alignment.Vert = taVCenter
-              AnchorX = 43
+              AnchorX = 44
               AnchorY = 153
             end
             object cxlbl13: TcxLabel
@@ -994,13 +993,13 @@
               Style.IsFontAssigned = True
               Properties.Alignment.Horz = taCenter
               Properties.Alignment.Vert = taVCenter
-              AnchorX = 43
+              AnchorX = 44
               AnchorY = 260
             end
             object grdpnl6: TGridPanel
-              Left = 85
+              Left = 86
               Top = 1
-              Width = 474
+              Width = 482
               Height = 91
               Align = alClient
               ColumnCollection = <
@@ -1102,9 +1101,9 @@
               end
             end
             object grdpnl7: TGridPanel
-              Left = 85
+              Left = 86
               Top = 92
-              Width = 474
+              Width = 482
               Height = 122
               Align = alClient
               ColumnCollection = <
@@ -1209,9 +1208,9 @@
               end
             end
             object grdpnl8: TGridPanel
-              Left = 85
+              Left = 86
               Top = 214
-              Width = 474
+              Width = 482
               Height = 91
               Align = alClient
               ColumnCollection = <
@@ -1299,9 +1298,9 @@
           end
         end
         object grdpnl9: TGridPanel
-          Left = 593
+          Left = 602
           Top = 78
-          Width = 118
+          Width = 120
           Height = 308
           Align = alClient
           ColumnCollection = <
@@ -1338,7 +1337,7 @@
           object grdpnl10: TGridPanel
             Left = 1
             Top = 1
-            Width = 116
+            Width = 118
             Height = 92
             Align = alClient
             ColumnCollection = <
@@ -1394,7 +1393,7 @@
             object lbl1: TLabel
               Left = 1
               Top = 1
-              Width = 114
+              Width = 116
               Height = 18
               Align = alClient
               ExplicitWidth = 3
@@ -1417,7 +1416,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 114
+              Width = 116
             end
             object YR_C1000G1: TcxDBCheckBox
               Left = 1
@@ -1435,7 +1434,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 114
+              Width = 116
             end
             object YR_CNEKG1: TcxDBCheckBox
               Left = 1
@@ -1453,7 +1452,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 114
+              Width = 116
             end
             object YR_CGISG1: TcxDBCheckBox
               Left = 1
@@ -1471,13 +1470,13 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 3
-              Width = 114
+              Width = 116
             end
           end
           object grdpnl11: TGridPanel
             Left = 1
             Top = 93
-            Width = 116
+            Width = 118
             Height = 122
             Align = alClient
             ColumnCollection = <
@@ -1530,7 +1529,7 @@
             object lbl2: TLabel
               Left = 1
               Top = 1
-              Width = 114
+              Width = 116
               Height = 22
               Align = alClient
               ExplicitWidth = 3
@@ -1552,7 +1551,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 114
+              Width = 116
             end
             object OR_CIUGRG1: TcxDBCheckBox
               Left = 1
@@ -1570,7 +1569,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 114
+              Width = 116
             end
             object OR_C1000G1: TcxDBCheckBox
               Left = 1
@@ -1588,7 +1587,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 114
+              Width = 116
             end
             object OR_CKONJENITALG1: TcxDBCheckBox
               Left = 1
@@ -1606,13 +1605,13 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 3
-              Width = 114
+              Width = 116
             end
           end
           object grdpnl12: TGridPanel
             Left = 1
             Top = 215
-            Width = 116
+            Width = 118
             Height = 92
             Align = alClient
             ColumnCollection = <
@@ -1655,10 +1654,10 @@
               end>
             TabOrder = 2
             DesignSize = (
-              116
+              118
               92)
             object lbl3: TLabel
-              Left = 56
+              Left = 57
               Top = 2
               Width = 3
               Height = 15
@@ -1681,7 +1680,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 114
+              Width = 116
             end
             object DR_CIUGRG1: TcxDBCheckBox
               Left = 1
@@ -1699,7 +1698,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 114
+              Width = 116
             end
             object DR_C37G1: TcxDBCheckBox
               Left = 1
@@ -1717,14 +1716,14 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 114
+              Width = 116
             end
           end
         end
         object grdpnl13: TGridPanel
-          Left = 711
+          Left = 722
           Top = 78
-          Width = 118
+          Width = 121
           Height = 308
           Align = alClient
           Caption = 'grdpnl13'
@@ -1762,7 +1761,7 @@
           object grdpnl14: TGridPanel
             Left = 1
             Top = 1
-            Width = 116
+            Width = 119
             Height = 92
             Align = alClient
             ColumnCollection = <
@@ -1815,7 +1814,7 @@
             object lbl4: TLabel
               Left = 1
               Top = 1
-              Width = 114
+              Width = 117
               Height = 18
               Align = alClient
               ExplicitWidth = 3
@@ -1837,7 +1836,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 114
+              Width = 117
             end
             object YR_C1000G2: TcxDBCheckBox
               Left = 1
@@ -1855,7 +1854,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 114
+              Width = 117
             end
             object YR_CNEKG2: TcxDBCheckBox
               Left = 1
@@ -1873,7 +1872,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 114
+              Width = 117
             end
             object YR_CGISG2: TcxDBCheckBox
               Left = 1
@@ -1891,13 +1890,13 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 3
-              Width = 114
+              Width = 117
             end
           end
           object grdpnl15: TGridPanel
             Left = 1
             Top = 93
-            Width = 116
+            Width = 119
             Height = 122
             Align = alClient
             ColumnCollection = <
@@ -1950,7 +1949,7 @@
             object lbl5: TLabel
               Left = 1
               Top = 1
-              Width = 114
+              Width = 117
               Height = 22
               Align = alClient
               ExplicitWidth = 3
@@ -1972,7 +1971,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 114
+              Width = 117
             end
             object OR_CIUGRG2: TcxDBCheckBox
               Left = 1
@@ -1990,7 +1989,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 114
+              Width = 117
             end
             object OR_C1000G2: TcxDBCheckBox
               Left = 1
@@ -2008,7 +2007,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 114
+              Width = 117
             end
             object OR_CKONJENITALG2: TcxDBCheckBox
               Left = 1
@@ -2026,13 +2025,13 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 3
-              Width = 114
+              Width = 117
             end
           end
           object grdpnl16: TGridPanel
             Left = 1
             Top = 215
-            Width = 116
+            Width = 119
             Height = 92
             Align = alClient
             ColumnCollection = <
@@ -2075,10 +2074,10 @@
               end>
             TabOrder = 2
             DesignSize = (
-              116
+              119
               92)
             object lbl6: TLabel
-              Left = 56
+              Left = 58
               Top = 2
               Width = 3
               Height = 15
@@ -2101,7 +2100,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 114
+              Width = 117
             end
             object DR_CIUGRG2: TcxDBCheckBox
               Left = 1
@@ -2119,7 +2118,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 114
+              Width = 117
             end
             object DR_C37G2: TcxDBCheckBox
               Left = 1
@@ -2137,14 +2136,14 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 114
+              Width = 117
             end
           end
         end
         object grdpnl17: TGridPanel
-          Left = 829
+          Left = 843
           Top = 78
-          Width = 119
+          Width = 120
           Height = 308
           Align = alClient
           ColumnCollection = <
@@ -2181,7 +2180,7 @@
           object grdpnl20: TGridPanel
             Left = 1
             Top = 1
-            Width = 117
+            Width = 118
             Height = 92
             Align = alClient
             ColumnCollection = <
@@ -2232,7 +2231,7 @@
               end>
             TabOrder = 0
             DesignSize = (
-              117
+              118
               92)
             object lbl7: TLabel
               Left = 57
@@ -2258,7 +2257,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 115
+              Width = 116
             end
             object YR_C1000G3: TcxDBCheckBox
               Left = 1
@@ -2276,7 +2275,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 115
+              Width = 116
             end
             object YR_CNEKG3: TcxDBCheckBox
               Left = 1
@@ -2294,7 +2293,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 115
+              Width = 116
             end
             object YR_CGISG3: TcxDBCheckBox
               Left = 1
@@ -2312,13 +2311,13 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 3
-              Width = 115
+              Width = 116
             end
           end
           object grdpnl23: TGridPanel
             Left = 1
             Top = 93
-            Width = 117
+            Width = 118
             Height = 122
             Align = alClient
             ColumnCollection = <
@@ -2369,7 +2368,7 @@
               end>
             TabOrder = 1
             DesignSize = (
-              117
+              118
               122)
             object lbl8: TLabel
               Left = 57
@@ -2396,7 +2395,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 115
+              Width = 116
             end
             object OR_CIUGRG3: TcxDBCheckBox
               Left = 1
@@ -2414,7 +2413,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 115
+              Width = 116
             end
             object OR_C1000G3: TcxDBCheckBox
               Left = 1
@@ -2432,7 +2431,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 115
+              Width = 116
             end
             object OR_CKONJENITALG3: TcxDBCheckBox
               Left = 1
@@ -2450,13 +2449,13 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 3
-              Width = 115
+              Width = 116
             end
           end
           object grdpnl26: TGridPanel
             Left = 1
             Top = 215
-            Width = 117
+            Width = 118
             Height = 92
             Align = alClient
             ColumnCollection = <
@@ -2499,7 +2498,7 @@
               end>
             TabOrder = 2
             DesignSize = (
-              117
+              118
               92)
             object lbl9: TLabel
               Left = 57
@@ -2525,7 +2524,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 115
+              Width = 116
             end
             object DR_CIUGRG3: TcxDBCheckBox
               Left = 1
@@ -2543,7 +2542,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 115
+              Width = 116
             end
             object DR_C37G3: TcxDBCheckBox
               Left = 1
@@ -2562,14 +2561,14 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 115
+              Width = 116
             end
           end
         end
         object grdpnl18: TGridPanel
-          Left = 948
+          Left = 963
           Top = 78
-          Width = 118
+          Width = 120
           Height = 308
           Align = alClient
           Caption = 'grdpnl18'
@@ -2607,7 +2606,7 @@
           object grdpnl21: TGridPanel
             Left = 1
             Top = 1
-            Width = 116
+            Width = 118
             Height = 92
             Align = alClient
             ColumnCollection = <
@@ -2658,10 +2657,10 @@
               end>
             TabOrder = 0
             DesignSize = (
-              116
+              118
               92)
             object lbl10: TLabel
-              Left = 56
+              Left = 57
               Top = 2
               Width = 3
               Height = 15
@@ -2684,7 +2683,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 114
+              Width = 116
             end
             object YR_C1000G4: TcxDBCheckBox
               Left = 1
@@ -2702,7 +2701,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 114
+              Width = 116
             end
             object YR_CNEKG4: TcxDBCheckBox
               Left = 1
@@ -2720,7 +2719,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 114
+              Width = 116
             end
             object YR_CGISG4: TcxDBCheckBox
               Left = 1
@@ -2738,13 +2737,13 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 3
-              Width = 114
+              Width = 116
             end
           end
           object grdpnl24: TGridPanel
             Left = 1
             Top = 93
-            Width = 116
+            Width = 118
             Height = 122
             Align = alClient
             ColumnCollection = <
@@ -2795,10 +2794,10 @@
               end>
             TabOrder = 1
             DesignSize = (
-              116
+              118
               122)
             object lbl11: TLabel
-              Left = 56
+              Left = 57
               Top = 4
               Width = 3
               Height = 15
@@ -2822,7 +2821,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 114
+              Width = 116
             end
             object OR_CIUGRG4: TcxDBCheckBox
               Left = 1
@@ -2840,7 +2839,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 114
+              Width = 116
             end
             object OR_C1000G4: TcxDBCheckBox
               Left = 1
@@ -2858,7 +2857,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 114
+              Width = 116
             end
             object OR_CKONJENITALG4: TcxDBCheckBox
               Left = 1
@@ -2876,13 +2875,13 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 3
-              Width = 114
+              Width = 116
             end
           end
           object grdpnl27: TGridPanel
             Left = 1
             Top = 215
-            Width = 116
+            Width = 118
             Height = 92
             Align = alClient
             ColumnCollection = <
@@ -2925,10 +2924,10 @@
               end>
             TabOrder = 2
             DesignSize = (
-              116
+              118
               92)
             object lbl12: TLabel
-              Left = 56
+              Left = 57
               Top = 2
               Width = 3
               Height = 15
@@ -2951,7 +2950,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 0
-              Width = 114
+              Width = 116
             end
             object DR_CIUGRG4: TcxDBCheckBox
               Left = 1
@@ -2969,7 +2968,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 1
-              Width = 114
+              Width = 116
             end
             object DR_C37G4: TcxDBCheckBox
               Left = 1
@@ -2987,7 +2986,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 2
-              Width = 114
+              Width = 116
             end
           end
         end
@@ -3000,13 +2999,13 @@
           Style.Color = clLightgray
           Properties.Alignment.Horz = taRightJustify
           Properties.Alignment.Vert = taVCenter
-          AnchorX = 593
+          AnchorX = 602
           AnchorY = 397
         end
         object grdpnl29: TGridPanel
           Left = 1
           Top = 408
-          Width = 592
+          Width = 601
           Height = 21
           Align = alClient
           ColumnCollection = <
@@ -3040,12 +3039,12 @@
             Style.IsFontAssigned = True
             Properties.Alignment.Horz = taRightJustify
             Properties.Alignment.Vert = taVCenter
-            AnchorX = 591
+            AnchorX = 600
             AnchorY = 11
           end
         end
         object scorGun1: TcxDBLabel
-          Left = 593
+          Left = 602
           Top = 386
           Align = alClient
           DataBinding.DataField = 'RISK_SEVIYE'
@@ -3060,12 +3059,12 @@
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
           Height = 22
-          Width = 118
-          AnchorX = 652
+          Width = 120
+          AnchorX = 662
           AnchorY = 397
         end
         object scorGun2: TcxDBLabel
-          Left = 711
+          Left = 722
           Top = 386
           Align = alClient
           DataBinding.DataField = 'RISK_SEVIYE'
@@ -3080,12 +3079,12 @@
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
           Height = 22
-          Width = 118
-          AnchorX = 770
+          Width = 121
+          AnchorX = 783
           AnchorY = 397
         end
         object scorGun3: TcxDBLabel
-          Left = 829
+          Left = 843
           Top = 386
           Align = alClient
           DataBinding.DataField = 'RISK_SEVIYE'
@@ -3100,12 +3099,12 @@
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
           Height = 22
-          Width = 119
-          AnchorX = 889
+          Width = 120
+          AnchorX = 903
           AnchorY = 397
         end
         object scorGun4: TcxDBLabel
-          Left = 948
+          Left = 963
           Top = 386
           Align = alClient
           DataBinding.DataField = 'RISK_SEVIYE'
@@ -3120,12 +3119,12 @@
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
           Height = 22
-          Width = 118
-          AnchorX = 1007
+          Width = 120
+          AnchorX = 1023
           AnchorY = 397
         end
         object lblTarih1: TcxDBLabel
-          Left = 593
+          Left = 602
           Top = 1
           Align = alClient
           DataBinding.DataField = 'IZLEM_TARIHI'
@@ -3143,12 +3142,12 @@
           Style.ReadOnly = False
           Style.IsFontAssigned = True
           Height = 26
-          Width = 118
-          AnchorX = 652
+          Width = 120
+          AnchorX = 662
           AnchorY = 27
         end
         object lblTarih2: TcxDBLabel
-          Left = 711
+          Left = 722
           Top = 1
           Align = alClient
           DataBinding.DataField = 'IZLEM_TARIHI'
@@ -3165,12 +3164,12 @@
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
           Height = 26
-          Width = 118
-          AnchorX = 770
+          Width = 121
+          AnchorX = 783
           AnchorY = 27
         end
         object lblTarih3: TcxDBLabel
-          Left = 829
+          Left = 843
           Top = 1
           Align = alClient
           DataBinding.DataField = 'IZLEM_TARIHI'
@@ -3187,12 +3186,12 @@
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
           Height = 26
-          Width = 119
-          AnchorX = 889
+          Width = 120
+          AnchorX = 903
           AnchorY = 27
         end
         object lblTarih4: TcxDBLabel
-          Left = 948
+          Left = 963
           Top = 1
           Align = alClient
           DataBinding.DataField = 'IZLEM_TARIHI'
@@ -3209,55 +3208,55 @@
           Style.Font.Style = [fsBold]
           Style.IsFontAssigned = True
           Height = 26
-          Width = 118
-          AnchorX = 1007
+          Width = 120
+          AnchorX = 1023
           AnchorY = 27
         end
         object edtDRGun1: TcxDBTextEdit
-          Left = 593
+          Left = 602
           Top = 408
           Align = alClient
           DataBinding.DataField = 'DOKTOR_ADI'
           DataBinding.DataSource = dsHafta1
           Properties.Alignment.Horz = taCenter
           TabOrder = 31
-          Width = 118
+          Width = 120
         end
         object edtDRGun2: TcxDBTextEdit
-          Left = 711
+          Left = 722
           Top = 408
           Align = alClient
           DataBinding.DataField = 'DOKTOR_ADI'
           DataBinding.DataSource = dsHafta2
           Properties.Alignment.Horz = taCenter
           TabOrder = 32
-          Width = 118
+          Width = 121
         end
         object edtDRGun3: TcxDBTextEdit
-          Left = 829
+          Left = 843
           Top = 408
           Align = alClient
           DataBinding.DataField = 'DOKTOR_ADI'
           DataBinding.DataSource = dsHafta3
           Properties.Alignment.Horz = taCenter
           TabOrder = 33
-          Width = 119
+          Width = 120
         end
         object edtDRgun4: TcxDBTextEdit
-          Left = 948
+          Left = 963
           Top = 408
           Align = alClient
           DataBinding.DataField = 'DOKTOR_ADI'
           DataBinding.DataSource = dsHafta4
           Properties.Alignment.Horz = taCenter
           TabOrder = 34
-          Width = 118
+          Width = 120
         end
       end
     end
     object grpGözdenGecirme: TcxGroupBox
       Left = 0
-      Top = 521
+      Top = 531
       Align = alTop
       PanelStyle.Active = True
       ParentBackground = False
@@ -3265,11 +3264,11 @@
       Style.Color = clLightgray
       TabOrder = 3
       Height = 115
-      Width = 1071
+      Width = 1088
       object grdpnl19: TGridPanel
         Left = 2
         Top = 2
-        Width = 1067
+        Width = 1084
         Height = 111
         Align = alClient
         ColumnCollection = <
@@ -3290,7 +3289,7 @@
         object grdpnl22: TGridPanel
           Left = 1
           Top = 1
-          Width = 1065
+          Width = 1082
           Height = 109
           Align = alClient
           Color = clLightgray
@@ -3321,7 +3320,7 @@
           object grdpnl25: TGridPanel
             Left = 1
             Top = 1
-            Width = 591
+            Width = 600
             Height = 107
             Align = alClient
             Color = clLightgray
@@ -3462,9 +3461,9 @@
             end
           end
           object grdpnl28: TGridPanel
-            Left = 592
+            Left = 601
             Top = 1
-            Width = 472
+            Width = 480
             Height = 107
             Align = alClient
             Color = clLightgray
@@ -3640,12 +3639,12 @@
               Style.ReadOnly = False
               Style.IsFontAssigned = True
               Height = 21
-              Width = 118
-              AnchorX = 60
+              Width = 120
+              AnchorX = 61
               AnchorY = 22
             end
             object lblTarih2Tespit: TcxDBLabel
-              Left = 119
+              Left = 121
               Top = 1
               Align = alClient
               DataBinding.DataField = 'IZLEM_TARIHI'
@@ -3660,12 +3659,12 @@
               Style.Font.Style = [fsBold]
               Style.IsFontAssigned = True
               Height = 21
-              Width = 117
-              AnchorX = 178
+              Width = 119
+              AnchorX = 181
               AnchorY = 22
             end
             object lblTarih3Tespit: TcxDBLabel
-              Left = 236
+              Left = 240
               Top = 1
               Align = alClient
               DataBinding.DataField = 'IZLEM_TARIHI'
@@ -3680,12 +3679,12 @@
               Style.Font.Style = [fsBold]
               Style.IsFontAssigned = True
               Height = 21
-              Width = 118
-              AnchorX = 295
+              Width = 120
+              AnchorX = 300
               AnchorY = 22
             end
             object lblTarih4Tespit: TcxDBLabel
-              Left = 354
+              Left = 360
               Top = 1
               Align = alClient
               DataBinding.DataField = 'IZLEM_TARIHI'
@@ -3700,8 +3699,8 @@
               Style.Font.Style = [fsBold]
               Style.IsFontAssigned = True
               Height = 21
-              Width = 117
-              AnchorX = 413
+              Width = 119
+              AnchorX = 420
               AnchorY = 22
             end
             object TG1YR: TcxDBCheckBox
@@ -3721,10 +3720,10 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 4
-              Width = 118
+              Width = 120
             end
             object TG2YR: TcxDBCheckBox
-              Left = 119
+              Left = 121
               Top = 22
               Align = alClient
               Caption = 'object YR_C28G1: TcxDBCheckBox'
@@ -3741,10 +3740,10 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 5
-              Width = 117
+              Width = 119
             end
             object TG3YR: TcxDBCheckBox
-              Left = 236
+              Left = 240
               Top = 22
               Align = alClient
               DataBinding.DataField = 'TG_YUKSEK_RISK'
@@ -3760,10 +3759,10 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 6
-              Width = 118
+              Width = 120
             end
             object TG4YR: TcxDBCheckBox
-              Left = 354
+              Left = 360
               Top = 22
               Align = alClient
               DataBinding.DataField = 'TG_YUKSEK_RISK'
@@ -3779,7 +3778,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 7
-              Width = 117
+              Width = 119
             end
             object TG1KILOYAKALAYAMAMA: TcxDBCheckBox
               Left = 1
@@ -3798,10 +3797,10 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 8
-              Width = 118
+              Width = 120
             end
             object TG2KILOYAKALAYAMAMA: TcxDBCheckBox
-              Left = 119
+              Left = 121
               Top = 39
               Align = alClient
               DataBinding.DataField = 'TG_KILO_YAKALAYAMAMA'
@@ -3817,10 +3816,10 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 9
-              Width = 117
+              Width = 119
             end
             object TG3KILOYAKALAYAMAMA: TcxDBCheckBox
-              Left = 236
+              Left = 240
               Top = 39
               Align = alClient
               DataBinding.DataField = 'TG_KILO_YAKALAYAMAMA'
@@ -3836,10 +3835,10 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 10
-              Width = 118
+              Width = 120
             end
             object TG4KILOYAKALAYAMAMA: TcxDBCheckBox
-              Left = 354
+              Left = 360
               Top = 39
               Align = alClient
               DataBinding.DataField = 'TG_KILO_YAKALAYAMAMA'
@@ -3855,7 +3854,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 11
-              Width = 117
+              Width = 119
             end
             object TG1KILOKAYIP: TcxDBCheckBox
               Left = 1
@@ -3874,10 +3873,10 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 12
-              Width = 118
+              Width = 120
             end
             object TG2KILOKAYIP: TcxDBCheckBox
-              Left = 119
+              Left = 121
               Top = 56
               Align = alClient
               DataBinding.DataField = 'TG_KILO_KAYIP_15'
@@ -3893,10 +3892,10 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 13
-              Width = 117
+              Width = 119
             end
             object TG3KILOKAYIP: TcxDBCheckBox
-              Left = 236
+              Left = 240
               Top = 56
               Align = alClient
               DataBinding.DataField = 'TG_KILO_KAYIP_15'
@@ -3912,10 +3911,10 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 14
-              Width = 118
+              Width = 120
             end
             object TG4KILOKAYIP: TcxDBCheckBox
-              Left = 354
+              Left = 360
               Top = 56
               Align = alClient
               DataBinding.DataField = 'TG_KILO_KAYIP_15'
@@ -3931,7 +3930,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 15
-              Width = 117
+              Width = 119
             end
             object TG1KILOKAZAN: TcxDBCheckBox
               Left = 1
@@ -3950,10 +3949,10 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 16
-              Width = 118
+              Width = 120
             end
             object TG2KILOKAZAN: TcxDBCheckBox
-              Left = 119
+              Left = 121
               Top = 72
               Align = alClient
               DataBinding.DataField = 'TG_KILO_KAZANIM_10'
@@ -3969,10 +3968,10 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 17
-              Width = 117
+              Width = 119
             end
             object TG3KILOKAZAN: TcxDBCheckBox
-              Left = 236
+              Left = 240
               Top = 72
               Align = alClient
               DataBinding.DataField = 'TG_KILO_KAZANIM_10'
@@ -3988,10 +3987,10 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 18
-              Width = 118
+              Width = 120
             end
             object TG4KILOKAZAN: TcxDBCheckBox
-              Left = 354
+              Left = 360
               Top = 72
               Align = alClient
               DataBinding.DataField = 'TG_KILO_KAZANIM_10'
@@ -4007,7 +4006,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 19
-              Width = 117
+              Width = 119
             end
             object TG1NEK: TcxDBCheckBox
               Left = 1
@@ -4026,10 +4025,10 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 20
-              Width = 118
+              Width = 120
             end
             object TG2NEK: TcxDBCheckBox
-              Left = 119
+              Left = 121
               Top = 89
               Align = alClient
               DataBinding.DataField = 'TG_NEK_CERRAHI'
@@ -4045,10 +4044,10 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 21
-              Width = 117
+              Width = 119
             end
             object TG3NEK: TcxDBCheckBox
-              Left = 236
+              Left = 240
               Top = 89
               Align = alClient
               DataBinding.DataField = 'TG_NEK_CERRAHI'
@@ -4064,10 +4063,10 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 22
-              Width = 118
+              Width = 120
             end
             object TG4NEK: TcxDBCheckBox
-              Left = 354
+              Left = 360
               Top = 89
               Align = alClient
               DataBinding.DataField = 'TG_NEK_CERRAHI'
@@ -4083,7 +4082,7 @@
               Style.Color = clWhite
               Style.TransparentBorder = False
               TabOrder = 23
-              Width = 117
+              Width = 119
             end
           end
         end
@@ -4091,16 +4090,16 @@
     end
     object grpGridListe: TcxGroupBox
       Left = 0
-      Top = 636
+      Top = 646
       Align = alTop
       PanelStyle.Active = True
       TabOrder = 4
       Height = 112
-      Width = 1071
+      Width = 1088
       object grdpnl30: TGridPanel
         Left = 2
         Top = 2
-        Width = 1067
+        Width = 1084
         Height = 108
         Align = alClient
         Color = clLightgray
@@ -4131,14 +4130,14 @@
         object dbgrdFormHistory: TDBGrid
           Left = 1
           Top = 1
-          Width = 851
+          Width = 865
           Height = 106
           Align = alClient
-          Color = clLightgray
           DataSource = dsFormHistory
           FixedColor = clLightgray
           GradientEndColor = clLightgray
           GradientStartColor = clBlue
+          ParentColor = True
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
           TitleFont.Color = clWindowText
@@ -4150,49 +4149,43 @@
             item
               Expanded = False
               FieldName = 'FORM_NO'
+              Title.Caption = 'Ge'#231'mi'#351' Form Kay'#305'tlar'#305
+              Width = 125
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'ILK_TARIH'
-              Width = 128
+              Title.Caption = 'Form Ba'#351'lang'#305#231' Tarihi'
+              Width = 146
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'SON_TARIH'
-              Width = 135
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'GIRIS_BILGISI'
-              Width = 136
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'CIKIS_BILGISI'
-              Width = 141
+              Title.Caption = 'Form Biti'#351' Tarihi'
+              Width = 162
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'TOPLAM_SURE'
+              Title.Caption = 'Hafta Say'#305's'#305
               Width = 136
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'GENEL_RISK'
-              Width = 89
+              Title.Caption = 'Risk Derecesi'
+              Width = 167
               Visible = True
             end>
         end
         object grdpnl31: TGridPanel
-          Left = 852
+          Left = 866
           Top = 1
-          Width = 214
+          Width = 217
           Height = 106
           Align = alClient
           ColumnCollection = <
@@ -4299,7 +4292,7 @@
             end>
           TabOrder = 1
           DesignSize = (
-            214
+            217
             106)
           object lbl13: TLabel
             Left = 31
@@ -4313,7 +4306,7 @@
           object btnKaydet: TButton
             Left = 65
             Top = 1
-            Width = 84
+            Width = 86
             Height = 25
             Align = alClient
             Caption = 'Kaydet'
@@ -4321,7 +4314,7 @@
             OnClick = btnKaydetClick
           end
           object lbl14: TLabel
-            Left = 179
+            Left = 182
             Top = 6
             Width = 3
             Height = 15
@@ -4339,7 +4332,7 @@
             ExplicitTop = 43
           end
           object lbl16: TLabel
-            Left = 105
+            Left = 106
             Top = 26
             Width = 3
             Height = 15
@@ -4348,11 +4341,12 @@
             ExplicitTop = 43
           end
           object lbl17: TLabel
-            Left = 179
+            Left = 182
             Top = 26
             Width = 3
             Height = 15
             Anchors = []
+            ExplicitLeft = 179
             ExplicitTop = 43
           end
           object lbl18: TLabel
@@ -4367,7 +4361,7 @@
           object btnYeni: TButton
             Left = 65
             Top = 41
-            Width = 84
+            Width = 86
             Height = 24
             Align = alClient
             Caption = 'Yeni'
@@ -4375,7 +4369,7 @@
             OnClick = btnYeniClick
           end
           object lbl19: TLabel
-            Left = 179
+            Left = 182
             Top = 45
             Width = 3
             Height = 15
@@ -4393,7 +4387,7 @@
             ExplicitTop = 104
           end
           object lbl21: TLabel
-            Left = 105
+            Left = 106
             Top = 65
             Width = 3
             Height = 15
@@ -4402,7 +4396,7 @@
             ExplicitTop = 104
           end
           object lbl22: TLabel
-            Left = 179
+            Left = 182
             Top = 65
             Width = 3
             Height = 15
@@ -4422,7 +4416,7 @@
           object btnYazdir: TButton
             Left = 65
             Top = 80
-            Width = 84
+            Width = 86
             Height = 25
             Align = alClient
             Caption = 'Yazd'#305'r'
@@ -4430,7 +4424,7 @@
             OnClick = btnYazdirClick
           end
           object lbl24: TLabel
-            Left = 179
+            Left = 182
             Top = 85
             Width = 3
             Height = 15
@@ -4454,12 +4448,14 @@
     Session = orsn1
     SQL.Strings = (
       'SELECT *'
-      'FROM HASTANE.YD_RISK_IZLEM'
+      'FROM HASTANE.HEM_BESLENME_GOMEZ'
       'WHERE DOSYA_NO    = :DOSYA_NO'
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
       '  AND FORM_NO     = :FORM_NO'
-      '  AND HAFTA_NO    = :HAFTA_NO')
-    Left = 608
+      '  AND HAFTA_NO    = :HAFTA_NO'
+      '  AND HASTANE_NO  = :HASTANE_NO'
+      '')
+    Left = 632
     Top = 112
     ParamData = <
       item
@@ -4480,6 +4476,11 @@
       item
         DataType = ftUnknown
         Name = 'HAFTA_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'HASTANE_NO'
         Value = nil
       end>
     object fltfldHafta1HASTA_ID: TFloatField
@@ -4622,16 +4623,20 @@
       FixedChar = True
       Size = 1
     end
+    object fltfldHafta1HASTANE_NO: TFloatField
+      FieldName = 'HASTANE_NO'
+    end
   end
   object qrHafta2: TOraQuery
     Session = orsn1
     SQL.Strings = (
       'SELECT *'
-      'FROM HASTANE.YD_RISK_IZLEM'
+      'FROM HASTANE.HEM_BESLENME_GOMEZ'
       'WHERE DOSYA_NO    = :DOSYA_NO'
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
       '  AND FORM_NO     = :FORM_NO'
-      '  AND HAFTA_NO    = :HAFTA_NO')
+      '  AND HAFTA_NO    = :HAFTA_NO'
+      '  AND HASTANE_NO  = :HASTANE_NO')
     Left = 728
     Top = 112
     ParamData = <
@@ -4653,6 +4658,11 @@
       item
         DataType = ftUnknown
         Name = 'HAFTA_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'HASTANE_NO'
         Value = nil
       end>
     object fltfldHafta2HASTA_ID: TFloatField
@@ -4800,11 +4810,12 @@
     Session = orsn1
     SQL.Strings = (
       'SELECT *'
-      'FROM HASTANE.YD_RISK_IZLEM'
+      'FROM HASTANE.HEM_BESLENME_GOMEZ'
       'WHERE DOSYA_NO    = :DOSYA_NO'
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
       '  AND FORM_NO     = :FORM_NO'
-      '  AND HAFTA_NO    = :HAFTA_NO')
+      '  AND HAFTA_NO    = :HAFTA_NO'
+      '  AND HASTANE_NO  = :HASTANE_NO')
     Left = 848
     Top = 104
     ParamData = <
@@ -4826,6 +4837,11 @@
       item
         DataType = ftUnknown
         Name = 'HAFTA_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'HASTANE_NO'
         Value = nil
       end>
     object fltfldHafta3HASTA_ID: TFloatField
@@ -4973,11 +4989,12 @@
     Session = orsn1
     SQL.Strings = (
       'SELECT *'
-      'FROM HASTANE.YD_RISK_IZLEM'
+      'FROM HASTANE.HEM_BESLENME_GOMEZ'
       'WHERE DOSYA_NO    = :DOSYA_NO'
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
       '  AND FORM_NO     = :FORM_NO'
-      '  AND HAFTA_NO    = :HAFTA_NO')
+      '  AND HAFTA_NO    = :HAFTA_NO'
+      '  AND HASTANE_NO  = :HASTANE_NO')
     Left = 968
     Top = 104
     ParamData = <
@@ -4999,6 +5016,11 @@
       item
         DataType = ftUnknown
         Name = 'HAFTA_NO'
+        Value = nil
+      end
+      item
+        DataType = ftUnknown
+        Name = 'HASTANE_NO'
         Value = nil
       end>
     object fltfldHafta4HASTA_ID: TFloatField
@@ -5168,12 +5190,13 @@
       'SELECT'
       '  NVL(MAX(FORM_NO), 0) AS FORM_NO,'
       '  COUNT(*) AS HAFTA_SAYISI'
-      'FROM HASTANE.YD_RISK_IZLEM'
+      'FROM HASTANE.HEM_BESLENME_GOMEZ'
       'WHERE DOSYA_NO = :DOSYA_NO'
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
+      ''
       '  AND FORM_NO = ('
       '    SELECT NVL(MAX(FORM_NO), 0)'
-      '    FROM HASTANE.YD_RISK_IZLEM'
+      '    FROM HASTANE.HEM_BESLENME_GOMEZ'
       '    WHERE DOSYA_NO = :DOSYA_NO'
       '      AND PROTOKOL_NO = :PROTOKOL_NO'
       '  )')
@@ -5205,11 +5228,12 @@
       '  DOGUM_KILOSU_GR,'
       '  DOGUM_BOYU_CM,'
       '  DOGUM_BAS_CEVRESI'
-      'FROM HASTANE.YD_RISK_IZLEM'
+      'FROM HASTANE.HEM_BESLENME_GOMEZ'
       'WHERE DOSYA_NO    = :DOSYA_NO'
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
       '  AND FORM_NO     = :FORM_NO'
-      '  AND HAFTA_NO    = :HAFTA_NO')
+      '  AND HAFTA_NO    = :HAFTA_NO'
+      '')
     Left = 744
     Top = 24
     ParamData = <
@@ -5258,31 +5282,7 @@
       '    MIN(IZLEM_TARIHI) AS ILK_TARIH,'
       '    MAX(IZLEM_TARIHI) AS SON_TARIH,'
       ''
-      '    /* ========================='
-      '        G'#304'R'#304#350' METN'#304
-      '       ========================= */'
-      '    TRIM('
-      '      TO_CHAR('
-      '        MIN(IZLEM_TARIHI),'
-      '        '#39'FMMonth'#39','
-      '        '#39'NLS_DATE_LANGUAGE=TURKISH'#39
-      '      )'
-      '    ) || '#39' Ay'#305' '#183' '#39' ||'
-      '    TO_CHAR(MIN(IZLEM_TARIHI), '#39'W'#39') ||'
-      '    '#39'. Hafta'#39' AS GIRIS_BILGISI,'
-      ''
-      '    /* ========================='
-      '        '#199'IKI'#350' METN'#304
-      '       ========================= */'
-      '    TRIM('
-      '      TO_CHAR('
-      '        MAX(IZLEM_TARIHI),'
-      '        '#39'FMMonth'#39','
-      '        '#39'NLS_DATE_LANGUAGE=TURKISH'#39
-      '      )'
-      '    ) || '#39' Ay'#305' '#183' '#39' ||'
-      '    TO_CHAR(MAX(IZLEM_TARIHI), '#39'W'#39') ||'
-      '    '#39'. Hafta'#39' AS CIKIS_BILGISI,'
+      '  '
       ''
       '    /* ========================='
       '        TOPLAM S'#220'RE'
@@ -5304,11 +5304,10 @@
       '      ELSE '#39#8212#39
       '    END AS GENEL_RISK'
       ''
-      'FROM HASTANE.YD_RISK_IZLEM'
+      'FROM HASTANE.HEM_BESLENME_GOMEZ'
       ''
       'WHERE DOSYA_NO    = :DOSYA_NO'
       '  AND PROTOKOL_NO = :PROTOKOL_NO'
-      ''
       'GROUP BY FORM_NO'
       'ORDER BY FORM_NO DESC;')
     Left = 721
@@ -5332,14 +5331,6 @@
     end
     object dtmfldFormHistorySON_TARIH: TDateTimeField
       FieldName = 'SON_TARIH'
-    end
-    object strngfldFormHistoryGIRIS_BILGISI: TStringField
-      FieldName = 'GIRIS_BILGISI'
-      Size = 16
-    end
-    object strngfldFormHistoryCIKIS_BILGISI: TStringField
-      FieldName = 'CIKIS_BILGISI'
-      Size = 16
     end
     object strngfldFormHistoryTOPLAM_SURE: TStringField
       FieldName = 'TOPLAM_SURE'
@@ -5646,7 +5637,7 @@
       '      END'
       '    ) AS RISK_OZET'
       ''
-      'FROM HASTANE.YD_RISK_IZLEM R'
+      'FROM HASTANE.HEM_BESLENME_GOMEZ R'
       ''
       '/* '#55357#56633' Hasta */'
       'JOIN HASTANE.KIMLIK K'

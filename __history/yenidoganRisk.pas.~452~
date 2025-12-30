@@ -448,8 +448,6 @@ type
     intgrfldFormHistoryFORM_NO: TIntegerField;
     dtmfldFormHistoryILK_TARIH: TDateTimeField;
     dtmfldFormHistorySON_TARIH: TDateTimeField;
-    strngfldFormHistoryGIRIS_BILGISI: TStringField;
-    strngfldFormHistoryCIKIS_BILGISI: TStringField;
     strngfldFormHistoryTOPLAM_SURE: TStringField;
     strngfldFormHistoryGENEL_RISK: TStringField;
 
@@ -485,12 +483,12 @@ type
     procedure btnYazdirClick(Sender: TObject);
     function ValidateBirthFields(Q: TOraQuery): Boolean;
     function ValidateCommonFields(Q: TOraQuery): Boolean;
-    procedure dbgrdFormHistoryDrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+   
   private
     { Private declarations }
    FReadOnlyMode: Boolean;
   FDosyaNo    : Integer;
+  FHastaneNo : Integer;
   FProtokolNo : Integer;
   FAktifForm  : Integer;
   FAktifHafta : Integer;
@@ -507,6 +505,7 @@ implementation
 const
   TEST_DOSYA_NO    = 12;    // meddatadan gelen hasta bilgilerinin burada değişmesi yeterli
   TEST_PROTOKOL_NO = 400;   // meddatadan gelen hasta bilgilerinin burada değişmesi yeterli
+  TEST_HASTANE_NO = 1;
 {$R *.dfm}
 
 
@@ -671,22 +670,33 @@ begin
 end;
 
 
-procedure TForm2.OpenHafta(Q: TOraQuery; AHafta: Integer); // hafta bilgisinin açılması
+procedure TForm2.OpenHafta(Q: TOraQuery; AHafta: Integer);
 begin
   Q.Close;
-  Q.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
+
+  // 🔴 PARAM CACHE SORUNUNU KESİN BİTİRİR
+  Q.UnPrepare;
+  Q.Params.Clear;
+  Q.Prepare;   // ← SQL parse edilir, params burada oluşur
+
+  // 🔹 PARAMETRELER ARTIK GARANTİ VAR
+  Q.ParamByName('DOSYA_NO').AsInteger    := FDosyaNo;
   Q.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
-  Q.ParamByName('FORM_NO').AsInteger := FAktifForm;
-  Q.ParamByName('HAFTA_NO').AsInteger := AHafta;
+  Q.ParamByName('HASTANE_NO').AsInteger  := FHastaneNo;
+  Q.ParamByName('FORM_NO').AsInteger     := FAktifForm;
+  Q.ParamByName('HAFTA_NO').AsInteger    := AHafta;
+
   Q.Open;
 
   if Q.IsEmpty then
   begin
     Q.Append;
-    Q.FieldByName('DOSYA_NO').AsInteger := FDosyaNo;
+
+    Q.FieldByName('DOSYA_NO').AsInteger    := FDosyaNo;
     Q.FieldByName('PROTOKOL_NO').AsInteger := FProtokolNo;
-    Q.FieldByName('FORM_NO').AsInteger := FAktifForm;
-    Q.FieldByName('HAFTA_NO').AsInteger := AHafta;
+    Q.FieldByName('HASTANE_NO').AsInteger  := FHastaneNo;
+    Q.FieldByName('FORM_NO').AsInteger     := FAktifForm;
+    Q.FieldByName('HAFTA_NO').AsInteger    := AHafta;
     Q.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
 
     if not IsFirstFormFirstWeek then
@@ -752,61 +762,6 @@ begin
   ApplyReadOnlyMode;
 end;
 
-
-
-procedure TForm2.dbgrdFormHistoryDrawColumnCell(
-  Sender: TObject;
-  const Rect: TRect;
-  DataCol: Integer;
-  Column: TColumn;
-  State: TGridDrawState);
-var
-  Grid: TDBGrid;
-  Txt: string;
-begin
-  Grid := TDBGrid(Sender);
-
-  // 🔹 BAŞLIK (Column Title)
-  if gdFixed in State then
-  begin
-    Grid.Canvas.Brush.Color := clLtGray;
-    Grid.Canvas.FillRect(Rect);
-
-    Grid.Canvas.Font.Color := clBlack;
-    Grid.Canvas.Font.Style := [fsBold];
-
-    Txt := Column.Title.Caption;
-
-    Grid.Canvas.TextRect(
-      Rect,
-      Rect.Left + 6,
-      Rect.Top + (Rect.Height div 2) - (Grid.Canvas.TextHeight(Txt) div 2),
-      Txt
-    );
-    Exit;
-  end;
-
-  // 🔹 SEÇİLİ SATIR
-  if gdSelected in State then
-  begin
-    Grid.DefaultDrawColumnCell(Rect, DataCol, Column, State);
-    Exit;
-  end;
-
-  // 🔹 NORMAL HÜCRE
-  Grid.Canvas.Brush.Color := clLtGray;
-  Grid.Canvas.FillRect(Rect);
-
-  Grid.Canvas.Font.Color := clBlack;
-  Grid.Canvas.Font.Style := [];
-
-  Grid.Canvas.TextRect(
-    Rect,
-    Rect.Left + 6,
-    Rect.Top + 2,
-    Column.Field.DisplayText
-  );
-end;
 
 
 procedure TForm2.CalcAktifFormHafta;  //  aktif haftayı bulma
@@ -1022,6 +977,12 @@ begin
   if not (Q.State in dsEditModes) then
     Q.Edit;
 
+    if Q.FieldByName('HAFTA_NO').IsNull then
+  Q.FieldByName('HAFTA_NO').AsInteger := FAktifHafta;
+
+  if Q.FieldByName('IZLEM_TARIHI').IsNull then
+  Q.FieldByName('IZLEM_TARIHI').AsDateTime := Date;
+
     if not ValidateCommonFields(Q) then Exit;
     if not ValidateBirthFields(Q) then Exit;
   // 🔹 otomatik risk hesapla
@@ -1091,6 +1052,7 @@ end;
 
 procedure TForm2.FormShow(Sender: TObject);  // formu gösterme
 begin
+
   // 1️DB bağlantısı
   if not Orsn1.Connected then
     Orsn1.Connected := True;
@@ -1098,11 +1060,21 @@ begin
   // 2️Hasta bilgisi (ÖNCE)
   FDosyaNo    := TEST_DOSYA_NO;
   FProtokolNo := TEST_PROTOKOL_NO;
+  FHastaneNo  := TEST_HASTANE_NO;
+    ShowMessage(
+  'FORM SHOW HASTA BİLGİLERİ' + sLineBreak +
+  'DOSYA_NO    = ' + IntToStr(FDosyaNo) + sLineBreak +
+  'PROTOKOL_NO = ' + IntToStr(FProtokolNo) + sLineBreak +
+  'HASTANE_NO  = ' + IntToStr(FHastaneNo)
+);
+
+
 
   // 3️ GEÇMİŞ FORM LİSTESİ (DBGrid için)
   qryFormHistory.Close;
   qryFormHistory.ParamByName('DOSYA_NO').AsInteger := FDosyaNo;
   qryFormHistory.ParamByName('PROTOKOL_NO').AsInteger := FProtokolNo;
+
   qryFormHistory.Open;
 
   // 4️Aktif form / hafta hesapla
@@ -1119,7 +1091,7 @@ begin
   ApplyTGFieldRules;
   ApplyFixedFieldRules;
 
-  
+
 end;
 
 
